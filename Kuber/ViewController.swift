@@ -8,12 +8,17 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    @IBOutlet weak var fullNameInputField: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
 
 
+    @IBAction func signUpButtonClicked(_ sender: UIButton) {
+      let fullName = fullNameInputField.text
+    }
+    
 }
 
