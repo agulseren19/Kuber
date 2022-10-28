@@ -99,6 +99,7 @@
 		0C93806E29087296000E9365 /* Kuber */ = {
 			isa = PBXGroup;
 			children = (
+				0CC430C229099991007BD69D /* Sign Up */,
 				0C93806F29087296000E9365 /* AppDelegate.swift */,
 				0C93807129087296000E9365 /* SceneDelegate.swift */,
 				0C93807329087296000E9365 /* ViewController.swift */,
@@ -125,6 +126,13 @@
 				0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */,
 			);
 			path = KuberUITests;
+			sourceTree = "<group>";
+		};
+		0CC430C229099991007BD69D /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Sign Up";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
