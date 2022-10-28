@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C00F738290C7166000F69C8 /* LogInViewController.swift */; };
 		0C93807029087296000E9365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93806F29087296000E9365 /* AppDelegate.swift */; };
 		0C93807229087296000E9365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93807129087296000E9365 /* SceneDelegate.swift */; };
-		0C93807429087296000E9365 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93807329087296000E9365 /* ViewController.swift */; };
+		0C93807429087296000E9365 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93807329087296000E9365 /* SignUpViewController.swift */; };
 		0C93807729087296000E9365 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C93807529087296000E9365 /* Main.storyboard */; };
 		0C938079290872A1000E9365 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0C938078290872A1000E9365 /* Assets.xcassets */; };
 		0C93807C290872A1000E9365 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0C93807A290872A1000E9365 /* LaunchScreen.storyboard */; };
@@ -36,10 +37,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0C00F738290C7166000F69C8 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		0C93806C29087296000E9365 /* Kuber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C93806F29087296000E9365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C93807129087296000E9365 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0C93807329087296000E9365 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0C93807329087296000E9365 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		0C93807629087296000E9365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0C938078290872A1000E9365 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0C93807B290872A1000E9365 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -76,6 +78,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C00F737290C68D3000F69C8 /* LogIn */ = {
+			isa = PBXGroup;
+			children = (
+				0C00F738290C7166000F69C8 /* LogInViewController.swift */,
+			);
+			path = LogIn;
+			sourceTree = "<group>";
+		};
 		0C93806329087296000E9365 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +109,10 @@
 		0C93806E29087296000E9365 /* Kuber */ = {
 			isa = PBXGroup;
 			children = (
+				0C00F737290C68D3000F69C8 /* LogIn */,
 				0CC430C229099991007BD69D /* Sign Up */,
 				0C93806F29087296000E9365 /* AppDelegate.swift */,
 				0C93807129087296000E9365 /* SceneDelegate.swift */,
-				0C93807329087296000E9365 /* ViewController.swift */,
 				0C93807529087296000E9365 /* Main.storyboard */,
 				0C938078290872A1000E9365 /* Assets.xcassets */,
 				0C93807A290872A1000E9365 /* LaunchScreen.storyboard */,
@@ -131,6 +141,7 @@
 		0CC430C229099991007BD69D /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
+				0C93807329087296000E9365 /* SignUpViewController.swift */,
 			);
 			path = "Sign Up";
 			sourceTree = "<group>";
@@ -266,7 +277,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0C93807429087296000E9365 /* ViewController.swift in Sources */,
+				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
+				0C93807429087296000E9365 /* SignUpViewController.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,
 			);
