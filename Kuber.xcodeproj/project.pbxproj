@@ -104,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				F26C0364290959E60020E239 /* ProfileScreen */,
+				0CC430C229099991007BD69D /* Sign Up */,
 				0C93806F29087296000E9365 /* AppDelegate.swift */,
 				0C93807129087296000E9365 /* SceneDelegate.swift */,
 				0C93807329087296000E9365 /* ViewController.swift */,
@@ -139,6 +140,11 @@
 				F28FCEE4290D97850069849E /* ProfileScreenViewController.swift */,
 			);
 			path = ProfileScreen;
+		0CC430C229099991007BD69D /* Sign Up */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Sign Up";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
