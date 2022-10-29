@@ -17,7 +17,7 @@
 		0C938091290872A1000E9365 /* KuberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938090290872A1000E9365 /* KuberUITests.swift */; };
 		0C938093290872A1000E9365 /* KuberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */; };
 		F26C036629095A110020E239 /* ProfileScreenStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26C036529095A110020E239 /* ProfileScreenStoryboard.storyboard */; };
-		F26C036829095A950020E239 /* ProfileScreenSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C036729095A950020E239 /* ProfileScreenSwiftUIView.swift */; };
+		F28FCEE5290D97850069849E /* ProfileScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28FCEE4290D97850069849E /* ProfileScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 		0C938090290872A1000E9365 /* KuberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITests.swift; sourceTree = "<group>"; };
 		0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		F26C036529095A110020E239 /* ProfileScreenStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileScreenStoryboard.storyboard; sourceTree = "<group>"; };
-		F26C036729095A950020E239 /* ProfileScreenSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenSwiftUIView.swift; sourceTree = "<group>"; };
+		F28FCEE4290D97850069849E /* ProfileScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				F26C036529095A110020E239 /* ProfileScreenStoryboard.storyboard */,
-				F26C036729095A950020E239 /* ProfileScreenSwiftUIView.swift */,
+				F28FCEE4290D97850069849E /* ProfileScreenViewController.swift */,
 			);
 			path = ProfileScreen;
 			sourceTree = "<group>";
@@ -273,9 +273,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F26C036829095A950020E239 /* ProfileScreenSwiftUIView.swift in Sources */,
 				0C93807429087296000E9365 /* ViewController.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
+				F28FCEE5290D97850069849E /* ProfileScreenViewController.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
