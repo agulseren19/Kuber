@@ -32,4 +32,9 @@ class ProfileScreenViewController: UIViewController {
     @IBAction func editButton(_ sender: Any) {
     }
     
+    @IBAction func homeButton(_ sender: Any) {
+    }
+    
+    @IBAction func profileButton(_ sender: Any) {
+    }
 }
