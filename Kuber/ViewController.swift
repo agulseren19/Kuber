@@ -6,6 +6,13 @@
 //
 
 import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseCore
+import FirebaseCore
+// ...
+      
 class ViewController: UIViewController {
 
     @IBOutlet weak var fullNameInputField: UITextField!
@@ -33,6 +40,7 @@ class ViewController: UIViewController {
       let fullName = fullNameInputField.text
         let phoneNumber = phoneNumberInputField.text
         let major = majorInputField.text
+       
     }
     
     @IBAction func smokingCheckBoxClicked(_ sender: UIButton) {
