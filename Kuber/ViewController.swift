@@ -11,6 +11,7 @@ import FirebaseFirestore
 import FirebaseAuth
 import FirebaseCore
 import FirebaseCore
+import GoogleSignIn
 // ...
       
 class ViewController: UIViewController {
@@ -40,8 +41,37 @@ class ViewController: UIViewController {
       let fullName = fullNameInputField.text
         let phoneNumber = phoneNumberInputField.text
         let major = majorInputField.text
+        
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { [unowned self] user, error in
+
+          if let error = error {
+            // ...
+            return
+          }
+
+          guard
+            let authentication = user?.authentication,
+            let idToken = authentication.idToken
+          else {
+            return
+          }
+
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                         accessToken: authentication.accessToken)
+
+          // ...
+            
+            Auth.auth().signIn(with: credential) 
+        }
        
     }
+    
     
     @IBAction func smokingCheckBoxClicked(_ sender: UIButton) {
         if(smokingFlag==true){
