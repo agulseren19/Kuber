@@ -17,6 +17,8 @@
 		0C938087290872A1000E9365 /* KuberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938086290872A1000E9365 /* KuberTests.swift */; };
 		0C938091290872A1000E9365 /* KuberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938090290872A1000E9365 /* KuberUITests.swift */; };
 		0C938093290872A1000E9365 /* KuberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */; };
+		1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE46290E6533003A141C /* SearchRideViewController.swift */; };
+		1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE4A290E8E68003A141C /* searchRideUIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +53,8 @@
 		0C93808C290872A1000E9365 /* KuberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C938090290872A1000E9365 /* KuberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITests.swift; sourceTree = "<group>"; };
 		0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1E28EE46290E6533003A141C /* SearchRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRideViewController.swift; sourceTree = "<group>"; };
+		1E28EE4A290E8E68003A141C /* searchRideUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchRideUIView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +113,7 @@
 		0C93806E29087296000E9365 /* Kuber */ = {
 			isa = PBXGroup;
 			children = (
+				1E28EE45290E5E58003A141C /* searchRide */,
 				0C00F737290C68D3000F69C8 /* LogIn */,
 				0CC430C229099991007BD69D /* Sign Up */,
 				0C93806F29087296000E9365 /* AppDelegate.swift */,
@@ -144,6 +149,15 @@
 				0C93807329087296000E9365 /* SignUpViewController.swift */,
 			);
 			path = "Sign Up";
+			sourceTree = "<group>";
+		};
+		1E28EE45290E5E58003A141C /* searchRide */ = {
+			isa = PBXGroup;
+			children = (
+				1E28EE46290E6533003A141C /* SearchRideViewController.swift */,
+				1E28EE4A290E8E68003A141C /* searchRideUIView.swift */,
+			);
+			path = searchRide;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -277,9 +291,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
 				0C93807429087296000E9365 /* SignUpViewController.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
+				1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
