@@ -16,8 +16,6 @@
 		0C938087290872A1000E9365 /* KuberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938086290872A1000E9365 /* KuberTests.swift */; };
 		0C938091290872A1000E9365 /* KuberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938090290872A1000E9365 /* KuberUITests.swift */; };
 		0C938093290872A1000E9365 /* KuberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */; };
-		F26C036629095A110020E239 /* ProfileScreenStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F26C036529095A110020E239 /* ProfileScreenStoryboard.storyboard */; };
-		F28FCEE5290D97850069849E /* ProfileScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F28FCEE4290D97850069849E /* ProfileScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,8 +49,6 @@
 		0C93808C290872A1000E9365 /* KuberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C938090290872A1000E9365 /* KuberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITests.swift; sourceTree = "<group>"; };
 		0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		F26C036529095A110020E239 /* ProfileScreenStoryboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ProfileScreenStoryboard.storyboard; sourceTree = "<group>"; };
-		F28FCEE4290D97850069849E /* ProfileScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +99,6 @@
 		0C93806E29087296000E9365 /* Kuber */ = {
 			isa = PBXGroup;
 			children = (
-				F26C0364290959E60020E239 /* ProfileScreen */,
 				0CC430C229099991007BD69D /* Sign Up */,
 				0C93806F29087296000E9365 /* AppDelegate.swift */,
 				0C93807129087296000E9365 /* SceneDelegate.swift */,
@@ -133,13 +128,6 @@
 			path = KuberUITests;
 			sourceTree = "<group>";
 		};
-		F26C0364290959E60020E239 /* ProfileScreen */ = {
-			isa = PBXGroup;
-			children = (
-				F26C036529095A110020E239 /* ProfileScreenStoryboard.storyboard */,
-				F28FCEE4290D97850069849E /* ProfileScreenViewController.swift */,
-			);
-			path = ProfileScreen;
 		0CC430C229099991007BD69D /* Sign Up */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,7 +242,6 @@
 				0C93807C290872A1000E9365 /* LaunchScreen.storyboard in Resources */,
 				0C938079290872A1000E9365 /* Assets.xcassets in Resources */,
 				0C93807729087296000E9365 /* Main.storyboard in Resources */,
-				F26C036629095A110020E239 /* ProfileScreenStoryboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +268,6 @@
 			files = (
 				0C93807429087296000E9365 /* ViewController.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
-				F28FCEE5290D97850069849E /* ProfileScreenViewController.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
