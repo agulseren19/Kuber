@@ -6,7 +6,7 @@
 //
 
 import UIKit
-class ViewController: UIViewController {
+class SignUpViewController: UIViewController {
 
     @IBOutlet weak var fullNameInputField: UITextField!
     @IBOutlet weak var phoneNumberInputField: UITextField!
@@ -25,7 +25,6 @@ class ViewController: UIViewController {
         //set font of segmented control
         let font=UIFont.systemFont(ofSize: 8)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
-
     }
 
 
@@ -56,5 +55,6 @@ class ViewController: UIViewController {
             chattinessFlag=true
         }
     }
+    
 }
 
