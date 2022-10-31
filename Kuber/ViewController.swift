@@ -27,7 +27,6 @@ class ViewController: UIViewController {
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
 
     }
-    
 
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
