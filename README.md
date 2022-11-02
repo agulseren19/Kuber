@@ -29,4 +29,5 @@ target 'Kuber' do
 
 end 
 ```
+* open Kuber.xcworkspace in Xcode, wait loading
 * build and run in Xcode
