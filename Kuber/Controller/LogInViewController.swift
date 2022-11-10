@@ -6,6 +6,16 @@
 //
 
 import UIKit
+import UIKit
+import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseCore
+import FirebaseCore
+import GoogleSignIn
+import FirebaseCore
+import FirebaseFirestore
 
 class LogInViewController: UIViewController {
 
@@ -33,7 +43,30 @@ class LogInViewController: UIViewController {
     @IBAction func signInButtonClicked(_ sender: Any) {
         let userEmail = emailField.text!
         let userPassword = passwordField.text!
-        print("SignIn Button Clicked")
+        /*let db = Firestore.firestore()
+        let docRef = db.collection("users").document(userEmail)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                let dataDescription = document.data().map(String.init(describing:)) ?? "nil"
+                print("Document data: \(dataDescription)")
+            } else {
+                print("Document does not exist")
+            }
+        }
+        print("SignIn Button Clicked")*/
+        Auth.auth().signIn(withEmail: userEmail, password: userPassword) { (authResult, error) in
+          if let authResult = authResult {
+            let user = authResult.user
+            if user.isEmailVerified {
+                print("VERIFIED")
+            } else {
+              // do whatever you want to do when user isn't verified
+                print("Cant Sign in user")
+            }
+          }
+          if let error = error {
+          }
+        }
     }
     
     

@@ -6,6 +6,15 @@
 //
 
 import UIKit
+import UIKit
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseCore
+import FirebaseCore
+import GoogleSignIn
+import FirebaseCore
+import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
@@ -22,6 +31,17 @@ class SignUpViewController: UIViewController {
         
         let email = emailField.text!
         let password = passwordField.text!
+                Auth.auth().createUser(withEmail: email,
+                                       password: password) { user, error in
+                    if error == nil {
+                        Auth.auth().currentUser?.sendEmailVerification { (error) in
+                        }}}
+                        let db = Firestore.firestore()
+                        var ref: DocumentReference? = nil
+        
+                
+                    
+               
     }
     
     
