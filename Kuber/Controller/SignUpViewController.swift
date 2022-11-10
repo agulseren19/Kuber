@@ -9,18 +9,14 @@ import UIKit
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var passwordInputField: UITextField!
-    @IBOutlet weak var emailInputField: UITextField!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func signUpButtonClicked(_ sender: UIButton) {
-        let email = emailInputField.text!
-                let password = passwordInputField.text!
-    }
+    
     
     /*
     // MARK: - Navigation

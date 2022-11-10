@@ -9,6 +9,10 @@ import UIKit
 
 class LogInViewController: UIViewController {
 
+    @IBOutlet weak var emailField: UITextField!
+    
+    @IBOutlet weak var passwordField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
@@ -26,13 +30,19 @@ class LogInViewController: UIViewController {
     }
     */
 
-
+    @IBAction func signInButtonClicked(_ sender: Any) {
+        let userEmail = emailField.text!
+        let userPassword = passwordField.text!
+        print("SignIn Button Clicked")
+    }
+    
+    
     @IBAction func logInButtonClicked(_ sender: UIButton) {
-        let signUpViewController:UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
+      //  let signUpViewController:UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
         //log in using firebase here
         //if succesful login and first time user
-        print(self.navigationController)
-        self.navigationController?.pushViewController(signUpViewController, animated: true)
+        //print(self.navigationController)
+        //self.navigationController?.pushViewController(signUpViewController, animated: true)
     }
     
 }
