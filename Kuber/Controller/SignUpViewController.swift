@@ -53,7 +53,27 @@ class SignUpViewController: UIViewController {
                         print("Document added with ID: \(ref!.documentID)")
                     }
                 }
-        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        
+        Auth.auth().createUser(withEmail: fullName,
+                               password: major) { user, error in
+            if error == nil {
+                Auth.auth().currentUser?.sendEmailVerification { (error) in
+                }}}
+        
+            
+        if (Auth.auth().currentUser?.isEmailVerified != nil){
+            Auth.auth().signIn(withEmail: fullName, password: major) { [weak self] authResult, error in
+                if error == nil {
+                    print("girdi")
+                } else {
+                    print("giremedi")
+                }
+                // ...
+            }
+        }
+        
+        /*guard let clientID = FirebaseApp.app()?.options.clientID else { return }
 
         // Create Google Sign In configuration object.
         let config = GIDConfiguration(clientID: clientID)
@@ -85,7 +105,8 @@ class SignUpViewController: UIViewController {
          try firebaseAuth.signOut()
        } catch let signOutError as NSError {
          print("Error signing out: %@", signOutError)
-       }
+       }*/
+       
                
     }
     
