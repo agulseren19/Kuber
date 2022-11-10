@@ -39,7 +39,25 @@ class SignUpViewController: UIViewController {
                         let db = Firestore.firestore()
                         var ref: DocumentReference? = nil
         
-                
+        db.collection("users").document(email).setData([
+
+                    "email": email,
+
+                    "password": password,
+
+                ]) { err in
+
+                    if let err = err {
+
+                        print("Error writing document: \(err)")
+
+                    } else {
+
+                        print("Document successfully written!")
+
+                    }
+
+                }
                     
                
     }
