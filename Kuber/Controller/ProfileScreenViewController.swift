@@ -21,25 +21,19 @@ class ProfileScreenViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var mailLabel: UILabel!
     
-    @IBAction func hitchhikeStatusButton(_ sender: Any) {
-    }
-    
-    @IBAction func rideRequestsButton(_ sender: Any) {
-    }
-    
-    @IBAction func backButton(_ sender: Any) {
-    }
-    
+
+
     @IBAction func editButton(_ sender: Any) {
     }
-    
-    @IBAction func homeButton(_ sender: Any) {
-    }
-    
-    @IBAction func profileButton(_ sender: Any) {
-    }
-    
 
+    
+    @IBAction func historyOfRidesButton(_ sender: Any) {
+    }
+    
+    @IBAction func historyOfHitchhikessButton(_ sender: Any) {
+    }
+    
+    
     /*
     // MARK: - Navigation
 
