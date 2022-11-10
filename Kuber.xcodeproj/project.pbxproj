@@ -13,6 +13,8 @@
 		0C45E0FD29131AD7002A6881 /* RidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45E0FC29131AD7002A6881 /* RidesViewController.swift */; };
 		0C45E0FF29131B40002A6881 /* HitchhikeStatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45E0FE29131B3F002A6881 /* HitchhikeStatusViewController.swift */; };
 		0C45E10129131B55002A6881 /* RideRequestsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45E10029131B55002A6881 /* RideRequestsViewController.swift */; };
+		0C83C6CA291D6467003FD90A /* SignUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C83C6C9291D6467003FD90A /* SignUpHelper.swift */; };
+		0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C83C6CB291D6476003FD90A /* SignUpDelegate.swift */; };
 		0C93807029087296000E9365 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93806F29087296000E9365 /* AppDelegate.swift */; };
 		0C93807229087296000E9365 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93807129087296000E9365 /* SceneDelegate.swift */; };
 		0C93807429087296000E9365 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C93807329087296000E9365 /* SignUpViewController.swift */; };
@@ -84,6 +86,8 @@
 		0C45E0FC29131AD7002A6881 /* RidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesViewController.swift; sourceTree = "<group>"; };
 		0C45E0FE29131B3F002A6881 /* HitchhikeStatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitchhikeStatusViewController.swift; sourceTree = "<group>"; };
 		0C45E10029131B55002A6881 /* RideRequestsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestsViewController.swift; sourceTree = "<group>"; };
+		0C83C6C9291D6467003FD90A /* SignUpHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpHelper.swift; sourceTree = "<group>"; };
+		0C83C6CB291D6476003FD90A /* SignUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpDelegate.swift; sourceTree = "<group>"; };
 		0C93806C29087296000E9365 /* Kuber.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Kuber.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C93806F29087296000E9365 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0C93807129087296000E9365 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,6 +171,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C83C6C8291D644B003FD90A /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0C83C6C9291D6467003FD90A /* SignUpHelper.swift */,
+				0C83C6CB291D6476003FD90A /* SignUpDelegate.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0C93806329087296000E9365 = {
 			isa = PBXGroup;
 			children = (
@@ -192,8 +205,8 @@
 		0C93806E29087296000E9365 /* Kuber */ = {
 			isa = PBXGroup;
 			children = (
+				0C83C6C8291D644B003FD90A /* Model */,
 				54065546291057AE0015F3D9 /* GoogleService-Info.plist */,
-				F26C296F290FFBE3000F5C59 /* Model */,
 				F26C296C290FFA5F000F5C59 /* Controller */,
 				1E28EE45290E5E58003A141C /* searchRide */,
 				0C93806F29087296000E9365 /* AppDelegate.swift */,
@@ -268,13 +281,6 @@
 				0C45E10029131B55002A6881 /* RideRequestsViewController.swift */,
 			);
 			path = Controller;
-			sourceTree = "<group>";
-		};
-		F26C296F290FFBE3000F5C59 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -553,6 +559,7 @@
 			files = (
 				0C45E10129131B55002A6881 /* RideRequestsViewController.swift in Sources */,
 				1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */,
+				0C83C6CA291D6467003FD90A /* SignUpHelper.swift in Sources */,
 				0C45E0FF29131B40002A6881 /* HitchhikeStatusViewController.swift in Sources */,
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
@@ -560,6 +567,7 @@
 				0C45E0FD29131AD7002A6881 /* RidesViewController.swift in Sources */,
 				0C45E0F92913179A002A6881 /* HomeViewController.swift in Sources */,
 				0C93807429087296000E9365 /* SignUpViewController.swift in Sources */,
+				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
 				1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,

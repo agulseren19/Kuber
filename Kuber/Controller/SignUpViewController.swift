@@ -27,12 +27,16 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var gradeSegmentedControl: UISegmentedControl!
     var smokingFlag=false
     var chattinessFlag=false
+    let signUpHelper = SignUpHelper()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         //set font of segmented control
         let font=UIFont.systemFont(ofSize: 8)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+        signUpHelper.delegate = self
+
     }
 
 
@@ -40,6 +44,7 @@ class SignUpViewController: UIViewController {
         let fullName = fullNameInputField.text!
                 let phoneNumber = phoneNumberInputField.text!
                 let major = majorInputField.text!
+                signUpHelper.setFirebaseSignUp()
                 let db = Firestore.firestore()
                 var ref: DocumentReference? = nil
                 ref = db.collection("users").addDocument(data: [
@@ -109,6 +114,12 @@ class SignUpViewController: UIViewController {
             sender.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
             chattinessFlag=true
         }
+    }
+ 
+}
+extension SignUpViewController: SignUpDelegate {
+    func setUI(){
+        
     }
     
 }
