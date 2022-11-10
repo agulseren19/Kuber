@@ -58,10 +58,10 @@ class LogInViewController: UIViewController {
           if let authResult = authResult {
             let user = authResult.user
             if user.isEmailVerified {
-                print("VERIFIED")
+                print("Email is verified, now you are signed in as " + userEmail)
             } else {
               // do whatever you want to do when user isn't verified
-                print("Cant Sign in user")
+                print("Cant Sign in user. Verification needed")
             }
           }
           if let error = error {
