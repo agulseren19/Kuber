@@ -29,5 +29,6 @@ target 'Kuber' do
 
 end 
 ```
+* pod install
 * open Kuber.xcworkspace in Xcode, wait loading
 * build and run in Xcode
