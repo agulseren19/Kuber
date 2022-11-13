@@ -27,6 +27,8 @@
 		0C938093290872A1000E9365 /* KuberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */; };
 		1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE46290E6533003A141C /* SearchRideViewController.swift */; };
 		1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE4A290E8E68003A141C /* searchRideUIView.swift */; };
+		1E86ED7229219802006EED1D /* SignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86ED7129219801006EED1D /* SignInHelper.swift */; };
+		1E86ED7429219851006EED1D /* SignInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E86ED7329219851006EED1D /* SignInDelegate.swift */; };
 		421B41EB99E2D8A47CA81C4B /* Pods_Kuber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115921646A25995D177B1D5E /* Pods_Kuber.framework */; };
 		54065511291053E30015F3D9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 54065510291053E30015F3D9 /* FirebaseAnalytics */; };
 		54065513291053E30015F3D9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 54065512291053E30015F3D9 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -106,6 +108,8 @@
 		115921646A25995D177B1D5E /* Pods_Kuber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E28EE46290E6533003A141C /* SearchRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRideViewController.swift; sourceTree = "<group>"; };
 		1E28EE4A290E8E68003A141C /* searchRideUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchRideUIView.swift; sourceTree = "<group>"; };
+		1E86ED7129219801006EED1D /* SignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHelper.swift; sourceTree = "<group>"; };
+		1E86ED7329219851006EED1D /* SignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegate.swift; sourceTree = "<group>"; };
 		2EE806FF8C0BA34FDB559D61 /* Pods-Kuber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber.release.xcconfig"; path = "Target Support Files/Pods-Kuber/Pods-Kuber.release.xcconfig"; sourceTree = "<group>"; };
 		35BFEFAAB4D30DCD120F5AC6 /* Pods-Kuber-KuberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber-KuberUITests.release.xcconfig"; path = "Target Support Files/Pods-Kuber-KuberUITests/Pods-Kuber-KuberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54065546291057AE0015F3D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -178,6 +182,8 @@
 			children = (
 				0C83C6C9291D6467003FD90A /* SignUpHelper.swift */,
 				0C83C6CB291D6476003FD90A /* SignUpDelegate.swift */,
+				1E86ED7129219801006EED1D /* SignInHelper.swift */,
+				1E86ED7329219851006EED1D /* SignInDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -562,9 +568,11 @@
 			files = (
 				0C45E10129131B55002A6881 /* RideRequestsViewController.swift in Sources */,
 				1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */,
+				1E86ED7429219851006EED1D /* SignInDelegate.swift in Sources */,
 				0C83C6CA291D6467003FD90A /* SignUpHelper.swift in Sources */,
 				0C45E0FF29131B40002A6881 /* HitchhikeStatusViewController.swift in Sources */,
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
+				1E86ED7229219802006EED1D /* SignInHelper.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
 				0C45E0FB291318C3002A6881 /* PublishRideViewController.swift in Sources */,
 				0C45E0FD29131AD7002A6881 /* RidesViewController.swift in Sources */,

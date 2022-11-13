@@ -6,16 +6,9 @@
 //
 
 import UIKit
-import UIKit
-import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-import FirebaseCore
-import FirebaseCore
-import GoogleSignIn
-import FirebaseCore
-import FirebaseFirestore
 
 class LogInViewController: UIViewController {
 
@@ -23,8 +16,15 @@ class LogInViewController: UIViewController {
     
     @IBOutlet weak var passwordField: UITextField!
     
+    @IBOutlet weak var errorText: UILabel!
+    
+    
+    let signInHelper = SignInHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.isSecureTextEntry = true
+        signInHelper.delegate = self
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         // Do any additional setup after loading the view.
     }
@@ -54,7 +54,7 @@ class LogInViewController: UIViewController {
             }
         }
         print("SignIn Button Clicked")*/
-        Auth.auth().signIn(withEmail: userEmail, password: userPassword) { (authResult, error) in
+        /*Auth.auth().signIn(withEmail: userEmail, password: userPassword) { (authResult, error) in
           if let authResult = authResult {
             let user = authResult.user
             if user.isEmailVerified {
@@ -66,16 +66,29 @@ class LogInViewController: UIViewController {
           }
           if let error = error {
           }
-        }
+        }*/
+        signInHelper.checkAndSignIn(userEmail: userEmail, userPassword: userPassword)
     }
     
-    
-    @IBAction func logInButtonClicked(_ sender: UIButton) {
-      //  let signUpViewController:UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignUpViewController") as! SignUpViewController
-        //log in using firebase here
-        //if succesful login and first time user
-        //print(self.navigationController)
-        //self.navigationController?.pushViewController(signUpViewController, animated: true)
-    }
     
 }
+extension LogInViewController: SignInDelegate {
+    func signInTheUser() {
+        // if the user's email and password is validated
+        // the user will be signed in and navigated to home screen
+        let homeViewController:UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
+        self.navigationController?.pushViewController(homeViewController, animated: true)
+        errorText.text = ""
+        passwordField.text = ""
+        emailField.text = ""
+    }
+    
+    func giveSignInError( errorDescription: String) {
+        print(errorDescription)
+        errorText.text = errorDescription
+        errorText.isHidden = false
+        errorText.adjustsFontSizeToFitWidth = true
+    }
+}
+
+
