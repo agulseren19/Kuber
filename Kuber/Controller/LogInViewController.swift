@@ -87,6 +87,7 @@ extension LogInViewController: SignInDelegate {
         print(errorDescription)
         errorText.text = errorDescription
         errorText.isHidden = false
+        errorText.textColor = UIColor.red
         errorText.adjustsFontSizeToFitWidth = true
     }
 }
