@@ -29,8 +29,12 @@ class SignUpViewController: UIViewController {
     
     @IBAction func continueButtonIsClicked(_ sender: Any) {
         
+        let user = User.sharedInstance
+        
         let email = emailField.text!
         let password = passwordField.text!
+        user.setEmail(email : email)
+        user.setPassword(password : password)
                 Auth.auth().createUser(withEmail: email,
                                        password: password) { user, error in
                     if error == nil {

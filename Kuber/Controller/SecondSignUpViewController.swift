@@ -42,7 +42,66 @@ class SecondSignUpViewController: UIViewController {
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
         
+        let user = User.sharedInstance
+        user.setFullName(fullName: fullNameInputField.text!)
+        user.setPhoneNumber(phoneNumber: phoneNumberInputField.text!)
+        user.setMajor(major: majorInputField.text!)
+        let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
+        if segmentIndex==0 {
+            user.setClassLevel(classLevel: "ELC")
+        }
+        if segmentIndex==1 {
+            user.setClassLevel(classLevel: "Freshman")
+        }
+        if segmentIndex==2 {
+            user.setClassLevel(classLevel: "Sophomore")
+        }
+        if segmentIndex==3 {
+            user.setClassLevel(classLevel: "Junior")
+        }
+        if segmentIndex==4 {
+            user.setClassLevel(classLevel: "Senior")
+        }
+        let db = Firestore.firestore()
+        db.collection("users").document(user.getEmail()).updateData([
+
+                    "smokingFlag": smokingFlag,
+                    
+                    "fullName": fullNameInputField.text!,
+                    "phoneNumber": phoneNumberInputField.text!,
+                    "major": majorInputField.text!,
+                    "classLevel": user.getClassLevel(),
+
+                    "chattinessFlag": chattinessFlag,
+
+                ]) { err in
+
+                    if let err = err {
+
+                        print("Error writing document: \(err)")
+
+                    } else {
+
+                        print("Document successfully written!")
+
+                    }
+
+                }
         
+        
+        /*
+         let db = Firestore.firestore()
+         let docRef = db.collection("users").document(user.getEmail())
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                print(document.get("password")!)
+            } else {
+                print("Document does not exist")
+            }
+        }*/
+
+                   
                
     }
     
