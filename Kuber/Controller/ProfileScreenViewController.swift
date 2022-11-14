@@ -50,7 +50,7 @@ class ProfileScreenViewController: UIViewController {
 
 extension ProfileScreenViewController: ProfileDelegate{
     func setUI() {
-        <#code#>
+        
     }
     
     
