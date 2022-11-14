@@ -8,11 +8,13 @@
 import UIKit
 
 class ProfileScreenViewController: UIViewController {
+    
+    let profileHelper = ProfileHelper()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        profileHelper.delegate = self
     }
     
     @IBOutlet weak var fullNameLabel: UILabel!
@@ -44,4 +46,12 @@ class ProfileScreenViewController: UIViewController {
     }
     */
 
+}
+
+extension ProfileScreenViewController: ProfileDelegate{
+    func setUI() {
+        <#code#>
+    }
+    
+    
 }

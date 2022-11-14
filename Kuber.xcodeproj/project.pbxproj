@@ -61,6 +61,8 @@
 		54EE18CA292259D6009516FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE18C9292259D6009516FB /* User.swift */; };
 		5E4F2A12625A271388ECBC63 /* Pods_Kuber_KuberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AB0E46F6C00F5A9A34971A7 /* Pods_Kuber_KuberUITests.framework */; };
 		F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C296D290FFA95000F5C59 /* ProfileScreenViewController.swift */; };
+		F2C663432922C79A00F806AE /* ProfileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C663422922C79A00F806AE /* ProfileHelper.swift */; };
+		F2C663452922C7F800F806AE /* ProfileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C663442922C7F800F806AE /* ProfileDelegate.swift */; };
 		F7A174E155A47471CFD73DA7 /* Pods_KuberTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C740BCB168954BA7236677A8 /* Pods_KuberTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -118,6 +120,8 @@
 		C67095A7C23726EE1FF63965 /* Pods-KuberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuberTests.release.xcconfig"; path = "Target Support Files/Pods-KuberTests/Pods-KuberTests.release.xcconfig"; sourceTree = "<group>"; };
 		C740BCB168954BA7236677A8 /* Pods_KuberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KuberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F26C296D290FFA95000F5C59 /* ProfileScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewController.swift; sourceTree = "<group>"; };
+		F2C663422922C79A00F806AE /* ProfileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelper.swift; sourceTree = "<group>"; };
+		F2C663442922C7F800F806AE /* ProfileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -180,6 +184,8 @@
 			children = (
 				0C83C6C9291D6467003FD90A /* SignUpHelper.swift */,
 				0C83C6CB291D6476003FD90A /* SignUpDelegate.swift */,
+				F2C663422922C79A00F806AE /* ProfileHelper.swift */,
+				F2C663442922C7F800F806AE /* ProfileDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -563,9 +569,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F2C663452922C7F800F806AE /* ProfileDelegate.swift in Sources */,
 				0C45E10129131B55002A6881 /* RideRequestsViewController.swift in Sources */,
 				1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */,
 				0C83C6CA291D6467003FD90A /* SignUpHelper.swift in Sources */,
+				F2C663432922C79A00F806AE /* ProfileHelper.swift in Sources */,
 				0C45E0FF29131B40002A6881 /* HitchhikeStatusViewController.swift in Sources */,
 				54EE18CA292259D6009516FB /* User.swift in Sources */,
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
