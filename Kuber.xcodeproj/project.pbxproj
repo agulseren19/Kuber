@@ -27,6 +27,8 @@
 		0C938093290872A1000E9365 /* KuberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */; };
 		1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE46290E6533003A141C /* SearchRideViewController.swift */; };
 		1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE4A290E8E68003A141C /* searchRideUIView.swift */; };
+		1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */; };
+		1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C602923E00B0050F2E9 /* SignInDelegate.swift */; };
 		421B41EB99E2D8A47CA81C4B /* Pods_Kuber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115921646A25995D177B1D5E /* Pods_Kuber.framework */; };
 		54065511291053E30015F3D9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 54065510291053E30015F3D9 /* FirebaseAnalytics */; };
 		54065513291053E30015F3D9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 54065512291053E30015F3D9 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -109,6 +111,8 @@
 		115921646A25995D177B1D5E /* Pods_Kuber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E28EE46290E6533003A141C /* SearchRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRideViewController.swift; sourceTree = "<group>"; };
 		1E28EE4A290E8E68003A141C /* searchRideUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchRideUIView.swift; sourceTree = "<group>"; };
+		1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHelper.swift; sourceTree = "<group>"; };
+		1E514C602923E00B0050F2E9 /* SignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegate.swift; sourceTree = "<group>"; };
 		2EE806FF8C0BA34FDB559D61 /* Pods-Kuber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber.release.xcconfig"; path = "Target Support Files/Pods-Kuber/Pods-Kuber.release.xcconfig"; sourceTree = "<group>"; };
 		35BFEFAAB4D30DCD120F5AC6 /* Pods-Kuber-KuberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber-KuberUITests.release.xcconfig"; path = "Target Support Files/Pods-Kuber-KuberUITests/Pods-Kuber-KuberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54065546291057AE0015F3D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				0C83C6CB291D6476003FD90A /* SignUpDelegate.swift */,
 				F2C663422922C79A00F806AE /* ProfileHelper.swift */,
 				F2C663442922C7F800F806AE /* ProfileDelegate.swift */,
+				1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */,
+				1E514C602923E00B0050F2E9 /* SignInDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -583,9 +589,11 @@
 				0C45E0F92913179A002A6881 /* HomeViewController.swift in Sources */,
 				0C83C6D0291D6977003FD90A /* SignUpViewController.swift in Sources */,
 				0C93807429087296000E9365 /* SecondSignUpViewController.swift in Sources */,
+				1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */,
 				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
 				1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */,
+				1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
