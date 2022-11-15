@@ -28,25 +28,20 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func continueButtonIsClicked(_ sender: Any) {
-        
-        let user = User.sharedInstance
-        
         let email = emailField.text!
         let password = passwordField.text!
-        user.setEmail(email : email)
-        user.setPassword(password : password)
+        
                 Auth.auth().createUser(withEmail: email,
                                        password: password) { user, error in
                     if error == nil {
                         Auth.auth().currentUser?.sendEmailVerification { (error) in
                         }}}
                         let db = Firestore.firestore()
-                        var ref: DocumentReference? = nil
+                       // var ref: DocumentReference? = nil
         
-        db.collection("users").document(email).setData([
+                db.collection("users").document(email).setData([
 
                     "email": email,
-
                     "password": password,
 
                 ]) { err in
@@ -60,21 +55,21 @@ class SignUpViewController: UIViewController {
                         print("Document successfully written!")
 
                     }
-
                 }
-                    
-               
     }
     
     
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if let secondSignUpViewController = segue.destination as? SecondSignUpViewController{
+            secondSignUpViewController.userEmail = emailField.text!
+        }
     }
-    */
+    
 
 }

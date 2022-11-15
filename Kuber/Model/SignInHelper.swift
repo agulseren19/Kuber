@@ -22,20 +22,42 @@ class SignInHelper {
             let user = authResult.user
             if user.isEmailVerified {
                 // user can sign in
-                self.delegate?.signInTheUser()
+                self.createTheUser(userEmail: userEmail)
             } else {
               // user's email is not verified
                 self.delegate?.giveSignInError(errorDescription: "Cant Sign in user. Verification needed")
-                
             }
           }
           if let error = error {
               responseText = error.localizedDescription
               self.delegate?.giveSignInError(errorDescription: responseText)
-              
           }
         }
          
+    }
+    
+    func createTheUser(userEmail: String){
+        
+        let user = User.sharedInstance
+        
+         let db = Firestore.firestore()
+         let docRef = db.collection("users").document(userEmail)
+
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                user.setEmail(email: userEmail)
+                user.setPassword(password: document.get("password")! as! String)
+                user.setFullName(fullName: document.get("fullName")! as! String)
+                user.setMajor(major: document.get("major") as! String)
+                user.setClassLevel(classLevel: document.get("classLevel") as! String)
+                user.setPhoneNumber(phoneNumber: document.get("phoneNumber") as! String)
+                // set the chattiness and smoking
+                print("user is created")
+                self.delegate?.signInTheUser()
+            } else {
+                print("Document does not exist")
+            }
+        }
     }
     
 }

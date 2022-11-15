@@ -28,6 +28,8 @@ class SecondSignUpViewController: UIViewController {
     var smokingFlag=false
     var chattinessFlag=false
     let signUpHelper = SignUpHelper()
+    
+    var userEmail: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,39 +40,37 @@ class SecondSignUpViewController: UIViewController {
         signUpHelper.delegate = self
 
     }
+    
 
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
         
-        let user = User.sharedInstance
-        user.setFullName(fullName: fullNameInputField.text!)
-        user.setPhoneNumber(phoneNumber: phoneNumberInputField.text!)
-        user.setMajor(major: majorInputField.text!)
+        var classLevel: String = ""
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
         if segmentIndex==0 {
-            user.setClassLevel(classLevel: "ELC")
+            classLevel = "ELC"
         }
         if segmentIndex==1 {
-            user.setClassLevel(classLevel: "Freshman")
+            classLevel = "Freshman"
         }
         if segmentIndex==2 {
-            user.setClassLevel(classLevel: "Sophomore")
+            classLevel = "Sophomore"
         }
         if segmentIndex==3 {
-            user.setClassLevel(classLevel: "Junior")
+            classLevel = "Junior"
         }
         if segmentIndex==4 {
-            user.setClassLevel(classLevel: "Senior")
+            classLevel = "Senior"
         }
         let db = Firestore.firestore()
-        db.collection("users").document(user.getEmail()).updateData([
+        db.collection("users").document(userEmail).updateData([
 
                     "smokingFlag": smokingFlag,
                     
                     "fullName": fullNameInputField.text!,
                     "phoneNumber": phoneNumberInputField.text!,
                     "major": majorInputField.text!,
-                    "classLevel": user.getClassLevel(),
+                    "classLevel": classLevel,
 
                     "chattinessFlag": chattinessFlag,
 
