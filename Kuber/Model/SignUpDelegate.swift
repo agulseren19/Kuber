@@ -7,5 +7,6 @@
 
 import Foundation
 protocol SignUpDelegate {
-    func setUI()
+    func signUpTheUser()
+    func giveSignUpError(errorDescription: String)
 }

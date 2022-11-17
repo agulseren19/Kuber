@@ -25,6 +25,8 @@
 		0C938087290872A1000E9365 /* KuberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938086290872A1000E9365 /* KuberTests.swift */; };
 		0C938091290872A1000E9365 /* KuberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938090290872A1000E9365 /* KuberUITests.swift */; };
 		0C938093290872A1000E9365 /* KuberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */; };
+		0CB96DE82926D0DB00AC0982 /* SecondSignUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB96DE72926D0DB00AC0982 /* SecondSignUpHelper.swift */; };
+		0CB96DEA2926D10C00AC0982 /* SecondSignUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */; };
 		1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE46290E6533003A141C /* SearchRideViewController.swift */; };
 		1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE4A290E8E68003A141C /* searchRideUIView.swift */; };
 		1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */; };
@@ -108,6 +110,8 @@
 		0C93808C290872A1000E9365 /* KuberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C938090290872A1000E9365 /* KuberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITests.swift; sourceTree = "<group>"; };
 		0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0CB96DE72926D0DB00AC0982 /* SecondSignUpHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpHelper.swift; sourceTree = "<group>"; };
+		0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpDelegate.swift; sourceTree = "<group>"; };
 		115921646A25995D177B1D5E /* Pods_Kuber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E28EE46290E6533003A141C /* SearchRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRideViewController.swift; sourceTree = "<group>"; };
 		1E28EE4A290E8E68003A141C /* searchRideUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchRideUIView.swift; sourceTree = "<group>"; };
@@ -192,6 +196,8 @@
 				F2C663442922C7F800F806AE /* ProfileDelegate.swift */,
 				1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */,
 				1E514C602923E00B0050F2E9 /* SignInDelegate.swift */,
+				0CB96DE72926D0DB00AC0982 /* SecondSignUpHelper.swift */,
+				0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -577,6 +583,7 @@
 			files = (
 				F2C663452922C7F800F806AE /* ProfileDelegate.swift in Sources */,
 				0C45E10129131B55002A6881 /* RideRequestsViewController.swift in Sources */,
+				0CB96DE82926D0DB00AC0982 /* SecondSignUpHelper.swift in Sources */,
 				1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */,
 				0C83C6CA291D6467003FD90A /* SignUpHelper.swift in Sources */,
 				F2C663432922C79A00F806AE /* ProfileHelper.swift in Sources */,
@@ -592,6 +599,7 @@
 				1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */,
 				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
+				0CB96DEA2926D10C00AC0982 /* SecondSignUpDelegate.swift in Sources */,
 				1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */,
 				1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,
