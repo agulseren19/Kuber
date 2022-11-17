@@ -98,8 +98,8 @@
                                     <action selector="smokingCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r6x-JN-zAX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea9-ee-voU">
-                                <rect key="frame" x="65" y="490" width="88" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea9-ee-voU">
+                                <rect key="frame" x="65" y="490" width="63.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -115,8 +115,8 @@
                                     <action selector="chattinessCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BL4-9o-vV9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Silent Ride" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-QV-51C">
-                                <rect key="frame" x="65" y="532" width="77" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chattiness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-QV-51C">
+                                <rect key="frame" x="65" y="532" width="77.333333333333314" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -184,7 +184,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1791" y="826"/>
+            <point key="canvasLocation" x="1790.7692307692307" y="825.35545023696682"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="foO-Gx-lwa">
@@ -413,7 +413,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="DKP-l7-Hsh">
-                                <rect key="frame" x="63" y="304" width="209" height="52"/>
+                                <rect key="frame" x="60" y="304" width="209" height="52"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="662724000">
@@ -453,7 +453,7 @@
                                 </connections>
                             </button>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="gJz-3n-9jH">
-                                <rect key="frame" x="63" y="372" width="209" height="52"/>
+                                <rect key="frame" x="60" y="372" width="209" height="52"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="662724000">
@@ -568,7 +568,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="XJg-e1-UiK">
-                                <rect key="frame" x="63" y="312" width="209" height="34"/>
+                                <rect key="frame" x="61" y="312" width="209" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="662724000">
@@ -580,7 +580,7 @@
                                 <locale key="locale" localeIdentifier="en"/>
                             </datePicker>
                             <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="DG8-wD-tUs">
-                                <rect key="frame" x="63" y="380" width="209" height="34"/>
+                                <rect key="frame" x="61" y="380" width="209" height="34"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <date key="minimumDate" timeIntervalSinceReferenceDate="662724000">
@@ -851,7 +851,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Sign Up" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FFv-1i-RXJ">
-                                <rect key="frame" x="30" y="333" width="79" height="27"/>
+                                <rect key="frame" x="30" y="309" width="79" height="27"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -859,8 +859,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="register" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-lB-32N">
                                 <rect key="frame" x="14" y="93" width="360" height="194"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MB8-Rd-43k">
-                                <rect key="frame" x="68" y="404" width="282" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MB8-Rd-43k">
+                                <rect key="frame" x="72" y="403" width="278" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -869,14 +869,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="mail_icon" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-of-UaC">
-                                <rect key="frame" x="30" y="404" width="30" height="34"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail_icon" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-of-UaC">
+                                <rect key="frame" x="30" y="382.66666666666669" width="34" height="75"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="H6n-IB-FgB"/>
+                                    <constraint firstAttribute="width" constant="34" id="H6n-IB-FgB"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-kJ-Dlv">
-                                <rect key="frame" x="54" y="553" width="282" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-kJ-Dlv">
+                                <rect key="frame" x="54" y="552" width="282" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="282" id="vR9-tC-x5Z"/>
                                 </constraints>
@@ -886,19 +886,24 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="continueButtonIsClicked:" destination="NDc-V1-Ugo" eventType="touchUpInside" id="Ohz-lD-F3r"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="fdM-3m-C1v"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="padlock" translatesAutoresizingMaskIntoConstraints="NO" id="FUt-dx-dXY">
-                                <rect key="frame" x="26" y="472" width="34" height="34"/>
+                                <rect key="frame" x="30" y="472" width="34" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="lFG-XA-KMU"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Create an account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qkO-ro-IbT">
-                                <rect key="frame" x="30" y="360" width="133" height="20"/>
+                                <rect key="frame" x="30" y="344" width="133" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" systemColor="opaqueSeparatorColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="L" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hgZ-sy-O4u">
+                                <rect key="frame" x="30" y="375" width="320" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -908,11 +913,12 @@
                             <constraint firstItem="1Xi-dn-Kzw" firstAttribute="trailing" secondItem="MB8-Rd-43k" secondAttribute="trailing" constant="40" id="1jX-el-9lz"/>
                             <constraint firstItem="rzf-lB-32N" firstAttribute="centerX" secondItem="1Xi-dn-Kzw" secondAttribute="centerX" id="4DF-mX-Vfb"/>
                             <constraint firstItem="FFv-1i-RXJ" firstAttribute="top" secondItem="rzf-lB-32N" secondAttribute="bottom" constant="28" id="4Us-ON-PwM"/>
-                            <constraint firstItem="uV8-of-UaC" firstAttribute="top" secondItem="qkO-ro-IbT" secondAttribute="bottom" constant="41" id="5Vj-by-15d"/>
+                            <constraint firstItem="1Xi-dn-Kzw" firstAttribute="trailing" secondItem="hgZ-sy-O4u" secondAttribute="trailing" constant="40" id="6NJ-zH-zwW"/>
                             <constraint firstItem="FUt-dx-dXY" firstAttribute="centerY" secondItem="ReP-1Y-SZg" secondAttribute="centerY" id="BF8-Gq-2GM"/>
                             <constraint firstItem="MB8-Rd-43k" firstAttribute="leading" secondItem="uV8-of-UaC" secondAttribute="trailing" constant="8" symbolic="YES" id="FSP-Hd-mj1"/>
                             <constraint firstItem="FFv-1i-RXJ" firstAttribute="leading" secondItem="1Xi-dn-Kzw" secondAttribute="leading" constant="30" id="HRs-zE-2mU"/>
                             <constraint firstItem="5qU-kJ-Dlv" firstAttribute="centerX" secondItem="1Xi-dn-Kzw" secondAttribute="centerX" id="KaO-4s-HQI"/>
+                            <constraint firstItem="hgZ-sy-O4u" firstAttribute="top" secondItem="qkO-ro-IbT" secondAttribute="bottom" constant="11" id="Kk9-5e-ze8"/>
                             <constraint firstItem="rzf-lB-32N" firstAttribute="top" secondItem="1Xi-dn-Kzw" secondAttribute="top" constant="46" id="O2P-cK-N9q"/>
                             <constraint firstItem="FFv-1i-RXJ" firstAttribute="top" secondItem="1Xi-dn-Kzw" secondAttribute="top" constant="268" id="PpM-Nb-8sR"/>
                             <constraint firstItem="ReP-1Y-SZg" firstAttribute="leading" secondItem="FUt-dx-dXY" secondAttribute="trailing" constant="8" symbolic="YES" id="UKD-yb-LRT"/>
@@ -921,14 +927,17 @@
                             <constraint firstItem="MB8-Rd-43k" firstAttribute="centerY" secondItem="uV8-of-UaC" secondAttribute="centerY" id="aNb-dp-exr"/>
                             <constraint firstItem="5qU-kJ-Dlv" firstAttribute="top" secondItem="ReP-1Y-SZg" secondAttribute="bottom" constant="47" id="acL-I6-j9o"/>
                             <constraint firstItem="qkO-ro-IbT" firstAttribute="top" secondItem="FFv-1i-RXJ" secondAttribute="bottom" constant="1" id="ht0-zz-2Ll"/>
+                            <constraint firstItem="hgZ-sy-O4u" firstAttribute="leading" secondItem="1Xi-dn-Kzw" secondAttribute="leading" constant="30" id="i47-YH-ggQ"/>
                             <constraint firstItem="qkO-ro-IbT" firstAttribute="leading" secondItem="FFv-1i-RXJ" secondAttribute="leading" id="pjw-th-VwN"/>
                             <constraint firstItem="ReP-1Y-SZg" firstAttribute="top" secondItem="MB8-Rd-43k" secondAttribute="bottom" constant="34" id="q9Z-2p-ViA"/>
                             <constraint firstItem="uV8-of-UaC" firstAttribute="leading" secondItem="qkO-ro-IbT" secondAttribute="leading" id="y0Q-LA-0br"/>
+                            <constraint firstItem="MB8-Rd-43k" firstAttribute="top" secondItem="hgZ-sy-O4u" secondAttribute="bottom" constant="8" symbolic="YES" id="yGq-dn-Htd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9Bz-Xa-gZD"/>
                     <connections>
                         <outlet property="emailField" destination="MB8-Rd-43k" id="ryY-dL-Zpu"/>
+                        <outlet property="errorText" destination="hgZ-sy-O4u" id="bve-yp-q6e"/>
                         <outlet property="passwordField" destination="ReP-1Y-SZg" id="8Nr-DI-Nij"/>
                     </connections>
                 </viewController>

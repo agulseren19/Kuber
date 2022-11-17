@@ -45,7 +45,6 @@ class PublishRideViewController: UIViewController {
         let time = timePicker.date
         let fee = feeField.text!
         let numberOfSeats=numberOfSeatsField.selectedSegmentIndex+1
-        print(numberOfSeats)
 
     }
 }

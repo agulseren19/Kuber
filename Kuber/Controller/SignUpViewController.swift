@@ -6,23 +6,21 @@
 //
 
 import UIKit
-import UIKit
-import FirebaseCore
-import FirebaseFirestore
-import FirebaseAuth
-import FirebaseCore
-import FirebaseCore
-import GoogleSignIn
-import FirebaseCore
-import FirebaseFirestore
 
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var passwordField: UITextField!
+    
+    
+    @IBOutlet weak var errorText: UILabel!
+    let signUpHelper = SignUpHelper()
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        passwordField.isSecureTextEntry=true
+        signUpHelper.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -30,36 +28,11 @@ class SignUpViewController: UIViewController {
     @IBAction func continueButtonIsClicked(_ sender: Any) {
         let email = emailField.text!
         let password = passwordField.text!
-        
-                Auth.auth().createUser(withEmail: email,
-                                       password: password) { user, error in
-                    if error == nil {
-                        Auth.auth().currentUser?.sendEmailVerification { (error) in
-                        }}}
-                        let db = Firestore.firestore()
-                       // var ref: DocumentReference? = nil
-        
-                db.collection("users").document(email).setData([
-
-                    "email": email,
-                    "password": password,
-
-                ]) { err in
-
-                    if let err = err {
-
-                        print("Error writing document: \(err)")
-
-                    } else {
-
-                        print("Document successfully written!")
-
-                    }
-                }
+        signUpHelper.createAndSaveUser(email:email,password:password)
     }
     
     
-    
+    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -70,6 +43,25 @@ class SignUpViewController: UIViewController {
             secondSignUpViewController.userEmail = emailField.text!
         }
     }
+*/
+}
+extension SignUpViewController: SignUpDelegate {
+    func signUpTheUser() {
+        // if the user's email and password is validated
+        // the user will be signed up and navigated to next screen
+        let secondSignUpViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondSignUpViewController") as! SecondSignUpViewController
+        secondSignUpViewController.userEmail=self.emailField.text!
+        self.navigationController?.pushViewController(secondSignUpViewController, animated:true)
+        errorText.text = ""
+        passwordField.text = ""
+        emailField.text = ""
+    }
     
-
+    func giveSignUpError( errorDescription: String) {
+        print(errorDescription)
+        errorText.text = errorDescription
+        errorText.isHidden = false
+        errorText.textColor = UIColor.red
+        errorText.adjustsFontSizeToFitWidth = true
+    }
 }

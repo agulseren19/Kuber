@@ -6,14 +6,7 @@
 //
 
 import UIKit
-import FirebaseCore
-import FirebaseFirestore
-import FirebaseAuth
-import FirebaseCore
-import FirebaseCore
-import GoogleSignIn
-import FirebaseCore
-import FirebaseFirestore
+
 class SecondSignUpViewController: UIViewController {
 
     @IBOutlet weak var fullNameInputField: UITextField!
@@ -27,7 +20,7 @@ class SecondSignUpViewController: UIViewController {
     @IBOutlet weak var gradeSegmentedControl: UISegmentedControl!
     var smokingFlag=false
     var chattinessFlag=false
-    let signUpHelper = SignUpHelper()
+    let secondSignUpHelper = SecondSignUpHelper()
     
     var userEmail: String = ""
 
@@ -37,57 +30,18 @@ class SecondSignUpViewController: UIViewController {
         //set font of segmented control
         let font=UIFont.systemFont(ofSize: 8)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
-        signUpHelper.delegate = self
+        secondSignUpHelper.delegate = self
 
     }
     
 
 
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
-        
-        var classLevel: String = ""
+        let fullName = fullNameInputField.text!
+        let phoneNumber = phoneNumberInputField.text!
+        let major = majorInputField.text!
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
-        if segmentIndex==0 {
-            classLevel = "ELC"
-        }
-        if segmentIndex==1 {
-            classLevel = "Freshman"
-        }
-        if segmentIndex==2 {
-            classLevel = "Sophomore"
-        }
-        if segmentIndex==3 {
-            classLevel = "Junior"
-        }
-        if segmentIndex==4 {
-            classLevel = "Senior"
-        }
-        let db = Firestore.firestore()
-        db.collection("users").document(userEmail).updateData([
-
-                    "smokingFlag": smokingFlag,
-                    
-                    "fullName": fullNameInputField.text!,
-                    "phoneNumber": phoneNumberInputField.text!,
-                    "major": majorInputField.text!,
-                    "classLevel": classLevel,
-
-                    "chattinessFlag": chattinessFlag,
-
-                ]) { err in
-
-                    if let err = err {
-
-                        print("Error writing document: \(err)")
-
-                    } else {
-
-                        print("Document successfully written!")
-
-                    }
-
-                }
-        
+        secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag, userEmail: userEmail)
         
         /*
          let db = Firestore.firestore()
@@ -128,10 +82,11 @@ class SecondSignUpViewController: UIViewController {
     }
  
 }
-extension SecondSignUpViewController: SignUpDelegate {
-    func setUI(){
-        
+extension SecondSignUpViewController: SecondSignUpDelegate {
+    func makeFieldsEmpty(){
+        fullNameInputField.text = ""
+        phoneNumberInputField.text = ""
+        majorInputField.text = ""
     }
-    
 }
 
