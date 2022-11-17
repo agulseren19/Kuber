@@ -18,8 +18,7 @@ class SearchRideViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let font=UIFont.systemFont(ofSize: 8)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+
         // Do any additional setup after loading the view.
         
         
