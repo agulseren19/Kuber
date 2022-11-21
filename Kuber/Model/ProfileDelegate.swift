@@ -8,5 +8,7 @@
 import Foundation
 
 protocol ProfileDelegate{
-    func setUI()
+    func makeProfileUIReady(user: User)
+    
+    
 }

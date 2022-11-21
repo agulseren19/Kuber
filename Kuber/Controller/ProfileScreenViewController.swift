@@ -10,12 +10,6 @@ import UIKit
 class ProfileScreenViewController: UIViewController {
     
     let profileHelper = ProfileHelper()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        profileHelper.delegate = self
-    }
     
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
@@ -23,8 +17,10 @@ class ProfileScreenViewController: UIViewController {
     @IBOutlet weak var phoneNumberLabel: UILabel!
     @IBOutlet weak var mailLabel: UILabel!
     
-
-
+    @IBOutlet weak var smokingCheckBoxImageView: UIImageView!
+    
+    @IBOutlet weak var chattinessCheckBoxImageView: UIImageView!
+    
     @IBAction func editButton(_ sender: Any) {
     }
 
@@ -35,7 +31,15 @@ class ProfileScreenViewController: UIViewController {
     @IBAction func historyOfHitchhikessButton(_ sender: Any) {
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        profileHelper.delegate = self
+    }
     
+    override func viewWillAppear(_ animated: Bool) {
+        profileHelper.checkUserAndSetUI()
+    }
     /*
     // MARK: - Navigation
 
@@ -49,9 +53,28 @@ class ProfileScreenViewController: UIViewController {
 }
 
 extension ProfileScreenViewController: ProfileDelegate{
-    func setUI() {
+    func makeProfileUIReady(user: User) {
+        fullNameLabel.text = "\(user.fullName)"
+        majorLabel.text = "\(user.major)"
+        gradeLevelLabel.text = "\(user.classLevel)"
+        phoneNumberLabel.text = "\(user.phoneNumber)"
+        mailLabel.text = "\(user.email)"
+        
+        if user.smokingPreference {
+            smokingCheckBoxImageView.image = UIImage(named: "checkedCheckBox")
+        }else {
+            smokingCheckBoxImageView.image = UIImage(named: "uncheckedCheckBox")
+        }
+        
+        if user.silencePreference {
+            chattinessCheckBoxImageView.image = UIImage(named: "uncheckedCheckBox")
+        }else {
+            chattinessCheckBoxImageView.image = UIImage(named: "checkedCheckBox")
+        }
+
         
     }
     
+
     
 }

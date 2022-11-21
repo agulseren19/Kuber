@@ -9,5 +9,10 @@ import Foundation
 class ProfileHelper{
     var delegate: ProfileDelegate?
     
-    
+    func checkUserAndSetUI(){
+        let user = User.sharedInstance
+        
+        delegate?.makeProfileUIReady(user: user)
+        
+    }
 }
