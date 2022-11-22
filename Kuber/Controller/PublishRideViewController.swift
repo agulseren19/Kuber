@@ -6,7 +6,15 @@
 //
 
 import UIKit
-
+import Foundation
+import FirebaseCore
+import FirebaseFirestore
+import FirebaseAuth
+import FirebaseCore
+import FirebaseCore
+import GoogleSignIn
+import FirebaseCore
+import FirebaseFirestore
 class PublishRideViewController: UIViewController {
 
     @IBOutlet weak var fromLocation: UITextField!
@@ -45,6 +53,48 @@ class PublishRideViewController: UIViewController {
         let time = timePicker.date
         let fee = feeField.text!
         let numberOfSeats=numberOfSeatsField.selectedSegmentIndex+1
+        let db = Firestore.firestore()
+        
+        
+       
+        
+        
+        let ref = db.collection("rides").addDocument(data: [
+                            //"id" = user ride publish ettiğinde random id ata
+                            "from": fromLocation.text!,
+                            "to": toLocation.text!,
+                            "date": datePicker.date,
+                            "time": timePicker.date,
+                            "fee": feeField.text!,
+                            "numberOfSeats": numberOfSeatsField.selectedSegmentIndex+1,
+                            "mail" :User.sharedInstance.getEmail(),
+
+                        ]) { err in
+
+                            if let err = err {
+
+                                print("Error writing publish data: \(err)")
+
+                            } else {
+
+                                print("Publish data successfully written!")
+
+                            }
+
+                        }
+        
+       
+       /* let docRef = db.collection("rides").document(ref.name)
+//usera ride id yaz
+       docRef.getDocument { (document, error) in
+           if let document = document, document.exists {
+               print(document.get("fee")!)
+           } else {
+               print("Document does not exist")
+           }
+       }*/
 
     }
+    
+    
 }

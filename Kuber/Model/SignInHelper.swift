@@ -22,7 +22,7 @@ class SignInHelper {
             let user = authResult.user
             if user.isEmailVerified {
                 // user can sign in
-                self.createTheUser(userEmail: userEmail)
+                self.createTheUser(userEmail: userEmail) //FLAG
             } else {
               // user's email is not verified
                 self.delegate?.giveSignInError(errorDescription: "Cant Sign in user. Verification needed")
