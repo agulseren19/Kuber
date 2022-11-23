@@ -65,6 +65,7 @@ class PublishRideViewController: UIViewController {
             "fee": feeField.text!,
             "numberOfSeats": numberOfSeatsField.selectedSegmentIndex+1,
             "mail" :User.sharedInstance.getEmail(),
+            
 
         ]) { err in
 
@@ -84,13 +85,18 @@ class PublishRideViewController: UIViewController {
            if let document = document, document.exists {
                docRef.updateData([
                    "publishedRides": FieldValue.arrayUnion([id])
+
                ])
            } else {
                print("Document does not exist")
            }
        }
         
+    
         
+        User.sharedInstance.appendToRideArray(id: id)
+        
+        print(User.sharedInstance.getRideArray()[2])
         
         
         /*let ref = db.collection("rides").addDocument(data: [

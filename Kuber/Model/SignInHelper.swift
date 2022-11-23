@@ -36,9 +36,9 @@ class SignInHelper {
          
     }
     
-    func createTheUser(userEmail: String){
+    func createTheUser (userEmail: String) {
         
-        let user = User.sharedInstance
+        var user = User.sharedInstance
         
          let db = Firestore.firestore()
          let docRef = db.collection("users").document(userEmail)
@@ -51,6 +51,7 @@ class SignInHelper {
                 user.setMajor(major: document.get("major") as! String)
                 user.setClassLevel(classLevel: document.get("classLevel") as! String)
                 user.setPhoneNumber(phoneNumber: document.get("phoneNumber") as! String)
+                user.setRidesArray(ridesArray: document.data()!["publishedRides"]! as! [String])
                 // set the chattiness and smoking
                 print("user is created")
                 self.delegate?.signInTheUser()

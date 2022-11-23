@@ -18,7 +18,7 @@ final class User: NSObject {
     var classLevel : String = ""
     var smokingPreference : Bool = false
     var silencePreference : Bool = false
-    
+    var ridesArray = [String]()
 
    private override init() { }
 
@@ -80,4 +80,16 @@ final class User: NSObject {
      func getSilencePreference() -> Bool {
          return self.silencePreference
      }
+    
+    func setRidesArray(ridesArray : [String]) {
+        self.ridesArray = ridesArray
+    }
+    
+    func appendToRideArray(id : String) {
+        self.ridesArray.append(id)
+   }
+    
+    func getRideArray() -> [String] {
+        return self.ridesArray
+    }
 }
