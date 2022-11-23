@@ -44,6 +44,7 @@ class SecondSignUpHelper{
                     "major": major,
                     "classLevel": classLevel,
                     "chattinessFlag": chattinessFlag,
+                    "publishedRides": []
 
                 ]) { err in
 
