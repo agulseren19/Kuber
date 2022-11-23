@@ -55,6 +55,13 @@ class PublishRideViewController: UIViewController {
         let numberOfSeats=numberOfSeatsField.selectedSegmentIndex+1
         let db = Firestore.firestore()
         let id = db.collection("rides").document().documentID;
+        var ride: Ride
+        ride.setFrom(from: (Any).self)
+        ride.setTo(to: (Any).self)
+        ride.setDate(date: <#T##Any#>)
+        ride.setTime(time: <#T##Any#>)
+        ride.setFee(fee: <#T##Any#>)
+        ride.setNumberOfSeats(numberOfSeats: <#T##Any#>)
         db.collection("rides").document(id).setData([
 
             //"id" = user ride publish ettiğinde random id ata

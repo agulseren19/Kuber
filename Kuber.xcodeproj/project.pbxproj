@@ -62,6 +62,7 @@
 		54065547291057AE0015F3D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54065546291057AE0015F3D9 /* GoogleService-Info.plist */; };
 		54065548291057AE0015F3D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54065546291057AE0015F3D9 /* GoogleService-Info.plist */; };
 		54065549291057AE0015F3D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54065546291057AE0015F3D9 /* GoogleService-Info.plist */; };
+		548E3666292E702200098C29 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548E3665292E702100098C29 /* Ride.swift */; };
 		54EE18CA292259D6009516FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE18C9292259D6009516FB /* User.swift */; };
 		5E4F2A12625A271388ECBC63 /* Pods_Kuber_KuberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AB0E46F6C00F5A9A34971A7 /* Pods_Kuber_KuberUITests.framework */; };
 		F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C296D290FFA95000F5C59 /* ProfileScreenViewController.swift */; };
@@ -120,6 +121,7 @@
 		2EE806FF8C0BA34FDB559D61 /* Pods-Kuber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber.release.xcconfig"; path = "Target Support Files/Pods-Kuber/Pods-Kuber.release.xcconfig"; sourceTree = "<group>"; };
 		35BFEFAAB4D30DCD120F5AC6 /* Pods-Kuber-KuberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber-KuberUITests.release.xcconfig"; path = "Target Support Files/Pods-Kuber-KuberUITests/Pods-Kuber-KuberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54065546291057AE0015F3D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		548E3665292E702100098C29 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		54EE18C9292259D6009516FB /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		6CA7B75E54120AB656FA1FD6 /* Pods-Kuber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber.debug.xcconfig"; path = "Target Support Files/Pods-Kuber/Pods-Kuber.debug.xcconfig"; sourceTree = "<group>"; };
 		8AB0E46F6C00F5A9A34971A7 /* Pods_Kuber_KuberUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuber_KuberUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -238,6 +240,7 @@
 				0C93807A290872A1000E9365 /* LaunchScreen.storyboard */,
 				0C93807D290872A1000E9365 /* Info.plist */,
 				54EE18C9292259D6009516FB /* User.swift */,
+				548E3665292E702100098C29 /* Ride.swift */,
 			);
 			path = Kuber;
 			sourceTree = "<group>";
@@ -587,6 +590,7 @@
 				1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */,
 				0C83C6CA291D6467003FD90A /* SignUpHelper.swift in Sources */,
 				F2C663432922C79A00F806AE /* ProfileHelper.swift in Sources */,
+				548E3666292E702200098C29 /* Ride.swift in Sources */,
 				0C45E0FF29131B40002A6881 /* HitchhikeStatusViewController.swift in Sources */,
 				54EE18CA292259D6009516FB /* User.swift in Sources */,
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
