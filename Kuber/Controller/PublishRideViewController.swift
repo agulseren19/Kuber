@@ -85,7 +85,6 @@ class PublishRideViewController: UIViewController {
            if let document = document, document.exists {
                docRef.updateData([
                    "publishedRides": FieldValue.arrayUnion([id])
-
                ])
            } else {
                print("Document does not exist")
@@ -95,9 +94,18 @@ class PublishRideViewController: UIViewController {
     
         
         User.sharedInstance.appendToRideArray(id: id)
-        
-        print(User.sharedInstance.getRideArray()[2])
-        
+        //BEGÜM
+        /*var rideId = User.sharedInstance.getRideArray()[2]
+        let docRef2 = db.collection("rides").document(rideId)
+
+                docRef2.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        print(document.get("to") as! String)
+                    } else {
+                        print("Document does not exist")
+                    }
+                }*/
+        //BEGÜM
         
         /*let ref = db.collection("rides").addDocument(data: [
                             //"id" = user ride publish ettiğinde random id ata
