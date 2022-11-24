@@ -21,8 +21,7 @@ class ProfileScreenViewController: UIViewController {
     
     @IBOutlet weak var chattinessCheckBoxImageView: UIImageView!
     
-    @IBAction func editButton(_ sender: Any) {
-    }
+
 
     
     @IBAction func historyOfRidesButton(_ sender: Any) {
@@ -61,15 +60,15 @@ extension ProfileScreenViewController: ProfileDelegate{
         mailLabel.text = "\(user.email)"
         
         if user.smokingPreference {
-            smokingCheckBoxImageView.image = UIImage(named: "checkedCheckBox")
+            smokingCheckBoxImageView.image = UIImage(named: "checkedCheckbox")
         }else {
-            smokingCheckBoxImageView.image = UIImage(named: "uncheckedCheckBox")
+            smokingCheckBoxImageView.image = UIImage(named: "uncheckedCheckbox")
         }
         
         if user.silencePreference {
-            chattinessCheckBoxImageView.image = UIImage(named: "uncheckedCheckBox")
+            chattinessCheckBoxImageView.image = UIImage(named: "uncheckedCheckbox")
         }else {
-            chattinessCheckBoxImageView.image = UIImage(named: "checkedCheckBox")
+            chattinessCheckBoxImageView.image = UIImage(named: "checkedCheckbox")
         }
 
         
