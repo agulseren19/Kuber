@@ -92,4 +92,8 @@ final class User: NSObject {
     func getRideArray() -> [String] {
         return self.ridesArray
     }
+    
+    func getRideArrayCount () -> Int {
+        self.ridesArray.count
+    }
 }

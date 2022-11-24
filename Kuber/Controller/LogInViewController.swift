@@ -60,8 +60,8 @@ extension LogInViewController: SignInDelegate {
     func signInTheUser() {
         // if the user's email and password is validated
         // the user will be signed in and navigated to home screen
-        let homeViewController:UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
-        self.navigationController?.pushViewController(homeViewController, animated: true)
+        let myRidesViewController:UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyRidesViewController") as! MyRidesViewController
+        self.navigationController?.pushViewController(myRidesViewController, animated: true)
         errorText.text = ""
         passwordField.text = ""
         emailField.text = ""
