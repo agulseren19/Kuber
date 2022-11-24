@@ -35,6 +35,7 @@
 		1EE875A5292FA36B00348672 /* MyRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A4292FA36B00348672 /* MyRidesViewController.swift */; };
 		1EE875A7292FA56100348672 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A6292FA56100348672 /* Ride.swift */; };
 		1EE875A9292FC16400348672 /* MyRidesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A8292FC16400348672 /* MyRidesDataSource.swift */; };
+		1EE875AF292FE04400348672 /* MyRidesDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875AE292FE04400348672 /* MyRidesDataDelegate.swift */; };
 		421B41EB99E2D8A47CA81C4B /* Pods_Kuber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 115921646A25995D177B1D5E /* Pods_Kuber.framework */; };
 		54065511291053E30015F3D9 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 54065510291053E30015F3D9 /* FirebaseAnalytics */; };
 		54065513291053E30015F3D9 /* FirebaseAnalyticsOnDeviceConversion in Frameworks */ = {isa = PBXBuildFile; productRef = 54065512291053E30015F3D9 /* FirebaseAnalyticsOnDeviceConversion */; };
@@ -125,6 +126,7 @@
 		1EE875A4292FA36B00348672 /* MyRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRidesViewController.swift; sourceTree = "<group>"; };
 		1EE875A6292FA56100348672 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
 		1EE875A8292FC16400348672 /* MyRidesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRidesDataSource.swift; sourceTree = "<group>"; };
+		1EE875AE292FE04400348672 /* MyRidesDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRidesDataDelegate.swift; sourceTree = "<group>"; };
 		2EE806FF8C0BA34FDB559D61 /* Pods-Kuber.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber.release.xcconfig"; path = "Target Support Files/Pods-Kuber/Pods-Kuber.release.xcconfig"; sourceTree = "<group>"; };
 		35BFEFAAB4D30DCD120F5AC6 /* Pods-Kuber-KuberUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Kuber-KuberUITests.release.xcconfig"; path = "Target Support Files/Pods-Kuber-KuberUITests/Pods-Kuber-KuberUITests.release.xcconfig"; sourceTree = "<group>"; };
 		54065546291057AE0015F3D9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */,
 				1EE875A6292FA56100348672 /* Ride.swift */,
 				1EE875A8292FC16400348672 /* MyRidesDataSource.swift */,
+				1EE875AE292FE04400348672 /* MyRidesDataDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				F2C663432922C79A00F806AE /* ProfileHelper.swift in Sources */,
 				0C45E0FF29131B40002A6881 /* HitchhikeStatusViewController.swift in Sources */,
 				54EE18CA292259D6009516FB /* User.swift in Sources */,
+				1EE875AF292FE04400348672 /* MyRidesDataDelegate.swift in Sources */,
 				1EE875A7292FA56100348672 /* Ride.swift in Sources */,
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
