@@ -25,9 +25,11 @@ class MyRidesDataSource {
     
     func getListOfMyRides (){
         
+        var mutex = 0
+        
         for i in 0..<User.sharedInstance.getRideArrayCount(){
             var rideId = User.sharedInstance.getRideArray()[i]
-           
+            print(rideId)
             let db = Firestore.firestore()
             let docRef2 = db.collection("rides").document(rideId)
             docRef2.getDocument { (document, error) in
@@ -41,13 +43,14 @@ class MyRidesDataSource {
                     )
                     self.myRidesArray.append(newRide)
                     print("A")
-                    if (i == User.sharedInstance.getRideArrayCount()-1){
+                    mutex = mutex + 1
+                    if (mutex == User.sharedInstance.getRideArrayCount()){
                         self.delegate?.myRidesListLoaded()
                         print("C")
                     }
                     
                 } else {
-                    print("Document does not exist")
+                    print("Document does not exist in my Ride")
                 }
                 
             }
