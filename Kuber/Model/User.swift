@@ -17,7 +17,7 @@ final class User: NSObject {
     var major : String = ""
     var classLevel : String = ""
     var smokingPreference : Bool = false
-    var silencePreference : Bool = false
+    var chattinesFlag : Bool = false
     var ridesArray = [String]()
 
    private override init() { }
@@ -73,12 +73,12 @@ final class User: NSObject {
      func getSmokingPreference() -> Bool {
          return self.smokingPreference
      }
-    func setSilencePreference(silencePreference : Bool) {
-        self.silencePreference = silencePreference
+    func setChattinessPreference(chattinessPreference : Bool) {
+        self.chattinesFlag = chattinessPreference
     }
      
-     func getSilencePreference() -> Bool {
-         return self.silencePreference
+     func getChattinessPreference() -> Bool {
+         return self.chattinesFlag
      }
     
     func setRidesArray(ridesArray : [String]) {

@@ -65,7 +65,7 @@ extension ProfileScreenViewController: ProfileDelegate{
             smokingCheckBoxImageView.image = UIImage(named: "uncheckedCheckbox")
         }
         
-        if user.silencePreference {
+        if user.chattinesFlag {
             chattinessCheckBoxImageView.image = UIImage(named: "uncheckedCheckbox")
         }else {
             chattinessCheckBoxImageView.image = UIImage(named: "checkedCheckbox")
