@@ -7,14 +7,7 @@
 
 import UIKit
 import Foundation
-import FirebaseCore
-import FirebaseFirestore
-import FirebaseAuth
-import FirebaseCore
-import FirebaseCore
-import GoogleSignIn
-import FirebaseCore
-import FirebaseFirestore
+
 class PublishRideViewController: UIViewController {
 
     @IBOutlet weak var fromLocation: UITextField!
@@ -29,9 +22,12 @@ class PublishRideViewController: UIViewController {
     @IBOutlet weak var feeField: UITextField!
     
     @IBOutlet weak var numberOfSeatsField: UISegmentedControl!
+    
+    let publishRideHelper = PublishRideHelper()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        publishRideHelper.delegate = self
         // Do any additional setup after loading the view.
     }
     
@@ -53,96 +49,11 @@ class PublishRideViewController: UIViewController {
         let time = timePicker.date
         let fee = feeField.text!
         let numberOfSeats=numberOfSeatsField.selectedSegmentIndex+1
-        let db = Firestore.firestore()
-        let id = db.collection("rides").document().documentID;
-        db.collection("rides").document(id).setData([
-
-            //"id" = user ride publish ettiğinde random id ata
-            "from": fromLocation.text!,
-            "to": toLocation.text!,
-            "date": datePicker.date,
-            "time": timePicker.date,
-            "fee": feeField.text!,
-            "numberOfSeats": numberOfSeatsField.selectedSegmentIndex+1,
-            "mail" :User.sharedInstance.getEmail(),
-            
-
-        ]) { err in
-
-            if let err = err {
-
-                print("Error writing publish data: \(err)")
-
-            } else {
-
-                print("Publish data successfully written!")
-
-            }
-        }
-        
-        let docRef = db.collection("users").document(User.sharedInstance.getEmail())
-       docRef.getDocument { (document, error) in
-           if let document = document, document.exists {
-               docRef.updateData([
-                   "publishedRides": FieldValue.arrayUnion([id])
-               ])
-           } else {
-               print("Document does not exist")
-           }
-       }
-        
-    
-        
-        User.sharedInstance.appendToRideArray(id: id)
-        //BEGÜM
-        /*var rideId = User.sharedInstance.getRideArray()[2]
-        let docRef2 = db.collection("rides").document(rideId)
-
-                docRef2.getDocument { (document, error) in
-                    if let document = document, document.exists {
-                        print(document.get("to") as! String)
-                    } else {
-                        print("Document does not exist")
-                    }
-                }*/
-        //BEGÜM
-        
-        /*let ref = db.collection("rides").addDocument(data: [
-                            //"id" = user ride publish ettiğinde random id ata
-                            "from": fromLocation.text!,
-                            "to": toLocation.text!,
-                            "date": datePicker.date,
-                            "time": timePicker.date,
-                            "fee": feeField.text!,
-                            "numberOfSeats": numberOfSeatsField.selectedSegmentIndex+1,
-                            "mail" :User.sharedInstance.getEmail(),
-
-                        ]) { err in
-
-                            if let err = err {
-
-                                print("Error writing publish data: \(err)")
-
-                            } else {
-
-                                print("Publish data successfully written!")
-
-                            }
-
-                        }*/
-        
-       
-       /* let docRef = db.collection("rides").document(ref.name)
-//usera ride id yaz
-       docRef.getDocument { (document, error) in
-           if let document = document, document.exists {
-               print(document.get("fee")!)
-           } else {
-               print("Document does not exist")
-           }
-       }*/
-
-    }
+        publishRideHelper.saveRide(from: from, to: to, date: date, time: time, fee: fee, numberOfSeats: numberOfSeats)
     
     
 }
+}
+extension PublishRideViewController: PublishRideDelegate {
+   
+    }

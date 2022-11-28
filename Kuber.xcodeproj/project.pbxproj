@@ -25,6 +25,8 @@
 		0C938087290872A1000E9365 /* KuberTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938086290872A1000E9365 /* KuberTests.swift */; };
 		0C938091290872A1000E9365 /* KuberUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938090290872A1000E9365 /* KuberUITests.swift */; };
 		0C938093290872A1000E9365 /* KuberUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */; };
+		0C9B8FE529351FB300849399 /* PublishRideHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B8FE429351FB300849399 /* PublishRideHelper.swift */; };
+		0C9B8FE729351FCE00849399 /* PublishRideDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B8FE629351FCE00849399 /* PublishRideDelegate.swift */; };
 		0CB96DE82926D0DB00AC0982 /* SecondSignUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB96DE72926D0DB00AC0982 /* SecondSignUpHelper.swift */; };
 		0CB96DEA2926D10C00AC0982 /* SecondSignUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */; };
 		1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE46290E6533003A141C /* SearchRideViewController.swift */; };
@@ -115,6 +117,8 @@
 		0C93808C290872A1000E9365 /* KuberUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KuberUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0C938090290872A1000E9365 /* KuberUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITests.swift; sourceTree = "<group>"; };
 		0C938092290872A1000E9365 /* KuberUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0C9B8FE429351FB300849399 /* PublishRideHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishRideHelper.swift; sourceTree = "<group>"; };
+		0C9B8FE629351FCE00849399 /* PublishRideDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishRideDelegate.swift; sourceTree = "<group>"; };
 		0CB96DE72926D0DB00AC0982 /* SecondSignUpHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpHelper.swift; sourceTree = "<group>"; };
 		0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpDelegate.swift; sourceTree = "<group>"; };
 		115921646A25995D177B1D5E /* Pods_Kuber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +216,8 @@
 				1EE875A6292FA56100348672 /* Ride.swift */,
 				1EE875A8292FC16400348672 /* MyRidesDataSource.swift */,
 				1EE875AE292FE04400348672 /* MyRidesDataDelegate.swift */,
+				0C9B8FE429351FB300849399 /* PublishRideHelper.swift */,
+				0C9B8FE629351FCE00849399 /* PublishRideDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -612,11 +618,13 @@
 				F2C663432922C79A00F806AE /* ProfileHelper.swift in Sources */,
 				0C45E0FF29131B40002A6881 /* HitchhikeStatusViewController.swift in Sources */,
 				54EE18CA292259D6009516FB /* User.swift in Sources */,
+				0C9B8FE729351FCE00849399 /* PublishRideDelegate.swift in Sources */,
 				1EE875AF292FE04400348672 /* MyRidesDataDelegate.swift in Sources */,
 				1EE875A7292FA56100348672 /* Ride.swift in Sources */,
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
 				1EE875A5292FA36B00348672 /* MyRidesViewController.swift in Sources */,
+				0C9B8FE529351FB300849399 /* PublishRideHelper.swift in Sources */,
 				0C45E0FB291318C3002A6881 /* PublishRideViewController.swift in Sources */,
 				0C45E0FD29131AD7002A6881 /* RidesViewController.swift in Sources */,
 				1EE875A9292FC16400348672 /* MyRidesDataSource.swift in Sources */,
