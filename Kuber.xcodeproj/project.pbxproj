@@ -247,11 +247,11 @@
 		0C93806E29087296000E9365 /* Kuber */ = {
 			isa = PBXGroup;
 			children = (
+				1E9294FF29365263001F0A46 /* UIViews */,
 				1EE875A1292F9CF100348672 /* TableCells */,
 				0C83C6C8291D644B003FD90A /* Model */,
 				54065546291057AE0015F3D9 /* GoogleService-Info.plist */,
 				F26C296C290FFA5F000F5C59 /* Controller */,
-				1E28EE45290E5E58003A141C /* searchRide */,
 				0C93806F29087296000E9365 /* AppDelegate.swift */,
 				0C93807129087296000E9365 /* SceneDelegate.swift */,
 				0C93807529087296000E9365 /* Main.storyboard */,
@@ -279,12 +279,12 @@
 			path = KuberUITests;
 			sourceTree = "<group>";
 		};
-		1E28EE45290E5E58003A141C /* searchRide */ = {
+		1E9294FF29365263001F0A46 /* UIViews */ = {
 			isa = PBXGroup;
 			children = (
 				1E28EE4A290E8E68003A141C /* searchRideUIView.swift */,
 			);
-			path = searchRide;
+			path = UIViews;
 			sourceTree = "<group>";
 		};
 		1EE875A1292F9CF100348672 /* TableCells */ = {

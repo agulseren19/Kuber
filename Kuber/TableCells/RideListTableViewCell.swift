@@ -15,8 +15,11 @@ class RideListTableViewCell: UITableViewCell {
     @IBOutlet weak var feeLabel: UILabel!
     @IBOutlet weak var fromLocationLabel: UILabel!
     @IBOutlet weak var toLocationLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.black.cgColor
         // Initialization code
     }
 

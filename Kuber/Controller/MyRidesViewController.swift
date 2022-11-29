@@ -13,10 +13,12 @@ class MyRidesViewController: UIViewController {
     @IBOutlet weak var myRidesTableView: UITableView!
     
     
+    @IBOutlet weak var addButton: UIButton!
     private var myRidesDatasource = MyRidesDataSource()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        addButton.imageView?.contentMode = .scaleAspectFit
         myRidesDatasource.delegate = self
         myRidesDatasource.getListOfMyRides()
         
