@@ -31,8 +31,12 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         passwordField.isSecureTextEntry = true
         signInHelper.delegate = self
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        //navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
 
@@ -60,8 +64,10 @@ extension LogInViewController: SignInDelegate {
     func signInTheUser() {
         // if the user's email and password is validated
         // the user will be signed in and navigated to home screen
-        let myRidesViewController:UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyRidesViewController") as! MyRidesViewController
-        self.navigationController?.pushViewController(myRidesViewController, animated: true)
+        
+        var tabbar: UITabBarController = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
+        self.navigationController?.pushViewController(tabbar, animated: true)
+        
         errorText.text = ""
         passwordField.text = ""
         emailField.text = ""

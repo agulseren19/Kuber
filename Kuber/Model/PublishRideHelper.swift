@@ -17,6 +17,7 @@ import FirebaseFirestore
 
 class PublishRideHelper {
     var delegate: PublishRideDelegate?
+    var mutex: Int = 0
     init() {
     }
     
@@ -42,8 +43,13 @@ class PublishRideHelper {
                 print("Error writing publish data: \(err)")
 
             } else {
-
+                
                 print("Publish data successfully written!")
+                self.mutex = self.mutex + 1
+                if self.mutex == 2 {
+                    print("hereeee1")
+                    self.delegate?.publishedToDatabase()
+                }
 
             }
         }
@@ -54,13 +60,21 @@ class PublishRideHelper {
                docRef.updateData([
                    "publishedRides": FieldValue.arrayUnion([id])
                ])
+               User.sharedInstance.appendToRideArray(id: id)
+               self.mutex = self.mutex + 1
+               if self.mutex == 2 {
+                   print("hereeee2")
+                   self.delegate?.publishedToDatabase()
+               }
            } else {
                print("Document does not exist")
            }
        }
-        User.sharedInstance.appendToRideArray(id: id)
+        
 
     }
+    
+    
     }
     
 
