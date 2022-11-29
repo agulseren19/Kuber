@@ -18,8 +18,7 @@ class RideListTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        layer.borderWidth = 1
-        layer.borderColor = UIColor.black.cgColor
+        
         // Initialization code
     }
 
