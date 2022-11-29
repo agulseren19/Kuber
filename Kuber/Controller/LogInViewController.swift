@@ -31,7 +31,7 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         passwordField.isSecureTextEntry = true
         signInHelper.delegate = self
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        //navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         // Do any additional setup after loading the view.
     }
     
