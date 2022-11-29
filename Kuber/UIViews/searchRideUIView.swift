@@ -8,8 +8,8 @@
 import UIKit
 
 class searchRideUIView: UIView {
-    
 
+    
     /*
     // Only override draw() if you perform custom drawing.
     // An empty implementation adversely affects performance during animation.
@@ -19,6 +19,13 @@ class searchRideUIView: UIView {
     */
     override func draw(_ rect: CGRect){
         //Define the red Color of Koc University
+        let myLabel = viewWithTag(001)
+        let yLocationLabel = myLabel?.bounds.minY
+        var yLocationLine: Int = 0
+        if let yLoc = yLocationLabel {
+            print("location of the line is changed")
+            yLocationLine = Int(yLoc) + 30
+        }
         let redColor = UIColor(red: (186/255.0), green: (17/255.0), blue: (17/255.0), alpha: 1.0)
         // draw the lines in the screen
         redColor.setStroke()

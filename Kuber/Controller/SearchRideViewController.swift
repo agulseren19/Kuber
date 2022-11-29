@@ -15,12 +15,12 @@ class SearchRideViewController: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var showAllSwitch: UISwitch!
+    @IBOutlet weak var showAllLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
-        
+        showAllLabel.tag = 001
         
     }
     
@@ -36,7 +36,7 @@ class SearchRideViewController: UIViewController {
         //print(to)
         //print(date)
         //print(time)
-        print(all)
+        
         
     }
     
