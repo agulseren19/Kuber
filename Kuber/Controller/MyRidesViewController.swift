@@ -17,13 +17,13 @@ class MyRidesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationItem.setHidesBackButton(true, animated: true)
         myRidesDatasource.delegate = self
         myRidesDatasource.getListOfMyRides()
         
         // Do any additional setup after loading the view.
     }
     
+   
 
     /*
     // MARK: - Navigation

@@ -35,6 +35,10 @@ class LogInViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+    
 
     /*
     // MARK: - Navigation
@@ -60,6 +64,7 @@ extension LogInViewController: SignInDelegate {
     func signInTheUser() {
         // if the user's email and password is validated
         // the user will be signed in and navigated to home screen
+        
         var tabbar: UITabBarController = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
         self.navigationController?.pushViewController(tabbar, animated: true)
         
