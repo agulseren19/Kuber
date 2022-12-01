@@ -21,11 +21,14 @@ class MyRidesViewController: UIViewController {
         addButton.imageView?.contentMode = .scaleAspectFit
         myRidesDatasource.delegate = self
         myRidesDatasource.getListOfMyRides()
-        
+        updateTheTableViewDesign()
         // Do any additional setup after loading the view.
     }
     
-   
+    func updateTheTableViewDesign() {
+        myRidesTableView.separatorStyle = .none
+        myRidesTableView.showsVerticalScrollIndicator = false
+    }
 
     /*
     // MARK: - Navigation
@@ -39,7 +42,7 @@ class MyRidesViewController: UIViewController {
 
 }
 
-extension MyRidesViewController: UITableViewDataSource {
+extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -70,10 +73,12 @@ extension MyRidesViewController: UITableViewDataSource {
             cell.dateLabel.text = "N/A"
             cell.feeLabel.text = "N/A"
         }
-        
+        cell.myRideView.layer.cornerRadius = cell.myRideView.frame.height / 5
         return cell
     }
 }
+
+
 
 extension MyRidesViewController: MyRidesDataDelegate {
     func myRidesListLoaded(){

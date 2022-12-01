@@ -9,6 +9,7 @@ import UIKit
 
 class RideListTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var myRideView: UIView!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var availableSeatLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
