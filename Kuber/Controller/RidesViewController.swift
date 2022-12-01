@@ -2,7 +2,7 @@
 //  RidesViewController.swift
 //  Kuber
 //
-//  Created by Arda Aliz on 3.11.2022.
+//  Created by Arda Aliz on 1.12.2022.
 //
 
 import UIKit
@@ -11,6 +11,7 @@ class RidesViewController: UIViewController {
     
     private var ridesDatasource = RidesDataSource()
 
+    @IBOutlet weak var ridesAfterSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

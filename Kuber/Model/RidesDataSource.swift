@@ -38,7 +38,7 @@ class RidesDataSource{
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
-                    var newRide = Ride (
+                    let newRide = Ride (
                         fromLocation: document.get("from") as! String,
                         toLocation: document.get("to") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
