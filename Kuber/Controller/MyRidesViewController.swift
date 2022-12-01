@@ -74,6 +74,7 @@ extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
             cell.feeLabel.text = "N/A"
         }
         cell.myRideView.layer.cornerRadius = cell.myRideView.frame.height / 5
+        
         return cell
     }
 }
