@@ -13,4 +13,5 @@ struct Ride {
     let date: Date
     let seatAvailable: Int
     let fee: String
+    let mail: String
 }
