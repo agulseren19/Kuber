@@ -72,6 +72,7 @@
 		54EE18CA292259D6009516FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE18C9292259D6009516FB /* User.swift */; };
 		5E4F2A12625A271388ECBC63 /* Pods_Kuber_KuberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AB0E46F6C00F5A9A34971A7 /* Pods_Kuber_KuberUITests.framework */; };
 		F267756C2938D4A000D9BECF /* RidesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F267756B2938D4A000D9BECF /* RidesDataSource.swift */; };
+		F267756E2938F29300D9BECF /* RidesDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F267756D2938F29300D9BECF /* RidesDataDelegate.swift */; };
 		F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26C296D290FFA95000F5C59 /* ProfileScreenViewController.swift */; };
 		F2C663432922C79A00F806AE /* ProfileHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C663422922C79A00F806AE /* ProfileHelper.swift */; };
 		F2C663452922C7F800F806AE /* ProfileDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2C663442922C7F800F806AE /* ProfileDelegate.swift */; };
@@ -143,6 +144,7 @@
 		C67095A7C23726EE1FF63965 /* Pods-KuberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuberTests.release.xcconfig"; path = "Target Support Files/Pods-KuberTests/Pods-KuberTests.release.xcconfig"; sourceTree = "<group>"; };
 		C740BCB168954BA7236677A8 /* Pods_KuberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KuberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F267756B2938D4A000D9BECF /* RidesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataSource.swift; sourceTree = "<group>"; };
+		F267756D2938F29300D9BECF /* RidesDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataDelegate.swift; sourceTree = "<group>"; };
 		F26C296D290FFA95000F5C59 /* ProfileScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreenViewController.swift; sourceTree = "<group>"; };
 		F2C663422922C79A00F806AE /* ProfileHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHelper.swift; sourceTree = "<group>"; };
 		F2C663442922C7F800F806AE /* ProfileDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				0C9B8FE429351FB300849399 /* PublishRideHelper.swift */,
 				0C9B8FE629351FCE00849399 /* PublishRideDelegate.swift */,
 				F267756B2938D4A000D9BECF /* RidesDataSource.swift */,
+				F267756D2938F29300D9BECF /* RidesDataDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -639,6 +642,7 @@
 				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
 				0CB96DEA2926D10C00AC0982 /* SecondSignUpDelegate.swift in Sources */,
+				F267756E2938F29300D9BECF /* RidesDataDelegate.swift in Sources */,
 				1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */,
 				1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,

@@ -2,17 +2,21 @@
 //  RidesViewController.swift
 //  Kuber
 //
-//  Created by Aslıhan Gülseren on 3.11.2022.
+//  Created by Arda Aliz on 3.11.2022.
 //
 
 import UIKit
 
 class RidesViewController: UIViewController {
+    
+    private var ridesDatasource = RidesDataSource()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        ridesDatasource.delegate = self
+        ridesDatasource.getListOfRidesWithShowAll()
     }
     
 
@@ -26,4 +30,12 @@ class RidesViewController: UIViewController {
     }
     */
 
+}
+
+extension RidesViewController: RidesDataDelegate{
+    func ridesListLoaded() {
+        print("Rides List Loaded")
+    }
+    
+    
 }
