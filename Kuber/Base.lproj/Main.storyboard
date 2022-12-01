@@ -618,7 +618,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 TL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MG-cI-Tf2">
-                                                            <rect key="frame" x="281.33333333333331" y="148" width="44.333333333333314" height="21"/>
+                                                            <rect key="frame" x="281.33333333333331" y="147.33333333333334" width="44.333333333333314" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -642,7 +642,6 @@
                                                         <constraint firstItem="xoe-DK-L7t" firstAttribute="centerY" secondItem="NYr-T9-3VI" secondAttribute="centerY" id="G8d-6F-rq6"/>
                                                         <constraint firstItem="Dlv-33-SdN" firstAttribute="leading" secondItem="sqj-ZY-P1K" secondAttribute="trailing" constant="181.66666666666666" id="HKb-eZ-HZ7"/>
                                                         <constraint firstItem="sqj-ZY-P1K" firstAttribute="leading" secondItem="jna-yo-5yg" secondAttribute="trailing" constant="6" id="IKW-hC-oQm"/>
-                                                        <constraint firstItem="Dlv-33-SdN" firstAttribute="top" secondItem="z3M-XP-4AQ" secondAttribute="bottom" constant="50" id="KJD-NC-dNW"/>
                                                         <constraint firstItem="0oy-Q7-aoH" firstAttribute="leading" secondItem="mrm-0D-oFm" secondAttribute="trailing" constant="2" id="LTE-J1-FWF"/>
                                                         <constraint firstItem="MSg-Ya-PaW" firstAttribute="centerX" secondItem="0oy-Q7-aoH" secondAttribute="centerX" id="Lfn-pW-PN0"/>
                                                         <constraint firstItem="NYr-T9-3VI" firstAttribute="centerX" secondItem="MSg-Ya-PaW" secondAttribute="centerX" id="Lie-z9-7io"/>
@@ -650,12 +649,13 @@
                                                         <constraint firstItem="Dlv-33-SdN" firstAttribute="leading" secondItem="xoe-DK-L7t" secondAttribute="trailing" constant="142" id="P0o-uI-SLA"/>
                                                         <constraint firstItem="0oy-Q7-aoH" firstAttribute="top" secondItem="M2l-HE-SPu" secondAttribute="top" constant="12" id="Pdo-mZ-Wq7"/>
                                                         <constraint firstItem="Dlv-33-SdN" firstAttribute="centerX" secondItem="z3M-XP-4AQ" secondAttribute="centerX" id="Pth-5r-eVh"/>
+                                                        <constraint firstItem="Dlv-33-SdN" firstAttribute="top" secondItem="M2l-HE-SPu" secondAttribute="top" constant="117.33333333333331" id="S20-tJ-0gJ"/>
                                                         <constraint firstItem="0oy-Q7-aoH" firstAttribute="width" secondItem="0oy-Q7-aoH" secondAttribute="height" multiplier="27:29" id="WmI-U6-Ma5"/>
                                                         <constraint firstItem="NYr-T9-3VI" firstAttribute="width" secondItem="NYr-T9-3VI" secondAttribute="height" multiplier="27:29" id="YYa-rl-pZq"/>
                                                         <constraint firstItem="NYr-T9-3VI" firstAttribute="top" secondItem="MSg-Ya-PaW" secondAttribute="bottom" constant="21" id="avF-y0-aph"/>
                                                         <constraint firstItem="xoe-DK-L7t" firstAttribute="leading" secondItem="NYr-T9-3VI" secondAttribute="trailing" constant="6" id="bjx-K2-82e"/>
                                                         <constraint firstItem="z3M-XP-4AQ" firstAttribute="top" secondItem="O3e-nr-Mb3" secondAttribute="bottom" constant="1.6666666666666714" id="hSB-sv-v3N"/>
-                                                        <constraint firstItem="7MG-cI-Tf2" firstAttribute="top" secondItem="Dlv-33-SdN" secondAttribute="bottom" constant="1.6666666666666856" id="hkX-ll-VBU"/>
+                                                        <constraint firstItem="7MG-cI-Tf2" firstAttribute="top" secondItem="Dlv-33-SdN" secondAttribute="bottom" constant="1" id="hkX-ll-VBU"/>
                                                         <constraint firstItem="jna-yo-5yg" firstAttribute="width" secondItem="jna-yo-5yg" secondAttribute="height" multiplier="27:29" id="mso-ZW-qX3"/>
                                                         <constraint firstItem="mrm-0D-oFm" firstAttribute="width" secondItem="mrm-0D-oFm" secondAttribute="height" multiplier="23:102" constant="3.8333333333333321" id="q0D-md-r0E"/>
                                                         <constraint firstAttribute="bottom" secondItem="jna-yo-5yg" secondAttribute="bottom" constant="6" id="rgU-6e-R7l"/>
@@ -679,6 +679,7 @@
                                             <outlet property="fullNameLabel" destination="O3e-nr-Mb3" id="qIU-oo-q12"/>
                                             <outlet property="majorLabel" destination="z3M-XP-4AQ" id="uGv-9d-L6S"/>
                                             <outlet property="moneyLabel" destination="7MG-cI-Tf2" id="sIN-fM-q3E"/>
+                                            <outlet property="ridesAfterSearchView" destination="M2l-HE-SPu" id="SS3-Zq-Ran"/>
                                             <outlet property="timeLabel" destination="sqj-ZY-P1K" id="ZGp-do-V0Q"/>
                                             <outlet property="toLocationLabel" destination="dhD-6l-1V3" id="J4R-wp-IR5"/>
                                         </connections>

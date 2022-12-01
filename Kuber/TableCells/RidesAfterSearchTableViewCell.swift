@@ -9,6 +9,7 @@ import UIKit
 
 class RidesAfterSearchTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var ridesAfterSearchView: UIView!
     @IBOutlet weak var fromLocationLabel: UILabel!
     @IBOutlet weak var toLocationLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!

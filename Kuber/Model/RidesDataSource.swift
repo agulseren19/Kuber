@@ -18,13 +18,10 @@ class RidesDataSource{
     var delegate: RidesDataDelegate?
     
     init() {
-        
     }
-    
     
     func getListOfRidesWithShowAll() {
         var mutex = 0
-        
         let db = Firestore.firestore()
 
         db.collection("rides").getDocuments() { (querySnapshot, err) in
@@ -57,16 +54,22 @@ class RidesDataSource{
                             print("Y")
                         }
                     }
-                    
                 }
                 print("Z")
             }
         }
-        
-        
-        
-        
-        
     }
+    
+    func getNumberOfRides() -> Int {
+        return ridesArray.count
+    }
+    
+    func getRide(for index: Int) -> Ride? {
+        guard index < ridesArray.count else {
+            return nil
+        }
+        return ridesArray[index]
+    }
+    
 }
 
