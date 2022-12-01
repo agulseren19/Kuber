@@ -45,6 +45,7 @@ class MyRidesDataSource {
                     print("A")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getRideArrayCount()){
+                        
                         self.delegate?.myRidesListLoaded()
                         print("C")
                     }
