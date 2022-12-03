@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C00F738290C7166000F69C8 /* LogInViewController.swift */; };
+		0C330942293BF28D006F143F /* Hitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C330941293BF28D006F143F /* Hitch.swift */; };
+		0C330944293BF3CE006F143F /* MyHitchesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C330943293BF3CE006F143F /* MyHitchesDataSource.swift */; };
+		0C330946293BF3DF006F143F /* MyHitchesDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C330945293BF3DF006F143F /* MyHitchesDataDelegate.swift */; };
+		0C330948293BF892006F143F /* HitchListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C330947293BF892006F143F /* HitchListTableViewCell.swift */; };
 		0C45E0F92913179A002A6881 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45E0F82913179A002A6881 /* HomeViewController.swift */; };
 		0C45E0FB291318C3002A6881 /* PublishRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45E0FA291318C3002A6881 /* PublishRideViewController.swift */; };
 		0C45E0FD29131AD7002A6881 /* RidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C45E0FC29131AD7002A6881 /* RidesViewController.swift */; };
@@ -99,6 +103,10 @@
 
 /* Begin PBXFileReference section */
 		0C00F738290C7166000F69C8 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
+		0C330941293BF28D006F143F /* Hitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hitch.swift; sourceTree = "<group>"; };
+		0C330943293BF3CE006F143F /* MyHitchesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHitchesDataSource.swift; sourceTree = "<group>"; };
+		0C330945293BF3DF006F143F /* MyHitchesDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHitchesDataDelegate.swift; sourceTree = "<group>"; };
+		0C330947293BF892006F143F /* HitchListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HitchListTableViewCell.swift; sourceTree = "<group>"; };
 		0C45E0F82913179A002A6881 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0C45E0FA291318C3002A6881 /* PublishRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishRideViewController.swift; sourceTree = "<group>"; };
 		0C45E0FC29131AD7002A6881 /* RidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesViewController.swift; sourceTree = "<group>"; };
@@ -226,6 +234,9 @@
 				0C9B8FE629351FCE00849399 /* PublishRideDelegate.swift */,
 				F267756B2938D4A000D9BECF /* RidesDataSource.swift */,
 				F267756D2938F29300D9BECF /* RidesDataDelegate.swift */,
+				0C330941293BF28D006F143F /* Hitch.swift */,
+				0C330943293BF3CE006F143F /* MyHitchesDataSource.swift */,
+				0C330945293BF3DF006F143F /* MyHitchesDataDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -300,6 +311,7 @@
 			children = (
 				1EE875A2292F9D1500348672 /* RideListTableViewCell.swift */,
 				F26602772939319100B02453 /* RidesAfterSearchTableViewCell.swift */,
+				0C330947293BF892006F143F /* HitchListTableViewCell.swift */,
 			);
 			path = TableCells;
 			sourceTree = "<group>";
@@ -633,6 +645,7 @@
 				1EE875A7292FA56100348672 /* Ride.swift in Sources */,
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
 				F267756C2938D4A000D9BECF /* RidesDataSource.swift in Sources */,
+				0C330948293BF892006F143F /* HitchListTableViewCell.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
 				1EE875A5292FA36B00348672 /* MyRidesViewController.swift in Sources */,
 				0C9B8FE529351FB300849399 /* PublishRideHelper.swift in Sources */,
@@ -640,9 +653,12 @@
 				0C45E0FD29131AD7002A6881 /* RidesViewController.swift in Sources */,
 				1EE875A9292FC16400348672 /* MyRidesDataSource.swift in Sources */,
 				0C45E0F92913179A002A6881 /* HomeViewController.swift in Sources */,
+				0C330942293BF28D006F143F /* Hitch.swift in Sources */,
 				0C83C6D0291D6977003FD90A /* SignUpViewController.swift in Sources */,
 				0C93807429087296000E9365 /* SecondSignUpViewController.swift in Sources */,
+				0C330946293BF3DF006F143F /* MyHitchesDataDelegate.swift in Sources */,
 				1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */,
+				0C330944293BF3CE006F143F /* MyHitchesDataSource.swift in Sources */,
 				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
 				0CB96DEA2926D10C00AC0982 /* SecondSignUpDelegate.swift in Sources */,
