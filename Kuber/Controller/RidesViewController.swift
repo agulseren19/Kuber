@@ -10,13 +10,14 @@ import UIKit
 class RidesViewController: UIViewController {
     
     private var ridesDatasource = RidesDataSource()
-
+    private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         ridesDatasource.delegate = self
+        ridesAfterSearchHelper.delegate = self
         ridesDatasource.getListOfRidesWithShowAll()
         
         updateTheTableViewDesign()
@@ -63,7 +64,15 @@ extension RidesViewController: UITableViewDataSource{
             cell.timeLabel.text = "12:30"
             cell.fullNameLabel.text = "Deneme Full Name"
             cell.majorLabel.text = "Deneme Major"
-            cell.moneyLabel.text = ride.fee
+            cell.moneyLabel.text = "\(ride.fee)"
+            cell.hitchARideBtn = {[unowned self] in
+                let alert = UIAlertController(title: "Hitch sended! ", message: "Hitched!", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
+                ridesAfterSearchHelper.saveHitchToDatabase(ride: ride)
+                
+            }
         }else {
             cell.fromLocationLabel.text = "N/A"
             cell.toLocationLabel.text = "N/A"
@@ -74,6 +83,9 @@ extension RidesViewController: UITableViewDataSource{
             cell.moneyLabel.text = "N/A"
         }
         cell.ridesAfterSearchView.layer.cornerRadius = cell.ridesAfterSearchView.frame.height / 5
+        
+        
+        
         return cell
     }
     
@@ -87,4 +99,11 @@ extension RidesViewController: RidesDataDelegate{
     }
     
     
+}
+
+extension RidesViewController: RidesAfterSearchDelegate {
+    func hitchIsSavedToFirebase() {
+        
+        print("Hitch Request Is Saved")
+    }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -537,8 +537,8 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="money" translatesAutoresizingMaskIntoConstraints="NO" id="Dlv-33-SdN">
-                                                            <rect key="frame" x="290" y="117.33333333333331" width="27" height="29"/>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="money" translatesAutoresizingMaskIntoConstraints="NO" id="Dlv-33-SdN">
+                                                            <rect key="frame" x="146" y="164" width="27" height="29"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="27" id="Hi1-Ta-0jB"/>
                                                                 <constraint firstAttribute="width" secondItem="Dlv-33-SdN" secondAttribute="height" multiplier="27:29" id="tQW-fF-43n"/>
@@ -618,12 +618,23 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="20 TL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MG-cI-Tf2">
-                                                            <rect key="frame" x="281.33333333333331" y="147.33333333333334" width="44.333333333333314" height="21"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="20 TL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7MG-cI-Tf2">
+                                                            <rect key="frame" x="181" y="168" width="44.333333333333314" height="21"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1UJ-Jj-KoW">
+                                                            <rect key="frame" x="248" y="103" width="108" height="59"/>
+                                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" imagePlacement="top" title="Send Hitch!" titleAlignment="center">
+                                                                <imageReference key="image" image="hand.thumbsup.circle.fill" catalog="system" symbolScale="large"/>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="sendHitchButtonTapped:" destination="q5L-8d-kJs" eventType="touchUpInside" id="U67-cF-wpa"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
@@ -681,6 +692,7 @@
                                             <outlet property="majorLabel" destination="z3M-XP-4AQ" id="uGv-9d-L6S"/>
                                             <outlet property="moneyLabel" destination="7MG-cI-Tf2" id="sIN-fM-q3E"/>
                                             <outlet property="ridesAfterSearchView" destination="M2l-HE-SPu" id="SS3-Zq-Ran"/>
+                                            <outlet property="sendHitchButton" destination="1UJ-Jj-KoW" id="3Z3-Gi-6ob"/>
                                             <outlet property="timeLabel" destination="sqj-ZY-P1K" id="ZGp-do-V0Q"/>
                                             <outlet property="toLocationLabel" destination="dhD-6l-1V3" id="J4R-wp-IR5"/>
                                         </connections>
@@ -1789,6 +1801,7 @@
         <image name="gradeLevel" width="500" height="606"/>
         <image name="group" width="512" height="512"/>
         <image name="hand.thumbsup" catalog="system" width="123" height="128"/>
+        <image name="hand.thumbsup.circle.fill" catalog="system" width="128" height="123"/>
         <image name="hitchLogo" width="910.66668701171875" height="682.66668701171875"/>
         <image name="link" width="102" height="346"/>
         <image name="location" width="532" height="675"/>

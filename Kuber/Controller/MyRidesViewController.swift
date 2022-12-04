@@ -65,7 +65,7 @@ extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
             cell.toLocationLabel.text = ride.toLocation
             cell.availableSeatLabel.text = "\(ride.seatAvailable)"
             cell.dateLabel.text = dateFormatter.string(from: ride.date)
-            cell.feeLabel.text = ride.fee
+            cell.feeLabel.text = "\(ride.fee)"
         } else {
             cell.fromLocationLabel.text = "N/A"
             cell.toLocationLabel.text = "N/A"

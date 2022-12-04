@@ -19,6 +19,7 @@ final class User: NSObject {
     var smokingPreference : Bool = false
     var chattinesFlag : Bool = false
     var ridesArray = [String]()
+    var myHitchesArray = [String]()
 
    private override init() { }
 
@@ -95,5 +96,22 @@ final class User: NSObject {
     
     func getRideArrayCount () -> Int {
         self.ridesArray.count
+    }
+    
+    
+    func setMyHitchesArray(myHitchesArray : [String]) {
+        self.myHitchesArray = myHitchesArray
+    }
+    
+    func appendToMyHitchesArray(id : String) {
+        self.myHitchesArray.append(id)
+   }
+    
+    func getMyHitchesArray() -> [String] {
+        return self.myHitchesArray
+    }
+    
+    func getMyHitchesArrayCount () -> Int {
+        self.myHitchesArray.count
     }
 }

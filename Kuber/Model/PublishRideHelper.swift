@@ -31,7 +31,7 @@ class PublishRideHelper {
             "to": to,
             "date": date,
             "time": time,
-            "fee": fee,
+            "fee": Int(fee),
             "numberOfSeats": numberOfSeats,
             "mail" :User.sharedInstance.getEmail(),
             

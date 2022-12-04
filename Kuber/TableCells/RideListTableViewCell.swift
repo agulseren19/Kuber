@@ -17,6 +17,7 @@ class RideListTableViewCell: UITableViewCell {
     @IBOutlet weak var fromLocationLabel: UILabel!
     @IBOutlet weak var toLocationLabel: UILabel!
     
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         
