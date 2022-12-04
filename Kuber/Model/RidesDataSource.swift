@@ -36,11 +36,12 @@ class RidesDataSource{
                     print("\(document.documentID) => \(document.data())")
                     
                     let newRide = Ride (
+                        rideId: document.documentID,
                         fromLocation: document.get("from") as! String,
                         toLocation: document.get("to") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
-                        fee: document.get("fee") as! String,
+                        fee: document.get("fee") as! Int,
                         mail: document.get("mail") as! String
                     )
                     

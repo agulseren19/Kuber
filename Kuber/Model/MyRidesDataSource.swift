@@ -35,11 +35,12 @@ class MyRidesDataSource {
             docRef2.getDocument { (document, error) in
                 if let document = document, document.exists {
                     var newRide = Ride (
+                        rideId: rideId,
                         fromLocation: document.get("from") as! String,
                         toLocation: document.get("to") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
-                        fee: document.get("fee") as! String,
+                        fee: document.get("fee") as! Int,
                         mail: document.get("mail") as! String
                     )
                     self.myRidesArray.append(newRide)

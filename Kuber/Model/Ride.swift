@@ -8,10 +8,11 @@
 import Foundation
 
 struct Ride {
+    let rideId: String
     let fromLocation: String
     let toLocation: String
     let date: Date
     let seatAvailable: Int
-    let fee: String
+    let fee: Int
     let mail: String
 }

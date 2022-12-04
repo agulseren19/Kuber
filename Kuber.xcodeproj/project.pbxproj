@@ -37,6 +37,8 @@
 		1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE4A290E8E68003A141C /* searchRideUIView.swift */; };
 		1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */; };
 		1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C602923E00B0050F2E9 /* SignInDelegate.swift */; };
+		1E9F49EF293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */; };
+		1E9F49F1293D2051008A9CA2 /* RidesAfterSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */; };
 		1EE875A3292F9D1500348672 /* RideListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A2292F9D1500348672 /* RideListTableViewCell.swift */; };
 		1EE875A5292FA36B00348672 /* MyRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A4292FA36B00348672 /* MyRidesViewController.swift */; };
 		1EE875A7292FA56100348672 /* Ride.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A6292FA56100348672 /* Ride.swift */; };
@@ -137,6 +139,8 @@
 		1E28EE4A290E8E68003A141C /* searchRideUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchRideUIView.swift; sourceTree = "<group>"; };
 		1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHelper.swift; sourceTree = "<group>"; };
 		1E514C602923E00B0050F2E9 /* SignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegate.swift; sourceTree = "<group>"; };
+		1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchHelper.swift; sourceTree = "<group>"; };
+		1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchDelegate.swift; sourceTree = "<group>"; };
 		1EE875A2292F9D1500348672 /* RideListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideListTableViewCell.swift; sourceTree = "<group>"; };
 		1EE875A4292FA36B00348672 /* MyRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRidesViewController.swift; sourceTree = "<group>"; };
 		1EE875A6292FA56100348672 /* Ride.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ride.swift; sourceTree = "<group>"; };
@@ -237,6 +241,8 @@
 				0C330941293BF28D006F143F /* Hitch.swift */,
 				0C330943293BF3CE006F143F /* MyHitchesDataSource.swift */,
 				0C330945293BF3DF006F143F /* MyHitchesDataDelegate.swift */,
+				1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */,
+				1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -660,10 +666,12 @@
 				1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */,
 				0C330944293BF3CE006F143F /* MyHitchesDataSource.swift in Sources */,
 				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
+				1E9F49F1293D2051008A9CA2 /* RidesAfterSearchDelegate.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,
 				0CB96DEA2926D10C00AC0982 /* SecondSignUpDelegate.swift in Sources */,
 				F267756E2938F29300D9BECF /* RidesDataDelegate.swift in Sources */,
 				1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */,
+				1E9F49EF293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift in Sources */,
 				1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */,
 				0C93807229087296000E9365 /* SceneDelegate.swift in Sources */,
 				1EE875A3292F9D1500348672 /* RideListTableViewCell.swift in Sources */,
