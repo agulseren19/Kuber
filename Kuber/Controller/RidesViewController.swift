@@ -103,6 +103,7 @@ extension RidesViewController: RidesDataDelegate{
 
 extension RidesViewController: RidesAfterSearchDelegate {
     func hitchIsSavedToFirebase() {
-        print("Delegate is reached")
+        
+        print("Hitch Request Is Saved")
     }
 }

@@ -14,7 +14,7 @@ class MyHitchesDataSource{
     
     private var myHitchesArray: [Hitch] = []
     private var hitchCount: Int = 0
-    
+    let rideInfoArray: [Ride] = []
     var delegate: MyHitchesDataDelegate?
     
     init() {
@@ -22,46 +22,77 @@ class MyHitchesDataSource{
     
     func getListOfHitches() {
         var mutex = 0
-        let db = Firestore.firestore()
-
-        db.collection("hitches").getDocuments() { (querySnapshot, err) in
-            if let err = err {
-                print("Error getting documents for Hitchs Screen: \(err)")
-            } else {
-                self.hitchCount = querySnapshot!.count
-                print("querySnapshot!.count:")
-                print(querySnapshot!.count)
-                
-                for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
-                    
-                    let newHitch = Hitch (
-                        fromLocation: document.get("from") as! String,
-                        toLocation: document.get("to") as! String,
+        for i in 0..<User.sharedInstance.getMyHitchesArrayCount(){
+            var hitchId = User.sharedInstance.getMyHitchesArray()[i]
+            print(hitchId)
+            let db = Firestore.firestore()
+            let docRef2 = db.collection("hitches").document(hitchId)
+            docRef2.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    var newHitch = Hitch (
                         date: (document.get("date") as! Timestamp).dateValue(),
-                        fee: document.get("fee") as! String,
-                        mail: document.get("mail") as! String,
-                        hitchhikeStatus: document.get("status") as! Int
+                        hitchhikerMail: document.get("hitchhikerMail") as! String,
+                        rideId: document.get("rideId") as! String,
+                        status: document.get("status") as! Int,
+                        ride: Ride(rideId: "", fromLocation: "", toLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "")
                     )
-                    
                     self.myHitchesArray.append(newHitch)
-                    print("X")
-                    
+                    print("A")
                     mutex = mutex + 1
-                    if (mutex == self.hitchCount){
-                        DispatchQueue.main.async {
-                            self.delegate?.hitchListLoaded()
-                            print("Y")
+                    if (mutex == User.sharedInstance.getMyHitchesArrayCount()){
+                        self.getRideInfo()
+                        print("C")
+                    }
+                    
+                } else {
+                    print("Document does not exist in my Ride")
+                }
+                
+            }
+            
+        }
+       
+    }
+    
+    func getRideInfo() {
+        let db = Firestore.firestore()
+        var mutex = 0
+        if (myHitchesArray.count == 0){
+            DispatchQueue.main.async {
+                self.delegate?.hitchListLoaded()
+            }
+        } else{
+            for i in 0..<myHitchesArray.count {
+                var hitch = myHitchesArray[i]
+                var rideId = hitch.rideId
+                let docRef2 = db.collection("rides").document(rideId)
+                docRef2.getDocument { (document, error) in
+                    if let document = document, document.exists {
+                        var ride = Ride (
+                            rideId: rideId,
+                            fromLocation: document.get("from") as! String,
+                            toLocation: document.get("to") as! String,
+                            date: (document.get("date") as! Timestamp).dateValue(),
+                            seatAvailable: document.get("numberOfSeats") as! Int,
+                            fee: document.get("fee") as! Int,
+                            mail: document.get("mail") as! String
+                        )
+                        self.myHitchesArray[i].ride = ride
+                        mutex = mutex + 1
+                        if (mutex == self.myHitchesArray.count){
+                            DispatchQueue.main.async {
+                                self.delegate?.hitchListLoaded()
+                            }
+                            print("C")
                         }
                     }
                 }
-                print("Z")
             }
         }
     }
     
     func getNumberOfHitches() -> Int {
-        return myHitchesArray.count
+        return self.myHitchesArray.count
     }
     
     func getHitch(for index: Int) -> Hitch? {

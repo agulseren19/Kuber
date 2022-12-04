@@ -52,6 +52,7 @@ class SignInHelper {
                 user.setClassLevel(classLevel: document.get("classLevel") as! String)
                 user.setPhoneNumber(phoneNumber: document.get("phoneNumber") as! String)
                 user.setRidesArray(ridesArray: document.data()!["publishedRides"]! as! [String])
+                user.setMyHitchesArray(myHitchesArray: document.data()!["myHitches"]! as! [String])
                 // set the chattiness and smoking
                 print("user is created")
                 self.delegate?.signInTheUser()

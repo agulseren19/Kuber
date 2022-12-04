@@ -8,10 +8,9 @@
 import Foundation
 
 struct Hitch {
-    let fromLocation: String
-    let toLocation: String
     let date: Date
-    let fee: String
-    let mail: String
-    let hitchhikeStatus: Int
+    let hitchhikerMail: String
+    let rideId: String
+    let status: Int
+    var ride: Ride
 }

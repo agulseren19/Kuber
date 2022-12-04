@@ -57,24 +57,24 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YY/MM/dd"
  
-            cell.fromLocationLabel.text = hitch.fromLocation
-            cell.toLocationLabel.text = hitch.toLocation
+            cell.fromLocationLabel.text = hitch.ride.fromLocation
+            cell.toLocationLabel.text = hitch.ride.toLocation
             cell.dateLabel.text = dateFormatter.string(from: hitch.date)
             cell.timeLabel.text = "12:30"
             cell.fullNameLabel.text = "Deneme Full Name"
             cell.majorLabel.text = "Deneme Major"
-            cell.moneyLabel.text = "\(hitch.fee) TL"
+            cell.moneyLabel.text = "\(hitch.ride.fee) TL"
             //hitchhikeStatus 0 -> declined 1->approved 2->in request
-            if  hitch.hitchhikeStatus == 0 {
+            if  hitch.status == 0 {
                 cell.statusButton.tintColor=UIColor.red
                 cell.statusButton.setTitle("Declined", for: .normal)
             }
-            else if hitch.hitchhikeStatus == 1 {
+            else if hitch.status == 1 {
                 cell.statusButton.tintColor=UIColor.green
                 cell.statusButton.setTitle("Approved", for: .normal)
             }
-            else if hitch.hitchhikeStatus == 2 {
-                cell.statusButton.tintColor=UIColor.yellow
+            else if hitch.status == 2 {
+                cell.statusButton.tintColor=UIColor.orange
                 cell.statusButton.setTitle("In Request", for: .normal)
 
             }
