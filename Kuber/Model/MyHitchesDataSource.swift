@@ -90,7 +90,6 @@ class MyHitchesDataSource{
             }
         }
     }
-    
     func getNumberOfHitches() -> Int {
         return self.myHitchesArray.count
     }

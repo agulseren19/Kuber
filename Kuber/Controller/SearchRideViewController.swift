@@ -32,12 +32,11 @@ class SearchRideViewController: UIViewController {
         let date = datePicker.date
         let time = timePicker.date
         let all = showAllSwitch.isOn
+        
         //print(from)
         //print(to)
         //print(date)
         //print(time)
-        
-        
     }
     
     /*
