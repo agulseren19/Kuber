@@ -96,13 +96,17 @@ class RidesDataSource{
                         DispatchQueue.main.async {
                             self.delegate?.ridesListLoaded()
                             print("Y")
+                            print("ride size")
+                            print(self.getNumberOfRides())
+                            self.sortTheRideArray()
                         }
                     }
                 }
                 print("Z")
             }
         }
-        var fromTown = "Atasehir"//ilçe
+        
+        /*var fromTown = "Atasehir"//ilçe
         var fromNeighbourhood = "Barbaros" //Mahalle
         var toTown = "Sariyer"//ilçe
         var toNeighbourhood = "Darussafaka" //Mahalle
@@ -182,7 +186,7 @@ class RidesDataSource{
             
             
 
-        }.resume()
+        }.resume()*/
         
        
         
@@ -199,8 +203,25 @@ class RidesDataSource{
         return ridesArray[index]
     }
     
-    func sortRides(rides: [Ride]){
-        
+    func sortTheRideArray(){
+        for ride in self.ridesArray{
+            let db = Firestore.firestore()
+            let docRef = db.collection("users").document(ride.mail)
+            var riderSmokingPreference = false
+           docRef.getDocument { (document, error) in
+               if let document = document, document.exists {
+                   riderSmokingPreference = document.get("smokingFlag")! as! Bool
+                   // set the chattiness and smoking
+                   print("In database")
+                   print(ride.mail)
+                   print(riderSmokingPreference)
+               } else {
+                   
+               }
+           }
+            
+            
+        }
     }
     
 }
