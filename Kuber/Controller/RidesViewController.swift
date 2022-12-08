@@ -66,10 +66,13 @@ extension RidesViewController: UITableViewDataSource{
             cell.majorLabel.text = "Deneme Major"
             cell.moneyLabel.text = "\(ride.fee)"
             cell.hitchARideBtn = {[unowned self] in
-                let alert = UIAlertController(title: "Hitch sended! ", message: "Hitched!", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Hitch request sended! ", message: "Hitched!", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
                 alert.addAction(okAction)
                 present(alert, animated: true, completion: nil)
+                cell.sendHitchButton.setTitle("Sent", for: .normal)
+                cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
+                cell.sendHitchButton.isEnabled = true
                 ridesAfterSearchHelper.saveHitchToDatabase(ride: ride)
                 
             }
