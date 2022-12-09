@@ -204,21 +204,39 @@ class RidesDataSource{
     }
     
     func sortTheRideArray(){
+        self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
         for ride in self.ridesArray{
             let db = Firestore.firestore()
+            var ridePoint = 0
             let docRef = db.collection("users").document(ride.mail)
             var riderSmokingPreference = false
+            var riderChattinessPreference = false
            docRef.getDocument { (document, error) in
                if let document = document, document.exists {
                    riderSmokingPreference = document.get("smokingFlag")! as! Bool
-                   // set the chattiness and smoking
-                   print("In database")
+                   riderChattinessPreference = document.get("chattinessFlag")! as! Bool
+                   if (riderSmokingPreference == User.sharedInstance.getSmokingPreference()){
+                       ridePoint = ridePoint + 10
+                   } else {
+                       ridePoint = ridePoint - 10
+                   }
+                   print("Rider mail")
                    print(ride.mail)
+                   print("Rider smoking?")
                    print(riderSmokingPreference)
+                   print("hitcher smoking?")
+                   print(User.sharedInstance.getSmokingPreference())
+                   print("Hitcher mail")
+                   print(User.sharedInstance.getEmail())
+                   print("Ride Point")
+                   print(ridePoint)
                } else {
                    
                }
            }
+            
+            
+            
             
             
         }
