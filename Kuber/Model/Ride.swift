@@ -15,4 +15,5 @@ struct Ride {
     let seatAvailable: Int
     let fee: Int
     let mail: String
+    var point: Double
 }

@@ -34,7 +34,7 @@ class MyHitchesDataSource{
                         hitchhikerMail: document.get("hitchhikerMail") as! String,
                         rideId: document.get("rideId") as! String,
                         status: document.get("status") as! Int,
-                        ride: Ride(rideId: "", fromLocation: "", toLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "")
+                        ride: Ride(rideId: "", fromLocation: "", toLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "", point: 0)
                     )
                     self.myHitchesArray.append(newHitch)
                     print("A")
@@ -75,7 +75,8 @@ class MyHitchesDataSource{
                             date: (document.get("date") as! Timestamp).dateValue(),
                             seatAvailable: document.get("numberOfSeats") as! Int,
                             fee: document.get("fee") as! Int,
-                            mail: document.get("mail") as! String
+                            mail: document.get("mail") as! String,
+                            point: 0
                         )
                         self.myHitchesArray[i].ride = ride
                         mutex = mutex + 1

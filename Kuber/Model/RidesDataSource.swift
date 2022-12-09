@@ -14,6 +14,7 @@ class RidesDataSource{
     
     private var ridesArray: [Ride] = []
     private var rideCount: Int = 0
+    var globalDistance = 0.0
     
     var delegate: RidesDataDelegate?
     
@@ -36,14 +37,15 @@ class RidesDataSource{
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
-                    let newRide = Ride (
+                    var newRide = Ride (
                         rideId: document.documentID,
                         fromLocation: document.get("from") as! String,
                         toLocation: document.get("to") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        point: 0
                     )
                     
                     self.ridesArray.append(newRide)
@@ -78,14 +80,15 @@ class RidesDataSource{
                 for document in querySnapshot!.documents {
                     print("\(document.documentID) => \(document.data())")
                     
-                    let newRide = Ride (
+                    var newRide = Ride (
                         rideId: document.documentID,
                         fromLocation: document.get("from") as! String,
                         toLocation: document.get("to") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        point: 0
                     )
                     
                     self.ridesArray.append(newRide)
@@ -203,11 +206,12 @@ class RidesDataSource{
         return ridesArray[index]
     }
     
+    
     func sortTheRideArray(){
         self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
-        for ride in self.ridesArray{
+        for var ride in self.ridesArray{
             let db = Firestore.firestore()
-            var ridePoint = 0
+            var ridePoint = 0.0
             let docRef = db.collection("users").document(ride.mail)
             var riderSmokingPreference = false
             var riderChattinessPreference = false
@@ -220,26 +224,98 @@ class RidesDataSource{
                    } else {
                        ridePoint = ridePoint - 10
                    }
-                   print("Rider mail")
-                   print(ride.mail)
-                   print("Rider smoking?")
-                   print(riderSmokingPreference)
-                   print("hitcher smoking?")
-                   print(User.sharedInstance.getSmokingPreference())
-                   print("Hitcher mail")
-                   print(User.sharedInstance.getEmail())
-                   print("Ride Point")
+                   print("RIDE POINT BEFORE DISTANCE")
                    print(ridePoint)
+                   var fromTown = "Atasehir"//ilçe
+                   var fromNeighbourhood = "Barbaros" //Mahalle
+                   var toTown = "Sariyer"//ilçe
+                   var toNeighbourhood = "Darussafaka" //Mahalle
+                   /* Adres template
+                    https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Zekeriyaköy%2CSarıyer&origins=Darüşşafaka%2CSarıyer&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34
+                    */
+                   
+                   var finalUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=" + toNeighbourhood + "%2C" + toTown + "%7CIstanbul%2CTurkiye&origins=" + fromNeighbourhood + "%2C" + fromTown + "%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
+                   
+                   let url = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Asik%2CVeysel%2CAtasehir%7CIstanbul%2CTurkiye&origins=Darussafaka%2CSariyer%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
+                   var resp = ""
+                   var result = 0.0
+                   URLSession.shared.dataTask(with: NSURL(string: finalUrl)! as URL) { data, response, error in
+                       resp = String( data:data!, encoding:String.Encoding(rawValue: NSUTF8StringEncoding) )!
+                       print(resp)
+                       var flag = 0
+                       var index = 0
+                       var distance = ""
+                       for char in resp {
+                           if (flag >= 4){
+                               if (flag >= 9){
+                                   if(char == " "){
+                                       break
+                                   }
+                                   if(char==","){
+                                       distance = distance + "."
+                                   } else {
+                                       distance = distance + String(char)
+                                   }
+                                   
+                               }
+                               flag = flag + 1
+                           }
+                           if (char == "t" && flag == 0){
+                               flag = flag+1
+                           }
+                            else if (flag == 1){
+                               print("flag is one")
+                               print(char)
+                               if(char == "e"){
+                                   flag = flag+1
+                                   print("e found")
+                                   print(flag)
+
+                               } else {
+                                   flag = 0
+                               }
+                           }
+                           else if (flag == 2){
+                               if(char == "x"){
+                                   flag = flag+1
+                                   print("x found")
+                                   print(flag)
+
+                               } else {
+                                   flag = 0
+                               }
+                           }
+                           else if (flag == 3){
+                               if(char == "t"){
+                                   flag = flag+1
+                                   print("t found")
+                                   print(flag)
+
+                               } else {
+                                   flag = 0
+                               }
+                           }
+                           
+                           
+
+                       }
+                       let numberFormatter = NumberFormatter()
+                       let number = numberFormatter.number(from: distance)
+                       let numberFloatValue = number?.floatValue
+                       print("FOUND DISTANCE")
+                       ridePoint = ridePoint + Double(numberFloatValue!)
+                       print("RIDE POINTT")
+                       print(ridePoint)
+                       
+
+                   }.resume()
+                   
                } else {
                    
                }
            }
-            
-            
-            
-            
-            
         }
+        
     }
     
 }
