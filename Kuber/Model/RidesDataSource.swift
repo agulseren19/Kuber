@@ -208,9 +208,14 @@ class RidesDataSource{
     
     
     func sortTheRideArray(){
+        var ridePointDictionary = [Ride: Double]()
+        var sortedRidesArray: [Ride] = []
+        var sortedArrayCounter = 0
+       var counter = 0
         self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
         for var ride in self.ridesArray{
             let db = Firestore.firestore()
+            
             var ridePoint = 0.0
             let docRef = db.collection("users").document(ride.mail)
             var riderSmokingPreference = false
@@ -303,9 +308,29 @@ class RidesDataSource{
                        let number = numberFormatter.number(from: distance)
                        let numberFloatValue = number?.floatValue
                        print("FOUND DISTANCE")
+                       counter = counter + 1
                        ridePoint = ridePoint + Double(numberFloatValue!)
                        print("RIDE POINTT")
                        print(ridePoint)
+                       if (counter == 5){
+                           ridePointDictionary[ride] = ridePoint + 200.0
+                       } else {
+                           ridePointDictionary[ride] = ridePoint + Double(counter)
+                       }
+                       let sortedByValueDictionary = ridePointDictionary.sorted { $0.1 > $1.1 }
+                       print(sortedByValueDictionary)
+        
+                       for (rideKey , ridePoint ) in sortedByValueDictionary {
+                           if(sortedArrayCounter < 5){
+                              
+                               print("append should happen here")
+                               sortedRidesArray.append(rideKey)
+                               sortedArrayCounter = sortedArrayCounter + 1
+                           }
+                       }
+                       print("sorted ride array:")
+                       print(sortedRidesArray)
+                       
                        
 
                    }.resume()
@@ -314,9 +339,8 @@ class RidesDataSource{
                    
                }
            }
+            
         }
-        
     }
-    
 }
 
