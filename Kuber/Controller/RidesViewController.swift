@@ -9,6 +9,12 @@ import UIKit
 
 class RidesViewController: UIViewController {
     
+    var from: String = ""
+    var to: String = ""
+    var date: Date = Date()
+    var time: Date = Date()
+    var all: Bool = false
+    
     private var ridesDatasource = RidesDataSource()
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
@@ -18,7 +24,13 @@ class RidesViewController: UIViewController {
         // Do any additional setup after loading the view.
         ridesDatasource.delegate = self
         ridesAfterSearchHelper.delegate = self
-        ridesDatasource.getListOfRidesWithShowAll()
+        if(all){
+                ridesDatasource.getListOfRidesWithShowAll()
+        } else {
+                ridesDatasource.getListOfRidesWithoutShowAll()
+            }
+        print("RİDES VİEW CONTROLLER")
+        print(to)
         
         updateTheTableViewDesign()
     }

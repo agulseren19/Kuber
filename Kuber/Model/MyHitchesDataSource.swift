@@ -76,6 +76,7 @@ class MyHitchesDataSource{
                             seatAvailable: document.get("numberOfSeats") as! Int,
                             fee: document.get("fee") as! Int,
                             mail: document.get("mail") as! String
+                            
                         )
                         self.myHitchesArray[i].ride = ride
                         mutex = mutex + 1
@@ -90,7 +91,6 @@ class MyHitchesDataSource{
             }
         }
     }
-    
     func getNumberOfHitches() -> Int {
         return self.myHitchesArray.count
     }
