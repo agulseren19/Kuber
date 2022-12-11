@@ -4,7 +4,6 @@
 //
 //  Created by Arda Aliz on 1.12.2022.
 //
-
 import Foundation
 import FirebaseCore
 import FirebaseFirestore
@@ -44,8 +43,7 @@ class RidesDataSource{
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String,
-                        point: 0
+                        mail: document.get("mail") as! String
                     )
                     
                     self.ridesArray.append(newRide)
@@ -87,8 +85,7 @@ class RidesDataSource{
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String,
-                        point: 0
+                        mail: document.get("mail") as! String
                     )
                     
                     self.ridesArray.append(newRide)
@@ -152,7 +149,6 @@ class RidesDataSource{
                         flag = flag+1
                         print("e found")
                         print(flag)
-
                     } else {
                         flag = 0
                     }
@@ -162,7 +158,6 @@ class RidesDataSource{
                         flag = flag+1
                         print("x found")
                         print(flag)
-
                     } else {
                         flag = 0
                     }
@@ -172,14 +167,12 @@ class RidesDataSource{
                         flag = flag+1
                         print("t found")
                         print(flag)
-
                     } else {
                         flag = 0
                     }
                 }
                 
                 
-
             }
             let numberFormatter = NumberFormatter()
             let number = numberFormatter.number(from: distance)
@@ -188,7 +181,6 @@ class RidesDataSource{
             print( (numberFloatValue as! Float)+2)
             
             
-
         }.resume()*/
         
        
@@ -343,4 +335,3 @@ class RidesDataSource{
         }
     }
 }
-
