@@ -49,6 +49,7 @@ class SignInHelper {
                 user.setPassword(password: document.get("password")! as! String)
                 user.setFullName(fullName: document.get("fullName")! as! String)
                 user.setMajor(major: document.get("major") as! String)
+                user.setSmokingPreference(smokingPreference: document.get("smokingFlag") as! Bool)
                 user.setClassLevel(classLevel: document.get("classLevel") as! String)
                 user.setPhoneNumber(phoneNumber: document.get("phoneNumber") as! String)
                 user.setRidesArray(ridesArray: document.data()!["publishedRides"]! as! [String])

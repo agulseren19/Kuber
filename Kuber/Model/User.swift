@@ -67,7 +67,7 @@ final class User: NSObject {
      func getClassLevel() -> String {
          return self.classLevel
      }
-    func setSmokingPreferecne(smokingPreference : Bool) {
+    func setSmokingPreference(smokingPreference : Bool) {
         self.smokingPreference = smokingPreference
     }
      

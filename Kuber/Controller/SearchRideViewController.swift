@@ -32,6 +32,14 @@ class SearchRideViewController: UIViewController {
         let date = datePicker.date
         let time = timePicker.date
         let all = showAllSwitch.isOn
+        
+        let ridesViewController = self.storyboard?.instantiateViewController(withIdentifier: "RidesViewController") as! RidesViewController
+                ridesViewController.from = fromLocation.text!
+                ridesViewController.to = toLocation.text!
+                ridesViewController.date = date
+                ridesViewController.time = time
+                ridesViewController.all = all
+                self.navigationController?.pushViewController(ridesViewController, animated:true)
         //print(from)
         //print(to)
         //print(date)
