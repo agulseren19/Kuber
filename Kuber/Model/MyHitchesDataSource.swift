@@ -21,8 +21,8 @@ class MyHitchesDataSource{
     }
     
     func getListOfHitches() {
-        myHitchesArray = []
-        rideInfoArray = []
+        self.myHitchesArray.removeAll()
+        self.rideInfoArray.removeAll()
         var mutex = 0
         for i in 0..<User.sharedInstance.getMyHitchesArrayCount(){
             var hitchId = User.sharedInstance.getMyHitchesArray()[i]
@@ -32,6 +32,7 @@ class MyHitchesDataSource{
             docRef2.getDocument { (document, error) in
                 if let document = document, document.exists {
                     var newHitch = Hitch (
+                        hitchId: hitchId,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         hitchhikerMail: document.get("hitchhikerMail") as! String,
                         rideId: document.get("rideId") as! String,
