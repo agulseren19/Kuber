@@ -14,13 +14,15 @@ class MyHitchesDataSource{
     
     private var myHitchesArray: [Hitch] = []
     private var hitchCount: Int = 0
-    let rideInfoArray: [Ride] = []
+    var rideInfoArray: [Ride] = []
     var delegate: MyHitchesDataDelegate?
     
     init() {
     }
     
     func getListOfHitches() {
+        myHitchesArray = []
+        rideInfoArray = []
         var mutex = 0
         for i in 0..<User.sharedInstance.getMyHitchesArrayCount(){
             var hitchId = User.sharedInstance.getMyHitchesArray()[i]

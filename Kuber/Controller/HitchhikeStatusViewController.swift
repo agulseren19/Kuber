@@ -17,11 +17,17 @@ class HitchhikeStatusViewController: UIViewController {
         super.viewDidLoad()
         searchButton.imageView?.contentMode = .scaleAspectFit
         hitchhikeDatasource.delegate = self
-        hitchhikeDatasource.getListOfHitches()
+        //hitchhikeDatasource.getListOfHitches()
         updateTheTableViewDesign()
 
         // Do any additional setup after loading the view.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        hitchhikeDatasource.getListOfHitches()
+        
+    }
+    
     func updateTheTableViewDesign() {
         hitchListTableView.separatorStyle = .none
         hitchListTableView.showsVerticalScrollIndicator = false
@@ -75,7 +81,7 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             }
             else if hitch.status == 2 {
                 cell.statusButton.tintColor=UIColor.orange
-                cell.statusButton.setTitle("In Request", for: .normal)
+                cell.statusButton.setTitle("Pending", for: .normal)
 
             }
         }else {
