@@ -47,6 +47,10 @@ class RidesDataSource{
                     )
                     
                     self.ridesArray.append(newRide)
+                    self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
+                    
+                    self.ridesArray = self.ridesArray.filter{ $0.date > Date() }
+                    
                     print("X")
                     
                     mutex = mutex + 1
@@ -58,6 +62,8 @@ class RidesDataSource{
                     }
                 }
                 print("Z")
+                print("RIDES ARRAY COUNT")
+                print(self.ridesArray.count)
             }
         }
     }
@@ -205,6 +211,7 @@ class RidesDataSource{
         var sortedArrayCounter = 0
        var counter = 0
         self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
+        self.ridesArray = self.ridesArray.filter{ $0.date > Date() }
         for var ride in self.ridesArray{
             let db = Firestore.firestore()
             
@@ -223,14 +230,17 @@ class RidesDataSource{
                    }
                    print("RIDE POINT BEFORE DISTANCE")
                    print(ridePoint)
-                   var fromTown = "Atasehir"//ilçe
-                   var fromNeighbourhood = "Barbaros" //Mahalle
-                   var toTown = "Sariyer"//ilçe
-                   var toNeighbourhood = "Darussafaka" //Mahalle
+                   var fromTown = "Ataşehir"//ilçe
+                   var fromNeighbourhood = "Aşık Veysel" //Mahalle
+                   var toTown = "Sarıyer"//ilçe
+                   var toNeighbourhood = "Darüşşafaka" //Mahalle
                    /* Adres template
                     https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Zekeriyaköy%2CSarıyer&origins=Darüşşafaka%2CSarıyer&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34
                     */
-                   
+                   fromTown = self.parseAddress(address: fromTown)
+                   fromNeighbourhood = self.parseAddress(address: fromNeighbourhood)
+                   toTown = self.parseAddress(address: toTown)
+                   toNeighbourhood = self.parseAddress(address: toNeighbourhood)
                    var finalUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=" + toNeighbourhood + "%2C" + toTown + "%7CIstanbul%2CTurkiye&origins=" + fromNeighbourhood + "%2C" + fromTown + "%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    
                    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Asik%2CVeysel%2CAtasehir%7CIstanbul%2CTurkiye&origins=Darussafaka%2CSariyer%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
@@ -333,5 +343,25 @@ class RidesDataSource{
            }
             
         }
+    }
+    
+    func parseAddress(address: String) -> String {
+        var parsedAddress = address
+        parsedAddress = parsedAddress.replacingOccurrences(of: " ", with: "%2C")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "ı", with: "i")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "Ğ", with: "G")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "ğ", with: "g")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "Ü", with: "U")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "ü", with: "u")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "Ş", with: "S")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "ş", with: "s")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "İ", with: "I")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "Ö", with: "O")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "ö", with: "o")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "Ç", with: "C")
+        parsedAddress = parsedAddress.replacingOccurrences(of: "ç", with: "c")
+        print("prsed address")
+        print(parsedAddress)
+        return parsedAddress
     }
 }
