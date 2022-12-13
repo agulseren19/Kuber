@@ -13,6 +13,7 @@ import FirebaseAuth
 class MyHitchesDataSource{
     
     private var myHitchesArray: [Hitch] = []
+    private var myFinalHitchesArray: [MyHitch] = []
     private var hitchCount: Int = 0
     var rideInfoArray: [Ride] = []
     var delegate: MyHitchesDataDelegate?
@@ -84,9 +85,7 @@ class MyHitchesDataSource{
                         self.myHitchesArray[i].ride = ride
                         mutex = mutex + 1
                         if (mutex == self.myHitchesArray.count){
-                            DispatchQueue.main.async {
-                                self.delegate?.hitchListLoaded()
-                            }
+                            self.getRiderInfo()
                             print("C")
                         }
                     }
@@ -94,15 +93,50 @@ class MyHitchesDataSource{
             }
         }
     }
-    func getNumberOfHitches() -> Int {
-        return self.myHitchesArray.count
+    
+    func getRiderInfo(){
+        let db = Firestore.firestore()
+        var mutex = 0
+        for i in 0..<myHitchesArray.count {
+            var hitch = myHitchesArray[i]
+            var riderMail = hitch.ride.mail
+            let docRef2 = db.collection("users").document(riderMail)
+            docRef2.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    var newMyHitch = MyHitch(
+                        hitch: hitch,
+                        riderFullName: document.get("fullName") as! String,
+                        riderMajor: document.get("major") as! String
+                    )
+                    self.myFinalHitchesArray.append(newMyHitch)
+                    print("A")
+                    mutex = mutex + 1
+                    if (mutex == self.myHitchesArray.count){
+                        DispatchQueue.main.async {
+                            self.delegate?.hitchListLoaded()
+                        }
+                        print("C")
+                    }
+                    
+                } else {
+                    print("Document does not exist in my Ride")
+                }
+                
+            }
+            
+        }
+            
     }
     
-    func getHitch(for index: Int) -> Hitch? {
-        guard index < myHitchesArray.count else {
+    func getNumberOfHitches() -> Int {
+        return self.myFinalHitchesArray.count
+    }
+    
+    func getHitch(for index: Int) -> MyHitch? {
+        guard index < myFinalHitchesArray.count else {
             return nil
         }
-        return myHitchesArray[index]
+        return myFinalHitchesArray[index]
     }
     
 }

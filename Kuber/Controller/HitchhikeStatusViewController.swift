@@ -63,23 +63,25 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YY/MM/dd"
  
-            cell.fromLocationLabel.text = hitch.ride.fromLocation
-            cell.toLocationLabel.text = hitch.ride.toLocation
-            cell.dateLabel.text = dateFormatter.string(from: hitch.date)
+            cell.fromLocationLabel.text = hitch.hitch.ride.fromLocation
+            cell.toLocationLabel.text = hitch.hitch.ride.toLocation
+            cell.dateLabel.text = dateFormatter.string(from: hitch.hitch.date)
             cell.timeLabel.text = "12:30"
             cell.fullNameLabel.text = "Deneme Full Name"
             cell.majorLabel.text = "Deneme Major"
-            cell.moneyLabel.text = "\(hitch.ride.fee) TL"
+            cell.moneyLabel.text = "\(hitch.hitch.ride.fee) TL"
+            cell.majorLabel.text = hitch.riderMajor
+            cell.fullNameLabel.text = hitch.riderFullName
             //hitchhikeStatus 0 -> declined 1->approved 2->in request
-            if  hitch.status == 0 {
+            if  hitch.hitch.status == 0 {
                 cell.statusButton.tintColor=UIColor.red
                 cell.statusButton.setTitle("Declined", for: .normal)
             }
-            else if hitch.status == 1 {
+            else if hitch.hitch.status == 1 {
                 cell.statusButton.tintColor=UIColor.green
                 cell.statusButton.setTitle("Approved", for: .normal)
             }
-            else if hitch.status == 2 {
+            else if hitch.hitch.status == 2 {
                 cell.statusButton.tintColor=UIColor.orange
                 cell.statusButton.setTitle("Pending", for: .normal)
 
