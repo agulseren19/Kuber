@@ -47,6 +47,8 @@ class RidesDataSource{
                     )
                     
                     self.ridesArray.append(newRide)
+                    self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
+                    
                     print("X")
                     
                     mutex = mutex + 1
@@ -58,6 +60,7 @@ class RidesDataSource{
                     }
                 }
                 print("Z")
+                print(self.ridesArray.count)
             }
         }
     }
