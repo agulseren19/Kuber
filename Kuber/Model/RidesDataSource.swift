@@ -49,6 +49,8 @@ class RidesDataSource{
                     self.ridesArray.append(newRide)
                     self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
                     
+                    self.ridesArray = self.ridesArray.filter{ $0.date > Date() }
+                    
                     print("X")
                     
                     mutex = mutex + 1
@@ -60,6 +62,7 @@ class RidesDataSource{
                     }
                 }
                 print("Z")
+                print("RIDES ARRAY COUNT")
                 print(self.ridesArray.count)
             }
         }
@@ -208,6 +211,7 @@ class RidesDataSource{
         var sortedArrayCounter = 0
        var counter = 0
         self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
+        self.ridesArray = self.ridesArray.filter{ $0.date > Date() }
         for var ride in self.ridesArray{
             let db = Firestore.firestore()
             
