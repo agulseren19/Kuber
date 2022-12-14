@@ -82,6 +82,8 @@
 		54065549291057AE0015F3D9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 54065546291057AE0015F3D9 /* GoogleService-Info.plist */; };
 		54EE18CA292259D6009516FB /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54EE18C9292259D6009516FB /* User.swift */; };
 		5E4F2A12625A271388ECBC63 /* Pods_Kuber_KuberUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AB0E46F6C00F5A9A34971A7 /* Pods_Kuber_KuberUITests.framework */; };
+		F23E643E294A397A002C2DF8 /* HistoryOfRidesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E643D294A397A002C2DF8 /* HistoryOfRidesViewController.swift */; };
+		F23E6440294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E643F294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift */; };
 		F26602782939319100B02453 /* RidesAfterSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26602772939319100B02453 /* RidesAfterSearchTableViewCell.swift */; };
 		F267756C2938D4A000D9BECF /* RidesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F267756B2938D4A000D9BECF /* RidesDataSource.swift */; };
 		F267756E2938F29300D9BECF /* RidesDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F267756D2938F29300D9BECF /* RidesDataDelegate.swift */; };
@@ -166,6 +168,8 @@
 		BC6AB42BAF48086E3CC35A9E /* Pods-KuberTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuberTests.debug.xcconfig"; path = "Target Support Files/Pods-KuberTests/Pods-KuberTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C67095A7C23726EE1FF63965 /* Pods-KuberTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-KuberTests.release.xcconfig"; path = "Target Support Files/Pods-KuberTests/Pods-KuberTests.release.xcconfig"; sourceTree = "<group>"; };
 		C740BCB168954BA7236677A8 /* Pods_KuberTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KuberTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F23E643D294A397A002C2DF8 /* HistoryOfRidesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOfRidesViewController.swift; sourceTree = "<group>"; };
+		F23E643F294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOfHitchhikesViewController.swift; sourceTree = "<group>"; };
 		F26602772939319100B02453 /* RidesAfterSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchTableViewCell.swift; sourceTree = "<group>"; };
 		F267756B2938D4A000D9BECF /* RidesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataSource.swift; sourceTree = "<group>"; };
 		F267756D2938F29300D9BECF /* RidesDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataDelegate.swift; sourceTree = "<group>"; };
@@ -374,6 +378,8 @@
 				0C45E10029131B55002A6881 /* RideRequestsViewController.swift */,
 				0C83C6CF291D6977003FD90A /* SignUpViewController.swift */,
 				1EE875A4292FA36B00348672 /* MyRidesViewController.swift */,
+				F23E643D294A397A002C2DF8 /* HistoryOfRidesViewController.swift */,
+				F23E643F294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -654,6 +660,7 @@
 			files = (
 				F26602782939319100B02453 /* RidesAfterSearchTableViewCell.swift in Sources */,
 				1E3C29D02947E06A000D5106 /* RideRequest.swift in Sources */,
+				F23E643E294A397A002C2DF8 /* HistoryOfRidesViewController.swift in Sources */,
 				F2C663452922C7F800F806AE /* ProfileDelegate.swift in Sources */,
 				0C45E10129131B55002A6881 /* RideRequestsViewController.swift in Sources */,
 				0CB96DE82926D0DB00AC0982 /* SecondSignUpHelper.swift in Sources */,
@@ -682,6 +689,7 @@
 				0C93807429087296000E9365 /* SecondSignUpViewController.swift in Sources */,
 				1E3C29D229488B50000D5106 /* MyHitch.swift in Sources */,
 				0C330946293BF3DF006F143F /* MyHitchesDataDelegate.swift in Sources */,
+				F23E6440294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift in Sources */,
 				1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */,
 				0C330944293BF3CE006F143F /* MyHitchesDataSource.swift in Sources */,
 				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
