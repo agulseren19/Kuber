@@ -9,6 +9,7 @@ import UIKit
 
 class HistoryOfRidesViewController: UIViewController {
 
+    @IBOutlet weak var historyOfRidesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
