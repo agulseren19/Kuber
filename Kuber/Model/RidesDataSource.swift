@@ -47,10 +47,6 @@ class RidesDataSource{
                     )
                     
                     self.ridesArray.append(newRide)
-                    self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
-                    
-                    self.ridesArray = self.ridesArray.filter{ $0.date > Date() }
-                    
                     print("X")
                     
                     mutex = mutex + 1
@@ -62,8 +58,6 @@ class RidesDataSource{
                     }
                 }
                 print("Z")
-                print("RIDES ARRAY COUNT")
-                print(self.ridesArray.count)
             }
         }
     }
@@ -211,7 +205,6 @@ class RidesDataSource{
         var sortedArrayCounter = 0
        var counter = 0
         self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
-        self.ridesArray = self.ridesArray.filter{ $0.date > Date() }
         for var ride in self.ridesArray{
             let db = Firestore.firestore()
             
@@ -219,29 +212,35 @@ class RidesDataSource{
             let docRef = db.collection("users").document(ride.mail)
             var riderSmokingPreference = false
             var riderChattinessPreference = false
+            var riderClassLevel = ""
+            var riderSmokeMatch = false
+            var riderChatMatch = false
+            var ridersMatch = false
            docRef.getDocument { (document, error) in
                if let document = document, document.exists {
                    riderSmokingPreference = document.get("smokingFlag")! as! Bool
                    riderChattinessPreference = document.get("chattinessFlag")! as! Bool
+                   riderClassLevel = document.get("classLevel")! as! String
                    if (riderSmokingPreference == User.sharedInstance.getSmokingPreference()){
-                       ridePoint = ridePoint + 10
-                   } else {
-                       ridePoint = ridePoint - 10
-                   }
+                            riderSmokeMatch = true
+                    }
+                    if (riderChattinessPreference == User.sharedInstance.getChattinessPreference()){
+                            riderChatMatch = true
+                    }
+                    if (riderSmokeMatch == true) && (riderChatMatch == true){
+                            ridersMatch = true
+                    }
                    print("RIDE POINT BEFORE DISTANCE")
                    print(ridePoint)
-                   var fromTown = "Ataşehir"//ilçe
-                   var fromNeighbourhood = "Aşık Veysel" //Mahalle
-                   var toTown = "Sarıyer"//ilçe
-                   var toNeighbourhood = "Darüşşafaka" //Mahalle
+                   var hitchhikerToTown = "Atasehir"//ilçe
+                   var hitchhikerToNeighbourhood = "Barbaros" //Mahalle
+                   var riderToTown = "Sariyer"//ilçe
+                   var rideToNeighbourhood = "Darussafaka" //Mahalle
                    /* Adres template
                     https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Zekeriyaköy%2CSarıyer&origins=Darüşşafaka%2CSarıyer&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34
                     */
-                   fromTown = self.parseAddress(address: fromTown)
-                   fromNeighbourhood = self.parseAddress(address: fromNeighbourhood)
-                   toTown = self.parseAddress(address: toTown)
-                   toNeighbourhood = self.parseAddress(address: toNeighbourhood)
-                   var finalUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=" + toNeighbourhood + "%2C" + toTown + "%7CIstanbul%2CTurkiye&origins=" + fromNeighbourhood + "%2C" + fromTown + "%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
+                   
+                   var finalUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=" + rideToNeighbourhood + "%2C" + riderToTown + "%7CIstanbul%2CTurkiye&origins=" + hitchhikerToNeighbourhood + "%2C" + hitchhikerToTown + "%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    
                    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Asik%2CVeysel%2CAtasehir%7CIstanbul%2CTurkiye&origins=Darussafaka%2CSariyer%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    var resp = ""
@@ -309,31 +308,72 @@ class RidesDataSource{
                        let numberFormatter = NumberFormatter()
                        let number = numberFormatter.number(from: distance)
                        let numberFloatValue = number?.floatValue
+                       var riderClassLevelInt = 0
+                        if (riderClassLevel == "ELC"){
+                                riderClassLevelInt = 0
+                        }
+                        if (riderClassLevel == "Freshman"){
+                                riderClassLevelInt = 1
+                        }
+                        if (riderClassLevel == "Sophomore"){
+                                riderClassLevelInt = 2
+                        }
+                        if (riderClassLevel == "Junior"){
+                                riderClassLevelInt = 3
+                        }
+                        if (riderClassLevel == "Senior"){
+                                riderClassLevelInt = 4
+                        }
+                       var userClassLevelInt = 0
+                                              
+                        if (User.sharedInstance.getClassLevel() == "ELC"){
+                                userClassLevelInt = 0
+                        }
+                        if (User.sharedInstance.getClassLevel() == "Freshman"){
+                                    userClassLevelInt = 1
+                        }
+                        if (User.sharedInstance.getClassLevel() == "Sophomore"){
+                                    userClassLevelInt = 2
+                        }
+                        if (User.sharedInstance.getClassLevel() == "Junior"){
+                                    userClassLevelInt = 3
+                        }
+                            if (User.sharedInstance.getClassLevel() == "Senior"){
+                                    userClassLevelInt = 4
+                            }
+                                              
+                       var classDifference = abs(userClassLevelInt-riderClassLevelInt)
                        print("FOUND DISTANCE")
-                       counter = counter + 1
-                       ridePoint = ridePoint + Double(numberFloatValue!)
+                       
+                       ridePoint = ridePoint - Double(numberFloatValue!)
                        print("RIDE POINTT")
+                       ridePoint = ridePoint - Double(classDifference)
+                       ridePoint = ridePoint - (Double(ride.fee)/5)
                        print(ridePoint)
-                       if (counter == 5){
-                           ridePointDictionary[ride] = ridePoint + 200.0
-                       } else {
-                           ridePointDictionary[ride] = ridePoint + Double(counter)
-                       }
-                       let sortedByValueDictionary = ridePointDictionary.sorted { $0.1 > $1.1 }
+                      
+                       ridePointDictionary[ride] = ridePoint
+                       
+                       var sortedByValueDictionary = ridePointDictionary.sorted { $0.1 > $1.1 }
+                       print("Dictionary is here")
                        print(sortedByValueDictionary)
-        
-                       for (rideKey , ridePoint ) in sortedByValueDictionary {
-                           if(sortedArrayCounter < 5){
-                              
-                               print("append should happen here")
-                               sortedRidesArray.append(rideKey)
-                               sortedArrayCounter = sortedArrayCounter + 1
+                       /*sortedByValueDictionary = sortedByValueDictionary.filter{ $0 != $1  }
+                       print(sortedByValueDictionary)*/
+                       counter = counter + 1
+                       if(counter == self.ridesArray.count){
+                           for (rideKey , ridePoint2 ) in sortedByValueDictionary {
+                               if((sortedArrayCounter < 5)&&(!sortedRidesArray.contains(rideKey))/*&&ridersMatch*/){
+                                   
+                                   print("append should happen here")
+                                   sortedRidesArray.append(rideKey)
+                                   sortedArrayCounter = sortedArrayCounter + 1
+                               }
                            }
+                           print("sorted ride array:")
+                           print(sortedRidesArray)
                        }
-                       print("sorted ride array:")
-                       print(sortedRidesArray)
                        
                        
+                      
 
                    }.resume()
                    
@@ -343,25 +383,5 @@ class RidesDataSource{
            }
             
         }
-    }
-    
-    func parseAddress(address: String) -> String {
-        var parsedAddress = address
-        parsedAddress = parsedAddress.replacingOccurrences(of: " ", with: "%2C")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "ı", with: "i")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "Ğ", with: "G")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "ğ", with: "g")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "Ü", with: "U")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "ü", with: "u")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "Ş", with: "S")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "ş", with: "s")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "İ", with: "I")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "Ö", with: "O")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "ö", with: "o")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "Ç", with: "C")
-        parsedAddress = parsedAddress.replacingOccurrences(of: "ç", with: "c")
-        print("prsed address")
-        print(parsedAddress)
-        return parsedAddress
     }
 }
