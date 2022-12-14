@@ -16,15 +16,15 @@ class SearchRideViewController: UIViewController {
     @IBOutlet weak var searchButton: UIButton!
     @IBOutlet weak var showAllSwitch: UISwitch!
     @IBOutlet weak var showAllLabel: UILabel!
-    
+    private let kuberDataSource=KuberDataSource()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         showAllLabel.tag = 001
-        
+        kuberDataSource.getListOfDistricts()
     }
     
-   
+    
     
     @IBAction func searchButtonClicked(_ sender: UIButton) {
         let from = fromLocation.text
@@ -34,12 +34,12 @@ class SearchRideViewController: UIViewController {
         let all = showAllSwitch.isOn
         
         let ridesViewController = self.storyboard?.instantiateViewController(withIdentifier: "RidesViewController") as! RidesViewController
-                ridesViewController.from = fromLocation.text!
-                ridesViewController.to = toLocation.text!
-                ridesViewController.date = date
-                ridesViewController.time = time
-                ridesViewController.all = all
-                self.navigationController?.pushViewController(ridesViewController, animated:true)
+        ridesViewController.from = fromLocation.text!
+        ridesViewController.to = toLocation.text!
+        ridesViewController.date = date
+        ridesViewController.time = time
+        ridesViewController.all = all
+        self.navigationController?.pushViewController(ridesViewController, animated:true)
         //print(from)
         //print(to)
         //print(date)
@@ -47,15 +47,32 @@ class SearchRideViewController: UIViewController {
         
         
     }
+}
+    /*
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func setPopUpButton(){
+        let optionClosure = {(action: UIAction) in
+            print(action.title) }
+            let children: [UIAction]
+        for i in kuberDataSource.getNumberDistricts(){
+            if i == 1:     children[i]=UIAction(title: kuberDataSource.districtArray[i], state: .on,handler: optionClosure)
+            children[i]=UIAction(title: kuberDataSource.districtArray[i],handler: optionClosure)
+        }
+  
+                    majorInputField.menu=UIMenu(children)
+                    
+                    majorInputField.showsMenuAsPrimaryAction=true
+                    majorInputField.changesSelectionAsPrimaryAction=true
     }
     */
+    
 
-}
