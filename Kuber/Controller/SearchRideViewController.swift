@@ -43,8 +43,6 @@ class SearchRideViewController: UIViewController {
     }
     
     
-    
-    
     @IBAction func searchButtonClicked(_ sender: UIButton) {
         
         let from = fromLocation.currentTitle!

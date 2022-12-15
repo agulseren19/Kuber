@@ -57,8 +57,7 @@ class SecondSignUpViewController: UIViewController {
          }
          }*/
         
-        
-        
+        self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func smokingCheckBoxClicked(_ sender: UIButton) {
