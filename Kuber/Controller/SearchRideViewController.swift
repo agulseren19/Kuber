@@ -34,6 +34,14 @@ class SearchRideViewController: UIViewController {
 
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+            fromLocation.setTitle("From (District)", for: .normal)
+            fromNeighbourhoodLocation.setTitle("From (Neighbourhood)", for: .normal)
+            toLocation.setTitle("To (District)", for: .normal)
+            toNeighbourhoodLocation.setTitle("To (Neighbourhood)", for: .normal)
+
+    }
+    
     
     
     
