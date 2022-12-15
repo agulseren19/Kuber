@@ -42,7 +42,6 @@ class SecondSignUpViewController: UIViewController {
         let fullName = fullNameInputField.text!
         let phoneNumber = phoneNumberInputField.text!
         let major = majorInputField.currentTitle!
-        print("major"+major)
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
         secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag, userEmail: userEmail)
         

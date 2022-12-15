@@ -38,7 +38,7 @@ class MyHitchesDataSource{
                         hitchhikerMail: document.get("hitchhikerMail") as! String,
                         rideId: document.get("rideId") as! String,
                         status: document.get("status") as! Int,
-                        ride: Ride(rideId: "", fromLocation: "", toLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "")
+                        ride: Ride(rideId: "", fromLocation: "",  fromNeighbourhoodLocation: "",toLocation: "",toNeighbourhoodLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "")
                     )
                     self.myHitchesArray.append(newHitch)
                     print("A")
@@ -75,7 +75,9 @@ class MyHitchesDataSource{
                         var ride = Ride (
                             rideId: rideId,
                             fromLocation: document.get("from") as! String,
+                            fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
                             toLocation: document.get("to") as! String,
+                            toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                             date: (document.get("date") as! Timestamp).dateValue(),
                             seatAvailable: document.get("numberOfSeats") as! Int,
                             fee: document.get("fee") as! Int,

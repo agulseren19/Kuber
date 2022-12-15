@@ -69,8 +69,8 @@ extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
         if let ride = myRidesDatasource.getMyRide(for: indexPath.row) {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YY/MM/dd"
-            cell.fromLocationLabel.text = ride.fromLocation
-            cell.toLocationLabel.text = ride.toLocation
+            cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
+            cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
             cell.availableSeatLabel.text = "\(ride.seatAvailable)"
             cell.dateLabel.text = dateFormatter.string(from: ride.date)
             cell.feeLabel.text = "\(ride.fee)"

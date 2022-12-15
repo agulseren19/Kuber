@@ -37,7 +37,9 @@ class MyRidesDataSource {
                     var newRide = Ride (
                         rideId: rideId,
                         fromLocation: document.get("from") as! String,
+                        fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
                         toLocation: document.get("to") as! String,
+                        toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,

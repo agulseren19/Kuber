@@ -182,14 +182,25 @@ struct KuberDataSource {
         return districtArray.count
     }
     
-   /* func getDistrict(for index: Int) -> District? {
+    func getDistrict(for index: Int) -> District? {
         guard index < districtArray.count else {
             return nil
         }
         
         return districtArray[index]
-    } */
-    func getNeighbourhood(with name: String) -> [String]? {
+    } 
+    func getListOfNeighbourhoods(with name: String) -> [String]? {
         return districtArray.first { $0.name == name }?.neighbourhood
+    }
+    func getNumberOfNeighbourhood(with name: String) -> Int{
+        return districtArray.first { $0.name == name }!.neighbourhood.count
+    }
+    func getNeighbourhood(with name: String , for index: Int) -> String? {
+        let neighbourhoodArray = getListOfNeighbourhoods(with: name)
+        guard index < neighbourhoodArray!.count else {
+            return nil
+        }
+        
+        return neighbourhoodArray![index]
     }
 }

@@ -10,7 +10,9 @@ import UIKit
 class RidesViewController: UIViewController {
     
     var from: String = ""
+    var fromNeighbourhood: String = ""
     var to: String = ""
+    var toNeighbourhood: String = ""
     var date: Date = Date()
     var time: Date = Date()
     var all: Bool = false
@@ -70,8 +72,8 @@ extension RidesViewController: UITableViewDataSource{
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YY/MM/dd"
  
-            cell.fromLocationLabel.text = ride.fromLocation
-            cell.toLocationLabel.text = ride.toLocation
+            cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
+            cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
             cell.dateLabel.text = dateFormatter.string(from: ride.date)
             cell.timeLabel.text = "12:30"
             cell.fullNameLabel.text = "Deneme Full Name"
