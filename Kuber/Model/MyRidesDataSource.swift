@@ -24,7 +24,7 @@ class MyRidesDataSource {
     }
     
     func getListOfMyRides (){
-        
+        myRidesArray.removeAll()
         var mutex = 0
         
         for i in 0..<User.sharedInstance.getRideArrayCount(){

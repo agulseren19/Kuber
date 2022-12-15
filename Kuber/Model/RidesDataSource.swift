@@ -14,6 +14,7 @@ class RidesDataSource{
     private var ridesArray: [Ride] = []
     private var rideCount: Int = 0
     var globalDistance = 0.0
+    var rideIdsUserHitched: [String] = []
     
     var delegate: RidesDataDelegate?
     
@@ -49,11 +50,13 @@ class RidesDataSource{
                     )
                     
                     self.ridesArray.append(newRide)
+                    self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
                     print("X")
                     
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
                         DispatchQueue.main.async {
+                            print("count: \(self.ridesArray.count)")
                             self.delegate?.ridesListLoaded()
                             print("Y")
                         }
@@ -189,6 +192,33 @@ class RidesDataSource{
         
        
         
+    }
+    
+    func isAlreadyHitched (){
+        rideIdsUserHitched.removeAll()
+        for hitches in User.sharedInstance.getMyHitchesArray(){
+            let db = Firestore.firestore()
+            let docRef2 = db.collection("hitches").document(hitches)
+            docRef2.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let rideId = document.get("rideId") as! String
+                    self.rideIdsUserHitched.append(rideId)
+                }
+            }
+        }
+        
+    }
+     
+    func decideIfExist (ride: Ride) -> Bool{
+        
+        print(rideIdsUserHitched)
+        print("rideId: \(ride.rideId)")
+        if self.rideIdsUserHitched.contains(ride.rideId){
+            print("true")
+            return true
+        }
+        print("false")
+        return false
     }
     
     func getNumberOfRides() -> Int {

@@ -20,7 +20,6 @@ class MyRidesViewController: UIViewController {
         super.viewDidLoad()
         addButton.imageView?.contentMode = .scaleAspectFit
         myRidesDatasource.delegate = self
-        myRidesDatasource.getListOfMyRides()
         updateTheTableViewDesign()
         // Do any additional setup after loading the view.
     }
@@ -30,6 +29,9 @@ class MyRidesViewController: UIViewController {
         myRidesTableView.showsVerticalScrollIndicator = false
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        myRidesDatasource.getListOfMyRides()
+    }
     
     // MARK: - Navigation
 
