@@ -12,12 +12,14 @@ class RideRequestsViewController: UIViewController {
     @IBOutlet weak var rideRequestTableView: UITableView!
     private var rideRequestDatasource = RideRequestDataSource()
     var ride: Ride?
+    var rideRequestHelper = RideRequestHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hitch Requests"
         updateTheTableViewDesign()
         rideRequestDatasource.delegate = self
+        rideRequestHelper.delegate = self
         if let ride = ride {
             rideRequestDatasource.getListOfRideRequest(ride: ride)
         }
@@ -64,6 +66,32 @@ extension RideRequestsViewController: UITableViewDataSource{
             cell.nameLabel.text = ride.hitchhikerName
             cell.majorLabel.text = ride.hitchhikerMajor
             cell.gradeLevelLabel.text = ride.hitchhikerGradeLevel
+            cell.acceptARequestButton = {[unowned self] in
+                rideRequestHelper.acceptTheRideRequest(ride: ride)
+                rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
+            }
+            cell.declineARequestButton = {[unowned self] in
+                rideRequestHelper.declineTheRideRequest(ride: ride)
+                rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
+            }
+            if  ride.status == 0 {
+                cell.acceptButton.isEnabled = false
+                cell.declineButton.isEnabled = false
+                cell.acceptButton.setTitleColor(.darkGray, for: .disabled)
+                cell.declineButton.setTitleColor(.darkGray, for: .disabled)
+            }
+            else if ride.status == 1 {
+                cell.acceptButton.isEnabled = false
+                cell.acceptButton.setTitle("Accepted", for: .disabled)
+                cell.acceptButton.setTitleColor(UIColor(red: 51/255.0, green: 102/255.0, blue: 0/255.0, alpha: 1), for: .disabled)
+                cell.acceptButton.imageView?.tintColor = UIColor(red: 51/255.0, green: 102/255.0, blue: 0/255.0, alpha: 1)
+                cell.acceptButton.setImage(nil, for: .disabled)
+                cell.declineButton.isEnabled = false
+                cell.declineButton.setImage(UIImage(systemName: "phone.fill"), for: .disabled)
+                cell.declineButton.setTitleColor(.black, for: .disabled)
+                cell.declineButton.setTitle(ride.hitchhikerPhoneNumber, for: .disabled)
+            }
+            
         } else {
             cell.nameLabel.text = "N/A"
             cell.majorLabel.text = "N/A"
@@ -76,6 +104,7 @@ extension RideRequestsViewController: UITableViewDataSource{
 
 extension RideRequestsViewController: RideRequestDataDelegate {
     func  rideRequestListLoaded(){
+        print("reloaded the ride request screen")
         self.rideRequestTableView.reloadData()
     }
 }

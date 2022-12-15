@@ -15,8 +15,6 @@ class RidesAfterSearchHelper {
     var delegate: RidesAfterSearchDelegate?
     var mutex = 0
     
-    
-    
     func saveHitchToDatabase(ride: Ride){
         print("RidesAfterSearchHelper is reached")
         print(ride.rideId)

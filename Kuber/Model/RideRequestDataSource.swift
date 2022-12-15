@@ -85,7 +85,8 @@ class RideRequestDataSource {
                         ride: hitch.ride,
                         hitchhikerName: document.get("fullName") as! String,
                         hitchhikerMajor: document.get("major") as! String,
-                        hitchhikerGradeLevel: document.get("classLevel") as! String
+                        hitchhikerGradeLevel: document.get("classLevel") as! String,
+                        hitchhikerPhoneNumber: document.get("phoneNumber") as! String
                     )
                     self.rideRequestArray.append(newRideRequest)
                     mutex = mutex + 1

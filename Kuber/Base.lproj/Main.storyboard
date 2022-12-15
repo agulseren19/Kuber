@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -2187,11 +2187,9 @@
                                                             <color key="tintColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="hand.thumbsup.fill" catalog="system" title="Accept" imagePadding="10"/>
-                                                        </button>
-                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4j-4l-EGy">
-                                                            <rect key="frame" x="219" y="90" width="124" height="12"/>
-                                                            <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="hand.thumbsdown.fill" catalog="system" title="Decline" imagePadding="10"/>
+                                                            <connections>
+                                                                <action selector="acceptButtonClicked:" destination="D0M-n4-MHr" eventType="touchUpInside" id="lUL-M3-LRJ"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-TQ-syG">
                                                             <rect key="frame" x="43" y="11" width="284" height="29"/>
@@ -2202,6 +2200,14 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4j-4l-EGy">
+                                                            <rect key="frame" x="205" y="77" width="155" height="43"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="hand.thumbsdown.fill" catalog="system" title="Decline"/>
+                                                            <connections>
+                                                                <action selector="declineButtonClicked:" destination="D0M-n4-MHr" eventType="touchUpInside" id="Hdm-zW-H26"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
@@ -2211,11 +2217,11 @@
                                                         <constraint firstItem="YQe-tj-PgU" firstAttribute="top" secondItem="QvX-Jp-lqq" secondAttribute="bottom" constant="11" id="D65-xG-aWQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="HVf-9v-L4O" secondAttribute="trailing" constant="11" id="H44-Wf-MZE"/>
                                                         <constraint firstItem="YQe-tj-PgU" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="29" id="Htn-gq-ZNQ"/>
-                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="centerY" secondItem="j4j-4l-EGy" secondAttribute="centerY" constant="2.5" id="VZV-L8-n9a"/>
-                                                        <constraint firstItem="j4j-4l-EGy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YQe-tj-PgU" secondAttribute="trailing" constant="77" id="cMB-50-ll1"/>
-                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="baseline" secondItem="j4j-4l-EGy" secondAttribute="baseline" constant="2.6666666666666714" id="cdY-Uk-MGS"/>
+                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="centerY" secondItem="j4j-4l-EGy" secondAttribute="centerY" id="VZV-L8-n9a"/>
+                                                        <constraint firstItem="j4j-4l-EGy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YQe-tj-PgU" secondAttribute="trailing" constant="30" id="cMB-50-ll1"/>
+                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="baseline" secondItem="j4j-4l-EGy" secondAttribute="baseline" id="cdY-Uk-MGS"/>
                                                         <constraint firstItem="fvv-TQ-syG" firstAttribute="top" secondItem="kbh-au-Mb8" secondAttribute="top" constant="11" id="eQx-AY-NUv"/>
-                                                        <constraint firstAttribute="trailing" secondItem="j4j-4l-EGy" secondAttribute="trailing" constant="28" id="kvN-Ob-CCR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="j4j-4l-EGy" secondAttribute="trailing" constant="11" id="kvN-Ob-CCR"/>
                                                         <constraint firstItem="HVf-9v-L4O" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="10" id="m2a-DX-6op"/>
                                                         <constraint firstAttribute="trailing" secondItem="fvv-TQ-syG" secondAttribute="trailing" constant="44" id="mVN-Nx-HBU"/>
                                                         <constraint firstItem="fvv-TQ-syG" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="43" id="vKf-tq-LtL"/>
@@ -2263,7 +2269,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgJ-QN-JjG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5637" y="1379"/>
+            <point key="canvasLocation" x="5636.9230769230771" y="1377.7251184834122"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="4Op-KT-XZg">
