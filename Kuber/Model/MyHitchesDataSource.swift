@@ -23,6 +23,7 @@ class MyHitchesDataSource{
     
     func getListOfHitches() {
         self.myHitchesArray.removeAll()
+        self.myFinalHitchesArray.removeAll()
         self.rideInfoArray.removeAll()
         var mutex = 0
         for i in 0..<User.sharedInstance.getMyHitchesArrayCount(){
