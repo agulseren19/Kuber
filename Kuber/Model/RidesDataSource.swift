@@ -14,7 +14,7 @@ class RidesDataSource{
     private var ridesArray: [Ride] = []
     private var rideCount: Int = 0
     var globalDistance = 0.0
-    var rideIdsUserHitched: [String] = []
+   
     
     var delegate: RidesDataDelegate?
     
@@ -46,7 +46,8 @@ class RidesDataSource{
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
                     )
                     
                     self.ridesArray.append(newRide)
@@ -92,7 +93,8 @@ class RidesDataSource{
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
                     )
                     
                     self.ridesArray.append(newRide)
@@ -194,22 +196,9 @@ class RidesDataSource{
         
     }
     
-    func isAlreadyHitched (){
-        rideIdsUserHitched.removeAll()
-        for hitches in User.sharedInstance.getMyHitchesArray(){
-            let db = Firestore.firestore()
-            let docRef2 = db.collection("hitches").document(hitches)
-            docRef2.getDocument { (document, error) in
-                if let document = document, document.exists {
-                    let rideId = document.get("rideId") as! String
-                    self.rideIdsUserHitched.append(rideId)
-                }
-            }
-        }
-        
-    }
+    
      
-    func decideIfExist (ride: Ride) -> Bool{
+    /*func decideIfExist (ride: Ride) -> Bool{
         
         print(rideIdsUserHitched)
         print("rideId: \(ride.rideId)")
@@ -219,7 +208,7 @@ class RidesDataSource{
         }
         print("false")
         return false
-    }
+    }*/
     
     func getNumberOfRides() -> Int {
         return ridesArray.count

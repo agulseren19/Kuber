@@ -25,7 +25,6 @@ class RidesViewController: UIViewController {
         // Do any additional setup after loading the view.
         ridesDatasource.delegate = self
         ridesAfterSearchHelper.delegate = self
-        ridesDatasource.isAlreadyHitched()
         if(all){
                 ridesDatasource.getListOfRidesWithShowAll()
         } else {
@@ -68,15 +67,19 @@ extension RidesViewController: UITableViewDataSource{
             return UITableViewCell()
         }
         
-        if let ride = ridesDatasource.getRide(for: indexPath.row){
+        if var ride = ridesDatasource.getRide(for: indexPath.row){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YY/MM/dd"
             
-            if(ridesDatasource.decideIfExist(ride: ride)){
+            if(ride.hitched) {
                 print("Ride Exist \(indexPath.row)")
                 cell.sendHitchButton.setTitle("Sent", for: .normal)
                 cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
                 cell.sendHitchButton.isEnabled = false
+            }else{
+                cell.sendHitchButton.isEnabled = true
+                cell.sendHitchButton.setTitle("Send Hitch!", for: .normal)
+                cell.sendHitchButton.setTitleColor(UIColor(red: 153/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1), for: .normal)
             }
             cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
             cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation

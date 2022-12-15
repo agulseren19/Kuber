@@ -17,4 +17,5 @@ struct Ride: Hashable {
     let seatAvailable: Int
     let fee: Int
     let mail: String
+    var hitched: Bool
 }

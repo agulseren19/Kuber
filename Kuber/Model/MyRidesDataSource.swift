@@ -43,7 +43,8 @@ class MyRidesDataSource {
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        hitched: false
                     )
                     self.myRidesArray.append(newRide)
                     print("A")
