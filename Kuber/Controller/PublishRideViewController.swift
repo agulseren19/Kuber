@@ -193,7 +193,7 @@ class PublishRideViewController: UIViewController {
 extension PublishRideViewController: PublishRideDelegate {
     func publishedToDatabase(){
         print("aaaaaaaaa")
-        let myRidesViewController: UIViewController = self.storyboard?.instantiateViewController(withIdentifier: "MyRidesViewController") as! MyRidesViewController
-        self.navigationController?.pushViewController(myRidesViewController, animated: true)
+        self.navigationController?.popToRootViewController(animated: true)
+        
     }
 }
