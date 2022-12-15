@@ -10,11 +10,12 @@ import UIKit
 class RidesViewController: UIViewController {
     
     var from: String = ""
+    var fromNeighbourhood: String = ""
     var to: String = ""
+    var toNeighbourhood: String = ""
     var date: Date = Date()
     var time: Date = Date()
     var all: Bool = false
-    
     private var ridesDatasource = RidesDataSource()
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
@@ -66,12 +67,22 @@ extension RidesViewController: UITableViewDataSource{
             return UITableViewCell()
         }
         
-        if let ride = ridesDatasource.getRide(for: indexPath.row){
+        if var ride = ridesDatasource.getRide(for: indexPath.row){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YY/MM/dd"
- 
-            cell.fromLocationLabel.text = ride.fromLocation
-            cell.toLocationLabel.text = ride.toLocation
+            
+            if(ride.hitched) {
+                print("Ride Exist \(indexPath.row)")
+                cell.sendHitchButton.setTitle("Sent", for: .normal)
+                cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
+                cell.sendHitchButton.isEnabled = false
+            }else{
+                cell.sendHitchButton.isEnabled = true
+                cell.sendHitchButton.setTitle("Send Hitch!", for: .normal)
+                cell.sendHitchButton.setTitleColor(UIColor(red: 153/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1), for: .normal)
+            }
+            cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
+            cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
             cell.dateLabel.text = dateFormatter.string(from: ride.date)
             cell.timeLabel.text = "12:30"
             cell.fullNameLabel.text = "Deneme Full Name"
@@ -84,7 +95,7 @@ extension RidesViewController: UITableViewDataSource{
                 present(alert, animated: true, completion: nil)
                 cell.sendHitchButton.setTitle("Sent", for: .normal)
                 cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
-                cell.sendHitchButton.isEnabled = true
+                cell.sendHitchButton.isEnabled = false
                 ridesAfterSearchHelper.saveHitchToDatabase(ride: ride)
                 
             }
@@ -103,7 +114,9 @@ extension RidesViewController: UITableViewDataSource{
         
         return cell
     }
-    
+   
+        
+
     
 }
 

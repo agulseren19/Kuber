@@ -20,6 +20,7 @@ final class User: NSObject {
     var chattinesFlag : Bool = false
     var ridesArray = [String]()
     var myHitchesArray = [String]()
+    var myHitchestoRideIdArray: [String] = []
 
    private override init() { }
 
@@ -84,6 +85,14 @@ final class User: NSObject {
     
     func setRidesArray(ridesArray : [String]) {
         self.ridesArray = ridesArray
+    }
+    
+    func setMyHitchesToRideIdArray (rideIds : [String]) {
+        self.myHitchestoRideIdArray = rideIds
+    }
+    
+    func getMyHitchesToRideIdArray() -> [String] {
+        return self.myHitchestoRideIdArray
     }
     
     func appendToRideArray(id : String) {

@@ -20,7 +20,6 @@ class MyRidesViewController: UIViewController {
         super.viewDidLoad()
         addButton.imageView?.contentMode = .scaleAspectFit
         myRidesDatasource.delegate = self
-        myRidesDatasource.getListOfMyRides()
         updateTheTableViewDesign()
         // Do any additional setup after loading the view.
     }
@@ -30,6 +29,9 @@ class MyRidesViewController: UIViewController {
         myRidesTableView.showsVerticalScrollIndicator = false
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        myRidesDatasource.getListOfMyRides()
+    }
     
     // MARK: - Navigation
 
@@ -69,8 +71,8 @@ extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
         if let ride = myRidesDatasource.getMyRide(for: indexPath.row) {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "YY/MM/dd"
-            cell.fromLocationLabel.text = ride.fromLocation
-            cell.toLocationLabel.text = ride.toLocation
+            cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
+            cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
             cell.availableSeatLabel.text = "\(ride.seatAvailable)"
             cell.dateLabel.text = dateFormatter.string(from: ride.date)
             cell.feeLabel.text = "\(ride.fee)"

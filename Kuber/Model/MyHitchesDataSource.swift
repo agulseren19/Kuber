@@ -16,6 +16,7 @@ class MyHitchesDataSource{
     private var myFinalHitchesArray: [MyHitch] = []
     private var hitchCount: Int = 0
     var rideInfoArray: [Ride] = []
+    var rideIdsUserHitched: [String] = []
     var delegate: MyHitchesDataDelegate?
     
     init() {
@@ -23,6 +24,7 @@ class MyHitchesDataSource{
     
     func getListOfHitches() {
         self.myHitchesArray.removeAll()
+        self.myFinalHitchesArray.removeAll()
         self.rideInfoArray.removeAll()
         var mutex = 0
         for i in 0..<User.sharedInstance.getMyHitchesArrayCount(){
@@ -38,7 +40,7 @@ class MyHitchesDataSource{
                         hitchhikerMail: document.get("hitchhikerMail") as! String,
                         rideId: document.get("rideId") as! String,
                         status: document.get("status") as! Int,
-                        ride: Ride(rideId: "", fromLocation: "", toLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "")
+                        ride: Ride(rideId: "", fromLocation: "",  fromNeighbourhoodLocation: "",toLocation: "",toNeighbourhoodLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "", hitched: false)
                     )
                     self.myHitchesArray.append(newHitch)
                     print("A")
@@ -75,12 +77,14 @@ class MyHitchesDataSource{
                         var ride = Ride (
                             rideId: rideId,
                             fromLocation: document.get("from") as! String,
+                            fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
                             toLocation: document.get("to") as! String,
+                            toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                             date: (document.get("date") as! Timestamp).dateValue(),
                             seatAvailable: document.get("numberOfSeats") as! Int,
                             fee: document.get("fee") as! Int,
-                            mail: document.get("mail") as! String
-                            
+                            mail: document.get("mail") as! String,
+                            hitched: false
                         )
                         self.myHitchesArray[i].ride = ride
                         mutex = mutex + 1
@@ -113,6 +117,7 @@ class MyHitchesDataSource{
                     mutex = mutex + 1
                     if (mutex == self.myHitchesArray.count){
                         DispatchQueue.main.async {
+                            self.isAlreadyHitched()
                             self.delegate?.hitchListLoaded()
                         }
                         print("C")
@@ -126,6 +131,26 @@ class MyHitchesDataSource{
             
         }
             
+    }
+    
+    func isAlreadyHitched (){
+        var mutex = 0
+        rideIdsUserHitched.removeAll()
+        for hitches in User.sharedInstance.getMyHitchesArray(){
+            let db = Firestore.firestore()
+            let docRef2 = db.collection("hitches").document(hitches)
+            docRef2.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    let rideId = document.get("rideId") as! String
+                    self.rideIdsUserHitched.append(rideId)
+                    mutex = mutex + 1
+                    if(mutex == User.sharedInstance.getMyHitchesArray().count){
+                        User.sharedInstance.setMyHitchesToRideIdArray(rideIds: self.rideIdsUserHitched)
+                    }
+                }
+            }
+        }
+        
     }
     
     func getNumberOfHitches() -> Int {

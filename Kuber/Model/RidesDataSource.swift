@@ -14,6 +14,7 @@ class RidesDataSource{
     private var ridesArray: [Ride] = []
     private var rideCount: Int = 0
     var globalDistance = 0.0
+   
     
     var delegate: RidesDataDelegate?
     
@@ -39,19 +40,24 @@ class RidesDataSource{
                     var newRide = Ride (
                         rideId: document.documentID,
                         fromLocation: document.get("from") as! String,
+                        fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
                         toLocation: document.get("to") as! String,
+                        toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
                     )
                     
                     self.ridesArray.append(newRide)
+                    self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
                     print("X")
                     
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
                         DispatchQueue.main.async {
+                            print("count: \(self.ridesArray.count)")
                             self.delegate?.ridesListLoaded()
                             print("Y")
                         }
@@ -81,11 +87,14 @@ class RidesDataSource{
                     var newRide = Ride (
                         rideId: document.documentID,
                         fromLocation: document.get("from") as! String,
+                        fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
                         toLocation: document.get("to") as! String,
+                        toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
                     )
                     
                     self.ridesArray.append(newRide)
@@ -186,6 +195,20 @@ class RidesDataSource{
        
         
     }
+    
+    
+     
+    /*func decideIfExist (ride: Ride) -> Bool{
+        
+        print(rideIdsUserHitched)
+        print("rideId: \(ride.rideId)")
+        if self.rideIdsUserHitched.contains(ride.rideId){
+            print("true")
+            return true
+        }
+        print("false")
+        return false
+    }*/
     
     func getNumberOfRides() -> Int {
         return ridesArray.count

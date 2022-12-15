@@ -21,19 +21,22 @@ class PublishRideHelper {
     init() {
     }
     
-    func saveRide(from:String,to:String, date:Date, time: Date, fee :String, numberOfSeats: Int){
+    func saveRide(from:String, fromNeighbourhood:String,to:String,toNeighbourhood:String, date:Date, time: Date, fee :String, numberOfSeats: Int){
         let db = Firestore.firestore()
         let id = db.collection("rides").document().documentID;
         db.collection("rides").document(id).setData([
 
             //"id" = user ride publish ettiğinde random id ata
             "from": from,
+            "fromNeighbourhood": fromNeighbourhood,
             "to": to,
+            "toNeighbourhood": toNeighbourhood,
             "date": date,
             "time": time,
             "fee": Int(fee),
             "numberOfSeats": numberOfSeats,
             "mail" :User.sharedInstance.getEmail(),
+            "hitchRequests" :[]
             
 
         ]) { err in

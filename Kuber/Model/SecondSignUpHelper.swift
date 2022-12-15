@@ -16,7 +16,7 @@ import FirebaseCore
 import FirebaseFirestore
 class SecondSignUpHelper{
     var delegate: SecondSignUpDelegate?
-    
+
     init() {
     }
     func signUp(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, smokingFlag: Bool, chattinessFlag: Bool, userEmail: String) {
@@ -44,7 +44,9 @@ class SecondSignUpHelper{
                     "major": major,
                     "classLevel": classLevel,
                     "chattinessFlag": chattinessFlag,
-                    "publishedRides": []
+                    "publishedRides": [],
+                    "myHitches": []
+
 
                 ]) { err in
 

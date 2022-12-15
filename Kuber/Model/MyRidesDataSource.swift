@@ -24,7 +24,7 @@ class MyRidesDataSource {
     }
     
     func getListOfMyRides (){
-        
+        myRidesArray.removeAll()
         var mutex = 0
         
         for i in 0..<User.sharedInstance.getRideArrayCount(){
@@ -37,11 +37,14 @@ class MyRidesDataSource {
                     var newRide = Ride (
                         rideId: rideId,
                         fromLocation: document.get("from") as! String,
+                        fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
                         toLocation: document.get("to") as! String,
+                        toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String
+                        mail: document.get("mail") as! String,
+                        hitched: false
                     )
                     self.myRidesArray.append(newRide)
                     print("A")

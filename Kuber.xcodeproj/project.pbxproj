@@ -33,6 +33,9 @@
 		0C9B8FE729351FCE00849399 /* PublishRideDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C9B8FE629351FCE00849399 /* PublishRideDelegate.swift */; };
 		0CB96DE82926D0DB00AC0982 /* SecondSignUpHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB96DE72926D0DB00AC0982 /* SecondSignUpHelper.swift */; };
 		0CB96DEA2926D10C00AC0982 /* SecondSignUpDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */; };
+		0CD82120294A55C40045B816 /* District.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD8211F294A55C40045B816 /* District.swift */; };
+		0CD82122294A55DC0045B816 /* KuberDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD82121294A55DC0045B816 /* KuberDataSource.swift */; };
+		0CD82124294A56170045B816 /* DistrictDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0CD82123294A56170045B816 /* DistrictDataDelegate.swift */; };
 		1E28EE47290E6533003A141C /* SearchRideViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE46290E6533003A141C /* SearchRideViewController.swift */; };
 		1E28EE4B290E8E68003A141C /* searchRideUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E28EE4A290E8E68003A141C /* searchRideUIView.swift */; };
 		1E3C29CA2947CDD1000D5106 /* RideRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C29C92947CDD1000D5106 /* RideRequestTableViewCell.swift */; };
@@ -143,6 +146,9 @@
 		0C9B8FE629351FCE00849399 /* PublishRideDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishRideDelegate.swift; sourceTree = "<group>"; };
 		0CB96DE72926D0DB00AC0982 /* SecondSignUpHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpHelper.swift; sourceTree = "<group>"; };
 		0CB96DE92926D10C00AC0982 /* SecondSignUpDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondSignUpDelegate.swift; sourceTree = "<group>"; };
+		0CD8211F294A55C40045B816 /* District.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = District.swift; sourceTree = "<group>"; };
+		0CD82121294A55DC0045B816 /* KuberDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KuberDataSource.swift; sourceTree = "<group>"; };
+		0CD82123294A56170045B816 /* DistrictDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistrictDataDelegate.swift; sourceTree = "<group>"; };
 		115921646A25995D177B1D5E /* Pods_Kuber.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Kuber.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E28EE46290E6533003A141C /* SearchRideViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRideViewController.swift; sourceTree = "<group>"; };
 		1E28EE4A290E8E68003A141C /* searchRideUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = searchRideUIView.swift; sourceTree = "<group>"; };
@@ -259,12 +265,15 @@
 				0C330941293BF28D006F143F /* Hitch.swift */,
 				0C330943293BF3CE006F143F /* MyHitchesDataSource.swift */,
 				0C330945293BF3DF006F143F /* MyHitchesDataDelegate.swift */,
-				1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */,
 				1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */,
 				1E3C29CB2947D19F000D5106 /* RideRequestDataSource.swift */,
 				1E3C29CD2947D1B8000D5106 /* RideRequestDataDelegate.swift */,
 				1E3C29CF2947E06A000D5106 /* RideRequest.swift */,
 				1E3C29D129488B50000D5106 /* MyHitch.swift */,
+				1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */,
+				0CD8211F294A55C40045B816 /* District.swift */,
+				0CD82121294A55DC0045B816 /* KuberDataSource.swift */,
+				0CD82123294A56170045B816 /* DistrictDataDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -668,6 +677,7 @@
 				F26602782939319100B02453 /* RidesAfterSearchTableViewCell.swift in Sources */,
 				1E3C29D02947E06A000D5106 /* RideRequest.swift in Sources */,
 				F23E643E294A397A002C2DF8 /* HistoryOfRidesViewController.swift in Sources */,
+				0CD82124294A56170045B816 /* DistrictDataDelegate.swift in Sources */,
 				F2C663452922C7F800F806AE /* ProfileDelegate.swift in Sources */,
 				0C45E10129131B55002A6881 /* RideRequestsViewController.swift in Sources */,
 				0CB96DE82926D0DB00AC0982 /* SecondSignUpHelper.swift in Sources */,
@@ -683,6 +693,7 @@
 				F26C296E290FFA96000F5C59 /* ProfileScreenViewController.swift in Sources */,
 				1E3C29CC2947D19F000D5106 /* RideRequestDataSource.swift in Sources */,
 				F267756C2938D4A000D9BECF /* RidesDataSource.swift in Sources */,
+				0CD82122294A55DC0045B816 /* KuberDataSource.swift in Sources */,
 				0C330948293BF892006F143F /* HitchListTableViewCell.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
 				1EE875A5292FA36B00348672 /* MyRidesViewController.swift in Sources */,
@@ -695,6 +706,7 @@
 				0C83C6D0291D6977003FD90A /* SignUpViewController.swift in Sources */,
 				0C93807429087296000E9365 /* SecondSignUpViewController.swift in Sources */,
 				1E3C29D229488B50000D5106 /* MyHitch.swift in Sources */,
+				0CD82120294A55C40045B816 /* District.swift in Sources */,
 				0C330946293BF3DF006F143F /* MyHitchesDataDelegate.swift in Sources */,
 				F23E6440294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift in Sources */,
 				1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */,
