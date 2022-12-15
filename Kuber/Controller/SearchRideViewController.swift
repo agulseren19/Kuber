@@ -45,30 +45,8 @@ class SearchRideViewController: UIViewController {
     
     @IBAction func searchButtonClicked(_ sender: UIButton) {
         
-        let from = fromLocation.currentTitle!
-        let fromNeighbourhood=fromNeighbourhoodLocation.currentTitle!
-        let to = toLocation.currentTitle!
-        let toNeighbourhood=toNeighbourhoodLocation.currentTitle!
-        let date = datePicker.date
-        let time = timePicker.date
-        let all = showAllSwitch.isOn
-        
-        let ridesViewController = self.storyboard?.instantiateViewController(withIdentifier: "RidesViewController") as! RidesViewController
-        ridesViewController.from = fromNeighbourhood
-        ridesViewController.fromNeighbourhood = fromNeighbourhood
-        ridesViewController.to = toNeighbourhood
-        ridesViewController.toNeighbourhood = toNeighbourhood
-        ridesViewController.date = date
-        ridesViewController.time = time
-        ridesViewController.all = all
-        self.navigationController?.pushViewController(ridesViewController, animated:true)
-        //print(from)
-        //print(to)
-        //print(date)
-        //print(time)
-        
-        
     }
+    
     func setFromLocationPopUpButton(){
         let number=kuberDataSource.getNumberDistricts()
         let optionClosure = {(action: UIAction) in
@@ -179,16 +157,35 @@ class SearchRideViewController: UIViewController {
             self.toNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
         
     }
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+         if let ridesViewController = segue.destination as? RidesViewController{
+             let from = fromLocation.currentTitle!
+             let fromNeighbourhood=fromNeighbourhoodLocation.currentTitle!
+             let to = toLocation.currentTitle!
+             let toNeighbourhood=toNeighbourhoodLocation.currentTitle!
+             let date = datePicker.date
+             let time = timePicker.date
+             let all = showAllSwitch.isOn
+             
+             ridesViewController.from = fromNeighbourhood
+             ridesViewController.fromNeighbourhood = fromNeighbourhood
+             ridesViewController.to = toNeighbourhood
+             ridesViewController.toNeighbourhood = toNeighbourhood
+             ridesViewController.date = date
+             ridesViewController.time = time
+             ridesViewController.all = all
+         }
+     }
+     
 }
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */
+
 
 
 
