@@ -35,7 +35,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0cV-3n-War">
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0cV-3n-War">
                                 <rect key="frame" x="65" y="383" width="282" height="32"/>
                                 <segments>
                                     <segment title="ELC"/>
@@ -45,7 +45,7 @@
                                     <segment title="Senior"/>
                                 </segments>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CA-6Y-6Jd">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CA-6Y-6Jd">
                                 <rect key="frame" x="54" y="698" width="282" height="35"/>
                                 <color key="tintColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
@@ -73,20 +73,20 @@
                                     <constraint firstAttribute="width" constant="34" id="HV0-oS-TY3"/>
                                 </constraints>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" image="gradeLevel" translatesAutoresizingMaskIntoConstraints="NO" id="iJ0-0A-h97">
-                                <rect key="frame" x="31" y="383" width="34" height="31"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradeLevel" translatesAutoresizingMaskIntoConstraints="NO" id="iJ0-0A-h97">
+                                <rect key="frame" x="31" y="95.666666666666686" width="34" height="606"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="HMH-nQ-PQE"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZg-2S-xbJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZg-2S-xbJ">
                                 <rect key="frame" x="31" y="445" width="92" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHc-Wv-iZJ">
-                                <rect key="frame" x="31" y="486" width="28" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CHc-Wv-iZJ">
+                                <rect key="frame" x="31" y="482.33333333333331" width="28" height="35.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="K0A-rY-ejB"/>
                                 </constraints>
@@ -96,14 +96,14 @@
                                     <action selector="smokingCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r6x-JN-zAX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea9-ee-voU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea9-ee-voU">
                                 <rect key="frame" x="65" y="490" width="63.333333333333343" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-Tg-FqP">
-                                <rect key="frame" x="31" y="528" width="28" height="28"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HSh-Tg-FqP">
+                                <rect key="frame" x="31" y="524.33333333333337" width="28" height="35.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="28" id="w6M-Hp-Ngw"/>
                                 </constraints>
@@ -113,7 +113,7 @@
                                     <action selector="chattinessCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BL4-9o-vV9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Chattiness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-QV-51C">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chattiness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-QV-51C">
                                 <rect key="frame" x="65" y="532" width="77.333333333333314" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
@@ -135,7 +135,7 @@
                                     </children>
                                 </menu>
                                 <state key="normal" title="Major">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                         </subviews>
@@ -175,6 +175,7 @@
                             <constraint firstItem="cuz-Fn-Fqb" firstAttribute="leading" secondItem="Meb-lr-3T8" secondAttribute="leading" id="mLb-Y8-fQu"/>
                             <constraint firstItem="5CA-6Y-6Jd" firstAttribute="top" secondItem="Mg7-QV-51C" secondAttribute="bottom" constant="146" id="oQG-QG-vit"/>
                             <constraint firstItem="IAr-SA-ZVO" firstAttribute="leading" secondItem="7DK-qO-SLg" secondAttribute="leading" id="q4Q-fg-Uhz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5CA-6Y-6Jd" secondAttribute="bottom" constant="77" id="rJX-tx-VKQ"/>
                             <constraint firstItem="CHc-Wv-iZJ" firstAttribute="leading" secondItem="FZg-2S-xbJ" secondAttribute="leading" id="tql-6Z-J1R"/>
                             <constraint firstItem="cuz-Fn-Fqb" firstAttribute="top" secondItem="Meb-lr-3T8" secondAttribute="bottom" constant="8" symbolic="YES" id="uyh-xw-MBR"/>
                             <constraint firstItem="7DK-qO-SLg" firstAttribute="leading" secondItem="uvW-oH-2YC" secondAttribute="leading" id="vVd-a9-onr"/>
@@ -454,48 +455,48 @@
                                 <rect key="frame" x="65" y="176" width="282" height="30"/>
                                 <menu key="menu" id="NcS-0J-tBe">
                                     <children>
-                                        <command title="Item 1" id="2i5-YA-xI0"/>
+                                        <command title="From (District)" id="2i5-YA-xI0"/>
                                         <command title="Item 2" id="MbJ-HL-CjQ"/>
                                     </children>
                                 </menu>
                                 <state key="normal" title="From (District)">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fN0-Gw-6LO">
                                 <rect key="frame" x="65" y="227" width="282" height="30"/>
                                 <menu key="menu" id="QEC-Et-J7e">
                                     <children>
-                                        <command title="Item 1" id="Enj-s2-p32"/>
+                                        <command title="From (Neighbourhood)" id="Enj-s2-p32"/>
                                         <command title="Item 2" id="TSW-eT-mVm"/>
                                     </children>
                                 </menu>
                                 <state key="normal" title="From (Neighbourhood)">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ohs-w8-VZO">
                                 <rect key="frame" x="65" y="278" width="282" height="30"/>
                                 <menu key="menu" id="vl8-g5-B1i">
                                     <children>
-                                        <command title="Item 1" id="laz-Em-EH8"/>
+                                        <command title="To (District)" id="laz-Em-EH8"/>
                                         <command title="Item 2" id="ems-Ug-qQY"/>
                                     </children>
                                 </menu>
                                 <state key="normal" title="To (District)">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kEf-Un-NHv">
                                 <rect key="frame" x="65" y="329" width="282" height="30"/>
                                 <menu key="menu" id="hpS-vo-fkv">
                                     <children>
-                                        <command title="Item 1" id="ccg-gp-zxa"/>
+                                        <command title="To (Neighbourhood)" id="ccg-gp-zxa"/>
                                         <command title="Item 2" id="jSw-U6-kzw"/>
                                     </children>
                                 </menu>
                                 <state key="normal" title="To (Neighbourhood)">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                         </subviews>
@@ -1184,7 +1185,7 @@
                                     </children>
                                 </menu>
                                 <state key="normal" title="From Location">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mM9-gA-6pG">
@@ -1196,7 +1197,7 @@
                                     </children>
                                 </menu>
                                 <state key="normal" title="From Neighbourhood Location">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LSb-1F-7IM">
@@ -1208,7 +1209,7 @@
                                     </children>
                                 </menu>
                                 <state key="normal" title="To Location">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" showsMenuAsPrimaryAction="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" changesSelectionAsPrimaryAction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Wu-UC-IEs">
@@ -1220,7 +1221,7 @@
                                     </children>
                                 </menu>
                                 <state key="normal" title="To Neighbourhood Location">
-                                    <color key="titleColor" systemColor="opaqueSeparatorColor"/>
+                                    <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                             </button>
                         </subviews>
@@ -2469,6 +2470,9 @@
         <namedColor name="AccentColor">
             <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

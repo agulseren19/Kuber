@@ -121,7 +121,7 @@ extension SecondSignUpViewController: SecondSignUpDelegate {
     func makeFieldsEmpty(){
         fullNameInputField.text = ""
         phoneNumberInputField.text = ""
-        // majorInputField.text = ""
+        majorInputField.setTitle("", for: .normal)
     }
 }
 

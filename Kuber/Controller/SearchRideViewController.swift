@@ -29,6 +29,9 @@ class SearchRideViewController: UIViewController {
         //kuberDataSource.getListOfDistricts()
         setFromLocationPopUpButton()
         setToLocationPopUpButton()
+        setDefaultFromNeighbourhoodLocationPopUpButton()
+        setDefaultToNeighbourhoodLocationPopUpButton()
+
     }
     
     
@@ -145,6 +148,29 @@ class SearchRideViewController: UIViewController {
         toNeighbourhoodLocation.showsMenuAsPrimaryAction=true
         toNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
         
+        
+    }
+    
+    func setDefaultFromNeighbourhoodLocationPopUpButton(){
+        let optionClosure = {(action: UIAction) in
+            print(action.title)}
+            self.fromNeighbourhoodLocation.menu=UIMenu(children: [
+                UIAction(title: "From (Neighbourhood)", state: .on, handler: optionClosure),
+            ])
+            
+            self.fromNeighbourhoodLocation.showsMenuAsPrimaryAction=true
+            self.fromNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
+        
+    }
+    func setDefaultToNeighbourhoodLocationPopUpButton(){
+        let optionClosure = {(action: UIAction) in
+            print(action.title)}
+            self.toNeighbourhoodLocation.menu=UIMenu(children: [
+                UIAction(title: "To (Neighbourhood)", state: .on, handler: optionClosure),
+            ])
+            
+            self.toNeighbourhoodLocation.showsMenuAsPrimaryAction=true
+            self.toNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
         
     }
 }

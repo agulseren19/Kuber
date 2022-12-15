@@ -16,7 +16,6 @@ class RidesViewController: UIViewController {
     var date: Date = Date()
     var time: Date = Date()
     var all: Bool = false
-    
     private var ridesDatasource = RidesDataSource()
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
@@ -105,7 +104,9 @@ extension RidesViewController: UITableViewDataSource{
         
         return cell
     }
-    
+   
+        
+
     
 }
 

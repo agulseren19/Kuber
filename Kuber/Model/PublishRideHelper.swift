@@ -36,6 +36,7 @@ class PublishRideHelper {
             "fee": Int(fee),
             "numberOfSeats": numberOfSeats,
             "mail" :User.sharedInstance.getEmail(),
+            "hitchRequests" :[]
             
 
         ]) { err in
