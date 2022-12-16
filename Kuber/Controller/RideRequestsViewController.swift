@@ -74,6 +74,10 @@ extension RideRequestsViewController: UITableViewDataSource{
                 rideRequestHelper.declineTheRideRequest(ride: ride)
                 rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
             }
+            cell.phoneButtonClicked = {[unowned self] in
+                rideRequestHelper.callNumber(phoneNumber: ride.hitchhikerPhoneNumber)
+                print("here 222")
+            }
             if  ride.status == 0 {
                 cell.acceptButton.isEnabled = false
                 cell.declineButton.isEnabled = false
@@ -82,14 +86,12 @@ extension RideRequestsViewController: UITableViewDataSource{
             }
             else if ride.status == 1 {
                 cell.acceptButton.isEnabled = false
-                cell.acceptButton.setTitle("Accepted", for: .disabled)
-                cell.acceptButton.setTitleColor(UIColor(red: 51/255.0, green: 102/255.0, blue: 0/255.0, alpha: 1), for: .disabled)
-                cell.acceptButton.imageView?.tintColor = UIColor(red: 51/255.0, green: 102/255.0, blue: 0/255.0, alpha: 1)
-                cell.acceptButton.setImage(nil, for: .disabled)
                 cell.declineButton.isEnabled = false
-                cell.declineButton.setImage(UIImage(systemName: "phone.fill"), for: .disabled)
-                cell.declineButton.setTitleColor(.black, for: .disabled)
-                cell.declineButton.setTitle(ride.hitchhikerPhoneNumber, for: .disabled)
+                cell.phoneLabel.isEnabled = true
+                cell.acceptButton.isHidden = true
+                cell.declineButton.isHidden = true
+                cell.phoneLabel.isHidden = false
+                cell.phoneLabel.setTitle(ride.hitchhikerPhoneNumber, for: .normal)
             }
             
         } else {
