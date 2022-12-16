@@ -90,6 +90,7 @@
 		F23E6440294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E643F294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift */; };
 		F23E6442294A49CA002C2DF8 /* HistoryOfRidesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E6441294A49CA002C2DF8 /* HistoryOfRidesTableViewCell.swift */; };
 		F23E6444294A4AC5002C2DF8 /* HistoryOfHitchhikesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E6443294A4AC5002C2DF8 /* HistoryOfHitchhikesTableViewCell.swift */; };
+		F23E6446294CAD3A002C2DF8 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F23E6445294CAD3A002C2DF8 /* EditProfileViewController.swift */; };
 		F26602782939319100B02453 /* RidesAfterSearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F26602772939319100B02453 /* RidesAfterSearchTableViewCell.swift */; };
 		F267756C2938D4A000D9BECF /* RidesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = F267756B2938D4A000D9BECF /* RidesDataSource.swift */; };
 		F267756E2938F29300D9BECF /* RidesDataDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F267756D2938F29300D9BECF /* RidesDataDelegate.swift */; };
@@ -182,6 +183,7 @@
 		F23E643F294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOfHitchhikesViewController.swift; sourceTree = "<group>"; };
 		F23E6441294A49CA002C2DF8 /* HistoryOfRidesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOfRidesTableViewCell.swift; sourceTree = "<group>"; };
 		F23E6443294A4AC5002C2DF8 /* HistoryOfHitchhikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOfHitchhikesTableViewCell.swift; sourceTree = "<group>"; };
+		F23E6445294CAD3A002C2DF8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		F26602772939319100B02453 /* RidesAfterSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchTableViewCell.swift; sourceTree = "<group>"; };
 		F267756B2938D4A000D9BECF /* RidesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataSource.swift; sourceTree = "<group>"; };
 		F267756D2938F29300D9BECF /* RidesDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataDelegate.swift; sourceTree = "<group>"; };
@@ -398,6 +400,7 @@
 				1EE875A4292FA36B00348672 /* MyRidesViewController.swift */,
 				F23E643D294A397A002C2DF8 /* HistoryOfRidesViewController.swift */,
 				F23E643F294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift */,
+				F23E6445294CAD3A002C2DF8 /* EditProfileViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F23E6446294CAD3A002C2DF8 /* EditProfileViewController.swift in Sources */,
 				F23E6444294A4AC5002C2DF8 /* HistoryOfHitchhikesTableViewCell.swift in Sources */,
 				F26602782939319100B02453 /* RidesAfterSearchTableViewCell.swift in Sources */,
 				1E3C29D02947E06A000D5106 /* RideRequest.swift in Sources */,

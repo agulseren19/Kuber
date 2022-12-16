@@ -16,6 +16,8 @@ import FirebaseCore
 import FirebaseFirestore
 class SecondSignUpHelper{
     var delegate: SecondSignUpDelegate?
+    
+    var user = User.sharedInstance
 
     init() {
     }
@@ -63,6 +65,16 @@ class SecondSignUpHelper{
                 }
         
 
+    }
+    
+    func setFieldsOfInputsAsCurrentProfile() {
+        let fullName = user.getFullName()
+        let phoneNumber = user.getPhoneNumber()
+        let smokingFlag = user.getSmokingPreference()
+        let chattinessFlag = user.getChattinessPreference()
+        
+        self.delegate?.setFieldsCurrentProfile(fullName: fullName, phoneNumber: phoneNumber, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag)
+        
     }
     
 }
