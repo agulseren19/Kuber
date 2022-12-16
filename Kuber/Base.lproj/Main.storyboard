@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -2182,16 +2182,22 @@
                                                             <color key="textColor" systemColor="systemGray2Color"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQe-tj-PgU">
-                                                            <rect key="frame" x="29" y="83" width="113" height="31"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YQe-tj-PgU">
+                                                            <rect key="frame" x="15" y="77" width="144" height="37"/>
                                                             <color key="tintColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" image="hand.thumbsup.fill" catalog="system" title="Accept" imagePadding="10"/>
+                                                            <connections>
+                                                                <action selector="acceptButtonClicked:" destination="D0M-n4-MHr" eventType="touchUpInside" id="lUL-M3-LRJ"/>
+                                                            </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j4j-4l-EGy">
-                                                            <rect key="frame" x="219" y="90" width="124" height="12"/>
+                                                            <rect key="frame" x="205" y="77" width="155" height="43"/>
                                                             <state key="normal" title="Button"/>
-                                                            <buttonConfiguration key="configuration" style="plain" image="hand.thumbsdown.fill" catalog="system" title="Decline" imagePadding="10"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="hand.thumbsdown.fill" catalog="system" title="Decline"/>
+                                                            <connections>
+                                                                <action selector="declineButtonClicked:" destination="D0M-n4-MHr" eventType="touchUpInside" id="Hdm-zW-H26"/>
+                                                            </connections>
                                                         </button>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="fvv-TQ-syG">
                                                             <rect key="frame" x="43" y="11" width="284" height="29"/>
@@ -2202,20 +2208,34 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gRv-Rr-n7A">
+                                                            <rect key="frame" x="66" y="77" width="239" height="35"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="phone.fill" catalog="system" title="+90 532 318 08 47">
+                                                                <color key="baseForegroundColor" red="0.30840110780000002" green="0.5618229508" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            </buttonConfiguration>
+                                                            <connections>
+                                                                <action selector="phoneButtonClicked:" destination="D0M-n4-MHr" eventType="touchUpInside" id="toa-6R-qZg"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemGray6Color"/>
                                                     <constraints>
+                                                        <constraint firstItem="gRv-Rr-n7A" firstAttribute="top" secondItem="QvX-Jp-lqq" secondAttribute="bottom" constant="5" id="0NO-IE-OcZ"/>
                                                         <constraint firstAttribute="trailing" secondItem="QvX-Jp-lqq" secondAttribute="trailing" constant="66" id="1aI-Xb-lVp"/>
                                                         <constraint firstItem="QvX-Jp-lqq" firstAttribute="top" secondItem="HVf-9v-L4O" secondAttribute="bottom" constant="-2" id="3Em-7T-xg4"/>
+                                                        <constraint firstAttribute="bottom" secondItem="gRv-Rr-n7A" secondAttribute="bottom" constant="10" id="5Xy-KX-ao5"/>
                                                         <constraint firstItem="HVf-9v-L4O" firstAttribute="top" secondItem="fvv-TQ-syG" secondAttribute="bottom" id="Ckw-aQ-95c"/>
-                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="top" secondItem="QvX-Jp-lqq" secondAttribute="bottom" constant="11" id="D65-xG-aWQ"/>
+                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="top" secondItem="QvX-Jp-lqq" secondAttribute="bottom" constant="5" id="D65-xG-aWQ"/>
+                                                        <constraint firstAttribute="trailing" secondItem="gRv-Rr-n7A" secondAttribute="trailing" constant="66" id="GBF-Y1-qhL"/>
                                                         <constraint firstAttribute="trailing" secondItem="HVf-9v-L4O" secondAttribute="trailing" constant="11" id="H44-Wf-MZE"/>
-                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="29" id="Htn-gq-ZNQ"/>
-                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="centerY" secondItem="j4j-4l-EGy" secondAttribute="centerY" constant="2.5" id="VZV-L8-n9a"/>
-                                                        <constraint firstItem="j4j-4l-EGy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YQe-tj-PgU" secondAttribute="trailing" constant="77" id="cMB-50-ll1"/>
-                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="baseline" secondItem="j4j-4l-EGy" secondAttribute="baseline" constant="2.6666666666666714" id="cdY-Uk-MGS"/>
+                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="15" id="Htn-gq-ZNQ"/>
+                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="centerY" secondItem="j4j-4l-EGy" secondAttribute="centerY" constant="-3" id="VZV-L8-n9a"/>
+                                                        <constraint firstItem="j4j-4l-EGy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="YQe-tj-PgU" secondAttribute="trailing" constant="30" id="cMB-50-ll1"/>
+                                                        <constraint firstItem="YQe-tj-PgU" firstAttribute="baseline" secondItem="j4j-4l-EGy" secondAttribute="baseline" constant="-3" id="cdY-Uk-MGS"/>
+                                                        <constraint firstItem="gRv-Rr-n7A" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="66" id="dJt-3a-GO5"/>
                                                         <constraint firstItem="fvv-TQ-syG" firstAttribute="top" secondItem="kbh-au-Mb8" secondAttribute="top" constant="11" id="eQx-AY-NUv"/>
-                                                        <constraint firstAttribute="trailing" secondItem="j4j-4l-EGy" secondAttribute="trailing" constant="28" id="kvN-Ob-CCR"/>
+                                                        <constraint firstAttribute="trailing" secondItem="j4j-4l-EGy" secondAttribute="trailing" constant="11" id="kvN-Ob-CCR"/>
                                                         <constraint firstItem="HVf-9v-L4O" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="10" id="m2a-DX-6op"/>
                                                         <constraint firstAttribute="trailing" secondItem="fvv-TQ-syG" secondAttribute="trailing" constant="44" id="mVN-Nx-HBU"/>
                                                         <constraint firstItem="fvv-TQ-syG" firstAttribute="leading" secondItem="kbh-au-Mb8" secondAttribute="leading" constant="43" id="vKf-tq-LtL"/>
@@ -2237,6 +2257,7 @@
                                             <outlet property="gradeLevelLabel" destination="QvX-Jp-lqq" id="NZJ-r4-lgN"/>
                                             <outlet property="majorLabel" destination="HVf-9v-L4O" id="udl-IQ-xDN"/>
                                             <outlet property="nameLabel" destination="fvv-TQ-syG" id="lAz-HX-jec"/>
+                                            <outlet property="phoneLabel" destination="gRv-Rr-n7A" id="pvw-Iy-XgQ"/>
                                             <outlet property="rideRequestView" destination="kbh-au-Mb8" id="HCl-CF-o66"/>
                                         </connections>
                                     </tableViewCell>
@@ -2263,7 +2284,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgJ-QN-JjG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5637" y="1379"/>
+            <point key="canvasLocation" x="5636.9230769230771" y="1377.7251184834122"/>
         </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="4Op-KT-XZg">
@@ -2443,6 +2464,7 @@
         <image name="money" width="512" height="512"/>
         <image name="padlock" width="512" height="512"/>
         <image name="phone" width="710" height="886"/>
+        <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="profile" width="628" height="630"/>
         <image name="register" width="1864" height="1281"/>

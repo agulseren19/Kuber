@@ -45,6 +45,7 @@
 		1E3C29D229488B50000D5106 /* MyHitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C29D129488B50000D5106 /* MyHitch.swift */; };
 		1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */; };
 		1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C602923E00B0050F2E9 /* SignInDelegate.swift */; };
+		1E9D8FE3294BC7D80017D80C /* RideRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */; };
 		1E9F49EF293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */; };
 		1E9F49F1293D2051008A9CA2 /* RidesAfterSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */; };
 		1EE875A3292F9D1500348672 /* RideListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A2292F9D1500348672 /* RideListTableViewCell.swift */; };
@@ -159,6 +160,7 @@
 		1E3C29D129488B50000D5106 /* MyHitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHitch.swift; sourceTree = "<group>"; };
 		1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHelper.swift; sourceTree = "<group>"; };
 		1E514C602923E00B0050F2E9 /* SignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegate.swift; sourceTree = "<group>"; };
+		1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestHelper.swift; sourceTree = "<group>"; };
 		1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchHelper.swift; sourceTree = "<group>"; };
 		1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchDelegate.swift; sourceTree = "<group>"; };
 		1EE875A2292F9D1500348672 /* RideListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideListTableViewCell.swift; sourceTree = "<group>"; };
@@ -274,6 +276,7 @@
 				0CD8211F294A55C40045B816 /* District.swift */,
 				0CD82121294A55DC0045B816 /* KuberDataSource.swift */,
 				0CD82123294A56170045B816 /* DistrictDataDelegate.swift */,
+				1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -704,6 +707,7 @@
 				0C45E0F92913179A002A6881 /* HomeViewController.swift in Sources */,
 				0C330942293BF28D006F143F /* Hitch.swift in Sources */,
 				0C83C6D0291D6977003FD90A /* SignUpViewController.swift in Sources */,
+				1E9D8FE3294BC7D80017D80C /* RideRequestHelper.swift in Sources */,
 				0C93807429087296000E9365 /* SecondSignUpViewController.swift in Sources */,
 				1E3C29D229488B50000D5106 /* MyHitch.swift in Sources */,
 				0CD82120294A55C40045B816 /* District.swift in Sources */,

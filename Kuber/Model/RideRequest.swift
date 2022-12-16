@@ -17,5 +17,6 @@ struct RideRequest {
     let hitchhikerName: String
     let hitchhikerMajor: String
     let hitchhikerGradeLevel: String
+    let hitchhikerPhoneNumber: String
     
 }

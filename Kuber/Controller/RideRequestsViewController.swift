@@ -12,12 +12,14 @@ class RideRequestsViewController: UIViewController {
     @IBOutlet weak var rideRequestTableView: UITableView!
     private var rideRequestDatasource = RideRequestDataSource()
     var ride: Ride?
+    var rideRequestHelper = RideRequestHelper()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hitch Requests"
         updateTheTableViewDesign()
         rideRequestDatasource.delegate = self
+        rideRequestHelper.delegate = self
         if let ride = ride {
             rideRequestDatasource.getListOfRideRequest(ride: ride)
         }
@@ -64,6 +66,34 @@ extension RideRequestsViewController: UITableViewDataSource{
             cell.nameLabel.text = ride.hitchhikerName
             cell.majorLabel.text = ride.hitchhikerMajor
             cell.gradeLevelLabel.text = ride.hitchhikerGradeLevel
+            cell.acceptARequestButton = {[unowned self] in
+                rideRequestHelper.acceptTheRideRequest(ride: ride)
+                rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
+            }
+            cell.declineARequestButton = {[unowned self] in
+                rideRequestHelper.declineTheRideRequest(ride: ride)
+                rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
+            }
+            cell.phoneButtonClicked = {[unowned self] in
+                rideRequestHelper.callNumber(phoneNumber: ride.hitchhikerPhoneNumber)
+                print("here 222")
+            }
+            if  ride.status == 0 {
+                cell.acceptButton.isEnabled = false
+                cell.declineButton.isEnabled = false
+                cell.acceptButton.setTitleColor(.darkGray, for: .disabled)
+                cell.declineButton.setTitleColor(.darkGray, for: .disabled)
+            }
+            else if ride.status == 1 {
+                cell.acceptButton.isEnabled = false
+                cell.declineButton.isEnabled = false
+                cell.phoneLabel.isEnabled = true
+                cell.acceptButton.isHidden = true
+                cell.declineButton.isHidden = true
+                cell.phoneLabel.isHidden = false
+                cell.phoneLabel.setTitle(ride.hitchhikerPhoneNumber, for: .normal)
+            }
+            
         } else {
             cell.nameLabel.text = "N/A"
             cell.majorLabel.text = "N/A"
@@ -76,6 +106,7 @@ extension RideRequestsViewController: UITableViewDataSource{
 
 extension RideRequestsViewController: RideRequestDataDelegate {
     func  rideRequestListLoaded(){
+        print("reloaded the ride request screen")
         self.rideRequestTableView.reloadData()
     }
 }

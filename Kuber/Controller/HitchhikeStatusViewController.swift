@@ -74,7 +74,7 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             cell.fullNameLabel.text = hitch.riderFullName
             //hitchhikeStatus 0 -> declined 1->approved 2->in request
             if  hitch.hitch.status == 0 {
-                cell.statusButton.tintColor=UIColor.red
+                cell.statusButton.tintColor=UIColor(red: 153/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1)
                 cell.statusButton.setTitle("Declined", for: .normal)
             }
             else if hitch.hitch.status == 1 {
