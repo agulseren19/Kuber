@@ -6,13 +6,19 @@
 //
 
 import UIKit
+import FirebaseStorage
 
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var emailField: UITextField!
     
+    @IBOutlet weak var uploadImageButton: UIButton!
+    
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var passwordField: UITextField!
     
+    private var profileImage: Data = Data()
+    private let storage = Storage.storage().reference()
     
     @IBOutlet weak var errorText: UILabel!
     let signUpHelper = SignUpHelper()
@@ -31,9 +37,30 @@ class SignUpViewController: UIViewController {
         let email = emailField.text!
         let password = passwordField.text!
         signUpHelper.createAndSaveUser(email:email,password:password)
+        storage.child("images/\(email).png").putData(self.profileImage, metadata: nil, completion: { _, error in
+            guard error == nil else {
+                print("failed")
+                return
+            }
+            self.storage.child("images/\(email).png").downloadURL(completion: { url, error in
+                guard let url = url, error == nil else{
+                    return
+                }
+                let urlString = url.absoluteString
+                print("downloaded: \(urlString)")
+            })
+        })
     }
     
     
+    @IBAction func uploadImageClicked(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+        
+    }
     /*
     // MARK: - Navigation
 
@@ -76,4 +103,35 @@ extension SignUpViewController: UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+}
+
+extension SignUpViewController: UIImagePickerControllerDelegate{
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        picker.dismiss(animated: true, completion: nil)
+        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
+            return
+        }
+        
+        guard let imageData = image.pngData() else {
+            return
+        }
+        
+        self.profileImage = imageData
+        self.profileImageView.image = UIImage(data: imageData)
+        self.profileImageView.layer.borderWidth = 1.0
+        self.profileImageView.layer.masksToBounds = false
+        self.profileImageView.layer.borderColor = UIColor.white.cgColor
+        print("width: \(self.profileImageView.frame.width)")
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
+        self.profileImageView.clipsToBounds = true
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension SignUpViewController: UINavigationControllerDelegate{
+    
 }

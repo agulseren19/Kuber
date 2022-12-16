@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BlV-4k-Mlx">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -2482,11 +2482,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="register" translatesAutoresizingMaskIntoConstraints="NO" id="rzf-lB-32N">
-                                <rect key="frame" x="14" y="93" width="360" height="194"/>
-                            </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MB8-Rd-43k">
-                                <rect key="frame" x="72" y="447" width="278" height="34"/>
+                                <rect key="frame" x="72" y="516" width="278" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
@@ -2496,13 +2493,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mail_icon" translatesAutoresizingMaskIntoConstraints="NO" id="uV8-of-UaC">
-                                <rect key="frame" x="30" y="426.66666666666669" width="34" height="75"/>
+                                <rect key="frame" x="30" y="495.66666666666674" width="34" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="34" id="H6n-IB-FgB"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-kJ-Dlv">
-                                <rect key="frame" x="54" y="596" width="282" height="35"/>
+                                <rect key="frame" x="54" y="665" width="282" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="282" id="vR9-tC-x5Z"/>
                                 </constraints>
@@ -2532,26 +2529,46 @@
                                 <color key="textColor" systemColor="systemBackgroundColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JU-EJ-h3t">
+                                <rect key="frame" x="244" y="299" width="130" height="64"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Upload Image"/>
+                                <connections>
+                                    <action selector="uploadImageClicked:" destination="NDc-V1-Ugo" eventType="touchUpInside" id="p1F-Rq-Yt8"/>
+                                </connections>
+                            </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="S18-Yi-V3y">
+                                <rect key="frame" x="85" y="91" width="210" height="210"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="S18-Yi-V3y" secondAttribute="height" multiplier="1:1" id="YSf-Iq-pNK"/>
+                                    <constraint firstAttribute="height" constant="210" id="cR2-S4-AE5"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1Xi-dn-Kzw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="1Xi-dn-Kzw" firstAttribute="trailing" secondItem="MB8-Rd-43k" secondAttribute="trailing" constant="40" id="1jX-el-9lz"/>
-                            <constraint firstItem="rzf-lB-32N" firstAttribute="centerX" secondItem="1Xi-dn-Kzw" secondAttribute="centerX" id="4DF-mX-Vfb"/>
-                            <constraint firstItem="FFv-1i-RXJ" firstAttribute="top" secondItem="rzf-lB-32N" secondAttribute="bottom" constant="28" id="4Us-ON-PwM"/>
                             <constraint firstItem="1Xi-dn-Kzw" firstAttribute="trailing" secondItem="hgZ-sy-O4u" secondAttribute="trailing" constant="40" id="6NJ-zH-zwW"/>
                             <constraint firstItem="FUt-dx-dXY" firstAttribute="centerY" secondItem="ReP-1Y-SZg" secondAttribute="centerY" id="BF8-Gq-2GM"/>
+                            <constraint firstItem="1Xi-dn-Kzw" firstAttribute="trailing" secondItem="1JU-EJ-h3t" secondAttribute="trailing" constant="16" id="Deb-JY-NnH"/>
                             <constraint firstItem="MB8-Rd-43k" firstAttribute="leading" secondItem="uV8-of-UaC" secondAttribute="trailing" constant="8" symbolic="YES" id="FSP-Hd-mj1"/>
+                            <constraint firstItem="1JU-EJ-h3t" firstAttribute="centerY" secondItem="FFv-1i-RXJ" secondAttribute="centerY" id="FkM-Vc-lyE"/>
                             <constraint firstItem="FFv-1i-RXJ" firstAttribute="leading" secondItem="1Xi-dn-Kzw" secondAttribute="leading" constant="30" id="HRs-zE-2mU"/>
+                            <constraint firstItem="1JU-EJ-h3t" firstAttribute="leading" secondItem="FFv-1i-RXJ" secondAttribute="trailing" constant="135" id="JQc-nW-VXf"/>
                             <constraint firstItem="5qU-kJ-Dlv" firstAttribute="centerX" secondItem="1Xi-dn-Kzw" secondAttribute="centerX" id="KaO-4s-HQI"/>
                             <constraint firstItem="hgZ-sy-O4u" firstAttribute="top" secondItem="qkO-ro-IbT" secondAttribute="bottom" constant="11" id="Kk9-5e-ze8"/>
-                            <constraint firstItem="rzf-lB-32N" firstAttribute="top" secondItem="1Xi-dn-Kzw" secondAttribute="top" constant="46" id="O2P-cK-N9q"/>
                             <constraint firstItem="FFv-1i-RXJ" firstAttribute="top" secondItem="1Xi-dn-Kzw" secondAttribute="top" constant="268" id="PpM-Nb-8sR"/>
                             <constraint firstItem="ReP-1Y-SZg" firstAttribute="leading" secondItem="FUt-dx-dXY" secondAttribute="trailing" constant="8" symbolic="YES" id="UKD-yb-LRT"/>
+                            <constraint firstItem="1Xi-dn-Kzw" firstAttribute="trailing" secondItem="S18-Yi-V3y" secondAttribute="trailing" constant="95" id="Vvz-uX-0Rq"/>
+                            <constraint firstItem="1JU-EJ-h3t" firstAttribute="top" secondItem="S18-Yi-V3y" secondAttribute="bottom" constant="-2" id="XPb-wa-lGM"/>
                             <constraint firstItem="FUt-dx-dXY" firstAttribute="leading" secondItem="uV8-of-UaC" secondAttribute="leading" id="XzL-kx-USo"/>
+                            <constraint firstItem="hgZ-sy-O4u" firstAttribute="top" secondItem="1JU-EJ-h3t" secondAttribute="bottom" constant="41" id="Yih-iw-3Uu"/>
+                            <constraint firstItem="S18-Yi-V3y" firstAttribute="top" secondItem="1Xi-dn-Kzw" secondAttribute="top" id="ZyI-bP-oSM"/>
                             <constraint firstItem="1Xi-dn-Kzw" firstAttribute="trailing" secondItem="ReP-1Y-SZg" secondAttribute="trailing" constant="40" id="a3S-Jd-oSX"/>
                             <constraint firstItem="MB8-Rd-43k" firstAttribute="centerY" secondItem="uV8-of-UaC" secondAttribute="centerY" id="aNb-dp-exr"/>
                             <constraint firstItem="5qU-kJ-Dlv" firstAttribute="top" secondItem="ReP-1Y-SZg" secondAttribute="bottom" constant="47" id="acL-I6-j9o"/>
+                            <constraint firstItem="S18-Yi-V3y" firstAttribute="leading" secondItem="1Xi-dn-Kzw" secondAttribute="leading" constant="85" id="don-Oc-Ncb"/>
                             <constraint firstItem="qkO-ro-IbT" firstAttribute="top" secondItem="FFv-1i-RXJ" secondAttribute="bottom" constant="1" id="ht0-zz-2Ll"/>
                             <constraint firstItem="hgZ-sy-O4u" firstAttribute="leading" secondItem="1Xi-dn-Kzw" secondAttribute="leading" constant="30" id="i47-YH-ggQ"/>
                             <constraint firstItem="qkO-ro-IbT" firstAttribute="leading" secondItem="FFv-1i-RXJ" secondAttribute="leading" id="pjw-th-VwN"/>
@@ -2565,11 +2582,13 @@
                         <outlet property="emailField" destination="MB8-Rd-43k" id="ryY-dL-Zpu"/>
                         <outlet property="errorText" destination="hgZ-sy-O4u" id="bve-yp-q6e"/>
                         <outlet property="passwordField" destination="ReP-1Y-SZg" id="8Nr-DI-Nij"/>
+                        <outlet property="profileImageView" destination="S18-Yi-V3y" id="WXF-61-UmI"/>
+                        <outlet property="uploadImageButton" destination="1JU-EJ-h3t" id="304-Wr-Amo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D0W-AT-AnX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="543" y="805"/>
+            <point key="canvasLocation" x="541.53846153846155" y="804.73933649289097"/>
         </scene>
         <!--My Hitches-->
         <scene sceneID="S53-Z5-LEs">
@@ -2631,6 +2650,7 @@
         <image name="car" catalog="system" width="128" height="95"/>
         <image name="checkedCheckbox" width="21.333333969116211" height="21.333333969116211"/>
         <image name="date" width="418" height="420"/>
+        <image name="defaultProfile" width="1200" height="1200"/>
         <image name="gradeLevel" width="500" height="606"/>
         <image name="group" width="512" height="512"/>
         <image name="hand.thumbsdown.fill" catalog="system" width="128" height="121"/>
@@ -2649,7 +2669,6 @@
         <image name="phone.fill" catalog="system" width="128" height="114"/>
         <image name="plus.circle.fill" catalog="system" width="128" height="123"/>
         <image name="profile" width="628" height="630"/>
-        <image name="register" width="1864" height="1281"/>
         <image name="time" width="684" height="646"/>
         <image name="uncheckedCheckbox" width="21.333333969116211" height="21.333333969116211"/>
         <namedColor name="AccentColor">
