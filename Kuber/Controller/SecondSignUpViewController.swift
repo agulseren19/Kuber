@@ -33,7 +33,8 @@ class SecondSignUpViewController: UIViewController {
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         secondSignUpHelper.delegate = self
         setPopUpButton()
-        
+        fullNameInputField.delegate = self
+        phoneNumberInputField.delegate = self
     }
     
     
@@ -121,6 +122,16 @@ extension SecondSignUpViewController: SecondSignUpDelegate {
         fullNameInputField.text = ""
         phoneNumberInputField.text = ""
         majorInputField.setTitle("", for: .normal)
+    }
+}
+
+extension SecondSignUpViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }
 

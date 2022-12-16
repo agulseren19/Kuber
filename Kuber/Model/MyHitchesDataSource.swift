@@ -40,7 +40,7 @@ class MyHitchesDataSource{
                         hitchhikerMail: document.get("hitchhikerMail") as! String,
                         rideId: document.get("rideId") as! String,
                         status: document.get("status") as! Int,
-                        ride: Ride(rideId: "", fromLocation: "",  fromNeighbourhoodLocation: "",toLocation: "",toNeighbourhoodLocation: "", date: Date(), seatAvailable: 0, fee: 0, mail: "", hitched: false)
+                        ride: Ride(rideId: "", fromLocation: "",  fromNeighbourhoodLocation: "",toLocation: "",toNeighbourhoodLocation: "", date: Date(),time: Date(), seatAvailable: 0, fee: 0, mail: "", hitched: false)
                     )
                     self.myHitchesArray.append(newHitch)
                     print("A")
@@ -81,6 +81,7 @@ class MyHitchesDataSource{
                             toLocation: document.get("to") as! String,
                             toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                             date: (document.get("date") as! Timestamp).dateValue(),
+                            time: (document.get("date") as! Timestamp).dateValue(),
                             seatAvailable: document.get("numberOfSeats") as! Int,
                             fee: document.get("fee") as! Int,
                             mail: document.get("mail") as! String,
@@ -118,6 +119,7 @@ class MyHitchesDataSource{
                     if (mutex == self.myHitchesArray.count){
                         DispatchQueue.main.async {
                             self.isAlreadyHitched()
+                            self.myFinalHitchesArray = self.myFinalHitchesArray.sorted(by: { $0.hitch.date < $1.hitch.date })
                             self.delegate?.hitchListLoaded()
                         }
                         print("C")

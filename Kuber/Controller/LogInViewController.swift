@@ -31,6 +31,8 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         passwordField.isSecureTextEntry = true
         signInHelper.delegate = self
+        emailField.delegate = self
+        passwordField.delegate = self
         //navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         // Do any additional setup after loading the view.
     }
@@ -79,5 +81,15 @@ extension LogInViewController: SignInDelegate {
         errorText.isHidden = false
         errorText.textColor = UIColor.red
         errorText.adjustsFontSizeToFitWidth = true
+    }
+}
+
+extension LogInViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

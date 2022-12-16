@@ -14,6 +14,7 @@ class RidesDataSource{
     private var ridesArray: [Ride] = []
     private var rideCount: Int = 0
     var globalDistance = 0.0
+    private var rideSearchArray: [RideSearch] = []
    
     
     var delegate: RidesDataDelegate?
@@ -44,6 +45,7 @@ class RidesDataSource{
                         toLocation: document.get("to") as! String,
                         toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
+                        time: (document.get("time") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
                         mail: document.get("mail") as! String,
@@ -58,7 +60,7 @@ class RidesDataSource{
                     if (mutex == self.rideCount){
                         DispatchQueue.main.async {
                             print("count: \(self.ridesArray.count)")
-                            self.delegate?.ridesListLoaded()
+                            self.getRiderInfo()
                             print("Y")
                         }
                     }
@@ -67,6 +69,7 @@ class RidesDataSource{
             }
         }
     }
+    
     
     func getListOfRidesWithoutShowAll() {
         var mutex = 0
@@ -91,6 +94,7 @@ class RidesDataSource{
                         toLocation: document.get("to") as! String,
                         toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
+                        time: (document.get("time") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
                         mail: document.get("mail") as! String,
@@ -103,11 +107,12 @@ class RidesDataSource{
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
                         DispatchQueue.main.async {
-                            self.delegate?.ridesListLoaded()
+                            self.sortTheRideArray()
+                            //self.delegate?.ridesListLoaded()
+                            self.getRiderInfo()
                             print("Y")
                             print("ride size")
                             print(self.getNumberOfRides())
-                            self.sortTheRideArray()
                         }
                     }
                 }
@@ -196,29 +201,49 @@ class RidesDataSource{
         
     }
     
-    
-     
-    /*func decideIfExist (ride: Ride) -> Bool{
-        
-        print(rideIdsUserHitched)
-        print("rideId: \(ride.rideId)")
-        if self.rideIdsUserHitched.contains(ride.rideId){
-            print("true")
-            return true
+    func getRiderInfo (){
+        rideSearchArray.removeAll()
+        let db = Firestore.firestore()
+        var mutex = 0
+        for i in 0..<ridesArray.count {
+            var ride = ridesArray[i]
+            var riderMail = ride.mail
+            let docRef2 = db.collection("users").document(riderMail)
+            docRef2.getDocument { (document, error) in
+                if let document = document, document.exists {
+                    var newRideSearch = RideSearch(
+                        ride: ride,
+                        riderFullName: document.get("fullName") as! String,
+                        riderMajor: document.get("major") as! String
+                    )
+                    self.rideSearchArray.append(newRideSearch)
+                    print("A")
+                    mutex = mutex + 1
+                    if (mutex == self.ridesArray.count){
+                        DispatchQueue.main.async {
+                            self.delegate?.ridesListLoaded()
+                        }
+                        print("C")
+                    }
+                    
+                } else {
+                    print("Document does not exist in my Ride")
+                }
+                
+            }
+            
         }
-        print("false")
-        return false
-    }*/
-    
-    func getNumberOfRides() -> Int {
-        return ridesArray.count
     }
     
-    func getRide(for index: Int) -> Ride? {
-        guard index < ridesArray.count else {
+    func getNumberOfRides() -> Int {
+        return rideSearchArray.count
+    }
+    
+    func getRide(for index: Int) -> RideSearch? {
+        guard index < rideSearchArray.count else {
             return nil
         }
-        return ridesArray[index]
+        return rideSearchArray[index]
     }
     
     

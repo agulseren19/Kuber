@@ -61,12 +61,17 @@ extension HistoryOfRidesViewController: UITableViewDataSource, UITableViewDelega
         
         if let ride = myRidesDatasource.getMyRide(for: indexPath.row) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YY/MM/dd"
+            dateFormatter.dateFormat = "dd/MM/YY"
             cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
             cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
             cell.availableSeatLabel.text = "\(ride.seatAvailable)"
             cell.dateLabel.text = dateFormatter.string(from: ride.date)
             cell.feeLabel.text = "\(ride.fee)"
+            let rideTime = ride.time
+            var calendar = Calendar.current
+            let hour = calendar.component(.hour, from: rideTime)
+            let minute = calendar.component(.minute, from: rideTime)
+            cell.timeLabel.text = "\(hour):\(minute)"
         } else {
             cell.fromLocationLabel.text = "N/A"
             cell.toLocationLabel.text = "N/A"

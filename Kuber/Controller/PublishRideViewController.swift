@@ -40,7 +40,7 @@ class PublishRideViewController: UIViewController {
         setToLocationPopUpButton()
         setDefaultFromNeighbourhoodLocationPopUpButton()
         setDefaultToNeighbourhoodLocationPopUpButton()
-
+        feeField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -195,5 +195,15 @@ extension PublishRideViewController: PublishRideDelegate {
         print("aaaaaaaaa")
         self.navigationController?.popToRootViewController(animated: true)
         
+    }
+}
+
+extension PublishRideViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

@@ -25,7 +25,8 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("EDIT PROFILE VIEW DID LOAD")
-
+        fullNameInputField.delegate = self
+        phoneNumberInputField.delegate = self
         // Do any additional setup after loading the view.
         
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
@@ -131,5 +132,15 @@ extension EditProfileViewController: SecondSignUpDelegate{
         self.phoneNumberInputField.text = phoneNumber
         self.smokingFlag = smokingFlag
         self.chattinessFlag = chattinessFlag
+    }
+}
+
+extension EditProfileViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

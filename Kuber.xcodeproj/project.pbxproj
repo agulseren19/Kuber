@@ -46,6 +46,7 @@
 		1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */; };
 		1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C602923E00B0050F2E9 /* SignInDelegate.swift */; };
 		1E9D8FE3294BC7D80017D80C /* RideRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */; };
+		1E9D8FE5294D0D040017D80C /* RideSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D8FE4294D0D040017D80C /* RideSearch.swift */; };
 		1E9F49EF293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */; };
 		1E9F49F1293D2051008A9CA2 /* RidesAfterSearchDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */; };
 		1EE875A3292F9D1500348672 /* RideListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EE875A2292F9D1500348672 /* RideListTableViewCell.swift */; };
@@ -162,6 +163,7 @@
 		1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHelper.swift; sourceTree = "<group>"; };
 		1E514C602923E00B0050F2E9 /* SignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegate.swift; sourceTree = "<group>"; };
 		1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestHelper.swift; sourceTree = "<group>"; };
+		1E9D8FE4294D0D040017D80C /* RideSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideSearch.swift; sourceTree = "<group>"; };
 		1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchHelper.swift; sourceTree = "<group>"; };
 		1E9F49F0293D2051008A9CA2 /* RidesAfterSearchDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchDelegate.swift; sourceTree = "<group>"; };
 		1EE875A2292F9D1500348672 /* RideListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideListTableViewCell.swift; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 				0CD82121294A55DC0045B816 /* KuberDataSource.swift */,
 				0CD82123294A56170045B816 /* DistrictDataDelegate.swift */,
 				1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */,
+				1E9D8FE4294D0D040017D80C /* RideSearch.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -705,6 +708,7 @@
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
 				1EE875A5292FA36B00348672 /* MyRidesViewController.swift in Sources */,
 				0C9B8FE529351FB300849399 /* PublishRideHelper.swift in Sources */,
+				1E9D8FE5294D0D040017D80C /* RideSearch.swift in Sources */,
 				0C45E0FB291318C3002A6881 /* PublishRideViewController.swift in Sources */,
 				0C45E0FD29131AD7002A6881 /* RidesViewController.swift in Sources */,
 				1EE875A9292FC16400348672 /* MyRidesDataSource.swift in Sources */,
@@ -908,6 +912,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B8LUD4NWYJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kuber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -936,6 +941,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = B8LUD4NWYJ;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kuber/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

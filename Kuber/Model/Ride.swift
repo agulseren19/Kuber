@@ -14,6 +14,7 @@ struct Ride: Hashable {
     let toLocation: String
     let toNeighbourhoodLocation: String 
     let date: Date
+    let time: Date
     let seatAvailable: Int
     let fee: Int
     let mail: String

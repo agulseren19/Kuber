@@ -69,9 +69,9 @@ extension RidesViewController: UITableViewDataSource{
         
         if var ride = ridesDatasource.getRide(for: indexPath.row){
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YY/MM/dd"
+            dateFormatter.dateFormat = "dd/MM/YY"
             
-            if(ride.hitched) {
+            if(ride.ride.hitched) {
                 print("Ride Exist \(indexPath.row)")
                 cell.sendHitchButton.setTitle("Sent", for: .normal)
                 cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
@@ -81,13 +81,17 @@ extension RidesViewController: UITableViewDataSource{
                 cell.sendHitchButton.setTitle("Send Hitch!", for: .normal)
                 cell.sendHitchButton.setTitleColor(UIColor(red: 153/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1), for: .normal)
             }
-            cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
-            cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
-            cell.dateLabel.text = dateFormatter.string(from: ride.date)
-            cell.timeLabel.text = "12:30"
-            cell.fullNameLabel.text = "Deneme Full Name"
-            cell.majorLabel.text = "Deneme Major"
-            cell.moneyLabel.text = "\(ride.fee)"
+            cell.fromLocationLabel.text = ride.ride.fromNeighbourhoodLocation+", "+ride.ride.fromLocation
+            cell.toLocationLabel.text = ride.ride.toNeighbourhoodLocation+", "+ride.ride.toLocation
+            cell.dateLabel.text = dateFormatter.string(from: ride.ride.date)
+            let rideTime = ride.ride.time
+            var calendar = Calendar.current
+            let hour = calendar.component(.hour, from: rideTime)
+            let minute = calendar.component(.minute, from: rideTime)
+            cell.timeLabel.text = "\(hour):\(minute)"
+            cell.fullNameLabel.text = ride.riderFullName
+            cell.majorLabel.text = ride.riderMajor
+            cell.moneyLabel.text = "\(ride.ride.fee)"
             cell.hitchARideBtn = {[unowned self] in
                 let alert = UIAlertController(title: "Hitch request sended! ", message: "Hitched!", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -96,7 +100,7 @@ extension RidesViewController: UITableViewDataSource{
                 cell.sendHitchButton.setTitle("Sent", for: .normal)
                 cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
                 cell.sendHitchButton.isEnabled = false
-                ridesAfterSearchHelper.saveHitchToDatabase(ride: ride)
+                ridesAfterSearchHelper.saveHitchToDatabase(ride: ride.ride)
                 
             }
         }else {

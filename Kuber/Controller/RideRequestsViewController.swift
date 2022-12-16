@@ -62,7 +62,7 @@ extension RideRequestsViewController: UITableViewDataSource{
         
         if let ride = rideRequestDatasource.getRideRequest(for: indexPath.row) {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "YY/MM/dd"
+            dateFormatter.dateFormat = "dd/MM/YY"
             cell.nameLabel.text = ride.hitchhikerName
             cell.majorLabel.text = ride.hitchhikerMajor
             cell.gradeLevelLabel.text = ride.hitchhikerGradeLevel

@@ -41,6 +41,7 @@ class MyRidesDataSource {
                         toLocation: document.get("to") as! String,
                         toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                         date: (document.get("date") as! Timestamp).dateValue(),
+                        time: (document.get("time") as! Timestamp).dateValue(),
                         seatAvailable: document.get("numberOfSeats") as! Int,
                         fee: document.get("fee") as! Int,
                         mail: document.get("mail") as! String,
@@ -50,7 +51,7 @@ class MyRidesDataSource {
                     print("A")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getRideArrayCount()){
-                        
+                        self.myRidesArray = self.myRidesArray.sorted(by: { $0.date < $1.date })
                         self.delegate?.myRidesListLoaded()
                         print("C")
                     }
