@@ -69,6 +69,10 @@ class MyRidesDataSource {
         return myRidesArray.count
     }
     
+    func getNumberOfMyPreviousRides() -> Int {
+        return 1
+    }
+    
     func getMyRide(for index:Int) -> Ride? {
         guard index < myRidesArray.count else {
             return nil
