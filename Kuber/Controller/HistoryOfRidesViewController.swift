@@ -10,10 +10,24 @@ import UIKit
 class HistoryOfRidesViewController: UIViewController {
 
     @IBOutlet weak var historyOfRidesTableView: UITableView!
+    
+    private var myRidesDatasource = MyRidesDataSource()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        myRidesDatasource.delegate = self
+        updateTheTableViewDesign()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        myRidesDatasource.getListOfMyRides()
+    }
+    
+    func updateTheTableViewDesign() {
+        historyOfRidesTableView.separatorStyle = .none
+        historyOfRidesTableView.showsVerticalScrollIndicator = false
     }
     
 
@@ -27,4 +41,47 @@ class HistoryOfRidesViewController: UIViewController {
     }
     */
 
+}
+
+extension HistoryOfRidesViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return myRidesDatasource.getNumberOfmyRides()
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryOfRidesCell") as? HistoryOfRidesTableViewCell
+        else  {
+            return UITableViewCell()
+        }
+        
+        if let ride = myRidesDatasource.getMyRide(for: indexPath.row) {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "YY/MM/dd"
+            cell.fromLocationLabel.text = ride.fromNeighbourhoodLocation+", "+ride.fromLocation
+            cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
+            cell.availableSeatLabel.text = "\(ride.seatAvailable)"
+            cell.dateLabel.text = dateFormatter.string(from: ride.date)
+            cell.feeLabel.text = "\(ride.fee)"
+        } else {
+            cell.fromLocationLabel.text = "N/A"
+            cell.toLocationLabel.text = "N/A"
+            cell.availableSeatLabel.text = "N/A"
+            cell.dateLabel.text = "N/A"
+            cell.feeLabel.text = "N/A"
+        }
+        cell.historyRideView.layer.cornerRadius = cell.historyRideView.frame.height / 5
+        
+        return cell
+    }
+}
+
+extension HistoryOfRidesViewController: MyRidesDataDelegate {
+    func myRidesListLoaded(){
+        self.historyOfRidesTableView.reloadData()
+    }
 }
