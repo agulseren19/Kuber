@@ -112,7 +112,6 @@ final class User: NSObject {
         self.ridesArray.count
     }
     
-    
     func setMyHitchesArray(myHitchesArray : [String]) {
         self.myHitchesArray = myHitchesArray
     }
