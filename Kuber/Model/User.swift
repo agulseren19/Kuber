@@ -21,11 +21,16 @@ final class User: NSObject {
     var ridesArray = [String]()
     var myHitchesArray = [String]()
     var myHitchestoRideIdArray: [String] = []
+    var profilePictureUrl: String = ""
 
    private override init() { }
 
     func setEmail(email : String) {
        self.email = email
+   }
+    
+    func setProfilePictureUrl(profilePictureUrl: String) {
+       self.profilePictureUrl = profilePictureUrl
    }
     
     func getEmail() -> String {

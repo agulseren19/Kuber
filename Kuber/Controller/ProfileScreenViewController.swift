@@ -10,11 +10,12 @@ import UIKit
 class ProfileScreenViewController: UIViewController {
     
     let profileHelper = ProfileHelper()
-    
+    let profilePictureHelper = ProfilePictureHelper()
     @IBOutlet weak var fullNameLabel: UILabel!
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var gradeLevelLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!
+    @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var mailLabel: UILabel!
     
     @IBOutlet weak var smokingCheckBoxImageView: UIImageView!
@@ -32,8 +33,9 @@ class ProfileScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         profileHelper.delegate = self
+        profilePictureHelper.delegate = self
+        profilePictureHelper.getImageDataFromFireStorage(urlString: User.sharedInstance.profilePictureUrl)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,4 +78,15 @@ extension ProfileScreenViewController: ProfileDelegate{
     
 
     
+}
+extension ProfileScreenViewController: ProfilePictureDelegate {
+    func profileImageLoaded(){
+        profileImageView.image = UIImage(data: profilePictureHelper.imageData)
+        self.profileImageView.layer.borderWidth = 1.0
+        self.profileImageView.layer.masksToBounds = false
+        self.profileImageView.layer.borderColor = UIColor.white.cgColor
+        print("width: \(self.profileImageView.frame.width)")
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
+        self.profileImageView.clipsToBounds = true
+    }
 }

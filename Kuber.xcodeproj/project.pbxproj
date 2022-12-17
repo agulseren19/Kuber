@@ -45,6 +45,8 @@
 		1E3C29D229488B50000D5106 /* MyHitch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E3C29D129488B50000D5106 /* MyHitch.swift */; };
 		1E514C5F2923DFFD0050F2E9 /* SignInHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */; };
 		1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E514C602923E00B0050F2E9 /* SignInDelegate.swift */; };
+		1E619479294E0DFE003E4E33 /* ProfilePictureHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E619478294E0DFE003E4E33 /* ProfilePictureHelper.swift */; };
+		1E61947B294E0FF7003E4E33 /* ProfilePictureDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E61947A294E0FF7003E4E33 /* ProfilePictureDelegate.swift */; };
 		1E9D8FE3294BC7D80017D80C /* RideRequestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */; };
 		1E9D8FE5294D0D040017D80C /* RideSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9D8FE4294D0D040017D80C /* RideSearch.swift */; };
 		1E9F49EF293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */; };
@@ -162,6 +164,8 @@
 		1E3C29D129488B50000D5106 /* MyHitch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyHitch.swift; sourceTree = "<group>"; };
 		1E514C5E2923DFFD0050F2E9 /* SignInHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInHelper.swift; sourceTree = "<group>"; };
 		1E514C602923E00B0050F2E9 /* SignInDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInDelegate.swift; sourceTree = "<group>"; };
+		1E619478294E0DFE003E4E33 /* ProfilePictureHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureHelper.swift; sourceTree = "<group>"; };
+		1E61947A294E0FF7003E4E33 /* ProfilePictureDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePictureDelegate.swift; sourceTree = "<group>"; };
 		1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestHelper.swift; sourceTree = "<group>"; };
 		1E9D8FE4294D0D040017D80C /* RideSearch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideSearch.swift; sourceTree = "<group>"; };
 		1E9F49EE293D1FFF008A9CA2 /* RidesAfterSearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchHelper.swift; sourceTree = "<group>"; };
@@ -282,6 +286,8 @@
 				0CD82123294A56170045B816 /* DistrictDataDelegate.swift */,
 				1E9D8FE2294BC7D80017D80C /* RideRequestHelper.swift */,
 				1E9D8FE4294D0D040017D80C /* RideSearch.swift */,
+				1E619478294E0DFE003E4E33 /* ProfilePictureHelper.swift */,
+				1E61947A294E0FF7003E4E33 /* ProfilePictureDelegate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -704,6 +710,7 @@
 				1E3C29CC2947D19F000D5106 /* RideRequestDataSource.swift in Sources */,
 				F267756C2938D4A000D9BECF /* RidesDataSource.swift in Sources */,
 				0CD82122294A55DC0045B816 /* KuberDataSource.swift in Sources */,
+				1E619479294E0DFE003E4E33 /* ProfilePictureHelper.swift in Sources */,
 				0C330948293BF892006F143F /* HitchListTableViewCell.swift in Sources */,
 				0C00F739290C7166000F69C8 /* LogInViewController.swift in Sources */,
 				1EE875A5292FA36B00348672 /* MyRidesViewController.swift in Sources */,
@@ -723,6 +730,7 @@
 				F23E6440294A399E002C2DF8 /* HistoryOfHitchhikesViewController.swift in Sources */,
 				1E514C612923E00B0050F2E9 /* SignInDelegate.swift in Sources */,
 				0C330944293BF3CE006F143F /* MyHitchesDataSource.swift in Sources */,
+				1E61947B294E0FF7003E4E33 /* ProfilePictureDelegate.swift in Sources */,
 				0C83C6CC291D6476003FD90A /* SignUpDelegate.swift in Sources */,
 				1E9F49F1293D2051008A9CA2 /* RidesAfterSearchDelegate.swift in Sources */,
 				0C93807029087296000E9365 /* AppDelegate.swift in Sources */,

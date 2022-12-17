@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import FirebaseStorage
+
 
 class SignUpViewController: UIViewController {
 
@@ -17,8 +17,9 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var passwordField: UITextField!
     
-    private var profileImage: Data = Data()
-    private let storage = Storage.storage().reference()
+    private var profileImage: UIImage = UIImage(named: "defaultProfile")!
+    private var profileImageUrl: String = "https://firebasestorage.googleapis.com/v0/b/kuber-2f5b0.appspot.com/o/images%2F_defaultProfile_.png?alt=media&token=6f9e9fb4-02a9-49fb-960f-275bf07e7a5d"
+    
     
     @IBOutlet weak var errorText: UILabel!
     let signUpHelper = SignUpHelper()
@@ -27,8 +28,8 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         passwordField.isSecureTextEntry=true
         signUpHelper.delegate = self
-        emailField.delegate = self
-        passwordField.delegate = self
+        //emailField.delegate = self
+        //passwordField.delegate = self
 
         // Do any additional setup after loading the view.
     }
@@ -36,20 +37,11 @@ class SignUpViewController: UIViewController {
     @IBAction func continueButtonIsClicked(_ sender: Any) {
         let email = emailField.text!
         let password = passwordField.text!
-        signUpHelper.createAndSaveUser(email:email,password:password)
-        storage.child("images/\(email).png").putData(self.profileImage, metadata: nil, completion: { _, error in
-            guard error == nil else {
-                print("failed")
-                return
-            }
-            self.storage.child("images/\(email).png").downloadURL(completion: { url, error in
-                guard let url = url, error == nil else{
-                    return
-                }
-                let urlString = url.absoluteString
-                print("downloaded: \(urlString)")
-            })
-        })
+        signUpHelper.createAndSaveUser(email:email,password:password,profileImageUrl: self.profileImageUrl)
+        guard let imageData = profileImage.pngData() else {
+            return
+        }
+        signUpHelper.setImageUrl(email: email, imageData: imageData)
     }
     
     
@@ -108,22 +100,22 @@ extension SignUpViewController: UITextFieldDelegate{
 extension SignUpViewController: UIImagePickerControllerDelegate{
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
         picker.dismiss(animated: true, completion: nil)
-        guard let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else{
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.profileImage = image
+        } else{
+            print("can't pick image")
             return
         }
         
-        guard let imageData = image.pngData() else {
-            return
-        }
-        
-        self.profileImage = imageData
-        self.profileImageView.image = UIImage(data: imageData)
+        self.profileImageView.image = self.profileImage
         self.profileImageView.layer.borderWidth = 1.0
         self.profileImageView.layer.masksToBounds = false
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
         print("width: \(self.profileImageView.frame.width)")
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
         self.profileImageView.clipsToBounds = true
+        
+        
     }
 
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){

@@ -40,7 +40,7 @@ class PublishRideViewController: UIViewController {
         setToLocationPopUpButton()
         setDefaultFromNeighbourhoodLocationPopUpButton()
         setDefaultToNeighbourhoodLocationPopUpButton()
-        feeField.delegate = self
+        //feeField.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
