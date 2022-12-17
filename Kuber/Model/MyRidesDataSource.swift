@@ -53,45 +53,22 @@ class MyRidesDataSource {
                     print("A")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getRideArrayCount()){
-                        
-                        
 
                         self.myRidesArray = self.myRidesArray.filter{(ride) -> Bool in
-                            var calendar = Calendar.current
-                            var rideDateYear = calendar.component(.year, from: ride.date)
-                            var rideDateMonth = calendar.component(.month, from: ride.date)
-                            var rideDateDay = calendar.component(.day, from: ride.date)
-                            var rideTimeHour = calendar.component(.hour, from: ride.time)
-                            var rideTimeMinute = calendar.component(.minute, from: ride.time)
+                            let date1 = ride.date // for day, month, year, we look at ride.date
+                            let date2 = ride.time // for hour, minute, second, we look at ride.time
                             
-                            print("Ride date info")
-                            print(rideDateDay)
-                            print(rideTimeHour)
-                            print(rideTimeMinute)
+                            // Therefore, we need to extract the components from the two dates
+                            let date1Components = Calendar.current.dateComponents([.day, .month, .year], from: date1)
+                            let date2Components = Calendar.current.dateComponents([.hour, .minute, .second], from: date2)
                             
-                            var dateComponents = DateComponents()
-                            dateComponents.year = rideDateYear
-                            dateComponents.month = rideDateMonth
-                            dateComponents.day = rideDateDay
-                            dateComponents.timeZone = TimeZone(identifier: "UTC+03:00")
-                            dateComponents.hour = rideTimeHour
-                            dateComponents.minute = rideTimeMinute
-                            
-                            
-                            
-                            
-                            if let rideDate = dateComponents.date {
-                                print("Date components.date:")
-                                print(dateComponents.isValidDate)
-                                print(rideDate)
-                                return rideDate >= Date()
-                            } else{
-                                print("there is no date value from the date components")
+                            // Create the date value that the user has selected for the ride
+                            // by combining the components from the two dates
+                            if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
+                                return realDateOfRide >= Date()
+                            }else {
                                 return false
-                            }
-                            
-                            
-                            
+                            }               
 
                         }
                         self.myRidesArray = self.myRidesArray.sorted(by: { $0.date < $1.date })
