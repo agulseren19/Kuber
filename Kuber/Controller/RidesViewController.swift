@@ -28,7 +28,7 @@ class RidesViewController: UIViewController {
         if(all){
                 ridesDatasource.getListOfRidesWithShowAll()
         } else {
-                ridesDatasource.getListOfRidesWithoutShowAll()
+            ridesDatasource.getListOfRidesWithoutShowAll(to: to, toNeighbourhood: toNeighbourhood, date: date , time: time )
             }
         print("RİDES VİEW CONTROLLER")
         print(to)

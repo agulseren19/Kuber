@@ -54,6 +54,7 @@ class RidesDataSource{
                     
                     self.ridesArray.append(newRide)
                     self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
+                    self.ridesArray = self.ridesArray.filter{ $0.date >  Date() }
                     print("X")
                     
                     mutex = mutex + 1
@@ -71,7 +72,7 @@ class RidesDataSource{
     }
     
     
-    func getListOfRidesWithoutShowAll() {
+    func getListOfRidesWithoutShowAll(to: String, toNeighbourhood: String, date: Date, time: Date ) {
         var mutex = 0
         self.ridesArray.removeAll()
         let db = Firestore.firestore()
@@ -107,9 +108,9 @@ class RidesDataSource{
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
                         DispatchQueue.main.async {
-                            self.sortTheRideArray()
+                            self.sortTheRideArray( to: to , toNeighbourhood: toNeighbourhood , date: date , time: time  )
                             //self.delegate?.ridesListLoaded()
-                            self.getRiderInfo()
+                            //self.getRiderInfo()
                             print("Y")
                             print("ride size")
                             print(self.getNumberOfRides())
@@ -247,7 +248,7 @@ class RidesDataSource{
     }
     
     
-    func sortTheRideArray(){
+    func sortTheRideArray( to: String, toNeighbourhood: String, date: Date, time: Date  ){
         var ridePointDictionary = [Ride: Double]()
         var sortedRidesArray: [Ride] = []
         var sortedArrayCounter = 0
@@ -264,11 +265,13 @@ class RidesDataSource{
             var riderSmokeMatch = false
             var riderChatMatch = false
             var ridersMatch = false
+            var riderMajor = ""
            docRef.getDocument { (document, error) in
                if let document = document, document.exists {
                    riderSmokingPreference = document.get("smokingFlag")! as! Bool
                    riderChattinessPreference = document.get("chattinessFlag")! as! Bool
                    riderClassLevel = document.get("classLevel")! as! String
+                   riderMajor = document.get("classLevel")! as! String
                    if (riderSmokingPreference == User.sharedInstance.getSmokingPreference()){
                             riderSmokeMatch = true
                     }
@@ -278,17 +281,62 @@ class RidesDataSource{
                     if (riderSmokeMatch == true) && (riderChatMatch == true){
                             ridersMatch = true
                     }
-                   print("RIDE POINT BEFORE DISTANCE")
-                   print(ridePoint)
-                   var hitchhikerToTown = "Atasehir"//ilçe
-                   var hitchhikerToNeighbourhood = "Barbaros" //Mahalle
-                   var riderToTown = "Sariyer"//ilçe
-                   var rideToNeighbourhood = "Darussafaka" //Mahalle
+                   print("Hithcher TO")
+                   print(to)
+                   print("Hithcher NeighbourHood")
+                   print(toNeighbourhood)
+                   print("Hithcher Date")
+                   print(date)
+                   print("Hithcher Time")
+                   print(time)
+                   print("rideLocation")
+                   print(ride.toLocation)
+                   print("ride Neigh Location")
+                   print(ride.toNeighbourhoodLocation)
+                   var hitchhikerToTown = to//ilçe
+                   var hitchhikerToNeighbourhood = toNeighbourhood //Mahalle
+                   
+                 
+                   
+                   
+                   
+                   var riderToTown = ride.toLocation//ilçe
+                   var riderToNeighbourhood = ride.toNeighbourhoodLocation //Mahalle
+                   print("hitchhikerToNeighbourhood")
+                   print(hitchhikerToNeighbourhood)
+                   print("hitchhikerToTown")
+                   print(hitchhikerToTown)
+                   if(riderToNeighbourhood == "Ana Kampüs"){
+                       riderToTown = "Sarıyer"
+                       riderToNeighbourhood = "Koç Üniversitesi"
+                   } else if (riderToNeighbourhood == "Batı Kampüs"){
+                       riderToTown = "Sarıyer"
+                       riderToNeighbourhood = "Koç Üniversitesi Batı Kampüsü"
+                   }
+                   if(toNeighbourhood == "Ana Kampüs"){
+                       hitchhikerToTown = "Sarıyer"
+                       hitchhikerToNeighbourhood = "Koç Üniversitesi"
+                   } else if (toNeighbourhood == "Batı Kampüs"){
+                       hitchhikerToTown = "Sarıyer"
+                       hitchhikerToNeighbourhood = "Yediveren Sokak"
+                   }
+                   hitchhikerToTown = self.parseAddress(address: hitchhikerToTown)
+                   hitchhikerToNeighbourhood = self.parseAddress(address: hitchhikerToNeighbourhood)
+                   riderToTown = self.parseAddress(address: riderToTown)
+                   riderToNeighbourhood = self.parseAddress(address: riderToNeighbourhood)
+                   print("hitchhikerToNeighbourhood")
+                   print(hitchhikerToNeighbourhood)
+                   print("hitchhikerToTown")
+                   print(hitchhikerToTown)
+                   print("riderToNeighbourhood")
+                   print(riderToNeighbourhood)
+                   print("riderToTown")
+                   print(riderToTown)
                    /* Adres template
                     https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Zekeriyaköy%2CSarıyer&origins=Darüşşafaka%2CSarıyer&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34
                     */
                    
-                   var finalUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=" + rideToNeighbourhood + "%2C" + riderToTown + "%7CIstanbul%2CTurkiye&origins=" + hitchhikerToNeighbourhood + "%2C" + hitchhikerToTown + "%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
+                   var finalUrl = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=" + riderToNeighbourhood + "%2C" + riderToTown + "%7CIstanbul%2CTurkiye&origins=" + hitchhikerToNeighbourhood + "%2C" + hitchhikerToTown + "%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    
                    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Asik%2CVeysel%2CAtasehir%7CIstanbul%2CTurkiye&origins=Darussafaka%2CSariyer%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    var resp = ""
@@ -356,6 +404,7 @@ class RidesDataSource{
                        let numberFormatter = NumberFormatter()
                        let number = numberFormatter.number(from: distance)
                        let numberFloatValue = number?.floatValue
+                       var distanceBetweenDestinations = numberFloatValue
                        var riderClassLevelInt = 0
                         if (riderClassLevel == "ELC"){
                                 riderClassLevelInt = 0
@@ -398,12 +447,54 @@ class RidesDataSource{
                        ridePoint = ridePoint - Double(classDifference)
                        ridePoint = ridePoint - (Double(ride.fee)/5)
                        print(ridePoint)
+                       /*let rideTime = ride.time
+                       var calendar = Calendar.current
+                       let hour = calendar.component(.hour, from: rideTime)
+                       let minute = calendar.component(.minute, from: rideTime)*/
+                       var calendar = Calendar.current
+                       var hitcherDateSelectionDay = calendar.component(.day, from: date)
+                       var hitcherDateSelectionMonth = calendar.component(.month, from: date)
+                       var hitcherDateSelectionYear = calendar.component(.year, from: date)
+                       var hitcherHourSelection = calendar.component(.hour, from: time)
+                       var hitcherMinuteSelection = calendar.component(.minute, from: time)
+                       var rideDateYear = calendar.component(.year, from: ride.date)
+                       var rideDateMonth = calendar.component(.month, from: ride.date)
+                       var rideDateDay = calendar.component(.day, from: ride.date)
+                       var rideTimeHour = calendar.component(.hour, from: ride.time)
+                       var rideTimeMinute = calendar.component(.minute, from: ride.time)
+
+                       
+                       var rideTime = ride.time
+                       print("hitcherDateSelectionDay, hitcherDateSelectionmonth , hitcherDateSelectionyear :")
+                       print(hitcherDateSelectionDay)
+                       print(hitcherDateSelectionMonth)
+                       print(hitcherDateSelectionYear)
+                       print("hitcherHourSelectionHour:")
+                       print(hitcherHourSelection)
+                       print("hitcherMinuteSelection:")
+                       print(hitcherMinuteSelection)
+                       print("ridedateYear, ridedateMonth , ridedateDay :")
+                       print(rideDateDay)
+                       print(rideDateMonth)
+                       print(rideDateYear)
+                       print("rideTimeHour, rideTimeMinute  :")
+                       print(rideTimeHour)
+                       print(rideTimeMinute)
                       
-                       ridePointDictionary[ride] = ridePoint
+                       ridePoint = ridePoint - Double(distanceBetweenDestinations!)
+                       var timeDifferenceHour = rideTimeHour - hitcherHourSelection
+                       var timeDifferenceMinute = rideTimeMinute - hitcherMinuteSelection
+                       var timeDifferenceInMinutes = abs(60*timeDifferenceHour+timeDifferenceMinute)
+                       ridePoint = ridePoint - Double(timeDifferenceInMinutes*10)
+                       if(riderMajor == User.sharedInstance.getMajor()){
+                           ridePoint = ridePoint + 2
+                       }
+                       if(rideDateDay == hitcherDateSelectionDay ) && (rideDateMonth == hitcherDateSelectionMonth ) && (rideDateYear == hitcherDateSelectionYear )  {
+                           ridePointDictionary[ride] = ridePoint
+                       }
                        
                        var sortedByValueDictionary = ridePointDictionary.sorted { $0.1 > $1.1 }
-                       print("Dictionary is here")
-                       print(sortedByValueDictionary)
+                       
                        /*sortedByValueDictionary = sortedByValueDictionary.filter{ $0 != $1  }
                        print(sortedByValueDictionary)*/
                        counter = counter + 1
@@ -417,7 +508,10 @@ class RidesDataSource{
                                }
                            }
                            print("sorted ride array:")
+                           self.ridesArray = sortedRidesArray
                            print(sortedRidesArray)
+                           //self.delegate?.ridesListLoaded()
+                           self.getRiderInfo()
                        }
                        
                        
@@ -432,4 +526,24 @@ class RidesDataSource{
             
         }
     }
+    
+    func parseAddress(address: String) -> String {
+            var parsedAddress = address
+            parsedAddress = parsedAddress.replacingOccurrences(of: " ", with: "%2C")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "ı", with: "i")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Ğ", with: "G")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "ğ", with: "g")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Ü", with: "U")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "ü", with: "u")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Ş", with: "S")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "ş", with: "s")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "İ", with: "I")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Ö", with: "O")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "ö", with: "o")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Ç", with: "C")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "ç", with: "c")
+            print("prsed address")
+            print(parsedAddress)
+            return parsedAddress
+        }
 }
