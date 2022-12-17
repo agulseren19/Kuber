@@ -174,9 +174,9 @@ class SearchRideViewController: UIViewController {
              let time = timePicker.date
              let all = showAllSwitch.isOn
              
-             ridesViewController.from = fromNeighbourhood
+             ridesViewController.from = from
              ridesViewController.fromNeighbourhood = fromNeighbourhood
-             ridesViewController.to = toNeighbourhood
+             ridesViewController.to = to
              ridesViewController.toNeighbourhood = toNeighbourhood
              ridesViewController.date = date
              ridesViewController.time = time

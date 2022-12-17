@@ -14,6 +14,10 @@ struct KuberDataSource {
     init() {
         districtArray = [
             District(
+                name: "Koç Üniversitesi Kampüsleri",
+                neighbourhood: ["Ana Kampüs", "Batı Kampüs"]
+            ),
+            District(
                 name: "Adalar",
                 neighbourhood: ["Burgazada", "Heybeliada", "Kınalıada", "Maden", "Nizam"]
             ),
@@ -45,6 +49,7 @@ struct KuberDataSource {
                 name: "Başakşehir",
                 neighbourhood: ["Altınşehir", "Bahçeşehir 1. Kısım", "Bahçeşehir 2. Kısım", "Başak", "Başakşehir", "Güvercintepe", "Kayabaşı", "Şahintepe", "Şamlar", "Ziya Gökalp"]
             ),
+            
             District(
                 name: "Bayrampaşa",
                 neighbourhood:["Altıntepsi", "Cevatpaşa", "İsmetpaşa", "Kartaltepe", "Kocatepe", "Muratpaşa", "Orta", "Terazidere", "Vatan", "Yenidoğan", "Yıldırım"]
