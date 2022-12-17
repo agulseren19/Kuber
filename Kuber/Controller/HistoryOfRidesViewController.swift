@@ -22,7 +22,7 @@ class HistoryOfRidesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        myRidesDatasource.getListOfMyRides()
+        myRidesDatasource.getListOfMyPreviousRides()
     }
     
     func updateTheTableViewDesign() {
