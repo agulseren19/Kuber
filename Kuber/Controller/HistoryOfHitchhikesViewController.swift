@@ -9,6 +9,7 @@ import UIKit
 
 class HistoryOfHitchhikesViewController: UIViewController {
 
+    @IBOutlet weak var historyOfHitchhikesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
 

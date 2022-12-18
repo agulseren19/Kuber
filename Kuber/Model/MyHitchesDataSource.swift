@@ -119,6 +119,30 @@ class MyHitchesDataSource{
                     if (mutex == self.myHitchesArray.count){
                         DispatchQueue.main.async {
                             self.isAlreadyHitched()
+                            /*
+                            // Displaying the current (not expired/old) hitchhikes of the user in the table view
+                            // The filtering is dependent on the ride's original date that the hitchhiker has requested
+                            self.myFinalHitchesArray = self.myFinalHitchesArray.filter{(myHitch) -> Bool in
+                                let date1 = myHitch.hitch.ride.date // for day, month, year, we look at ride.date
+                                let date2 = myHitch.hitch.ride.time // for hour, minute, second, we look at ride.time
+                                
+                                // Therefore, we need to extract the components from the two dates
+                                let date1Components = Calendar.current.dateComponents([.day, .month, .year], from: date1)
+                                let date2Components = Calendar.current.dateComponents([.hour, .minute, .second], from: date2)
+                                
+                                // Create the date value that the user has selected for the ride
+                                // by combining the components from the two dates
+                                if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
+                                    print("realdate is valid")
+                                    print(realDateOfRide)
+                                    return realDateOfRide >= Date()
+                                }else {
+                                    print("realDateOfRide is not valid")
+                                    return false
+                                }
+                                
+                            }
+                            */
                             self.myFinalHitchesArray = self.myFinalHitchesArray.sorted(by: { $0.hitch.date < $1.hitch.date })
                             self.delegate?.hitchListLoaded()
                         }
