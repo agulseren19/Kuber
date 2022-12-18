@@ -81,7 +81,7 @@ class MyHitchesDataSource{
                             toLocation: document.get("to") as! String,
                             toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
                             date: (document.get("date") as! Timestamp).dateValue(),
-                            time: (document.get("date") as! Timestamp).dateValue(),
+                            time: (document.get("time") as! Timestamp).dateValue(),
                             seatAvailable: document.get("numberOfSeats") as! Int,
                             fee: document.get("fee") as! Int,
                             mail: document.get("mail") as! String,
