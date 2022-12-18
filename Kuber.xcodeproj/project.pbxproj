@@ -920,9 +920,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B8LUD4NWYJ;
+				DEVELOPMENT_TEAM = 7FD883PKJS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kuber/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to pick a profile picture for KUber !";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -933,7 +934,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = comp491.kuber.Kuber;
+				PRODUCT_BUNDLE_IDENTIFIER = comp491.ku.kuber.Kuber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -949,9 +950,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = B8LUD4NWYJ;
+				DEVELOPMENT_TEAM = 7FD883PKJS;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kuber/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to pick a profile picture for KUber !";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -962,7 +964,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = comp491.kuber.Kuber;
+				PRODUCT_BUNDLE_IDENTIFIER = comp491.ku.kuber.Kuber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

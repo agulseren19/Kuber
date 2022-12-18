@@ -71,7 +71,7 @@ class LogInViewController: UIViewController {
         }
       
       // move the root view up by the distance of keyboard height
-      self.view.frame.origin.y = 0 - keyboardSize.height
+      self.view.frame.origin.y = 60 - keyboardSize.height
         hitchImage.isHidden=true
 
     }
