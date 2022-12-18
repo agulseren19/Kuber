@@ -29,7 +29,7 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordField.isSecureTextEntry = true
+        //passwordField.isSecureTextEntry = true
         signInHelper.delegate = self
         //emailField.delegate = self
         //passwordField.delegate = self

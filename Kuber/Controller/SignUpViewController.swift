@@ -26,7 +26,7 @@ class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        passwordField.isSecureTextEntry=true
+       // passwordField.isSecureTextEntry=true
         signUpHelper.delegate = self
         //emailField.delegate = self
         //passwordField.delegate = self
