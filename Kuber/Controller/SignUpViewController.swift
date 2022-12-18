@@ -32,6 +32,8 @@ class SignUpViewController: UIViewController {
         //passwordField.delegate = self
 
         // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+              NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @IBAction func continueButtonIsClicked(_ sender: Any) {
@@ -52,6 +54,27 @@ class SignUpViewController: UIViewController {
         picker.allowsEditing = true
         present(picker, animated: true)
         
+    }
+    @objc func keyboardWillShow(notification: NSNotification) {
+        
+        guard let  profileImageView=profileImageView , let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        else {
+           // if keyboard size is not available for some reason, dont do anything
+           return
+        }
+      
+      // move the root view up by the distance of keyboard height
+      self.view.frame.origin.y = 0 - keyboardSize.height
+        profileImageView.isHidden=true
+        uploadImageButton.isHidden=true
+
+    }
+    @objc func keyboardWillHide(notification: NSNotification) {
+      // move back the root view origin to zero
+      self.view.frame.origin.y = 0
+        profileImageView.isHidden=false
+        uploadImageButton.isHidden=false
+
     }
     /*
     // MARK: - Navigation

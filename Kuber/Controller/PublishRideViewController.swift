@@ -25,7 +25,9 @@ class PublishRideViewController: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     
     
-    @IBOutlet weak var feeField: UITextField!
+    @IBOutlet weak var feeSlider: UISlider!
+    
+    @IBOutlet weak var feeField: UILabel!
     
     @IBOutlet weak var numberOfSeatsField: UISegmentedControl!
     private let kuberDataSource=KuberDataSource()
@@ -70,12 +72,19 @@ class PublishRideViewController: UIViewController {
 
         let date = datePicker.date
         let time = timePicker.date
-        let fee = feeField.text!
+        let feeNum=Int(feeSlider.value)
+        let fee = "\(feeNum)"
         let numberOfSeats=numberOfSeatsField.selectedSegmentIndex+1
         publishRideHelper.saveRide(from: from, fromNeighbourhood: fromNeighbourhood, to: to,toNeighbourhood: toNeighbourhood, date: date, time: time, fee: fee, numberOfSeats: numberOfSeats)
     
     
 }
+    
+    @IBAction func feeSliderChanged(_ sender: UISlider) {
+        let fee=Int(feeSlider.value)
+        feeField.text="\(fee) TL"
+    }
+    
     func setFromLocationPopUpButton(){
         let arraySize=kuberDataSource.getNumberDistricts()
         let iteration=arraySize-1
