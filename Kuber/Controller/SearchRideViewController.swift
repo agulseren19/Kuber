@@ -56,7 +56,7 @@ class SearchRideViewController: UIViewController {
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: number)
         for i in 0...number-1{
-            if i == 0{
+            if i == 1{
                 children[i]=UIAction(title: kuberDataSource.getDistrict(for: i)?.name ?? "", state: .on,handler: optionClosure)
             }
             else{
@@ -78,7 +78,7 @@ class SearchRideViewController: UIViewController {
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: number)
         for i in 0...number-1{
-            if i == 0{
+            if i == 1{
                 children[i]=UIAction(title: kuberDataSource.getDistrict(for: i)?.name ?? "", state: .on,handler: optionClosure)
             }
             else{

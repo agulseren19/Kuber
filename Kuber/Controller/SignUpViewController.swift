@@ -64,7 +64,7 @@ class SignUpViewController: UIViewController {
         }
       
       // move the root view up by the distance of keyboard height
-      self.view.frame.origin.y = 60 - keyboardSize.height
+      self.view.frame.origin.y = 100 - keyboardSize.height
         profileImageView.isHidden=true
         uploadImageButton.isHidden=true
 

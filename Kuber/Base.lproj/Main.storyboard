@@ -153,6 +153,7 @@
                         <accessibility key="accessibilityConfiguration" label="h"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Mg7-QV-51C" secondAttribute="trailing" symbolic="YES" id="46g-N4-Z7F"/>
+                            <constraint firstItem="0cV-3n-War" firstAttribute="top" secondItem="8LO-Q5-MQB" secondAttribute="bottom" constant="38" id="5pv-4H-nhs"/>
                             <constraint firstItem="uvW-oH-2YC" firstAttribute="centerY" secondItem="3hk-yR-62B" secondAttribute="centerY" id="6wc-99-oz1"/>
                             <constraint firstItem="FZg-2S-xbJ" firstAttribute="top" secondItem="0cV-3n-War" secondAttribute="bottom" constant="31" id="81a-OI-v6U"/>
                             <constraint firstItem="8LO-Q5-MQB" firstAttribute="leading" secondItem="IAr-SA-ZVO" secondAttribute="trailing" id="AyR-uG-n6x"/>
@@ -187,7 +188,7 @@
                             <constraint firstItem="cuz-Fn-Fqb" firstAttribute="leading" secondItem="Meb-lr-3T8" secondAttribute="leading" id="mLb-Y8-fQu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Meb-lr-3T8" secondAttribute="trailing" symbolic="YES" id="nst-QA-B7i"/>
                             <constraint firstItem="iJ0-0A-h97" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="oCX-R7-x0t"/>
-                            <constraint firstItem="5CA-6Y-6Jd" firstAttribute="top" secondItem="Mg7-QV-51C" secondAttribute="bottom" constant="146" id="oQG-QG-vit"/>
+                            <constraint firstItem="5CA-6Y-6Jd" firstAttribute="top" relation="lessThanOrEqual" secondItem="Mg7-QV-51C" secondAttribute="bottom" constant="146" id="oQG-QG-vit"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5CA-6Y-6Jd" secondAttribute="bottom" constant="77" id="rJX-tx-VKQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FZg-2S-xbJ" secondAttribute="trailing" symbolic="YES" id="uwE-Zm-SlS"/>
                             <constraint firstItem="cuz-Fn-Fqb" firstAttribute="top" secondItem="Meb-lr-3T8" secondAttribute="bottom" constant="8" symbolic="YES" id="uyh-xw-MBR"/>
@@ -1715,7 +1716,7 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SlD-Cc-Tf9">
-                                <rect key="frame" x="15" y="91" width="77" height="35"/>
+                                <rect key="frame" x="15" y="27" width="77" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit v2"/>
