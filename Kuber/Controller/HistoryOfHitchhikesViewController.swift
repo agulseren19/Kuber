@@ -27,7 +27,7 @@ class HistoryOfHitchhikesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        hitchhikeDatasource.getListOfHitches()
+        hitchhikeDatasource.getListOfHitches(areCurrentHitches: false)
         
     }
 

@@ -65,8 +65,10 @@ class MyRidesDataSource {
                             // Create the date value that the user has selected for the ride
                             // by combining the components from the two dates
                             if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
+                                
                                 return realDateOfRide >= Date()
                             }else {
+                                // not a valid date
                                 return false
                             }               
 
