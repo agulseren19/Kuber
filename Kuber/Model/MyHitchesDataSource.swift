@@ -22,7 +22,7 @@ class MyHitchesDataSource{
     init() {
     }
     
-    func getListOfHitches() {
+    func getListOfHitches(areCurrentHitches: Bool) {
         self.myHitchesArray.removeAll()
         self.myFinalHitchesArray.removeAll()
         self.rideInfoArray.removeAll()
@@ -46,7 +46,7 @@ class MyHitchesDataSource{
                     print("A")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getMyHitchesArrayCount()){
-                        self.getRideInfo()
+                        self.getRideInfo(areCurrentHitches: areCurrentHitches)
                         print("C")
                     }
                     
@@ -60,7 +60,7 @@ class MyHitchesDataSource{
        
     }
     
-    func getRideInfo() {
+    func getRideInfo(areCurrentHitches: Bool) {
         let db = Firestore.firestore()
         var mutex = 0
         if (myHitchesArray.count == 0){
@@ -90,7 +90,7 @@ class MyHitchesDataSource{
                         self.myHitchesArray[i].ride = ride
                         mutex = mutex + 1
                         if (mutex == self.myHitchesArray.count){
-                            self.getRiderInfo()
+                            self.getRiderInfo(areCurrentHitches: areCurrentHitches)
                             print("C")
                         }
                     }
@@ -99,7 +99,7 @@ class MyHitchesDataSource{
         }
     }
     
-    func getRiderInfo(){
+    func getRiderInfo(areCurrentHitches: Bool){
         let db = Firestore.firestore()
         var mutex = 0
         for i in 0..<myHitchesArray.count {
@@ -119,7 +119,7 @@ class MyHitchesDataSource{
                     if (mutex == self.myHitchesArray.count){
                         DispatchQueue.main.async {
                             self.isAlreadyHitched()
-                            /*
+                            
                             // Displaying the current (not expired/old) hitchhikes of the user in the table view
                             // The filtering is dependent on the ride's original date that the hitchhiker has requested
                             self.myFinalHitchesArray = self.myFinalHitchesArray.filter{(myHitch) -> Bool in
@@ -133,16 +133,24 @@ class MyHitchesDataSource{
                                 // Create the date value that the user has selected for the ride
                                 // by combining the components from the two dates
                                 if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
-                                    print("realdate is valid")
-                                    print(realDateOfRide)
-                                    return realDateOfRide >= Date()
+                                    
+                                    if areCurrentHitches {
+                                        // My Hitches Screen would have areCurrentHitches: true
+                                        // The current hitches would be displayed
+                                        return realDateOfRide >= Date()
+                                    } else {
+                                        // History of Hitchhikes Screen would have areCurrentHitches: false
+                                        // The old hitches would be displayed
+                                        return realDateOfRide < Date()
+                                    }
+                                    
                                 }else {
                                     print("realDateOfRide is not valid")
                                     return false
                                 }
                                 
                             }
-                            */
+                            
                             self.myFinalHitchesArray = self.myFinalHitchesArray.sorted(by: { $0.hitch.date < $1.hitch.date })
                             self.delegate?.hitchListLoaded()
                         }
