@@ -95,10 +95,7 @@ class PublishRideViewController: UIViewController {
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: arraySize)
         for i in 0...iteration{
-            print(i)
-            if i == 0{
-                print("inside")
-                print(i)
+            if i == 1{
                 children[i]=UIAction(title: kuberDataSource.getDistrict(for: i)?.name ?? "", state: .on,handler: optionClosure)
             }
             else{
@@ -122,7 +119,7 @@ class PublishRideViewController: UIViewController {
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: arraySize)
         for i in 0...iteration{
-            if i == 0{
+            if i == 1{
                 children[i]=UIAction(title: kuberDataSource.getDistrict(for: i)?.name ?? "", state: .on,handler: optionClosure)
             }
             else{
