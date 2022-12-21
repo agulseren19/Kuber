@@ -57,7 +57,6 @@ class SecondSignUpViewController: UIViewController {
          print("Document does not exist")
          }
          }*/
-        
         self.navigationController?.popToRootViewController(animated: true)
     }
     

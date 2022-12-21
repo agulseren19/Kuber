@@ -48,10 +48,13 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5CA-6Y-6Jd">
                                 <rect key="frame" x="54" y="698" width="282" height="35"/>
                                 <color key="backgroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="49Z-U7-jL5"/>
+                                </constraints>
                                 <color key="tintColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign Up">
-                                    <color key="baseBackgroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.74726301429999997" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="signUpButtonClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LJJ-QS-wKb"/>
@@ -160,10 +163,10 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8LO-Q5-MQB" secondAttribute="trailing" constant="43" id="B9p-dC-htD"/>
                             <constraint firstItem="Meb-lr-3T8" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="43" id="BC3-KB-5cX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cuz-Fn-Fqb" secondAttribute="trailing" symbolic="YES" id="DZN-Hw-Nha"/>
+                            <constraint firstItem="5CA-6Y-6Jd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.723077" id="DjH-Ak-7Mx"/>
                             <constraint firstItem="0cV-3n-War" firstAttribute="leading" secondItem="iJ0-0A-h97" secondAttribute="trailing" id="FRW-4N-26k"/>
                             <constraint firstItem="8LO-Q5-MQB" firstAttribute="centerY" secondItem="IAr-SA-ZVO" secondAttribute="centerY" id="IJX-eR-DQh"/>
                             <constraint firstItem="Meb-lr-3T8" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="J1D-4o-upa"/>
-                            <constraint firstItem="5CA-6Y-6Jd" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.723077" id="J7H-c0-qQc"/>
                             <constraint firstItem="IAr-SA-ZVO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="KMk-Ed-qsB"/>
                             <constraint firstItem="HSh-Tg-FqP" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="Mgn-Fd-hSC"/>
                             <constraint firstItem="3hk-yR-62B" firstAttribute="top" secondItem="cuz-Fn-Fqb" secondAttribute="bottom" constant="31" id="NLU-pS-Ks1"/>
@@ -188,8 +191,8 @@
                             <constraint firstItem="cuz-Fn-Fqb" firstAttribute="leading" secondItem="Meb-lr-3T8" secondAttribute="leading" id="mLb-Y8-fQu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Meb-lr-3T8" secondAttribute="trailing" symbolic="YES" id="nst-QA-B7i"/>
                             <constraint firstItem="iJ0-0A-h97" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="31" id="oCX-R7-x0t"/>
-                            <constraint firstItem="5CA-6Y-6Jd" firstAttribute="top" relation="lessThanOrEqual" secondItem="Mg7-QV-51C" secondAttribute="bottom" constant="146" id="oQG-QG-vit"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="5CA-6Y-6Jd" secondAttribute="bottom" constant="77" id="rJX-tx-VKQ"/>
+                            <constraint firstItem="5CA-6Y-6Jd" firstAttribute="top" secondItem="Mg7-QV-51C" secondAttribute="bottom" constant="146" id="oQG-QG-vit"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5CA-6Y-6Jd" secondAttribute="bottom" constant="77" id="rJX-tx-VKQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="FZg-2S-xbJ" secondAttribute="trailing" symbolic="YES" id="uwE-Zm-SlS"/>
                             <constraint firstItem="cuz-Fn-Fqb" firstAttribute="top" secondItem="Meb-lr-3T8" secondAttribute="bottom" constant="8" symbolic="YES" id="uyh-xw-MBR"/>
                             <constraint firstItem="HSh-Tg-FqP" firstAttribute="centerY" secondItem="Mg7-QV-51C" secondAttribute="centerY" id="xFM-v6-QBv"/>
@@ -275,6 +278,9 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CuA-0e-vab">
                                 <rect key="frame" x="54" y="595.33333333333337" width="282" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="OHU-CI-YG1"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In">
                                     <color key="baseBackgroundColor" red="0.74726301429999997" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -393,6 +399,7 @@
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="fPK-BE-Sus">
                                 <rect key="frame" x="9" y="172" width="23" height="190"/>
+                                <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="190" id="2ws-3o-LPV"/>
                                     <constraint firstAttribute="width" secondItem="fPK-BE-Sus" secondAttribute="height" multiplier="23:190" id="ptl-5l-Beo"/>
@@ -419,7 +426,7 @@
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ik-Eq-PKf">
                                 <rect key="frame" x="30" y="620.33333333333337" width="51" height="31"/>
                                 <color key="tintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="onTintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="onTintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </switch>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show All Rides" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OGs-HA-fyz">
                                 <rect key="frame" x="87" y="625.66666666666663" width="168" height="20"/>
@@ -433,7 +440,7 @@
                                 <color key="tintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Search">
-                                    <color key="baseBackgroundColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="searchButtonClicked:" destination="3wR-b4-5cS" eventType="touchUpInside" id="Cnn-Gt-Zsj"/>
@@ -639,6 +646,7 @@
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="mrm-0D-oFm">
                                                             <rect key="frame" x="8" y="12" width="23" height="85"/>
+                                                            <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="mrm-0D-oFm" secondAttribute="height" multiplier="23:102" constant="3.8333333333333321" id="T6l-u3-9sl"/>
                                                                 <constraint firstAttribute="width" constant="23" id="r7i-km-Dhu"/>
@@ -723,6 +731,7 @@
                                                                 <constraint firstAttribute="width" constant="108" id="25W-yk-uZ8"/>
                                                                 <constraint firstAttribute="width" secondItem="1UJ-Jj-KoW" secondAttribute="height" multiplier="108:59" id="pYa-Sc-8yS"/>
                                                             </constraints>
+                                                            <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <state key="normal" title="Button"/>
                                                             <buttonConfiguration key="configuration" style="plain" imagePlacement="top" title="Send Hitch!" titleAlignment="center">
                                                                 <imageReference key="image" image="hand.thumbsup.circle.fill" catalog="system" symbolScale="large"/>
@@ -1031,7 +1040,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled">
                                     <imageReference key="image" image="plus.circle.fill" catalog="system" symbolScale="large"/>
-                                    <color key="baseForegroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseForegroundColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="baseBackgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
@@ -1080,7 +1089,7 @@
                                 <color key="tintColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Publish">
-                                    <color key="baseBackgroundColor" red="0.72756952050000001" green="0.067507363860000003" blue="0.067410103979999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="publishButtonClicked:" destination="DHg-Tr-RWP" eventType="touchUpInside" id="KFc-US-dbD"/>
@@ -1357,7 +1366,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain">
                                     <imageReference key="image" image="magnifyingglass.circle.fill" catalog="system" symbolScale="large"/>
-                                    <color key="baseForegroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseForegroundColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="3wR-b4-5cS" kind="show" id="DGf-nz-Fgz"/>
@@ -1658,6 +1667,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VAo-1q-qx7" secondAttribute="height" multiplier="183:35" id="Wur-KM-G77"/>
                                 </constraints>
+                                <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="History of Rides"/>
                                 <connections>
@@ -1670,6 +1680,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="vOY-Ew-WWB" secondAttribute="height" multiplier="183:35" id="egC-HM-uop"/>
                                 </constraints>
+                                <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="History of Hitchhikes"/>
                                 <connections>
@@ -1837,7 +1848,7 @@
                                 <color key="tintColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save the Changes">
-                                    <color key="baseBackgroundColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="saveTheChangesButtonTapped:" destination="68R-FA-52q" eventType="touchUpInside" id="x0N-We-jcP"/>
@@ -2042,6 +2053,7 @@
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="8AO-hL-GFV">
                                                             <rect key="frame" x="8" y="12" width="23" height="85"/>
+                                                            <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" constant="23" id="hiN-Sh-les"/>
                                                                 <constraint firstAttribute="width" secondItem="8AO-hL-GFV" secondAttribute="height" multiplier="23:102" constant="3.8333333333333321" id="nlS-ao-U8w"/>
@@ -2204,6 +2216,7 @@
                                                         </imageView>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="link" translatesAutoresizingMaskIntoConstraints="NO" id="Vb3-Wm-Yj0">
                                                             <rect key="frame" x="8" y="12" width="23" height="85"/>
+                                                            <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="width" secondItem="Vb3-Wm-Yj0" secondAttribute="height" multiplier="23:102" constant="3.8333333333333321" id="MhC-Kl-Qax"/>
                                                                 <constraint firstAttribute="width" constant="23" id="Tnh-1c-crn"/>
@@ -2562,9 +2575,12 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5qU-kJ-Dlv">
                                 <rect key="frame" x="54" y="596" width="282" height="35"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="Kdn-8d-7oS"/>
+                                </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Continue">
-                                    <color key="baseBackgroundColor" red="0.74726301429999997" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="baseBackgroundColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="continueButtonIsClicked:" destination="NDc-V1-Ugo" eventType="touchUpInside" id="Ohz-lD-F3r"/>
@@ -2598,6 +2614,7 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1JU-EJ-h3t">
                                 <rect key="frame" x="130" y="309" width="130" height="35"/>
+                                <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Upload Image"/>
                                 <connections>
@@ -2619,7 +2636,7 @@
                             <constraint firstItem="5qU-kJ-Dlv" firstAttribute="width" secondItem="MeW-H7-4hb" secondAttribute="width" multiplier="0.723077" id="JSg-ag-YHQ"/>
                             <constraint firstItem="5qU-kJ-Dlv" firstAttribute="centerX" secondItem="1Xi-dn-Kzw" secondAttribute="centerX" id="KaO-4s-HQI"/>
                             <constraint firstItem="hgZ-sy-O4u" firstAttribute="top" secondItem="qkO-ro-IbT" secondAttribute="bottom" constant="4" id="Kk9-5e-ze8"/>
-                            <constraint firstItem="1Xi-dn-Kzw" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5qU-kJ-Dlv" secondAttribute="bottom" constant="179" id="Osm-6H-fxD"/>
+                            <constraint firstItem="1Xi-dn-Kzw" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="5qU-kJ-Dlv" secondAttribute="bottom" priority="750" constant="179" id="Osm-6H-fxD"/>
                             <constraint firstItem="FFv-1i-RXJ" firstAttribute="top" secondItem="1Xi-dn-Kzw" secondAttribute="top" constant="268" id="PpM-Nb-8sR"/>
                             <constraint firstItem="ReP-1Y-SZg" firstAttribute="leading" secondItem="FUt-dx-dXY" secondAttribute="trailing" constant="8" symbolic="YES" id="UKD-yb-LRT"/>
                             <constraint firstItem="uV8-of-UaC" firstAttribute="leading" secondItem="1Xi-dn-Kzw" secondAttribute="leading" constant="30" id="Ufp-NZ-0hZ"/>
@@ -2706,7 +2723,7 @@
             <point key="canvasLocation" x="2277" y="1486"/>
         </scene>
     </scenes>
-    <color key="tintColor" red="0.74726301429999997" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+    <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
         <image name="Profile 1" width="28" height="28"/>
         <image name="car" catalog="system" width="128" height="95"/>

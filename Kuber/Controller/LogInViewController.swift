@@ -38,6 +38,11 @@ class LogInViewController: UIViewController {
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
               NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        tap.cancelsTouchesInView = false
+        view.addGestureRecognizer(tap)
+        
+
 
     }
     
@@ -66,20 +71,20 @@ class LogInViewController: UIViewController {
         
         guard let  hitchImage=hitchImage , let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         else {
-           // if keyboard size is not available for some reason, dont do anything
            return
         }
       
-      // move the root view up by the distance of keyboard height
       self.view.frame.origin.y = 100 - keyboardSize.height
         hitchImage.isHidden=true
 
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-      // move back the root view origin to zero
       self.view.frame.origin.y = 0
         hitchImage.isHidden=false
 
+    }
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
     }
 
     

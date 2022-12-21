@@ -22,6 +22,7 @@ class MyRidesViewController: UIViewController {
         myRidesDatasource.delegate = self
         updateTheTableViewDesign()
         // Do any additional setup after loading the view.
+
     }
     
     func updateTheTableViewDesign() {
@@ -31,6 +32,13 @@ class MyRidesViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         myRidesDatasource.getListOfMyRides()
+        /*    let appearance = UITabBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(red: 0.75, green: 0.04, blue: 0.15, alpha: 1.00)
+            appearance.selectionIndicatorTintColor=UIColor.red
+            self.tabBarController?.tabBar.standardAppearance = appearance;
+            self.tabBarController?.tabBar.scrollEdgeAppearance = self.tabBarController?.tabBar.standardAppearance
+        */
     }
     
     // MARK: - Navigation

@@ -200,6 +200,7 @@ extension PublishRideViewController: PublishRideDelegate {
     func publishedToDatabase(){
         print("aaaaaaaaa")
         self.navigationController?.popToRootViewController(animated: true)
+
         
     }
 }

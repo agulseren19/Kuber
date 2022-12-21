@@ -25,7 +25,6 @@ class HitchhikeStatusViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         hitchhikeDatasource.getListOfHitches(areCurrentHitches: true)
-        
     }
     
     func updateTheTableViewDesign() {

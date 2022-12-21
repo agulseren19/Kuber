@@ -36,6 +36,7 @@ class RidesViewController: UIViewController {
         updateTheTableViewDesign()
     }
     
+    
     func updateTheTableViewDesign() {
         ridesAfterSearchTableView.separatorStyle = .none
         ridesAfterSearchTableView.showsVerticalScrollIndicator = false
