@@ -19,6 +19,10 @@ class RidesViewController: UIViewController {
     private var ridesDatasource = RidesDataSource()
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
+    
+    @IBOutlet weak var warningLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +38,10 @@ class RidesViewController: UIViewController {
         print(to)
         
         updateTheTableViewDesign()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        warningLabel.isHidden = true
     }
     
     
@@ -59,6 +67,7 @@ extension RidesViewController: UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("view controller rides count \(ridesDatasource.getNumberOfRides())")
         return ridesDatasource.getNumberOfRides()
     }
     
@@ -71,6 +80,8 @@ extension RidesViewController: UITableViewDataSource{
         if var ride = ridesDatasource.getRide(for: indexPath.row){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/YY"
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
             
             if(ride.ride.hitched) {
                 print("Ride Exist \(indexPath.row)")
@@ -86,10 +97,7 @@ extension RidesViewController: UITableViewDataSource{
             cell.toLocationLabel.text = ride.ride.toNeighbourhoodLocation+", "+ride.ride.toLocation
             cell.dateLabel.text = dateFormatter.string(from: ride.ride.date)
             let rideTime = ride.ride.time
-            var calendar = Calendar.current
-            let hour = calendar.component(.hour, from: rideTime)
-            let minute = calendar.component(.minute, from: rideTime)
-            cell.timeLabel.text = "\(hour):\(minute)"
+            cell.timeLabel.text = timeFormatter.string(from: rideTime)
             cell.fullNameLabel.text = ride.riderFullName
             cell.majorLabel.text = ride.riderMajor
             cell.moneyLabel.text = "\(ride.ride.fee)"
@@ -126,6 +134,10 @@ extension RidesViewController: UITableViewDataSource{
 }
 
 extension RidesViewController: RidesDataDelegate{
+    func noDataInRides() {
+        warningLabel.isHidden = false
+    }
+    
     func ridesListLoaded() {
         print("Rides List Loaded")
         self.ridesAfterSearchTableView.reloadData()

@@ -40,6 +40,11 @@ class RideRequestDataSource {
     func getHitchInfo(hitches: [String]){
         var mutex = 0
         
+        if(hitches.count == 0){
+            DispatchQueue.main.async {
+                self.delegate?.noDataInRideRequest()
+            }
+        }
         for hitch in hitches {
             var hitchId = hitch
             print(hitchId)
@@ -91,7 +96,9 @@ class RideRequestDataSource {
                     self.rideRequestArray.append(newRideRequest)
                     mutex = mutex + 1
                     if (mutex == self.hitchArray.count){
-                        self.delegate?.rideRequestListLoaded()
+                        DispatchQueue.main.async {
+                            self.delegate?.rideRequestListLoaded()
+                        }
                     }
                     
                 } else {
@@ -102,6 +109,7 @@ class RideRequestDataSource {
     }
     
     func getNumberOfRideRequest() -> Int {
+
         return rideRequestArray.count
     }
     

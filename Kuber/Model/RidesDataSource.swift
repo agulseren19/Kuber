@@ -14,7 +14,7 @@ class RidesDataSource{
     private var ridesArray: [Ride] = []
     private var rideCount: Int = 0
     var globalDistance = 0.0
-    private var rideSearchArray: [RideSearch] = []
+    private var rideSearchArray: [RideSearch?] = []
    
     
     var delegate: RidesDataDelegate?
@@ -203,7 +203,14 @@ class RidesDataSource{
     }
     
     func getRiderInfo (){
+        if(ridesArray.count == 0){
+            DispatchQueue.main.async {
+                self.delegate?.noDataInRides()
+            }
+        }
         rideSearchArray.removeAll()
+        print("ridesArray.count: \(ridesArray.count)")
+        rideSearchArray = [RideSearch?](repeating: nil, count: ridesArray.count)
         let db = Firestore.firestore()
         var mutex = 0
         for i in 0..<ridesArray.count {
@@ -217,7 +224,8 @@ class RidesDataSource{
                         riderFullName: document.get("fullName") as! String,
                         riderMajor: document.get("major") as! String
                     )
-                    self.rideSearchArray.append(newRideSearch)
+                    print("\(i) : \(newRideSearch)")
+                    self.rideSearchArray[i] = newRideSearch
                     print("A")
                     mutex = mutex + 1
                     if (mutex == self.ridesArray.count){

@@ -51,7 +51,9 @@ class PublishRideHelper {
                 self.mutex = self.mutex + 1
                 if self.mutex == 2 {
                     print("hereeee1")
-                    self.delegate?.publishedToDatabase()
+                    DispatchQueue.main.async {
+                        self.delegate?.publishedToDatabase()
+                    }
                 }
 
             }
@@ -67,7 +69,9 @@ class PublishRideHelper {
                self.mutex = self.mutex + 1
                if self.mutex == 2 {
                    print("hereeee2")
-                   self.delegate?.publishedToDatabase()
+                   DispatchQueue.main.async {
+                       self.delegate?.publishedToDatabase()
+                   }
                }
            } else {
                print("Document does not exist")
