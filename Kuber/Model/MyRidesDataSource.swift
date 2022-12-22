@@ -28,6 +28,12 @@ class MyRidesDataSource {
         myRidesArray.removeAll()
         var mutex = 0
         
+        if (User.sharedInstance.getRideArrayCount() == 0){
+            DispatchQueue.main.async {
+                self.delegate?.noDataInMyRides()
+            }
+        }
+        
         for i in 0..<User.sharedInstance.getRideArrayCount(){
             var rideId = User.sharedInstance.getRideArray()[i]
             print(rideId)
@@ -74,7 +80,9 @@ class MyRidesDataSource {
 
                         }
                         self.myRidesArray = self.myRidesArray.sorted(by: { $0.date < $1.date })
-                        self.delegate?.myRidesListLoaded()
+                        DispatchQueue.main.async {
+                            self.delegate?.myRidesListLoaded()
+                        }
                         print("C")
                     }
                     
@@ -118,7 +126,9 @@ class MyRidesDataSource {
                     if (mutex == User.sharedInstance.getRideArrayCount()){
                         self.myRidesArray = self.myRidesArray.filter{ $0.date < Date() }
                         self.myRidesArray = self.myRidesArray.sorted(by: { $0.date < $1.date })
-                        self.delegate?.myRidesListLoaded()
+                        DispatchQueue.main.async {
+                            self.delegate?.myRidesListLoaded()
+                        }
                         print("CC")
                     }
                     

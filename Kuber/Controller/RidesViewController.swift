@@ -19,6 +19,10 @@ class RidesViewController: UIViewController {
     private var ridesDatasource = RidesDataSource()
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
+    
+    @IBOutlet weak var warningLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -34,6 +38,10 @@ class RidesViewController: UIViewController {
         print(to)
         
         updateTheTableViewDesign()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        warningLabel.isHidden = true
     }
     
     
@@ -126,6 +134,10 @@ extension RidesViewController: UITableViewDataSource{
 }
 
 extension RidesViewController: RidesDataDelegate{
+    func noDataInRides() {
+        warningLabel.isHidden = false
+    }
+    
     func ridesListLoaded() {
         print("Rides List Loaded")
         self.ridesAfterSearchTableView.reloadData()

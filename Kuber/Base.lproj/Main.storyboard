@@ -812,6 +812,15 @@
                                     <outlet property="delegate" destination="5I3-qR-Arm" id="wOt-2V-LWh"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is no available ride at the locations and dates you entered, please try later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m3Q-kK-55A">
+                                <rect key="frame" x="16" y="126" width="358" height="103"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="103" id="vNe-hh-qxg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="1BM-tN-Qdt"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -819,8 +828,12 @@
                             <constraint firstItem="iaC-DH-3MF" firstAttribute="top" secondItem="1BM-tN-Qdt" secondAttribute="top" id="00U-Sb-rCi"/>
                             <constraint firstItem="iaC-DH-3MF" firstAttribute="leading" secondItem="1BM-tN-Qdt" secondAttribute="leading" constant="31" id="051-GF-C9c"/>
                             <constraint firstItem="1BM-tN-Qdt" firstAttribute="trailing" secondItem="iaC-DH-3MF" secondAttribute="trailing" constant="303" id="Hec-Bo-JPO"/>
+                            <constraint firstItem="1BM-tN-Qdt" firstAttribute="trailing" secondItem="m3Q-kK-55A" secondAttribute="trailing" constant="16" id="Hpw-ki-OG5"/>
+                            <constraint firstItem="1BM-tN-Qdt" firstAttribute="bottom" secondItem="m3Q-kK-55A" secondAttribute="bottom" constant="532" id="JNn-lJ-Ttf"/>
+                            <constraint firstItem="m3Q-kK-55A" firstAttribute="leading" secondItem="1BM-tN-Qdt" secondAttribute="leading" constant="16" id="S3E-Tk-wrP"/>
                             <constraint firstItem="1BM-tN-Qdt" firstAttribute="bottom" secondItem="25S-hl-gq1" secondAttribute="bottom" constant="10" id="Tva-vo-q46"/>
                             <constraint firstItem="25S-hl-gq1" firstAttribute="leading" secondItem="1BM-tN-Qdt" secondAttribute="leading" id="ao8-d0-NkV"/>
+                            <constraint firstItem="m3Q-kK-55A" firstAttribute="leading" secondItem="iaC-DH-3MF" secondAttribute="trailing" constant="-71" id="du4-vt-aSk"/>
                             <constraint firstItem="25S-hl-gq1" firstAttribute="top" secondItem="iaC-DH-3MF" secondAttribute="bottom" constant="8" symbolic="YES" id="hlf-0g-fJX"/>
                             <constraint firstItem="1BM-tN-Qdt" firstAttribute="trailing" secondItem="25S-hl-gq1" secondAttribute="trailing" id="yzZ-7v-vos"/>
                         </constraints>
@@ -828,6 +841,7 @@
                     <navigationItem key="navigationItem" id="mYw-ea-dqq"/>
                     <connections>
                         <outlet property="ridesAfterSearchTableView" destination="25S-hl-gq1" id="qOS-jx-B9U"/>
+                        <outlet property="warningLabel" destination="m3Q-kK-55A" id="AfW-pR-K86"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sVd-HL-wg8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1047,6 +1061,15 @@
                                     <segue destination="DHg-Tr-RWP" kind="show" id="oIH-2n-3g7"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You don't have any published ride. If you wan't to publish a ride please click the add button above." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CaV-wC-7Y4">
+                                <rect key="frame" x="31" y="146" width="343" height="144"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="144" id="Spo-Qo-bPX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="aEd-6M-z1h"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1054,7 +1077,10 @@
                             <constraint firstItem="aEd-6M-z1h" firstAttribute="bottom" secondItem="A4N-X1-got" secondAttribute="bottom" id="13t-t2-tTt"/>
                             <constraint firstItem="A4N-X1-got" firstAttribute="top" secondItem="UI3-4m-AuE" secondAttribute="bottom" constant="8" symbolic="YES" id="6xM-zL-rcm"/>
                             <constraint firstItem="aEd-6M-z1h" firstAttribute="trailing" secondItem="A4N-X1-got" secondAttribute="trailing" id="8IS-98-sHO"/>
+                            <constraint firstItem="CaV-wC-7Y4" firstAttribute="leading" secondItem="aEd-6M-z1h" secondAttribute="leading" constant="31" id="Aac-IK-tPA"/>
+                            <constraint firstItem="aEd-6M-z1h" firstAttribute="trailing" secondItem="CaV-wC-7Y4" secondAttribute="trailing" constant="16" id="QTf-SP-fSe"/>
                             <constraint firstItem="UI3-4m-AuE" firstAttribute="top" secondItem="aEd-6M-z1h" secondAttribute="top" id="RF8-Hz-8Dv"/>
+                            <constraint firstItem="CaV-wC-7Y4" firstAttribute="top" secondItem="UI3-4m-AuE" secondAttribute="bottom" constant="28" id="TAW-Fs-KgQ"/>
                             <constraint firstItem="UI3-4m-AuE" firstAttribute="centerY" secondItem="U1O-B6-tAN" secondAttribute="centerY" id="Vlm-5k-pxe"/>
                             <constraint firstItem="aEd-6M-z1h" firstAttribute="trailing" secondItem="U1O-B6-tAN" secondAttribute="trailing" constant="48" id="W9k-Gc-cGz"/>
                             <constraint firstItem="UI3-4m-AuE" firstAttribute="leading" secondItem="aEd-6M-z1h" secondAttribute="leading" constant="31" id="iuP-fF-fUc"/>
@@ -1069,6 +1095,7 @@
                     <connections>
                         <outlet property="addButton" destination="U1O-B6-tAN" id="v32-FD-8yq"/>
                         <outlet property="myRidesTableView" destination="A4N-X1-got" id="BAo-eO-x20"/>
+                        <outlet property="warningLabel" destination="CaV-wC-7Y4" id="jab-LG-Kyp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pxz-gs-MNg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1563,15 +1590,29 @@
                                     <outlet property="delegate" destination="LeS-BZ-UUt" id="xHW-4K-pKN"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s3D-sF-AQ6">
+                                <rect key="frame" x="16" y="143" width="358" height="151"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="151" id="SW6-gc-AYZ"/>
+                                </constraints>
+                                <string key="text">You don't have any requested hitchhike. If you want to send a hitch request to a ride please click to search button to find the best ride to hitch. </string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e9n-hk-WJ0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="s3D-sF-AQ6" firstAttribute="leading" secondItem="e9n-hk-WJ0" secondAttribute="leading" constant="16" id="6Td-Nx-82R"/>
+                            <constraint firstItem="e9n-hk-WJ0" firstAttribute="bottom" secondItem="s3D-sF-AQ6" secondAttribute="bottom" constant="467" id="G4D-cB-zxO"/>
                             <constraint firstItem="e9n-hk-WJ0" firstAttribute="trailing" secondItem="mra-IM-ODT" secondAttribute="trailing" id="PTA-vR-hBV"/>
                             <constraint firstItem="mra-IM-ODT" firstAttribute="leading" secondItem="e9n-hk-WJ0" secondAttribute="leading" id="Tae-0F-Dlb"/>
                             <constraint firstItem="e9n-hk-WJ0" firstAttribute="bottom" secondItem="mra-IM-ODT" secondAttribute="bottom" id="cUH-fz-pxl"/>
                             <constraint firstItem="uWe-Fx-gWl" firstAttribute="leading" secondItem="e9n-hk-WJ0" secondAttribute="leading" constant="31" id="eGz-Ea-iHZ"/>
+                            <constraint firstItem="s3D-sF-AQ6" firstAttribute="top" secondItem="uWe-Fx-gWl" secondAttribute="bottom" constant="25" id="erh-Oe-dpO"/>
                             <constraint firstItem="mra-IM-ODT" firstAttribute="top" secondItem="e9n-hk-WJ0" secondAttribute="top" constant="35" id="hll-4K-5fI"/>
+                            <constraint firstItem="e9n-hk-WJ0" firstAttribute="trailing" secondItem="s3D-sF-AQ6" secondAttribute="trailing" constant="16" id="kHo-v4-6vj"/>
                             <constraint firstItem="uWe-Fx-gWl" firstAttribute="top" secondItem="e9n-hk-WJ0" secondAttribute="top" id="m8Y-gd-ZHn"/>
                             <constraint firstItem="fVV-Ju-3yj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uWe-Fx-gWl" secondAttribute="trailing" constant="159.33333333333331" id="peG-SO-JrW"/>
                             <constraint firstItem="fVV-Ju-3yj" firstAttribute="centerY" secondItem="uWe-Fx-gWl" secondAttribute="centerY" id="yrU-x7-n08"/>
@@ -1583,6 +1624,7 @@
                     <connections>
                         <outlet property="hitchListTableView" destination="mra-IM-ODT" id="Kpm-i2-eup"/>
                         <outlet property="searchButton" destination="fVV-Ju-3yj" id="Wpp-XN-Mv9"/>
+                        <outlet property="warningLabel" destination="s3D-sF-AQ6" id="zCj-Ym-Uc3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzq-73-nil" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -2523,19 +2565,33 @@
                                     <outlet property="delegate" destination="0M3-Pw-EOJ" id="n9i-1h-39E"/>
                                 </connections>
                             </tableView>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="There is no hitch riequest for this ride. Please come back later." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNy-vv-HHb">
+                                <rect key="frame" x="16" y="110" width="358" height="121"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="121" id="KHA-o0-hBk"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="WiX-PH-cKF"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Sjl-HO-Rrv" firstAttribute="leading" secondItem="WiX-PH-cKF" secondAttribute="leading" id="2eQ-GG-TpK"/>
+                            <constraint firstItem="fNy-vv-HHb" firstAttribute="top" secondItem="WiX-PH-cKF" secondAttribute="top" constant="19" id="4fr-3Z-4JP"/>
+                            <constraint firstItem="WiX-PH-cKF" firstAttribute="trailing" secondItem="fNy-vv-HHb" secondAttribute="trailing" constant="16" id="Kdg-OC-BJV"/>
                             <constraint firstItem="WiX-PH-cKF" firstAttribute="trailing" secondItem="Sjl-HO-Rrv" secondAttribute="trailing" id="UnG-4c-yzP"/>
                             <constraint firstItem="Sjl-HO-Rrv" firstAttribute="bottom" secondItem="WiX-PH-cKF" secondAttribute="bottom" constant="49" id="WEr-MP-qWI"/>
                             <constraint firstItem="WiX-PH-cKF" firstAttribute="top" secondItem="Sjl-HO-Rrv" secondAttribute="top" constant="44" id="X8P-R4-jM8"/>
+                            <constraint firstItem="WiX-PH-cKF" firstAttribute="bottom" secondItem="fNy-vv-HHb" secondAttribute="bottom" constant="530" id="Zoc-xz-ZhP"/>
+                            <constraint firstItem="fNy-vv-HHb" firstAttribute="leading" secondItem="WiX-PH-cKF" secondAttribute="leading" constant="16" id="wne-Ug-XlR"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Aah-g3-euR"/>
                     <connections>
                         <outlet property="rideRequestTableView" destination="Sjl-HO-Rrv" id="Wf2-Sh-3I3"/>
+                        <outlet property="warningLabel" destination="fNy-vv-HHb" id="R7l-kv-FtN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JgJ-QN-JjG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

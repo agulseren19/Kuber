@@ -27,6 +27,13 @@ class MyHitchesDataSource{
         self.myFinalHitchesArray.removeAll()
         self.rideInfoArray.removeAll()
         var mutex = 0
+        
+        if (User.sharedInstance.getMyHitchesArrayCount() == 0){
+            DispatchQueue.main.async {
+                self.delegate?.noDataInMyHitches()
+            }
+        }
+        
         for i in 0..<User.sharedInstance.getMyHitchesArrayCount(){
             var hitchId = User.sharedInstance.getMyHitchesArray()[i]
             print(hitchId)
@@ -152,7 +159,9 @@ class MyHitchesDataSource{
                             }
                             
                             self.myFinalHitchesArray = self.myFinalHitchesArray.sorted(by: { $0.hitch.date < $1.hitch.date })
-                            self.delegate?.hitchListLoaded()
+                            DispatchQueue.main.async {
+                                self.delegate?.hitchListLoaded()
+                            }
                         }
                         print("C")
                     }

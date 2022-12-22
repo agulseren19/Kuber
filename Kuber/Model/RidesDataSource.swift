@@ -203,6 +203,11 @@ class RidesDataSource{
     }
     
     func getRiderInfo (){
+        if(ridesArray.count == 0){
+            DispatchQueue.main.async {
+                self.delegate?.noDataInRides()
+            }
+        }
         rideSearchArray.removeAll()
         print("ridesArray.count: \(ridesArray.count)")
         rideSearchArray = [RideSearch?](repeating: nil, count: ridesArray.count)

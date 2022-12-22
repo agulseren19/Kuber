@@ -14,6 +14,9 @@ class RideRequestsViewController: UIViewController {
     var ride: Ride?
     var rideRequestHelper = RideRequestHelper()
     
+    @IBOutlet weak var warningLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Hitch Requests"
@@ -25,6 +28,10 @@ class RideRequestsViewController: UIViewController {
         }
         
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        warningLabel.isHidden = true
     }
     
     func updateTheTableViewDesign() {
@@ -105,6 +112,10 @@ extension RideRequestsViewController: UITableViewDataSource{
 }
 
 extension RideRequestsViewController: RideRequestDataDelegate {
+    func noDataInRideRequest() {
+        warningLabel.isHidden = false
+    }
+    
     func  rideRequestListLoaded(){
         print("reloaded the ride request screen")
         self.rideRequestTableView.reloadData()

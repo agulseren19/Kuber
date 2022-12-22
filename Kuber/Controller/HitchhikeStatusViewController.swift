@@ -9,6 +9,8 @@ import UIKit
 
 class HitchhikeStatusViewController: UIViewController {
 
+    @IBOutlet weak var warningLabel: UILabel!
+    
     @IBOutlet weak var searchButton: UIButton!
     private var hitchhikeDatasource = MyHitchesDataSource()
 
@@ -24,6 +26,7 @@ class HitchhikeStatusViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        warningLabel.isHidden = true
         hitchhikeDatasource.getListOfHitches(areCurrentHitches: true)
     }
     
@@ -103,10 +106,12 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
     
 }
 extension HitchhikeStatusViewController: MyHitchesDataDelegate{
+    func noDataInMyHitches() {
+        warningLabel.isHidden = false
+    }
+    
     func hitchListLoaded() {
         print("Hitch List Loaded")
         self.hitchListTableView.reloadData()
     }
-    
-    
 }

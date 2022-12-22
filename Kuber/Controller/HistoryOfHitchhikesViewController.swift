@@ -104,6 +104,11 @@ extension HistoryOfHitchhikesViewController: UITableViewDataSource {
 }
 
 extension HistoryOfHitchhikesViewController: MyHitchesDataDelegate{
+    
+    func noDataInMyHitches() {
+        
+    }
+    
     func hitchListLoaded() {
         print("Hitch List Loaded")
         self.historyOfHitchhikesTableView.reloadData()

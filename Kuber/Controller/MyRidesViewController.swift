@@ -9,7 +9,8 @@ import UIKit
 
 class MyRidesViewController: UIViewController {
 
-   
+    @IBOutlet weak var warningLabel: UILabel!
+    
     @IBOutlet weak var myRidesTableView: UITableView!
     
     
@@ -31,6 +32,7 @@ class MyRidesViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        warningLabel.isHidden = true
         myRidesDatasource.getListOfMyRides()
         /*    let appearance = UITabBarAppearance()
             appearance.configureWithOpaqueBackground()
@@ -104,7 +106,12 @@ extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
 
 
 extension MyRidesViewController: MyRidesDataDelegate {
+    func noDataInMyRides() {
+        warningLabel.isHidden = false
+    }
+    
     func myRidesListLoaded(){
-        self.myRidesTableView.reloadData()
+            self.myRidesTableView.reloadData()
+         
     }
 }

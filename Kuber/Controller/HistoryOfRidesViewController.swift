@@ -85,6 +85,9 @@ extension HistoryOfRidesViewController: UITableViewDataSource, UITableViewDelega
 }
 
 extension HistoryOfRidesViewController: MyRidesDataDelegate {
+    func noDataInMyRides() {
+        
+    }
     func myRidesListLoaded(){
         self.historyOfRidesTableView.reloadData()
     }
