@@ -71,6 +71,8 @@ extension RidesViewController: UITableViewDataSource{
         if var ride = ridesDatasource.getRide(for: indexPath.row){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/YY"
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
             
             if(ride.ride.hitched) {
                 print("Ride Exist \(indexPath.row)")
@@ -86,10 +88,7 @@ extension RidesViewController: UITableViewDataSource{
             cell.toLocationLabel.text = ride.ride.toNeighbourhoodLocation+", "+ride.ride.toLocation
             cell.dateLabel.text = dateFormatter.string(from: ride.ride.date)
             let rideTime = ride.ride.time
-            var calendar = Calendar.current
-            let hour = calendar.component(.hour, from: rideTime)
-            let minute = calendar.component(.minute, from: rideTime)
-            cell.timeLabel.text = "\(hour):\(minute)"
+            cell.timeLabel.text = timeFormatter.string(from: rideTime)
             cell.fullNameLabel.text = ride.riderFullName
             cell.majorLabel.text = ride.riderMajor
             cell.moneyLabel.text = "\(ride.ride.fee)"

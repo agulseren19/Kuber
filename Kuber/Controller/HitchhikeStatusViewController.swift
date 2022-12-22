@@ -61,15 +61,14 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
         if let hitch = hitchhikeDatasource.getHitch(for: indexPath.row){
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd/MM/YY"
+            let timeFormatter = DateFormatter()
+            timeFormatter.dateFormat = "HH:mm"
  
             cell.fromLocationLabel.text = hitch.hitch.ride.fromNeighbourhoodLocation+", "+hitch.hitch.ride.fromLocation
             cell.toLocationLabel.text = hitch.hitch.ride.toNeighbourhoodLocation+", "+hitch.hitch.ride.toLocation
             cell.dateLabel.text = dateFormatter.string(from: hitch.hitch.ride.date)
             let rideTime = hitch.hitch.ride.time
-            var calendar = Calendar.current
-            let hour = calendar.component(.hour, from: rideTime)
-            let minute = calendar.component(.minute, from: rideTime)
-            cell.timeLabel.text = "\(hour):\(minute)"
+            cell.timeLabel.text = timeFormatter.string(from: rideTime)
             cell.moneyLabel.text = "\(hitch.hitch.ride.fee) TL"
             cell.majorLabel.text = hitch.riderMajor
             cell.fullNameLabel.text = hitch.riderFullName
