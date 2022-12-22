@@ -59,6 +59,7 @@ extension RidesViewController: UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        print("view controller rides count \(ridesDatasource.getNumberOfRides())")
         return ridesDatasource.getNumberOfRides()
     }
     
