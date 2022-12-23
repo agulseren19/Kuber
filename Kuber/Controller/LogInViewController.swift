@@ -32,9 +32,9 @@ class LogInViewController: UIViewController {
         super.viewDidLoad()
         //passwordField.isSecureTextEntry = true
         signInHelper.delegate = self
-        //emailField.delegate = self
-        //passwordField.delegate = self
-        //navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        emailField.delegate = self
+        passwordField.delegate = self
+        self.tabBarController?.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
               NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -113,7 +113,7 @@ extension LogInViewController: SignInDelegate {
     }
 }
 
-/*extension LogInViewController: UITextFieldDelegate{
+extension LogInViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
@@ -121,4 +121,4 @@ extension LogInViewController: SignInDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-}*/
+}

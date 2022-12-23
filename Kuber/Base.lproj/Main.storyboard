@@ -223,12 +223,38 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="arb-Bb-xWS" kind="relationship" relationship="rootViewController" id="MY0-uq-A3b"/>
+                        <segue destination="ELH-lL-Oae" kind="relationship" relationship="rootViewController" id="obk-Vz-dYC"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pCa-Ei-h2f" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-117" y="21"/>
+            <point key="canvasLocation" x="-875" y="21"/>
+        </scene>
+        <!--Launchin Screen View Controller-->
+        <scene sceneID="tT4-Yh-ond">
+            <objects>
+                <viewController id="ELH-lL-Oae" customClass="LaunchinScreenViewController" customModule="Kuber" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="er1-ex-GmP">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="844"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="KUBer" translatesAutoresizingMaskIntoConstraints="NO" id="Y3F-fH-hR8">
+                                <rect key="frame" x="16" y="237" width="358" height="370"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wgK-pc-ufL"/>
+                        <color key="backgroundColor" red="0.58072251080000004" green="0.066734083" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="JwA-Bc-mPZ"/>
+                    <connections>
+                        <outlet property="iconImageView" destination="Y3F-fH-hR8" id="3ZC-ba-Me2"/>
+                        <segue destination="arb-Bb-xWS" kind="show" identifier="launchSegue" animates="NO" id="8Se-HU-Lwg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vCp-MM-Iiw" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="93.84615384615384" y="20.616113744075829"/>
         </scene>
         <!--Log In View Controller-->
         <scene sceneID="foO-Gx-lwa">
@@ -1825,7 +1851,7 @@
                     <navigationItem key="navigationItem" id="tFk-4t-f3z">
                         <barButtonItem key="rightBarButtonItem" style="plain" id="YYx-8q-ebY">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="SlD-Cc-Tf9">
-                                <rect key="frame" x="16" y="4.6666666666666679" width="77" height="35"/>
+                                <rect key="frame" x="297" y="4.6666666666666679" width="77" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Edit"/>
@@ -1894,13 +1920,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WqT-J3-eLz">
-                                <rect key="frame" x="37" y="406.33333333333326" width="162" height="21.000000000000057"/>
+                                <rect key="frame" x="37" y="406.33333333333331" width="162" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S57-99-6zg">
-                                <rect key="frame" x="37" y="444.33333333333326" width="28.333333333333329" height="35.333333333333371"/>
+                                <rect key="frame" x="37" y="444.33333333333331" width="28.333333333333329" height="35.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="S57-99-6zg" secondAttribute="height" multiplier="4:5" id="3Gu-eb-F7o"/>
                                     <constraint firstAttribute="height" constant="35.33333333333303" id="OpD-57-qd3"/>
@@ -1921,7 +1947,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kgb-x2-sf6">
-                                <rect key="frame" x="37" y="486.33333333333326" width="28.333333333333329" height="35.333333333333371"/>
+                                <rect key="frame" x="37" y="486.33333333333331" width="28.333333333333329" height="35.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Kgb-x2-sf6" secondAttribute="height" multiplier="4:5" id="BNv-dk-25p"/>
                                     <constraint firstAttribute="height" constant="35.333333333333485" id="ewz-vI-WFH"/>
@@ -2820,6 +2846,7 @@
     </scenes>
     <color key="tintColor" red="0.74901960779999999" green="0.044088833030000003" blue="0.14435225730000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
     <resources>
+        <image name="KUBer" width="1042" height="1042"/>
         <image name="Profile 1" width="28" height="28"/>
         <image name="car" catalog="system" width="128" height="95"/>
         <image name="checkedCheckbox" width="21.333333969116211" height="21.333333969116211"/>
