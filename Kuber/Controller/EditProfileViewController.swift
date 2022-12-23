@@ -146,7 +146,8 @@ extension EditProfileViewController: SecondSignUpDelegate{
         }
             
         
-        //self.gradeSegmentedControl
+        self.gradeSegmentedControl.selectedSegmentIndex = segmentIndex
+        
         
         self.smokingFlag = smokingFlag
         if(self.smokingFlag == true){

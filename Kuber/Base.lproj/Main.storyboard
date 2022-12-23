@@ -1694,8 +1694,8 @@
                                 <color key="textColor" systemColor="systemGray2Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-sO-RKF">
-                                <rect key="frame" x="122" y="444" width="244" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqn-sO-RKF">
+                                <rect key="frame" x="121.66666666666669" y="444" width="245" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="244" id="Aah-mg-noO"/>
                                     <constraint firstAttribute="width" secondItem="lqn-sO-RKF" secondAttribute="height" multiplier="244:21" id="ClY-Ds-MXg"/>
@@ -1730,8 +1730,8 @@
                                     <segue destination="1UE-Hk-6Ip" kind="show" id="poq-tT-YQp"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIf-Rm-1cR">
-                                <rect key="frame" x="81" y="496" width="92.333333333333314" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Preferences" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VIf-Rm-1cR">
+                                <rect key="frame" x="80.666666666666686" y="496" width="93.333333333333314" height="21.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="VIf-Rm-1cR" secondAttribute="height" multiplier="92:21" id="lvo-2o-bJl"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="92" id="x2h-gA-crv"/>
@@ -1774,12 +1774,6 @@
                                     <constraint firstAttribute="width" constant="28" id="R8T-9e-5ou"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S0v-fZ-DdT">
-                                <rect key="frame" x="261" y="91" width="113" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Sign Out v2"/>
-                            </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="defaultProfile" translatesAutoresizingMaskIntoConstraints="NO" id="lvP-Jk-6Ca">
                                 <rect key="frame" x="135" y="120" width="120" height="128"/>
                             </imageView>
@@ -1830,10 +1824,10 @@
                     <navigationItem key="navigationItem" id="tFk-4t-f3z">
                         <barButtonItem key="leftBarButtonItem" style="plain" id="YYx-8q-ebY">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="SlD-Cc-Tf9">
-                                <rect key="frame" x="16" y="91" width="77" height="35"/>
+                                <rect key="frame" x="16" y="4.6666666666666679" width="77" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Edit v2"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Edit"/>
                                 <connections>
                                     <segue destination="68R-FA-52q" kind="show" id="hsn-ag-RIt"/>
                                 </connections>
