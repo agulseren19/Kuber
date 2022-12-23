@@ -8,10 +8,10 @@
 import Foundation
 protocol SecondSignUpDelegate {
     func makeFieldsEmpty()
-    func setFieldsCurrentProfile(fullName: String, phoneNumber: String, smokingFlag: Bool, chattinessFlag: Bool)
+    func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool)
 }
 
 extension SecondSignUpDelegate {
     func makeFieldsEmpty(){}
-    func setFieldsCurrentProfile(fullName: String, phoneNumber: String, smokingFlag: Bool, chattinessFlag: Bool){}
+    func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool){}
 }
