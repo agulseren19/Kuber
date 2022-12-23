@@ -22,9 +22,6 @@ class ProfileScreenViewController: UIViewController {
     
     @IBOutlet weak var chattinessCheckBoxImageView: UIImageView!
     
-
-
-    
     @IBAction func historyOfRidesButton(_ sender: Any) {
     }
     
