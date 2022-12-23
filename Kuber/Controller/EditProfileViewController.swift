@@ -26,7 +26,6 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("EDIT PROFILE VIEW DID LOAD")
         
         // Do any additional setup after loading the view.
         fullNameInputField.delegate = self
@@ -41,8 +40,6 @@ class EditProfileViewController: UIViewController {
         setPopUpButton()
         
         secondSignUpHelper.delegate = self
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,7 +92,7 @@ class EditProfileViewController: UIViewController {
     func setPopUpButton(){
         let optionClosure = {(action: UIAction) in
             print(action.title)}
-            self.majorInputField.menu=UIMenu(children: [
+        let defaultMenu = UIMenu(children: [
                 UIAction(title: "International Relations", state: .on, handler: optionClosure),
                 UIAction(title: "Economics", handler: optionClosure),
                 UIAction(title: "Business Administration", handler: optionClosure),
@@ -119,9 +116,10 @@ class EditProfileViewController: UIViewController {
                 UIAction(title: "Medicine", handler: optionClosure),
                 UIAction(title: "Nursing", handler: optionClosure),
             ])
-            
-            self.majorInputField.showsMenuAsPrimaryAction=true
-            self.majorInputField.changesSelectionAsPrimaryAction=true
+        
+        self.majorInputField.menu = defaultMenu
+        self.majorInputField.showsMenuAsPrimaryAction=true
+        self.majorInputField.changesSelectionAsPrimaryAction=true
         
     }
     
@@ -138,17 +136,15 @@ class EditProfileViewController: UIViewController {
 }
 
 extension EditProfileViewController: SecondSignUpDelegate{
-    func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, smokingFlag: Bool, chattinessFlag: Bool) {
-
-        
-    }
-    
     func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool) {
         self.userEmail = userEmail
         self.fullNameInputField.text = fullName
         self.phoneNumberInputField.text = phoneNumber
         
-        //self.majorInputField
+        if let majorMenu = self.majorInputField.menu{
+            self.majorInputField.menu =  secondSignUpHelper.setCurrentMajorAsChosen(actionTitle: major, menu: majorMenu)
+        }
+            
         
         //self.gradeSegmentedControl
         

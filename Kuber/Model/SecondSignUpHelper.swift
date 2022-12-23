@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
@@ -117,6 +118,23 @@ class SecondSignUpHelper{
         
         self.delegate?.setFieldsCurrentProfile(userEmail: userEmail ,fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag)
         
+    }
+    
+    func setCurrentMajorAsChosen(actionTitle: String? = nil, menu: UIMenu) -> UIMenu {
+        if let actionTitle = actionTitle {
+            menu.children.forEach { action in
+                guard let action = action as? UIAction else {
+                    return
+                }
+                if action.title == actionTitle {
+                    action.state = .on
+                }
+            }
+        } else {
+            let action = menu.children.first as? UIAction
+            action?.state = .on
+        }
+        return menu
     }
     
 }
