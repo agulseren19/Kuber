@@ -14,6 +14,7 @@ import FirebaseCore
 import GoogleSignIn
 import FirebaseCore
 import FirebaseFirestore
+
 class SecondSignUpHelper{
     var delegate: SecondSignUpDelegate?
     
@@ -21,6 +22,7 @@ class SecondSignUpHelper{
 
     init() {
     }
+    
     func signUp(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, smokingFlag: Bool, chattinessFlag: Bool, userEmail: String) {
         var classLevel: String = ""
         if segmentIndex==0 {
@@ -67,13 +69,53 @@ class SecondSignUpHelper{
 
     }
     
+    func setUserInfo(fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool){
+        var classLevel: String = ""
+        if segmentIndex==0 {
+            classLevel = "ELC"
+        } else if segmentIndex==1 {
+            classLevel = "Freshman"
+        } else if segmentIndex==2 {
+            classLevel = "Sophomore"
+        } else if segmentIndex==3 {
+            classLevel = "Junior"
+        } else if segmentIndex==4 {
+            classLevel = "Senior"
+        }
+        
+        user.setFullName(fullName: fullName)
+        user.setPhoneNumber(phoneNumber: phoneNumber)
+        user.setMajor(major: major)
+        user.setClassLevel(classLevel: classLevel)
+        user.setSmokingPreference(smokingPreference: smokingFlag)
+        user.setChattinessPreference(chattinessPreference: chattinessFlag)
+        
+    }
+    
     func setFieldsOfInputsAsCurrentProfile() {
         let fullName = user.getFullName()
         let phoneNumber = user.getPhoneNumber()
         let smokingFlag = user.getSmokingPreference()
         let chattinessFlag = user.getChattinessPreference()
+        let major = user.getMajor()
+        let classLevel = user.getClassLevel()
         
-        self.delegate?.setFieldsCurrentProfile(fullName: fullName, phoneNumber: phoneNumber, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag)
+        var segmentIndex: Int = 0
+        if classLevel == "ELC" {
+            segmentIndex = 0
+        } else if classLevel == "Freshman" {
+            segmentIndex = 1
+        } else if classLevel == "Sophomore" {
+            segmentIndex = 2
+        } else if classLevel == "Junior" {
+            segmentIndex = 3
+        } else if classLevel == "Senior" {
+            segmentIndex = 4
+        }
+        
+        let userEmail = user.getEmail()
+        
+        self.delegate?.setFieldsCurrentProfile(userEmail: userEmail ,fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag)
         
     }
     

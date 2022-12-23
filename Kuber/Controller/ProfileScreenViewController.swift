@@ -41,6 +41,7 @@ class ProfileScreenViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         profileHelper.checkUserAndSetUI()
     }
+    
     /*
     // MARK: - Navigation
 
@@ -68,9 +69,9 @@ extension ProfileScreenViewController: ProfileDelegate{
         }
         
         if user.chattinesFlag {
-            chattinessCheckBoxImageView.image = UIImage(named: "uncheckedCheckbox")
-        }else {
             chattinessCheckBoxImageView.image = UIImage(named: "checkedCheckbox")
+        }else {
+            chattinessCheckBoxImageView.image = UIImage(named: "uncheckedCheckbox")
         }
 
         

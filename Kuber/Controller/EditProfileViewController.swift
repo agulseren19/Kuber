@@ -16,8 +16,10 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var checkBoxSmoking: UIButton!
     @IBOutlet weak var majorInputField: UIButton!
     
-    private var smokingFlag = false
-    private var chattinessFlag = false
+    // Initialization values
+    private var smokingFlag: Bool = true
+    private var chattinessFlag: Bool = true
+    var userEmail: String = ""
     
     //I am using the SecondSignUPHelper class because the reasoning behind creating profile and editing it is same.
     let secondSignUpHelper = SecondSignUpHelper()
@@ -25,9 +27,10 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("EDIT PROFILE VIEW DID LOAD")
+        
+        // Do any additional setup after loading the view.
         fullNameInputField.delegate = self
         phoneNumberInputField.delegate = self
-        // Do any additional setup after loading the view.
         
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
         
@@ -35,11 +38,16 @@ class EditProfileViewController: UIViewController {
         let font=UIFont.systemFont(ofSize: 8)
         UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
-        secondSignUpHelper.delegate = self
-        secondSignUpHelper.setFieldsOfInputsAsCurrentProfile()
-        
         setPopUpButton()
         
+        secondSignUpHelper.delegate = self
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        // Put the current user's info to the screen
+        secondSignUpHelper.setFieldsOfInputsAsCurrentProfile()
     }
     
     
@@ -74,8 +82,11 @@ class EditProfileViewController: UIViewController {
         let major = majorInputField.currentTitle!
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
         
-        //Save the changes in the User class and Firebase with a helper
+        // Save the changes in Firebase with a helper
+        secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag, userEmail: self.userEmail)
         
+        // Also save the changes in the User class
+        secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag)
         
         //Finally,
         self.navigationController?.popToRootViewController(animated: true)
@@ -127,11 +138,35 @@ class EditProfileViewController: UIViewController {
 }
 
 extension EditProfileViewController: SecondSignUpDelegate{
-    func setFieldsCurrentProfile(fullName: String, phoneNumber: String, smokingFlag: Bool, chattinessFlag: Bool) {
+    func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, smokingFlag: Bool, chattinessFlag: Bool) {
+
+        
+    }
+    
+    func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool) {
+        self.userEmail = userEmail
         self.fullNameInputField.text = fullName
         self.phoneNumberInputField.text = phoneNumber
+        
+        //self.majorInputField
+        
+        //self.gradeSegmentedControl
+        
         self.smokingFlag = smokingFlag
+        if(self.smokingFlag == true){
+            self.checkBoxSmoking.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
+        }
+        else{
+            self.checkBoxSmoking.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
+        }
+        
         self.chattinessFlag = chattinessFlag
+        if(self.chattinessFlag == true){
+            self.checkBoxChattiness.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
+        }
+        else{
+            self.checkBoxChattiness.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
+        }
     }
 }
 
