@@ -192,6 +192,7 @@
 		F23E6441294A49CA002C2DF8 /* HistoryOfRidesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOfRidesTableViewCell.swift; sourceTree = "<group>"; };
 		F23E6443294A4AC5002C2DF8 /* HistoryOfHitchhikesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryOfHitchhikesTableViewCell.swift; sourceTree = "<group>"; };
 		F23E6445294CAD3A002C2DF8 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		F24A45002957366500A7C147 /* Kuber.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Kuber.entitlements; sourceTree = "<group>"; };
 		F26602772939319100B02453 /* RidesAfterSearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesAfterSearchTableViewCell.swift; sourceTree = "<group>"; };
 		F267756B2938D4A000D9BECF /* RidesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataSource.swift; sourceTree = "<group>"; };
 		F267756D2938F29300D9BECF /* RidesDataDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RidesDataDelegate.swift; sourceTree = "<group>"; };
@@ -319,6 +320,7 @@
 		0C93806E29087296000E9365 /* Kuber */ = {
 			isa = PBXGroup;
 			children = (
+				F24A45002957366500A7C147 /* Kuber.entitlements */,
 				1E9294FF29365263001F0A46 /* UIViews */,
 				1EE875A1292F9CF100348672 /* TableCells */,
 				0C83C6C8291D644B003FD90A /* Model */,
@@ -922,9 +924,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Kuber/Kuber.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7FD883PKJS;
+				DEVELOPMENT_TEAM = GXH2DG2Z44;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kuber/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to pick a profile picture for KUber !";
@@ -938,7 +941,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = comp491.ku.kuber.Kuber;
+				PRODUCT_BUNDLE_IDENTIFIER = comp491.koc.kuber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -952,9 +955,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Kuber/Kuber.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7FD883PKJS;
+				DEVELOPMENT_TEAM = GXH2DG2Z44;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Kuber/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Please allow access to pick a profile picture for KUber !";
@@ -968,7 +972,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = comp491.ku.kuber.Kuber;
+				PRODUCT_BUNDLE_IDENTIFIER = comp491.koc.kuber;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
