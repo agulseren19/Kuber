@@ -18,11 +18,12 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
-    let db = Firestore.firestore()
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        
         
         Messaging.messaging().delegate = self
         
@@ -133,6 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        let db = Firestore.firestore()
         print("APNs token retrieved: \(deviceToken)")
         // Convert the device token to a string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
