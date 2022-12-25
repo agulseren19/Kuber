@@ -16,12 +16,17 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var checkBoxSmoking: UIButton!
     @IBOutlet weak var majorInputField: UIButton!
     
+    @IBOutlet weak var uploadImageButton: UIButton!
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    private var profileImage: UIImage = UIImage(named: "defaultProfile")!
     // Initialization values
     private var smokingFlag: Bool = true
     private var chattinessFlag: Bool = true
     var userEmail: String = ""
     
+    
     //I am using the SecondSignUPHelper class because the reasoning behind creating profile and editing it is same.
+    let profilePictureHelper = ProfilePictureHelper()
     let secondSignUpHelper = SecondSignUpHelper()
     
     override func viewDidLoad() {
@@ -30,7 +35,7 @@ class EditProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         fullNameInputField.delegate = self
         phoneNumberInputField.delegate = self
-        
+        profilePictureHelper.delegate = self
         //self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         //set font of segmented control
@@ -44,6 +49,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Put the current user's info to the screen
+        profilePictureHelper.getImageDataFromFireStorage(urlString: User.sharedInstance.profilePictureUrl)
         secondSignUpHelper.setFieldsOfInputsAsCurrentProfile()
     }
     
@@ -71,6 +77,13 @@ class EditProfileViewController: UIViewController {
         }
     }
     
+    @IBAction func uploadImageButtonTapped(_ sender: Any) {
+        let picker = UIImagePickerController()
+        picker.sourceType = .photoLibrary
+        picker.delegate = self
+        picker.allowsEditing = true
+        present(picker, animated: true)
+    }
     
     
     @IBAction func saveTheChangesButtonTapped(_ sender: UIButton) {
@@ -84,6 +97,9 @@ class EditProfileViewController: UIViewController {
         
         // Also save the changes in the User class
         secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag)
+        
+        //change the profile picture
+        
         
         //Finally,
         self.navigationController?.popToRootViewController(animated: true)
@@ -167,6 +183,7 @@ extension EditProfileViewController: SecondSignUpDelegate{
     }
 }
 
+
 extension EditProfileViewController: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
@@ -175,4 +192,53 @@ extension EditProfileViewController: UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+}
+
+extension EditProfileViewController: ProfilePictureDelegate {
+    func profileImageLoaded() {
+        profilePictureImageView.image = UIImage(data: profilePictureHelper.imageData)
+        self.profilePictureImageView.layer.borderWidth = 1.0
+        self.profilePictureImageView.layer.masksToBounds = false
+        self.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
+        print("width: \(self.profilePictureImageView.frame.width)")
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
+        self.profilePictureImageView.clipsToBounds = true
+    }
+}
+
+extension EditProfileViewController: UIImagePickerControllerDelegate{
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+        
+        picker.dismiss(animated: true, completion: nil)
+        
+        if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            self.profileImage = image
+        } else{
+            print("can't pick image")
+            return
+        }
+        
+        self.profilePictureImageView.image = self.profileImage
+        self.profilePictureImageView.layer.borderWidth = 1.0
+        self.profilePictureImageView.layer.masksToBounds = false
+        self.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
+        self.profilePictureImageView.clipsToBounds = true
+        
+        guard let imageData = profileImage.pngData() else {
+            return
+        }
+        profilePictureHelper.setImageUrl(email: User.sharedInstance.getEmail(), imageData: imageData)
+        
+    }
+
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
+        picker.dismiss(animated: true, completion: nil)
+    }
+
+}
+
+extension EditProfileViewController: UINavigationControllerDelegate{
+    
 }

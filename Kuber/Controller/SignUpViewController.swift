@@ -57,7 +57,7 @@ class SignUpViewController: UIViewController {
     }
     @objc func keyboardWillShow(notification: NSNotification) {
         
-        guard let  profileImageView=profileImageView , let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
+        guard let  profileImageView = profileImageView , let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         else {
            // if keyboard size is not available for some reason, dont do anything
            return
@@ -134,7 +134,6 @@ extension SignUpViewController: UIImagePickerControllerDelegate{
         self.profileImageView.layer.borderWidth = 1.0
         self.profileImageView.layer.masksToBounds = false
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
-        print("width: \(self.profileImageView.frame.width)")
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
         self.profileImageView.clipsToBounds = true
         
