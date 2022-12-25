@@ -32,11 +32,12 @@ class ProfileScreenViewController: UIViewController {
         super.viewDidLoad()
         profileHelper.delegate = self
         profilePictureHelper.delegate = self
-        profilePictureHelper.getImageDataFromFireStorage(urlString: User.sharedInstance.profilePictureUrl)
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         profileHelper.checkUserAndSetUI()
+        profilePictureHelper.getImageDataFromFireStorage(urlString: User.sharedInstance.profilePictureUrl)
     }
     
     /*

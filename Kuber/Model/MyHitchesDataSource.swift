@@ -53,6 +53,7 @@ class MyHitchesDataSource{
                     print("A")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getMyHitchesArrayCount()){
+                        
                         self.getRideInfo(areCurrentHitches: areCurrentHitches)
                         print("C")
                     }
@@ -72,7 +73,7 @@ class MyHitchesDataSource{
         var mutex = 0
         if (myHitchesArray.count == 0){
             DispatchQueue.main.async {
-                self.delegate?.hitchListLoaded()
+                self.delegate?.noDataInMyHitches()
             }
         } else{
             for i in 0..<myHitchesArray.count {
@@ -160,7 +161,11 @@ class MyHitchesDataSource{
                             
                             self.myFinalHitchesArray = self.myFinalHitchesArray.sorted(by: { $0.hitch.date < $1.hitch.date })
                             DispatchQueue.main.async {
-                                self.delegate?.hitchListLoaded()
+                                if (self.myFinalHitchesArray.count == 0){
+                                    self.delegate?.noDataInMyHitches()
+                                }else{
+                                    self.delegate?.hitchListLoaded()
+                                }
                             }
                         }
                         print("C")

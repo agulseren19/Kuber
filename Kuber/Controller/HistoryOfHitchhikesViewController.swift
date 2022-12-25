@@ -11,6 +11,8 @@ class HistoryOfHitchhikesViewController: UIViewController {
 
     @IBOutlet weak var historyOfHitchhikesTableView: UITableView!
     
+    @IBOutlet weak var warningLabel: UILabel!
+    
     private var hitchhikeDatasource = MyHitchesDataSource()
     
     override func viewDidLoad() {
@@ -27,6 +29,8 @@ class HistoryOfHitchhikesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        warningLabel.isHidden = true
         hitchhikeDatasource.getListOfHitches(areCurrentHitches: false)
         
     }
@@ -110,7 +114,7 @@ extension HistoryOfHitchhikesViewController: MyHitchesDataDelegate{
     }
     
     func noDataInMyHitches() {
-        print("aaa")
+        warningLabel.isHidden = false
     }
     
 }
