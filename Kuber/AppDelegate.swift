@@ -18,6 +18,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     let gcmMessageIDKey = "gcm.message_id"
+    let db = Firestore.firestore()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -77,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       print(userInfo)
     }
     
+    /*
     // [START receive_message]
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) async
@@ -93,17 +95,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       // Print full message.
       print(userInfo)
-
+          
       return UIBackgroundFetchResult.newData
     }
 
     // [END receive_message]
+    */
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+      // Extract the custom data payload from the notification
+      let senderName = userInfo["senderName"] as? String
+      
+      // Display the push notification
+      let alert = UIAlertController(title: "Friend Request", message: "You have received a friend request from \(senderName!)", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      self.window?.rootViewController?.present(alert, animated: true, completion: nil)
+    }
+
     
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
       print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
 
+    /*
     // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
     // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
     // the FCM registration token.
@@ -113,6 +128,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
       // With swizzling disabled you must set the APNs token here.
       // Messaging.messaging().apnsToken = deviceToken
+    }
+    */
+    
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("APNs token retrieved: \(deviceToken)")
+        // Convert the device token to a string
+        let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+      
+        // Get the current user's ID
+        if let userId = Auth.auth().currentUser?.uid {
+            // Update the user's document in the Firestore database with the device token
+            // COMMENT OUT THE FOLLOWING LINE
+            //db.collection("users").document(userId).updateData(["deviceToken": deviceTokenString])
+        }
     }
 
     

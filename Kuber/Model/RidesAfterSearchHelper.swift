@@ -82,4 +82,34 @@ class RidesAfterSearchHelper {
        }
         
     }
+    
+    func sendNotificationWithFirebase(ride: Ride){
+        let serverKey = "YOUR_SERVER_KEY"
+        let fcmUrl = "https://fcm.googleapis.com/fcm/send"
+
+        let to = "DEVICE_TOKEN" // The device token of the recipient's device
+
+        let notification = ["title": "Friend Request", "body": "You have received a friend request"]
+        let data = ["senderName": "John Smith"]
+
+        let headers = ["Content-Type": "application/json", "Authorization": "key=\(serverKey)"]
+        let payload: [String: Any] = ["to": to, "notification": notification, "data": data]
+
+        let request = NSMutableURLRequest(url: NSURL(string: fcmUrl)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        request.httpMethod = "POST"
+        request.allHTTPHeaderFields = headers
+        request.httpBody = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
+
+        let session = URLSession.shared
+        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+          if (error != nil) {
+            print(error!)
+          } else {
+            print(response!)
+          }
+        })
+
+        dataTask.resume()
+
+    }
 }
