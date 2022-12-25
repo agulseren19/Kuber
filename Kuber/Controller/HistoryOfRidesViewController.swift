@@ -11,6 +11,8 @@ class HistoryOfRidesViewController: UIViewController {
 
     @IBOutlet weak var historyOfRidesTableView: UITableView!
     
+    @IBOutlet weak var warningLabel: UILabel!
+    
     private var myRidesDatasource = MyRidesDataSource()
     
     override func viewDidLoad() {
@@ -22,6 +24,8 @@ class HistoryOfRidesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        warningLabel.isHidden = true
         myRidesDatasource.getListOfMyPreviousRides()
     }
     
@@ -86,7 +90,7 @@ extension HistoryOfRidesViewController: UITableViewDataSource, UITableViewDelega
 
 extension HistoryOfRidesViewController: MyRidesDataDelegate {
     func noDataInMyRides() {
-        
+        warningLabel.isHidden = false
     }
     func myRidesListLoaded(){
         self.historyOfRidesTableView.reloadData()

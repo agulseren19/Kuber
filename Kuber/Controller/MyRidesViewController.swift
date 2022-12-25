@@ -32,6 +32,7 @@ class MyRidesViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         warningLabel.isHidden = true
         myRidesDatasource.getListOfMyRides()
         /*    let appearance = UITabBarAppearance()
@@ -107,6 +108,7 @@ extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MyRidesViewController: MyRidesDataDelegate {
     func noDataInMyRides() {
+        print("no My ride data")
         warningLabel.isHidden = false
     }
     
