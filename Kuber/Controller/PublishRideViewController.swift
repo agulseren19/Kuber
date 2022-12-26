@@ -90,6 +90,7 @@ class PublishRideViewController: UIViewController {
         let iteration=arraySize-1
         let optionClosure = {(action: UIAction) in
             print(action.title)
+            self.fromLocation.setTitle(action.title, for: .normal)
             self.setFromNeighbourhoodLocationPopUpButton(title: action.title)
 
         }
@@ -114,6 +115,7 @@ class PublishRideViewController: UIViewController {
         let iteration=arraySize-1
         let optionClosure = {(action: UIAction) in
             print(action.title)
+            self.toLocation.setTitle(action.title, for: .normal)
             self.setToNeighbourhoodLocationPopUpButton(title: action.title)
 
         }

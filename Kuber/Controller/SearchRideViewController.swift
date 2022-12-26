@@ -51,6 +51,7 @@ class SearchRideViewController: UIViewController {
         let number=kuberDataSource.getNumberDistricts()
         let optionClosure = {(action: UIAction) in
             print(action.title)
+            self.fromLocation.setTitle(action.title, for: .normal)
             self.setFromNeighbourhoodLocationPopUpButton(title: action.title)
 
         }
@@ -74,6 +75,7 @@ class SearchRideViewController: UIViewController {
         let number=kuberDataSource.getNumberDistricts()
         let optionClosure = {(action: UIAction) in
             print(action.title)
+            self.toLocation.setTitle(action.title, for: .normal)
             self.setToNeighbourhoodLocationPopUpButton(title: action.title)
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: number)
@@ -117,7 +119,9 @@ class SearchRideViewController: UIViewController {
     func setToNeighbourhoodLocationPopUpButton(title:String){
         let number=kuberDataSource.getNumberOfNeighbourhood(with: title)
         let optionClosure = {(action: UIAction) in
-            print(action.title) }
+            print(action.title)
+            
+        }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: number)
         for i in 0...number-1{
             if i == 0{
