@@ -70,6 +70,49 @@ class SecondSignUpHelper{
 
     }
     
+    func editUserData(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, smokingFlag: Bool, chattinessFlag: Bool, userEmail: String) {
+        var classLevel: String = ""
+        if segmentIndex==0 {
+            classLevel = "ELC"
+        }
+        if segmentIndex==1 {
+            classLevel = "Freshman"
+        }
+        if segmentIndex==2 {
+            classLevel = "Sophomore"
+        }
+        if segmentIndex==3 {
+            classLevel = "Junior"
+        }
+        if segmentIndex==4 {
+            classLevel = "Senior"
+        }
+        let db = Firestore.firestore()
+        db.collection("users").document(userEmail).updateData([
+                    "smokingFlag": smokingFlag,
+                    "fullName": fullName,
+                    "phoneNumber": phoneNumber,
+                    "major": major,
+                    "classLevel": classLevel,
+                    "chattinessFlag": chattinessFlag
+
+                ]) { err in
+
+                    if let err = err {
+
+                        print("Error writing document: \(err)")
+
+                    } else {
+
+                        print("Document successfully written!")
+                        self.delegate?.makeFieldsEmpty()
+                    }
+
+                }
+        
+
+    }
+    
     func setUserInfo(fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool){
         var classLevel: String = ""
         if segmentIndex==0 {

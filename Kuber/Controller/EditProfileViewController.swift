@@ -93,12 +93,11 @@ class EditProfileViewController: UIViewController {
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
         
         // Save the changes in Firebase with a helper
-        secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag, userEmail: self.userEmail)
+        secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag, userEmail: self.userEmail)
         
         // Also save the changes in the User class
         secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag)
         
-        //change the profile picture
         
         
         //Finally,
