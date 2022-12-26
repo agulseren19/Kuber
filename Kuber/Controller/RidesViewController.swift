@@ -20,6 +20,8 @@ class RidesViewController: UIViewController {
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
     
+    
+    
     @IBOutlet weak var warningLabel: UILabel!
     
     
@@ -101,6 +103,16 @@ extension RidesViewController: UITableViewDataSource{
             cell.fullNameLabel.text = ride.riderFullName
             cell.majorLabel.text = ride.riderMajor
             cell.moneyLabel.text = "\(ride.ride.fee)"
+            
+            
+            cell.profilePictureImageView.image = UIImage(data: ride.profileImageData)
+            cell.profilePictureImageView.layer.borderWidth = 1.0
+            cell.profilePictureImageView.layer.masksToBounds = false
+            cell.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
+            cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.height / 2
+            cell.profilePictureImageView.clipsToBounds = true
+            
+            
             cell.hitchARideBtn = {[unowned self] in
                 let alert = UIAlertController(title: "Hitch request sended! ", message: "Hitched!", preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -143,6 +155,7 @@ extension RidesViewController: RidesDataDelegate{
     func ridesListLoaded() {
         print("Rides List Loaded")
         self.ridesAfterSearchTableView.reloadData()
+        
     }
     
     

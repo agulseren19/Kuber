@@ -222,7 +222,9 @@ class RidesDataSource{
                     var newRideSearch = RideSearch(
                         ride: ride,
                         riderFullName: document.get("fullName") as! String,
-                        riderMajor: document.get("major") as! String
+                        riderMajor: document.get("major") as! String,
+                        profileImageUrl: document.get("profileImageUrl") as! String,
+                        profileImageData: Data()
                     )
                     print("\(i) : \(newRideSearch)")
                     self.rideSearchArray[i] = newRideSearch
@@ -230,7 +232,7 @@ class RidesDataSource{
                     mutex = mutex + 1
                     if (mutex == self.ridesArray.count){
                         DispatchQueue.main.async {
-                            self.delegate?.ridesListLoaded()
+                            self.getImageDataFromFireStorage()
                         }
                         print("C")
                     }
@@ -241,6 +243,40 @@ class RidesDataSource{
                 
             }
             
+        }
+    }
+    
+    func getImageDataFromFireStorage(){
+       
+        var mutex = 0
+        for i in 0..<self.rideSearchArray.count {
+            if var ride = self.rideSearchArray[i] {
+                var profileUrl = ride.profileImageUrl
+                
+                
+                guard let url = URL(string: profileUrl) else {
+                    return
+                }
+                let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+                    if let data = data {
+                        if error == nil {
+                            ride.profileImageData = data
+                            self.rideSearchArray[i] = ride
+                            mutex = mutex + 1
+                            print("hereeee image loaded")
+                            if (mutex == self.rideSearchArray.count ){
+                                DispatchQueue.main.async {
+                                    self.delegate?.ridesListLoaded()
+                                }
+                            }
+                        }
+                    }else{
+                        print("error url")
+                        return
+                    }
+                })
+                task.resume()
+            }
         }
     }
     

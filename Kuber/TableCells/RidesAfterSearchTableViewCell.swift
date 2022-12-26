@@ -19,6 +19,8 @@ class RidesAfterSearchTableViewCell: UITableViewCell {
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
     
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    
     var hitchARideBtn: (() -> ())?
     
     override func awakeFromNib() {
