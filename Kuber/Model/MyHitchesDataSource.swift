@@ -36,7 +36,6 @@ class MyHitchesDataSource{
         
         for i in 0..<User.sharedInstance.getMyHitchesArrayCount(){
             var hitchId = User.sharedInstance.getMyHitchesArray()[i]
-            print(hitchId)
             let db = Firestore.firestore()
             let docRef2 = db.collection("hitches").document(hitchId)
             docRef2.getDocument { (document, error) in
@@ -50,16 +49,13 @@ class MyHitchesDataSource{
                         ride: Ride(rideId: "", fromLocation: "",  fromNeighbourhoodLocation: "",toLocation: "",toNeighbourhoodLocation: "", date: Date(),time: Date(), seatAvailable: 0, fee: 0, mail: "", hitched: false)
                     )
                     self.myHitchesArray.append(newHitch)
-                    print("A")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getMyHitchesArrayCount()){
                         
                         self.getRideInfo(areCurrentHitches: areCurrentHitches)
-                        print("C")
                     }
                     
                 } else {
-                    print("Document does not exist in my Ride")
                 }
                 
             }
@@ -99,7 +95,6 @@ class MyHitchesDataSource{
                         mutex = mutex + 1
                         if (mutex == self.myHitchesArray.count){
                             self.getRiderInfo(areCurrentHitches: areCurrentHitches)
-                            print("C")
                         }
                     }
                 }
@@ -122,7 +117,6 @@ class MyHitchesDataSource{
                         riderMajor: document.get("major") as! String
                     )
                     self.myFinalHitchesArray.append(newMyHitch)
-                    print("A")
                     mutex = mutex + 1
                     if (mutex == self.myHitchesArray.count){
                         DispatchQueue.main.async {
@@ -153,7 +147,6 @@ class MyHitchesDataSource{
                                     }
                                     
                                 }else {
-                                    print("realDateOfRide is not valid")
                                     return false
                                 }
                                 
@@ -168,11 +161,9 @@ class MyHitchesDataSource{
                                 }
                             }
                         }
-                        print("C")
                     }
                     
                 } else {
-                    print("Document does not exist in my Ride")
                 }
                 
             }

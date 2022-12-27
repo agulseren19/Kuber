@@ -16,8 +16,6 @@ class RidesAfterSearchHelper {
     var mutex = 0
     
     func saveHitchToDatabase(ride: Ride){
-        print("RidesAfterSearchHelper is reached")
-        print(ride.rideId)
         let db = Firestore.firestore()
         
         let id = db.collection("hitches").document().documentID;
@@ -37,10 +35,8 @@ class RidesAfterSearchHelper {
                 
             } else {
                 
-                print("Publish data successfully written!")
                 self.mutex = self.mutex + 1
                 if self.mutex == 3 {
-                    print("hereeee1")
                     self.delegate?.hitchIsSavedToFirebase()
                 }
                 
@@ -57,11 +53,9 @@ class RidesAfterSearchHelper {
                User.sharedInstance.appendToMyHitchesArray(id: id)
                self.mutex = self.mutex + 1
                if self.mutex == 3 {
-                   print("hereeee2")
                    self.delegate?.hitchIsSavedToFirebase()
                }
            } else {
-               print("Document does not exist")
            }
        }
         
@@ -73,11 +67,9 @@ class RidesAfterSearchHelper {
                ])
                self.mutex = self.mutex + 1
                if self.mutex == 3 {
-                   print("hereeee3")
                    self.delegate?.hitchIsSavedToFirebase()
                }
            } else {
-               print("Document does not exist")
            }
        }
         
@@ -103,9 +95,7 @@ class RidesAfterSearchHelper {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
           if (error != nil) {
-            print(error!)
           } else {
-            print(response!)
           }
         })
 

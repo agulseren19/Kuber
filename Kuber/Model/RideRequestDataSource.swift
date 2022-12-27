@@ -32,7 +32,6 @@ class RideRequestDataSource {
                 let rideRequests = document.get("hitchRequests") as! [String]
                 self.getHitchInfo(hitches: rideRequests)
             } else {
-                print("Document does not exist in my Ride")
             }
         }
     }
@@ -47,7 +46,6 @@ class RideRequestDataSource {
         }
         for hitch in hitches {
             var hitchId = hitch
-            print(hitchId)
             let db = Firestore.firestore()
             let docRef2 = db.collection("hitches").document(hitchId)
             docRef2.getDocument { (document, error) in
@@ -67,7 +65,6 @@ class RideRequestDataSource {
                     }
                     
                 } else {
-                    print("Document does not exist in my Ride")
                 }
             }
         }
@@ -102,7 +99,6 @@ class RideRequestDataSource {
                     }
                     
                 } else {
-                    print("Document does not exist in my Ride")
                 }
             }
         }
