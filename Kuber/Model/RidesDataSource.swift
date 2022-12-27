@@ -29,14 +29,10 @@ class RidesDataSource{
 
         db.collection("rides").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents for Rides Screen: \(err)")
             } else {
                 self.rideCount = querySnapshot!.count
-                print("querySnapshot!.count:")
-                print(querySnapshot!.count)
                 
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
                     
                     var newRide = Ride (
                         rideId: document.documentID,
@@ -55,18 +51,14 @@ class RidesDataSource{
                     self.ridesArray.append(newRide)
                     self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
                     self.ridesArray = self.ridesArray.filter{ $0.date >  Date() }
-                    print("X")
                     
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
                         DispatchQueue.main.async {
-                            print("count: \(self.ridesArray.count)")
                             self.getRiderInfo()
-                            print("Y")
                         }
                     }
                 }
-                print("Z")
             }
         }
     }
@@ -79,14 +71,10 @@ class RidesDataSource{
 
         db.collection("rides").getDocuments() { (querySnapshot, err) in
             if let err = err {
-                print("Error getting documents for Rides Screen: \(err)")
             } else {
                 self.rideCount = querySnapshot!.count
-                print("querySnapshot!.count:")
-                print(querySnapshot!.count)
                 
                 for document in querySnapshot!.documents {
-                    print("\(document.documentID) => \(document.data())")
                     
                     var newRide = Ride (
                         rideId: document.documentID,
@@ -103,7 +91,6 @@ class RidesDataSource{
                     )
                     
                     self.ridesArray.append(newRide)
-                    print("X")
                     
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
@@ -111,13 +98,9 @@ class RidesDataSource{
                             self.sortTheRideArray( to: to , toNeighbourhood: toNeighbourhood , date: date , time: time  )
                             //self.delegate?.ridesListLoaded()
                             //self.getRiderInfo()
-                            print("Y")
-                            print("ride size")
-                            print(self.getNumberOfRides())
                         }
                     }
                 }
-                print("Z")
             }
         }
         
@@ -209,7 +192,6 @@ class RidesDataSource{
             }
         }
         rideSearchArray.removeAll()
-        print("ridesArray.count: \(ridesArray.count)")
         rideSearchArray = [RideSearch?](repeating: nil, count: ridesArray.count)
         let db = Firestore.firestore()
         var mutex = 0
@@ -226,19 +208,15 @@ class RidesDataSource{
                         profileImageUrl: document.get("profileImageUrl") as! String,
                         profileImageData: Data()
                     )
-                    print("\(i) : \(newRideSearch)")
                     self.rideSearchArray[i] = newRideSearch
-                    print("A")
                     mutex = mutex + 1
                     if (mutex == self.ridesArray.count){
                         DispatchQueue.main.async {
                             self.getImageDataFromFireStorage()
                         }
-                        print("C")
                     }
                     
                 } else {
-                    print("Document does not exist in my Ride")
                 }
                 
             }
@@ -263,7 +241,6 @@ class RidesDataSource{
                             ride.profileImageData = data
                             self.rideSearchArray[i] = ride
                             mutex = mutex + 1
-                            print("hereeee image loaded")
                             if (mutex == self.rideSearchArray.count ){
                                 DispatchQueue.main.async {
                                     self.delegate?.ridesListLoaded()
@@ -271,7 +248,6 @@ class RidesDataSource{
                             }
                         }
                     }else{
-                        print("error url")
                         return
                     }
                 })
@@ -325,18 +301,7 @@ class RidesDataSource{
                     if (riderSmokeMatch == true) && (riderChatMatch == true){
                             ridersMatch = true
                     }
-                   print("Hithcher TO")
-                   print(to)
-                   print("Hithcher NeighbourHood")
-                   print(toNeighbourhood)
-                   print("Hithcher Date")
-                   print(date)
-                   print("Hithcher Time")
-                   print(time)
-                   print("rideLocation")
-                   print(ride.toLocation)
-                   print("ride Neigh Location")
-                   print(ride.toNeighbourhoodLocation)
+                   
                    var hitchhikerToTown = to//ilçe
                    var hitchhikerToNeighbourhood = toNeighbourhood //Mahalle
                    
@@ -346,10 +311,6 @@ class RidesDataSource{
                    
                    var riderToTown = ride.toLocation//ilçe
                    var riderToNeighbourhood = ride.toNeighbourhoodLocation //Mahalle
-                   print("hitchhikerToNeighbourhood")
-                   print(hitchhikerToNeighbourhood)
-                   print("hitchhikerToTown")
-                   print(hitchhikerToTown)
                    if(riderToNeighbourhood == "Ana Kampüs"){
                        riderToTown = "Sarıyer"
                        riderToNeighbourhood = "Koç Üniversitesi"
@@ -368,14 +329,7 @@ class RidesDataSource{
                    hitchhikerToNeighbourhood = self.parseAddress(address: hitchhikerToNeighbourhood)
                    riderToTown = self.parseAddress(address: riderToTown)
                    riderToNeighbourhood = self.parseAddress(address: riderToNeighbourhood)
-                   print("hitchhikerToNeighbourhood")
-                   print(hitchhikerToNeighbourhood)
-                   print("hitchhikerToTown")
-                   print(hitchhikerToTown)
-                   print("riderToNeighbourhood")
-                   print(riderToNeighbourhood)
-                   print("riderToTown")
-                   print(riderToTown)
+                   
                    /* Adres template
                     https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Zekeriyaköy%2CSarıyer&origins=Darüşşafaka%2CSarıyer&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34
                     */
@@ -410,12 +364,10 @@ class RidesDataSource{
                                flag = flag+1
                            }
                             else if (flag == 1){
-                               print("flag is one")
-                               print(char)
+                               
                                if(char == "e"){
                                    flag = flag+1
-                                   print("e found")
-                                   print(flag)
+                                   
 
                                } else {
                                    flag = 0
@@ -424,8 +376,7 @@ class RidesDataSource{
                            else if (flag == 2){
                                if(char == "x"){
                                    flag = flag+1
-                                   print("x found")
-                                   print(flag)
+                                   
 
                                } else {
                                    flag = 0
@@ -434,8 +385,7 @@ class RidesDataSource{
                            else if (flag == 3){
                                if(char == "t"){
                                    flag = flag+1
-                                   print("t found")
-                                   print(flag)
+                                   
 
                                } else {
                                    flag = 0
@@ -484,13 +434,10 @@ class RidesDataSource{
                             }
                                               
                        var classDifference = abs(userClassLevelInt-riderClassLevelInt)
-                       print("FOUND DISTANCE")
                        
                        ridePoint = ridePoint - Double(numberFloatValue!)
-                       print("RIDE POINTT")
                        ridePoint = ridePoint - Double(classDifference)
                        ridePoint = ridePoint - (Double(ride.fee)/5)
-                       print(ridePoint)
                        /*let rideTime = ride.time
                        var calendar = Calendar.current
                        let hour = calendar.component(.hour, from: rideTime)
@@ -509,22 +456,7 @@ class RidesDataSource{
 
                        
                        var rideTime = ride.time
-                       print("hitcherDateSelectionDay, hitcherDateSelectionmonth , hitcherDateSelectionyear :")
-                       print(hitcherDateSelectionDay)
-                       print(hitcherDateSelectionMonth)
-                       print(hitcherDateSelectionYear)
-                       print("hitcherHourSelectionHour:")
-                       print(hitcherHourSelection)
-                       print("hitcherMinuteSelection:")
-                       print(hitcherMinuteSelection)
-                       print("ridedateYear, ridedateMonth , ridedateDay :")
-                       print(rideDateDay)
-                       print(rideDateMonth)
-                       print(rideDateYear)
-                       print("rideTimeHour, rideTimeMinute  :")
-                       print(rideTimeHour)
-                       print(rideTimeMinute)
-                      
+                       
                        ridePoint = ridePoint - Double(distanceBetweenDestinations!)
                        var timeDifferenceHour = rideTimeHour - hitcherHourSelection
                        var timeDifferenceMinute = rideTimeMinute - hitcherMinuteSelection
@@ -546,14 +478,11 @@ class RidesDataSource{
                            for (rideKey , ridePoint2 ) in sortedByValueDictionary {
                                if((sortedArrayCounter < 5)&&(!sortedRidesArray.contains(rideKey))/*&&ridersMatch*/){
                                    
-                                   print("append should happen here")
                                    sortedRidesArray.append(rideKey)
                                    sortedArrayCounter = sortedArrayCounter + 1
                                }
                            }
-                           print("sorted ride array:")
                            self.ridesArray = sortedRidesArray
-                           print(sortedRidesArray)
                            //self.delegate?.ridesListLoaded()
                            self.getRiderInfo()
                        }
@@ -586,8 +515,7 @@ class RidesDataSource{
             parsedAddress = parsedAddress.replacingOccurrences(of: "ö", with: "o")
             parsedAddress = parsedAddress.replacingOccurrences(of: "Ç", with: "C")
             parsedAddress = parsedAddress.replacingOccurrences(of: "ç", with: "c")
-            print("prsed address")
-            print(parsedAddress)
+            
             return parsedAddress
         }
 }
