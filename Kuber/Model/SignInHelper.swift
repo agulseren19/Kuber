@@ -46,7 +46,6 @@ class SignInHelper {
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 user.setEmail(email: userEmail)
-                user.setPassword(password: document.get("password")! as! String)
                 user.setFullName(fullName: document.get("fullName")! as! String)
                 user.setMajor(major: document.get("major") as! String)
                 user.setSmokingPreference(smokingPreference: document.get("smokingFlag") as! Bool)
