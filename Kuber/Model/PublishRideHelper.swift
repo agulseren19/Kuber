@@ -43,14 +43,11 @@ class PublishRideHelper {
 
             if let err = err {
 
-                print("Error writing publish data: \(err)")
 
             } else {
                 
-                print("Publish data successfully written!")
                 self.mutex = self.mutex + 1
                 if self.mutex == 2 {
-                    print("hereeee1")
                     DispatchQueue.main.async {
                         self.delegate?.publishedToDatabase()
                     }
@@ -68,13 +65,11 @@ class PublishRideHelper {
                User.sharedInstance.appendToRideArray(id: id)
                self.mutex = self.mutex + 1
                if self.mutex == 2 {
-                   print("hereeee2")
                    DispatchQueue.main.async {
                        self.delegate?.publishedToDatabase()
                    }
                }
            } else {
-               print("Document does not exist")
            }
        }
         

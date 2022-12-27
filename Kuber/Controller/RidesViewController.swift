@@ -36,8 +36,6 @@ class RidesViewController: UIViewController {
         } else {
             ridesDatasource.getListOfRidesWithoutShowAll(to: to, toNeighbourhood: toNeighbourhood, date: date , time: time )
             }
-        print("RİDES VİEW CONTROLLER")
-        print(to)
         
         updateTheTableViewDesign()
     }
@@ -69,7 +67,6 @@ extension RidesViewController: UITableViewDataSource{
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("view controller rides count \(ridesDatasource.getNumberOfRides())")
         return ridesDatasource.getNumberOfRides()
     }
     
@@ -86,7 +83,6 @@ extension RidesViewController: UITableViewDataSource{
             timeFormatter.dateFormat = "HH:mm"
             
             if(ride.ride.hitched) {
-                print("Ride Exist \(indexPath.row)")
                 cell.sendHitchButton.setTitle("Sent", for: .normal)
                 cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
                 cell.sendHitchButton.isEnabled = false
@@ -153,7 +149,6 @@ extension RidesViewController: RidesDataDelegate{
     }
     
     func ridesListLoaded() {
-        print("Rides List Loaded")
         self.ridesAfterSearchTableView.reloadData()
         
     }
@@ -164,6 +159,5 @@ extension RidesViewController: RidesDataDelegate{
 extension RidesViewController: RidesAfterSearchDelegate {
     func hitchIsSavedToFirebase() {
         
-        print("Hitch Request Is Saved")
     }
 }

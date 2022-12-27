@@ -27,7 +27,7 @@ class SignUpHelper{
         
         storage.child("images/_\(email)_.png").putData(imageData, metadata: nil, completion: { _, error in
             guard error == nil else {
-                print("failed")
+            
                 print(error)
                 return
             }
@@ -45,11 +45,11 @@ class SignUpHelper{
                         print("Error writing publish data: \(err)")
                         
                     } else {
-                        print("succesfull")
+                        
                         //self.delegate?.rideRequestListLoaded()
                     }
                 }
-                print("downloaded: \(urlString)")
+                
             })
         })
     }
@@ -89,7 +89,7 @@ class SignUpHelper{
 
                                 } else {
 
-                                    print("Document successfully written!")
+                                    
 
                                 }
                             }

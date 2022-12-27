@@ -21,7 +21,6 @@ class ProfilePictureHelper {
         
         storage.child("images/_\(email)_.png").putData(imageData, metadata: nil, completion: { _, error in
             guard error == nil else {
-                print("failed")
                 print(error)
                 return
             }
@@ -40,34 +39,27 @@ class ProfilePictureHelper {
                         print("Error writing publish data: \(err)")
                         
                     } else {
-                        print("succesfull")
                         //self.delegate?.rideRequestListLoaded()
                     }
                 }
-                print("downloaded: \(urlString)")
             })
         })
     }
     
     func getImageDataFromFireStorage(urlString: String){
-        print("profile picture: ")
-        print(urlString)
         guard let url = URL(string: urlString) else {
             return
         }
-        print("passed url")
         let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
             if let data = data {
                 print(error)
                 if error == nil {
                     self.imageData = data
-                    print("hereeee image loaded")
                     DispatchQueue.main.async {
                         self.delegate?.profileImageLoaded()
                     }
                 }
             }else{
-                print("error url")
                 return
             }
         })

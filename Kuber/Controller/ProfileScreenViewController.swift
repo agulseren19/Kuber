@@ -84,7 +84,6 @@ extension ProfileScreenViewController: ProfilePictureDelegate {
         self.profileImageView.layer.borderWidth = 1.0
         self.profileImageView.layer.masksToBounds = false
         self.profileImageView.layer.borderColor = UIColor.white.cgColor
-        print("width: \(self.profileImageView.frame.width)")
         self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
         self.profileImageView.clipsToBounds = true
     }

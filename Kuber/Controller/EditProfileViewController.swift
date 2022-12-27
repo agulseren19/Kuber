@@ -199,7 +199,6 @@ extension EditProfileViewController: ProfilePictureDelegate {
         self.profilePictureImageView.layer.borderWidth = 1.0
         self.profilePictureImageView.layer.masksToBounds = false
         self.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
-        print("width: \(self.profilePictureImageView.frame.width)")
         self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
         self.profilePictureImageView.clipsToBounds = true
     }
@@ -214,7 +213,6 @@ extension EditProfileViewController: UIImagePickerControllerDelegate{
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.profileImage = image
         } else{
-            print("can't pick image")
             return
         }
         

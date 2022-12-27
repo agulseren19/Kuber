@@ -49,9 +49,7 @@ class RideRequestHelper {
     }
     
     func callNumber(phoneNumber: String) {
-    print("phone number \(phoneNumber)")
       if let phoneCallURL = URL(string: "tel://\(phoneNumber)") {
-          print(phoneCallURL)
         let application: UIApplication = UIApplication.shared
         if (application.canOpenURL(phoneCallURL)) {
             application.open(phoneCallURL, options: [:], completionHandler: nil)
