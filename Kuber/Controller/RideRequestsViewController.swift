@@ -17,8 +17,11 @@ class RideRequestsViewController: UIViewController {
     @IBOutlet weak var warningLabel: UILabel!
     
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        activityIndicatorView.isHidden = false
         self.title = "Hitch Requests"
         updateTheTableViewDesign()
         rideRequestDatasource.delegate = self
@@ -73,6 +76,14 @@ extension RideRequestsViewController: UITableViewDataSource{
             cell.nameLabel.text = ride.hitchhikerName
             cell.majorLabel.text = ride.hitchhikerMajor
             cell.gradeLevelLabel.text = ride.hitchhikerGradeLevel
+            
+            cell.profilePictureImageView.image = UIImage(data: ride.profileImageData)
+            cell.profilePictureImageView.layer.borderWidth = 1.0
+            cell.profilePictureImageView.layer.masksToBounds = false
+            cell.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
+            cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.height / 2
+            cell.profilePictureImageView.clipsToBounds = true
+            
             cell.acceptARequestButton = {[unowned self] in
                 rideRequestHelper.acceptTheRideRequest(ride: ride)
                 rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
@@ -112,10 +123,12 @@ extension RideRequestsViewController: UITableViewDataSource{
 
 extension RideRequestsViewController: RideRequestDataDelegate {
     func noDataInRideRequest() {
+        activityIndicatorView.isHidden = true
         warningLabel.isHidden = false
     }
     
     func  rideRequestListLoaded(){
+        activityIndicatorView.isHidden = true
         self.rideRequestTableView.reloadData()
     }
 }

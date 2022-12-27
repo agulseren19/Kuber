@@ -16,10 +16,13 @@ class RidesViewController: UIViewController {
     var date: Date = Date()
     var time: Date = Date()
     var all: Bool = false
+    
+
     private var ridesDatasource = RidesDataSource()
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     
     @IBOutlet weak var warningLabel: UILabel!
@@ -27,7 +30,7 @@ class RidesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        activityIndicatorView.isHidden = false
         // Do any additional setup after loading the view.
         ridesDatasource.delegate = self
         ridesAfterSearchHelper.delegate = self
@@ -41,6 +44,7 @@ class RidesViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        
         warningLabel.isHidden = true
     }
     
@@ -145,10 +149,12 @@ extension RidesViewController: UITableViewDataSource{
 
 extension RidesViewController: RidesDataDelegate{
     func noDataInRides() {
+        activityIndicatorView.isHidden = true
         warningLabel.isHidden = false
     }
     
     func ridesListLoaded() {
+        activityIndicatorView.isHidden = true
         self.ridesAfterSearchTableView.reloadData()
         
     }

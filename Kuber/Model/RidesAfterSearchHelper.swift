@@ -17,7 +17,9 @@ class RidesAfterSearchHelper {
     
     func saveHitchToDatabase(ride: Ride){
         let db = Firestore.firestore()
-        
+        var hitchedRideIds = User.sharedInstance.getMyHitchesToRideIdArray()
+        hitchedRideIds.append(ride.rideId)
+        User.sharedInstance.setMyHitchesToRideIdArray(rideIds: hitchedRideIds)
         let id = db.collection("hitches").document().documentID;
         db.collection("hitches").document(id).setData([
             

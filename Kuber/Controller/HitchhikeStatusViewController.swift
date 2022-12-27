@@ -15,6 +15,9 @@ class HitchhikeStatusViewController: UIViewController {
     private var hitchhikeDatasource = MyHitchesDataSource()
 
     @IBOutlet weak var hitchListTableView: UITableView!
+    
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchButton.imageView?.contentMode = .scaleAspectFit
@@ -26,6 +29,7 @@ class HitchhikeStatusViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        activityIndicatorView.isHidden = false
         warningLabel.isHidden = true
         hitchhikeDatasource.getListOfHitches(areCurrentHitches: true)
     }
@@ -75,6 +79,14 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             cell.moneyLabel.text = "\(hitch.hitch.ride.fee) TL"
             cell.majorLabel.text = hitch.riderMajor
             cell.fullNameLabel.text = hitch.riderFullName
+            
+            cell.profilePictureImageView.image = UIImage(data: hitch.riderProfileImageData)
+            cell.profilePictureImageView.layer.borderWidth = 1.0
+            cell.profilePictureImageView.layer.masksToBounds = false
+            cell.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
+            cell.profilePictureImageView.layer.cornerRadius = cell.profilePictureImageView.frame.height / 2
+            cell.profilePictureImageView.clipsToBounds = true
+            
             //hitchhikeStatus 0 -> declined 1->approved 2->in request
             if  hitch.hitch.status == 0 {
                 cell.statusButton.tintColor=UIColor(red: 153/255.0, green: 0/255.0, blue: 0/255.0, alpha: 1)
@@ -108,9 +120,11 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
 extension HitchhikeStatusViewController: MyHitchesDataDelegate{
     func noDataInMyHitches() {
         warningLabel.isHidden = false
+        activityIndicatorView.isHidden = true
     }
     
     func hitchListLoaded() {
         self.hitchListTableView.reloadData()
+        activityIndicatorView.isHidden = true
     }
 }

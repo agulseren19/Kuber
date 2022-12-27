@@ -88,13 +88,16 @@ class RideRequestDataSource {
                         hitchhikerName: document.get("fullName") as! String,
                         hitchhikerMajor: document.get("major") as! String,
                         hitchhikerGradeLevel: document.get("classLevel") as! String,
-                        hitchhikerPhoneNumber: document.get("phoneNumber") as! String
+                        hitchhikerPhoneNumber: document.get("phoneNumber") as! String,
+                        profileImageUrl: document.get("profileImageUrl") as! String,
+                        profileImageData: Data()
                     )
                     self.rideRequestArray.append(newRideRequest)
                     mutex = mutex + 1
                     if (mutex == self.hitchArray.count){
                         DispatchQueue.main.async {
-                            self.delegate?.rideRequestListLoaded()
+                            //self.delegate?.rideRequestListLoaded()
+                            self.getImageDataFromFireStorage()
                         }
                     }
                     
@@ -102,6 +105,36 @@ class RideRequestDataSource {
                 }
             }
         }
+    }
+    
+    func getImageDataFromFireStorage(){
+       
+        var mutex = 0
+        for i in 0..<self.rideRequestArray.count {
+            var rideRequest = self.rideRequestArray[i]
+            var profileUrl = rideRequest.profileImageUrl
+                
+                guard let url = URL(string: profileUrl) else {
+                    return
+                }
+                let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+                    if let data = data {
+                        if error == nil {
+                            rideRequest.profileImageData = data
+                            self.rideRequestArray[i] = rideRequest
+                            mutex = mutex + 1
+                            if (mutex == self.rideRequestArray.count ){
+                                DispatchQueue.main.async {
+                                    self.delegate?.rideRequestListLoaded()
+                                }
+                            }
+                        }
+                    }else{
+                        return
+                    }
+                })
+                task.resume()
+            }
     }
     
     func getNumberOfRideRequest() -> Int {
