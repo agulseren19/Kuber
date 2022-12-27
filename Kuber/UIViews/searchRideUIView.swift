@@ -23,7 +23,7 @@ class searchRideUIView: UIView {
         let yLocationLabel = myLabel?.bounds.minY
         var yLocationLine: Int = 0
         if let yLoc = yLocationLabel {
-            print("location of the line is changed")
+            
             yLocationLine = Int(yLoc) + 30
         }
         let redColor = UIColor(red: (186/255.0), green: (17/255.0), blue: (17/255.0), alpha: 1.0)

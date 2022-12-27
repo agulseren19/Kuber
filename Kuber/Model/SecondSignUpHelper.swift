@@ -61,7 +61,6 @@ class SecondSignUpHelper{
 
                     } else {
 
-                        print("Document successfully written!")
                         self.delegate?.makeFieldsEmpty()
                     }
 
@@ -104,7 +103,6 @@ class SecondSignUpHelper{
 
                     } else {
 
-                        print("Document successfully written!")
                         self.delegate?.makeFieldsEmpty()
                     }
 

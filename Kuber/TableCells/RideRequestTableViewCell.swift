@@ -27,7 +27,7 @@ class RideRequestTableViewCell: UITableViewCell {
     }
 
     @IBAction func phoneButtonClicked(_ sender: Any) {
-        print("here 111")
+        
         phoneButtonClicked?()
     }
     

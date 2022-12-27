@@ -27,7 +27,6 @@ class MyRidesDataSource {
     func getListOfMyRides(){
         myRidesArray.removeAll()
         var mutex = 0
-        print("myride count: \(User.sharedInstance.getRideArrayCount())")
         if (User.sharedInstance.getRideArrayCount() == 0){
             DispatchQueue.main.async {
                 self.delegate?.noDataInMyRides()
@@ -36,7 +35,6 @@ class MyRidesDataSource {
         
         for i in 0..<User.sharedInstance.getRideArrayCount(){
             var rideId = User.sharedInstance.getRideArray()[i]
-            print(rideId)
             let db = Firestore.firestore()
             let docRef2 = db.collection("rides").document(rideId)
             docRef2.getDocument { (document, error) in
@@ -56,7 +54,6 @@ class MyRidesDataSource {
                     )
                     
                     self.myRidesArray.append(newRide)
-                    print("A")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getRideArrayCount()){
 
@@ -87,17 +84,14 @@ class MyRidesDataSource {
                                 self.delegate?.myRidesListLoaded()
                             }
                         }
-                        print("C")
                     }
                     
                 } else {
-                    print("Document does not exist in my Ride")
                 }
                 
             }
             
         }
-        print("B")
     }
     
     func getListOfMyPreviousRides (){
@@ -110,7 +104,6 @@ class MyRidesDataSource {
         }
         for i in 0..<User.sharedInstance.getRideArrayCount(){
             var rideId = User.sharedInstance.getRideArray()[i]
-            print(rideId)
             let db = Firestore.firestore()
             let docRef2 = db.collection("rides").document(rideId)
             docRef2.getDocument { (document, error) in
@@ -129,7 +122,6 @@ class MyRidesDataSource {
                         hitched: false
                     )
                     self.myRidesArray.append(newRide)
-                    print("AA")
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getRideArrayCount()){
                         self.myRidesArray = self.myRidesArray.filter{ $0.date < Date() }
@@ -143,17 +135,14 @@ class MyRidesDataSource {
                                 self.delegate?.myRidesListLoaded()
                             }
                         }
-                        print("CC")
                     }
                     
                 } else {
-                    print("Document does not exist in my Ride")
                 }
                 
             }
             
         }
-        print("BB")
     }
 
     func getNumberOfmyRides() -> Int {

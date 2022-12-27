@@ -55,7 +55,6 @@ class SignInHelper {
                 user.setMyHitchesArray(myHitchesArray: document.data()!["myHitches"]! as! [String])
                 user.setProfilePictureUrl(profilePictureUrl: document.get("profileImageUrl") as! String)
                 // set the silentRide and noSmoking
-                print("user is created")
                 self.delegate?.signInTheUser()
             } else {
                 print("Document does not exist")
