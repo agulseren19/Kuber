@@ -18,10 +18,7 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         let user = User.sharedInstance
-        print("here")
-        print(user)
-        print(user.getEmail())
-        print(user.getFullName())
+        
     }
     
 

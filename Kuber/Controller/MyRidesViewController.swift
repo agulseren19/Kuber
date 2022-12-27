@@ -108,7 +108,6 @@ extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension MyRidesViewController: MyRidesDataDelegate {
     func noDataInMyRides() {
-        print("no My ride data")
         warningLabel.isHidden = false
     }
     

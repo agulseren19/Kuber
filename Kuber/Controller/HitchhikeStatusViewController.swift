@@ -111,7 +111,6 @@ extension HitchhikeStatusViewController: MyHitchesDataDelegate{
     }
     
     func hitchListLoaded() {
-        print("Hitch List Loaded")
         self.hitchListTableView.reloadData()
     }
 }

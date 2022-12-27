@@ -83,7 +83,6 @@ extension RideRequestsViewController: UITableViewDataSource{
             }
             cell.phoneButtonClicked = {[unowned self] in
                 rideRequestHelper.callNumber(phoneNumber: ride.hitchhikerPhoneNumber)
-                print("here 222")
             }
             if  ride.status == 0 {
                 cell.acceptButton.isEnabled = false
@@ -117,7 +116,6 @@ extension RideRequestsViewController: RideRequestDataDelegate {
     }
     
     func  rideRequestListLoaded(){
-        print("reloaded the ride request screen")
         self.rideRequestTableView.reloadData()
     }
 }

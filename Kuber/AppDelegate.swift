@@ -72,11 +72,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // Messaging.messaging().appDidReceiveMessage(userInfo)
       // Print message ID.
       if let messageID = userInfo[gcmMessageIDKey] {
-        print("Message ID: \(messageID)")
       }
 
       // Print full message.
-      print(userInfo)
     }
     
     /*
@@ -116,7 +114,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
-      print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
 
     /*
@@ -135,7 +132,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let db = Firestore.firestore()
-        print("APNs token retrieved: \(deviceToken)")
         // Convert the device token to a string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
       
@@ -164,11 +160,9 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // [START_EXCLUDE]
     // Print message ID.
     if let messageID = userInfo[gcmMessageIDKey] {
-      print("Message ID: \(messageID)")
     }
     // [END_EXCLUDE]
     // Print full message.
-    print(userInfo)
 
     // Change this to your preferred presentation option
     return [[.alert, .sound]]
@@ -181,13 +175,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // [START_EXCLUDE]
     // Print message ID.
     if let messageID = userInfo[gcmMessageIDKey] {
-      print("Message ID: \(messageID)")
     }
     // [END_EXCLUDE]
     // With swizzling disabled you must let Messaging know about the message, for Analytics
     // Messaging.messaging().appDidReceiveMessage(userInfo)
     // Print full message.
-    print(userInfo)
   }
 }
 
@@ -195,7 +187,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
   // [START refresh_token]
   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-    print("Firebase registration token: \(String(describing: fcmToken))")
 
     let dataDict: [String: String] = ["token": fcmToken ?? ""]
     NotificationCenter.default.post(

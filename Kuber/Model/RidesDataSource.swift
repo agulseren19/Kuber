@@ -341,7 +341,6 @@ class RidesDataSource{
                    var result = 0.0
                    URLSession.shared.dataTask(with: NSURL(string: finalUrl)! as URL) { data, response, error in
                        resp = String( data:data!, encoding:String.Encoding(rawValue: NSUTF8StringEncoding) )!
-                       print(resp)
                        var flag = 0
                        var index = 0
                        var distance = ""

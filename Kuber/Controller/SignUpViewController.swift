@@ -102,7 +102,6 @@ extension SignUpViewController: SignUpDelegate {
     }
     
     func giveSignUpError( errorDescription: String) {
-        print(errorDescription)
         errorText.text = errorDescription
         errorText.isHidden = false
         errorText.textColor = UIColor.red
@@ -126,7 +125,6 @@ extension SignUpViewController: UIImagePickerControllerDelegate{
         if let image = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
             self.profileImage = image
         } else{
-            print("can't pick image")
             return
         }
         
