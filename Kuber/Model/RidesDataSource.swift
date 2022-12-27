@@ -303,8 +303,8 @@ class RidesDataSource{
             
             var ridePoint = 0.0
             let docRef = db.collection("users").document(ride.mail)
-            var riderSmokingPreference = false
-            var riderChattinessPreference = false
+            var riderNoSmokingPreference = false
+            var riderSilentRidePreference = false
             var riderClassLevel = ""
             var riderSmokeMatch = false
             var riderChatMatch = false
@@ -312,14 +312,14 @@ class RidesDataSource{
             var riderMajor = ""
            docRef.getDocument { (document, error) in
                if let document = document, document.exists {
-                   riderSmokingPreference = document.get("smokingFlag")! as! Bool
-                   riderChattinessPreference = document.get("chattinessFlag")! as! Bool
+                   riderNoSmokingPreference = document.get("smokingFlag")! as! Bool
+                   riderSilentRidePreference = document.get("chattinessFlag")! as! Bool
                    riderClassLevel = document.get("classLevel")! as! String
                    riderMajor = document.get("classLevel")! as! String
-                   if (riderSmokingPreference == User.sharedInstance.getSmokingPreference()){
+                   if (riderNoSmokingPreference == User.sharedInstance.getNoSmokingPreference()){
                             riderSmokeMatch = true
                     }
-                    if (riderChattinessPreference == User.sharedInstance.getChattinessPreference()){
+                    if (riderSilentRidePreference == User.sharedInstance.getSilentRidePreference()){
                             riderChatMatch = true
                     }
                     if (riderSmokeMatch == true) && (riderChatMatch == true){

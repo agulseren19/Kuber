@@ -24,7 +24,7 @@ class SecondSignUpHelper{
     init() {
     }
     
-    func signUp(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, smokingFlag: Bool, chattinessFlag: Bool, userEmail: String) {
+    func signUp(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, noSmokingFlag: Bool, silentRideFlag: Bool, userEmail: String) {
         var classLevel: String = ""
         if segmentIndex==0 {
             classLevel = "ELC"
@@ -43,12 +43,12 @@ class SecondSignUpHelper{
         }
         let db = Firestore.firestore()
         db.collection("users").document(userEmail).updateData([
-                    "smokingFlag": smokingFlag,
+                    "smokingFlag": noSmokingFlag,
                     "fullName": fullName,
                     "phoneNumber": phoneNumber,
                     "major": major,
                     "classLevel": classLevel,
-                    "chattinessFlag": chattinessFlag,
+                    "chattinessFlag": silentRideFlag,
                     "publishedRides": [],
                     "myHitches": []
 
@@ -70,7 +70,7 @@ class SecondSignUpHelper{
 
     }
     
-    func editUserData(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, smokingFlag: Bool, chattinessFlag: Bool, userEmail: String) {
+    func editUserData(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, noSmokingFlag: Bool, silentRideFlag: Bool, userEmail: String) {
         var classLevel: String = ""
         if segmentIndex==0 {
             classLevel = "ELC"
@@ -89,12 +89,12 @@ class SecondSignUpHelper{
         }
         let db = Firestore.firestore()
         db.collection("users").document(userEmail).updateData([
-                    "smokingFlag": smokingFlag,
+                    "smokingFlag": noSmokingFlag,
                     "fullName": fullName,
                     "phoneNumber": phoneNumber,
                     "major": major,
                     "classLevel": classLevel,
-                    "chattinessFlag": chattinessFlag
+                    "chattinessFlag": silentRideFlag
 
                 ]) { err in
 
@@ -113,7 +113,7 @@ class SecondSignUpHelper{
 
     }
     
-    func setUserInfo(fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool){
+    func setUserInfo(fullName: String, phoneNumber: String, major: String, segmentIndex: Int, noSmokingFlag: Bool, silentRideFlag: Bool){
         var classLevel: String = ""
         if segmentIndex==0 {
             classLevel = "ELC"
@@ -131,16 +131,16 @@ class SecondSignUpHelper{
         user.setPhoneNumber(phoneNumber: phoneNumber)
         user.setMajor(major: major)
         user.setClassLevel(classLevel: classLevel)
-        user.setSmokingPreference(smokingPreference: smokingFlag)
-        user.setChattinessPreference(chattinessPreference: chattinessFlag)
+        user.setNoSmokingPreference(noSmokingPreference: noSmokingFlag)
+        user.setSilentRidePreference(silentRidePreference: silentRideFlag)
         
     }
     
     func setFieldsOfInputsAsCurrentProfile() {
         let fullName = user.getFullName()
         let phoneNumber = user.getPhoneNumber()
-        let smokingFlag = user.getSmokingPreference()
-        let chattinessFlag = user.getChattinessPreference()
+        let noSmokingFlag = user.getNoSmokingPreference()
+        let silentRideFlag = user.getSilentRidePreference()
         let major = user.getMajor()
         let classLevel = user.getClassLevel()
         
@@ -159,7 +159,7 @@ class SecondSignUpHelper{
         
         let userEmail = user.getEmail()
         
-        self.delegate?.setFieldsCurrentProfile(userEmail: userEmail ,fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag)
+        self.delegate?.setFieldsCurrentProfile(userEmail: userEmail ,fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: noSmokingFlag, silentRideFlag: silentRideFlag)
         
     }
     

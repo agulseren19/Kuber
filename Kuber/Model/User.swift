@@ -16,7 +16,7 @@ final class User: NSObject {
     var phoneNumber : String = ""
     var major : String = ""
     var classLevel : String = ""
-    var smokingPreference : Bool = false
+    var noSmokingPreference : Bool = false
     var chattinesFlag : Bool = false
     var ridesArray = [String]()
     var myHitchesArray = [String]()
@@ -73,18 +73,18 @@ final class User: NSObject {
      func getClassLevel() -> String {
          return self.classLevel
      }
-    func setSmokingPreference(smokingPreference : Bool) {
-        self.smokingPreference = smokingPreference
+    func setNoSmokingPreference(noSmokingPreference : Bool) {
+        self.noSmokingPreference = noSmokingPreference
     }
      
-     func getSmokingPreference() -> Bool {
-         return self.smokingPreference
+     func getNoSmokingPreference() -> Bool {
+         return self.noSmokingPreference
      }
-    func setChattinessPreference(chattinessPreference : Bool) {
-        self.chattinesFlag = chattinessPreference
+    func setSilentRidePreference(silentRidePreference : Bool) {
+        self.chattinesFlag = silentRidePreference
     }
      
-     func getChattinessPreference() -> Bool {
+     func getSilentRidePreference() -> Bool {
          return self.chattinesFlag
      }
     

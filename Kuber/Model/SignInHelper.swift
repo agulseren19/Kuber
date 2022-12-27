@@ -48,13 +48,13 @@ class SignInHelper {
                 user.setEmail(email: userEmail)
                 user.setFullName(fullName: document.get("fullName")! as! String)
                 user.setMajor(major: document.get("major") as! String)
-                user.setSmokingPreference(smokingPreference: document.get("smokingFlag") as! Bool)
+                user.setNoSmokingPreference(noSmokingPreference: document.get("smokingFlag") as! Bool)
                 user.setClassLevel(classLevel: document.get("classLevel") as! String)
                 user.setPhoneNumber(phoneNumber: document.get("phoneNumber") as! String)
                 user.setRidesArray(ridesArray: document.data()!["publishedRides"]! as! [String])
                 user.setMyHitchesArray(myHitchesArray: document.data()!["myHitches"]! as! [String])
                 user.setProfilePictureUrl(profilePictureUrl: document.get("profileImageUrl") as! String)
-                // set the chattiness and smoking
+                // set the silentRide and noSmoking
                 print("user is created")
                 self.delegate?.signInTheUser()
             } else {
