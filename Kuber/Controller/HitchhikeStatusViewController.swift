@@ -24,12 +24,12 @@ class HitchhikeStatusViewController: UIViewController {
         hitchhikeDatasource.delegate = self
         //hitchhikeDatasource.getListOfHitches()
         updateTheTableViewDesign()
-
+        activityIndicatorView.isHidden = false
         // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        activityIndicatorView.isHidden = false
+        
         warningLabel.isHidden = true
         hitchhikeDatasource.getListOfHitches(areCurrentHitches: true)
     }
