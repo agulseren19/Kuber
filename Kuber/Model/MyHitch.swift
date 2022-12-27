@@ -12,5 +12,6 @@ struct MyHitch {
     let hitch: Hitch
     let riderFullName: String
     let riderMajor: String
-    
+    let riderProfileImageUrl: String
+    var riderProfileImageData: Data
 }

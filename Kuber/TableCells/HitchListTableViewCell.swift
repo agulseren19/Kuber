@@ -18,6 +18,9 @@ class HitchListTableViewCell: UITableViewCell {
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var moneyLabel: UILabel!
     @IBOutlet weak var statusButton: UIButton!
+    
+    @IBOutlet weak var profilePictureImageView: UIImageView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -114,14 +114,15 @@ class MyHitchesDataSource{
                     var newMyHitch = MyHitch(
                         hitch: hitch,
                         riderFullName: document.get("fullName") as! String,
-                        riderMajor: document.get("major") as! String
+                        riderMajor: document.get("major") as! String,
+                        riderProfileImageUrl: document.get("profileImageUrl") as! String,
+                        riderProfileImageData: Data()
                     )
                     self.myFinalHitchesArray.append(newMyHitch)
                     mutex = mutex + 1
                     if (mutex == self.myHitchesArray.count){
                         DispatchQueue.main.async {
                             self.isAlreadyHitched()
-                            
                             // Displaying the current (not expired/old) hitchhikes of the user in the table view
                             // The filtering is dependent on the ride's original date that the hitchhiker has requested
                             self.myFinalHitchesArray = self.myFinalHitchesArray.filter{(myHitch) -> Bool in
@@ -157,7 +158,7 @@ class MyHitchesDataSource{
                                 if (self.myFinalHitchesArray.count == 0){
                                     self.delegate?.noDataInMyHitches()
                                 }else{
-                                    self.delegate?.hitchListLoaded()
+                                    self.getImageDataFromFireStorage()
                                 }
                             }
                         }
@@ -190,6 +191,36 @@ class MyHitchesDataSource{
             }
         }
         
+    }
+    
+    func getImageDataFromFireStorage(){
+       
+        var mutex = 0
+        for i in 0..<self.myFinalHitchesArray.count {
+            var hitch = self.myFinalHitchesArray[i]
+            var profileUrl = hitch.riderProfileImageUrl
+                
+                guard let url = URL(string: profileUrl) else {
+                    return
+                }
+                let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
+                    if let data = data {
+                        if error == nil {
+                            hitch.riderProfileImageData = data
+                            self.myFinalHitchesArray[i] = hitch
+                            mutex = mutex + 1
+                            if (mutex == self.myFinalHitchesArray.count ){
+                                DispatchQueue.main.async {
+                                    self.delegate?.hitchListLoaded()
+                                }
+                            }
+                        }
+                    }else{
+                        return
+                    }
+                })
+                task.resume()
+            }
     }
     
     func getNumberOfHitches() -> Int {

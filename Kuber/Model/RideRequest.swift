@@ -18,5 +18,7 @@ struct RideRequest {
     let hitchhikerMajor: String
     let hitchhikerGradeLevel: String
     let hitchhikerPhoneNumber: String
+    let profileImageUrl: String
+    var profileImageData: Data
     
 }
