@@ -79,7 +79,6 @@ class SignUpHelper{
                             db.collection("users").document(email).setData([
 
                                 "email": email,
-                                "password": password,
                                 "profileImageUrl": profileImageUrl
 
                             ]) { err in
