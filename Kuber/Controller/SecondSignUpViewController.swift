@@ -57,7 +57,13 @@ class SecondSignUpViewController: UIViewController {
          print("Document does not exist")
          }
          }*/
-        self.navigationController?.popToRootViewController(animated: true)
+        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
+        for aViewController in viewControllers {
+            if aViewController is LogInViewController {
+                self.navigationController!.popToViewController(aViewController, animated: true)
+            }
+        }
+        //self.navigationController?.popToRootViewController(animated: true)
     }
     
     @IBAction func smokingCheckBoxClicked(_ sender: UIButton) {
