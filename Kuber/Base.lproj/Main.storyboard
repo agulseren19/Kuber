@@ -103,11 +103,11 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="uncheckedCheckbox"/>
                                 <connections>
-                                    <action selector="smokingCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r6x-JN-zAX"/>
+                                    <action selector="noSmokingCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r6x-JN-zAX"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea9-ee-voU">
-                                <rect key="frame" x="65" y="490" width="63.333333333333343" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea9-ee-voU">
+                                <rect key="frame" x="65" y="490" width="88" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -121,11 +121,11 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="uncheckedCheckbox"/>
                                 <connections>
-                                    <action selector="chattinessCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BL4-9o-vV9"/>
+                                    <action selector="silentRideCheckBoxClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="BL4-9o-vV9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chattiness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-QV-51C">
-                                <rect key="frame" x="65" y="532" width="77.333333333333314" height="20"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Silent Ride" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mg7-QV-51C">
+                                <rect key="frame" x="65" y="532" width="77" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -202,8 +202,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="nMF-jJ-Qa9"/>
                     <connections>
-                        <outlet property="checkBoxSmoking" destination="CHc-Wv-iZJ" id="32L-2a-6K4"/>
-                        <outlet property="checkboxChattiness" destination="HSh-Tg-FqP" id="3wM-tY-lXc"/>
+                        <outlet property="checkBoxNoSmoking" destination="CHc-Wv-iZJ" id="32L-2a-6K4"/>
+                        <outlet property="checkboxSilentRide" destination="HSh-Tg-FqP" id="3wM-tY-lXc"/>
                         <outlet property="fullNameInputField" destination="3hk-yR-62B" id="bnR-mA-TkF"/>
                         <outlet property="gradeSegmentedControl" destination="0cV-3n-War" id="JBV-mC-WgL"/>
                         <outlet property="majorInputField" destination="8LO-Q5-MQB" id="Xwt-dl-aEW"/>
@@ -291,7 +291,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="m60-4b-Psl">
-                                <rect key="frame" x="71" y="492" width="278" height="34.000000000000057"/>
+                                <rect key="frame" x="71" y="492" width="278" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="one-time-code"/>
                             </textField>
@@ -1787,8 +1787,8 @@
                                     <constraint firstAttribute="width" constant="28" id="qpb-WT-nQB"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-bm-V4b">
-                                <rect key="frame" x="122" y="528.66666666666663" width="67" height="21.333333333333371"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NoSmoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pcd-bm-V4b">
+                                <rect key="frame" x="122" y="525.66666666666663" width="88.333333333333314" height="27.666666666666629"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="pcd-bm-V4b" secondAttribute="height" multiplier="67:21" id="C8g-C3-ISZ"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="67" id="PAi-kA-rHS"/>
@@ -1797,7 +1797,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chattiness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhC-vD-RtD">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SilentRide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhC-vD-RtD">
                                 <rect key="frame" x="122" y="564.66666666666663" width="82" height="21.333333333333371"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="82" id="D6T-vx-E0Q"/>
@@ -1875,14 +1875,14 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="chattinessCheckBoxImageView" destination="qgf-h9-Uwb" id="jsZ-vI-4I8"/>
                         <outlet property="fullNameLabel" destination="yyM-Yh-4DO" id="SGx-az-fap"/>
                         <outlet property="gradeLevelLabel" destination="uyy-7O-4Dx" id="VOT-25-Qlh"/>
                         <outlet property="mailLabel" destination="lqn-sO-RKF" id="sic-Hz-Kbh"/>
                         <outlet property="majorLabel" destination="iKP-7W-iG8" id="8Sp-IE-qFd"/>
+                        <outlet property="noSmokingCheckBoxImageView" destination="IZg-mY-GES" id="llw-Wl-SMK"/>
                         <outlet property="phoneNumberLabel" destination="R6A-kg-J9n" id="CeD-4h-dWr"/>
                         <outlet property="profileImageView" destination="lvP-Jk-6Ca" id="AaA-pX-hC4"/>
-                        <outlet property="smokingCheckBoxImageView" destination="IZg-mY-GES" id="llw-Wl-SMK"/>
+                        <outlet property="silentRideCheckBoxImageView" destination="qgf-h9-Uwb" id="jsZ-vI-4I8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QgD-aM-Zf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1947,10 +1947,10 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="uncheckedCheckbox"/>
                                 <connections>
-                                    <action selector="checkBoxSmokingTapped:" destination="68R-FA-52q" eventType="touchUpInside" id="reb-wB-xhm"/>
+                                    <action selector="checkBoxNoSmokingTapped:" destination="68R-FA-52q" eventType="touchUpInside" id="reb-wB-xhm"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Smoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lM3-sS-9Ue">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NoSmoking" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lM3-sS-9Ue">
                                 <rect key="frame" x="71.333333333333314" y="452" width="128" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="rI2-ZX-s5A"/>
@@ -1968,10 +1968,10 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="uncheckedCheckbox"/>
                                 <connections>
-                                    <action selector="checkBoxChattinessTapped:" destination="68R-FA-52q" eventType="touchUpInside" id="zIw-zh-el5"/>
+                                    <action selector="checkBoxSilentRideTapped:" destination="68R-FA-52q" eventType="touchUpInside" id="zIw-zh-el5"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chattiness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea7-5y-DVj">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SilentRide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ea7-5y-DVj">
                                 <rect key="frame" x="71.333333333333314" y="494.33333333333331" width="128" height="19.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="128" id="5hY-QC-id4"/>
@@ -2091,8 +2091,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="m9U-z4-prz"/>
                     <connections>
-                        <outlet property="checkBoxChattiness" destination="Kgb-x2-sf6" id="1f1-ym-OTB"/>
-                        <outlet property="checkBoxSmoking" destination="S57-99-6zg" id="KsL-4Z-Ly3"/>
+                        <outlet property="checkBoxNoSmoking" destination="S57-99-6zg" id="KsL-4Z-Ly3"/>
+                        <outlet property="checkBoxSilentRide" destination="Kgb-x2-sf6" id="1f1-ym-OTB"/>
                         <outlet property="fullNameInputField" destination="fyK-7p-aHL" id="3E2-FH-vdJ"/>
                         <outlet property="gradeSegmentedControl" destination="zX1-Kd-Oa7" id="MWr-89-tns"/>
                         <outlet property="majorInputField" destination="zy9-O6-jLS" id="sRz-bP-vFf"/>

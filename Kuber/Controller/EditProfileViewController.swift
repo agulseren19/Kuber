@@ -12,16 +12,16 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var fullNameInputField: UITextField!
     @IBOutlet weak var phoneNumberInputField: UITextField!
     @IBOutlet weak var gradeSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var checkBoxChattiness: UIButton!
-    @IBOutlet weak var checkBoxSmoking: UIButton!
+    @IBOutlet weak var checkBoxSilentRide: UIButton!
+    @IBOutlet weak var checkBoxNoSmoking: UIButton!
     @IBOutlet weak var majorInputField: UIButton!
     
     @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var profilePictureImageView: UIImageView!
     private var profileImage: UIImage = UIImage(named: "defaultProfile")!
     // Initialization values
-    private var smokingFlag: Bool = true
-    private var chattinessFlag: Bool = true
+    private var noSmokingFlag: Bool = true
+    private var silentRideFlag: Bool = true
     var userEmail: String = ""
     
     
@@ -54,26 +54,26 @@ class EditProfileViewController: UIViewController {
     }
     
     
-    @IBAction func checkBoxSmokingTapped(_ sender: UIButton) {
-        if(smokingFlag==true){
+    @IBAction func checkBoxNoSmokingTapped(_ sender: UIButton) {
+        if(noSmokingFlag==true){
             sender.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
-            smokingFlag=false
+            noSmokingFlag=false
         }
         else{
             sender.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
-            smokingFlag=true
+            noSmokingFlag=true
         }
     }
     
     
-    @IBAction func checkBoxChattinessTapped(_ sender: UIButton) {
-        if(chattinessFlag==true){
+    @IBAction func checkBoxSilentRideTapped(_ sender: UIButton) {
+        if(silentRideFlag==true){
             sender.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
-            chattinessFlag=false
+            silentRideFlag=false
         }
         else{
             sender.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
-            chattinessFlag=true
+            silentRideFlag=true
         }
     }
     
@@ -93,10 +93,10 @@ class EditProfileViewController: UIViewController {
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
         
         // Save the changes in Firebase with a helper
-        secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag, userEmail: self.userEmail)
+        secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag, userEmail: self.userEmail)
         
         // Also save the changes in the User class
-        secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: self.smokingFlag, chattinessFlag: self.chattinessFlag)
+        secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag)
         
         
         
@@ -151,7 +151,7 @@ class EditProfileViewController: UIViewController {
 }
 
 extension EditProfileViewController: SecondSignUpDelegate{
-    func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, major: String, segmentIndex: Int, smokingFlag: Bool, chattinessFlag: Bool) {
+    func setFieldsCurrentProfile(userEmail: String, fullName: String, phoneNumber: String, major: String, segmentIndex: Int, noSmokingFlag: Bool, silentRideFlag: Bool) {
         self.userEmail = userEmail
         self.fullNameInputField.text = fullName
         self.phoneNumberInputField.text = phoneNumber
@@ -164,20 +164,20 @@ extension EditProfileViewController: SecondSignUpDelegate{
         self.gradeSegmentedControl.selectedSegmentIndex = segmentIndex
         
         
-        self.smokingFlag = smokingFlag
-        if(self.smokingFlag == true){
-            self.checkBoxSmoking.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
+        self.noSmokingFlag = noSmokingFlag
+        if(self.noSmokingFlag == true){
+            self.checkBoxNoSmoking.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
         }
         else{
-            self.checkBoxSmoking.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
+            self.checkBoxNoSmoking.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
         }
         
-        self.chattinessFlag = chattinessFlag
-        if(self.chattinessFlag == true){
-            self.checkBoxChattiness.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
+        self.silentRideFlag = silentRideFlag
+        if(self.silentRideFlag == true){
+            self.checkBoxSilentRide.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
         }
         else{
-            self.checkBoxChattiness.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
+            self.checkBoxSilentRide.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
         }
     }
 }

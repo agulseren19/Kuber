@@ -14,13 +14,13 @@ class SecondSignUpViewController: UIViewController {
     
     @IBOutlet weak var majorInputField: UIButton!
     
-    @IBOutlet weak var checkBoxSmoking: UIButton!
+    @IBOutlet weak var checkBoxNoSmoking: UIButton!
     
-    @IBOutlet weak var checkboxChattiness: UIButton!
+    @IBOutlet weak var checkboxSilentRide: UIButton!
     
     @IBOutlet weak var gradeSegmentedControl: UISegmentedControl!
-    var smokingFlag=false
-    var chattinessFlag=false
+    var noSmokingFlag=false
+    var silentRideFlag=false
     let secondSignUpHelper = SecondSignUpHelper()
     
     var userEmail: String = ""
@@ -44,7 +44,7 @@ class SecondSignUpViewController: UIViewController {
         let phoneNumber = phoneNumberInputField.text!
         let major = majorInputField.currentTitle!
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
-        secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, smokingFlag: smokingFlag, chattinessFlag: chattinessFlag, userEmail: userEmail)
+        secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: noSmokingFlag, silentRideFlag: silentRideFlag, userEmail: userEmail)
         
         /*
          let db = Firestore.firestore()
@@ -66,25 +66,25 @@ class SecondSignUpViewController: UIViewController {
         //self.navigationController?.popToRootViewController(animated: true)
     }
     
-    @IBAction func smokingCheckBoxClicked(_ sender: UIButton) {
-        if(smokingFlag==true){
+    @IBAction func noSmokingCheckBoxClicked(_ sender: UIButton) {
+        if(noSmokingFlag==true){
             sender.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
-            smokingFlag=false
+            noSmokingFlag=false
         }
         else{
             sender.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
-            smokingFlag=true
+            noSmokingFlag=true
         }
     }
     
-    @IBAction func chattinessCheckBoxClicked(_ sender: UIButton) {
-        if(chattinessFlag==true){
+    @IBAction func silentRideCheckBoxClicked(_ sender: UIButton) {
+        if(silentRideFlag==true){
             sender.setImage((UIImage(named:"uncheckedCheckbox")), for: .normal)
-            chattinessFlag=false
+            silentRideFlag=false
         }
         else{
             sender.setImage((UIImage(named:"checkedCheckbox")), for: .normal)
-            chattinessFlag=true
+            silentRideFlag=true
         }
     }
     func setPopUpButton(){
