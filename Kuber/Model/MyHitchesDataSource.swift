@@ -104,6 +104,7 @@ class MyHitchesDataSource{
     
     func getRiderInfo(areCurrentHitches: Bool){
         let db = Firestore.firestore()
+        self.myFinalHitchesArray.removeAll()
         var mutex = 0
         for i in 0..<myHitchesArray.count {
             var hitch = myHitchesArray[i]
