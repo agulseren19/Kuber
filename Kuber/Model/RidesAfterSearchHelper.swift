@@ -78,13 +78,30 @@ class RidesAfterSearchHelper {
     }
     
     func sendNotificationWithFirebase(ride: Ride){
-        let serverKey = "YOUR_SERVER_KEY"
+        var mutex = 0
+        let serverKey = "AAAA4UHXh0E:APA91bFI7jYXFrSSK4xBOlDXOUSfM_u_T-AMMOpVF1ReXETPWT6bFJvFquQidpxxLct6iGYuqVSSqEgn2ECt6MSlxpFOyBmGcJTnQLnpPdJabqxtHJq-nTWizoBBo66YLp_Mw312LE1V"
         let fcmUrl = "https://fcm.googleapis.com/fcm/send"
+        
+        let db = Firestore.firestore()
+        
+        var to = ""
 
-        let to = "DEVICE_TOKEN" // The device token of the recipient's device
-
-        let notification = ["title": "Friend Request", "body": "You have received a friend request"]
-        let data = ["senderName": "John Smith"]
+        /*
+        let docRef = db.collection("users").document(ride.mail)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                print("to inside if before assign:\(to)")
+                to = document.get("deviceToken") as! String // The device token of the recipient's device
+                print("to inside if after assign:\(to)")
+                mutex = mutex + 1;
+            }
+        }
+        */
+        print("to: \(to)")
+        let senderName = User.sharedInstance.getFullName()
+        print("sendername: \(senderName)")
+        let notification = ["title": "Hitchhike Request from \(senderName)!", "body": "Go and check your ride's requests!"]
+        let data = ["senderName": senderName]
 
         let headers = ["Content-Type": "application/json", "Authorization": "key=\(serverKey)"]
         let payload: [String: Any] = ["to": to, "notification": notification, "data": data]
@@ -97,11 +114,13 @@ class RidesAfterSearchHelper {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
           if (error != nil) {
+            print(error!)
           } else {
+            print(response!)
           }
         })
 
         dataTask.resume()
-
     }
+    
 }

@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        
         Messaging.messaging().delegate = self
         
         UNUserNotificationCenter.current().delegate = self
@@ -65,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        
       // If you are receiving a notification message while your app is in the background,
       // this callback will not be fired till the user taps on the notification launching the application.
       // TODO: Handle data of notification
@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // Print full message.
     }
     
-    /*
+    
     // [START receive_message]
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) async
@@ -88,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // With swizzling disabled you must let Messaging know about the message, for Analytics
       // Messaging.messaging().appDidReceiveMessage(userInfo)
       // Print message ID.
+          
       if let messageID = userInfo[gcmMessageIDKey] {
         print("Message ID: \(messageID)")
       }
@@ -99,8 +100,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // [END receive_message]
-    */
     
+    /*
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
       // Extract the custom data payload from the notification
       let senderName = userInfo["senderName"] as? String
@@ -111,11 +112,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 
-    
+    */
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
+    
 
+    
     /*
     // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
     // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
@@ -134,11 +138,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         // Convert the device token to a string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        
+        print("set the user shared instance's device token")
+        print(deviceTokenString)
+        //User.sharedInstance.setDeviceTokenString(deviceTokenString: deviceTokenString)
       
         // Get the current user's ID
         if let userId = Auth.auth().currentUser?.uid {
             // Update the user's document in the Firestore database with the device token
             // COMMENT OUT THE FOLLOWING LINE
+            print("There is a current user and registered for notif with device token: \(deviceTokenString)")
+            print("auth current user: \(userId)")
             //db.collection("users").document(userId).updateData(["deviceToken": deviceTokenString])
         }
     }
@@ -172,6 +182,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                               didReceive response: UNNotificationResponse) async {
     let userInfo = response.notification.request.content.userInfo
 
+      print("Happens when pressed on the notification")
     // [START_EXCLUDE]
     // Print message ID.
     if let messageID = userInfo[gcmMessageIDKey] {
@@ -187,7 +198,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
   // [START refresh_token]
   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-
+      if let fcmToken = fcmToken{
+          print("fcmToken: \(fcmToken)")
+          User.sharedInstance.setDeviceTokenString(deviceTokenString: fcmToken)
+      }
+      
     let dataDict: [String: String] = ["token": fcmToken ?? ""]
     NotificationCenter.default.post(
       name: Notification.Name("FCMToken"),
