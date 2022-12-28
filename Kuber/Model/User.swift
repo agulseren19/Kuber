@@ -22,6 +22,7 @@ final class User: NSObject {
     var myHitchesArray = [String]()
     var myHitchestoRideIdArray: [String] = []
     var profilePictureUrl: String = ""
+    var deviceTokenString: String = ""
 
    private override init() { }
 
@@ -72,6 +73,13 @@ final class User: NSObject {
      
      func getClassLevel() -> String {
          return self.classLevel
+     }
+    func setDeviceTokenString(deviceTokenString : String) {
+        self.deviceTokenString = deviceTokenString
+    }
+     
+     func getDeviceTokenString() -> String {
+         return self.deviceTokenString
      }
     func setNoSmokingPreference(noSmokingPreference : Bool) {
         self.noSmokingPreference = noSmokingPreference

@@ -78,13 +78,23 @@ class RidesAfterSearchHelper {
     }
     
     func sendNotificationWithFirebase(ride: Ride){
-        let serverKey = "YOUR_SERVER_KEY"
+        let serverKey = "b2b8861350556ea01c65d69595ff001c6a43a047"
         let fcmUrl = "https://fcm.googleapis.com/fcm/send"
+        
+        let db = Firestore.firestore()
+        
+        var to = ""
 
-        let to = "DEVICE_TOKEN" // The device token of the recipient's device
-
-        let notification = ["title": "Friend Request", "body": "You have received a friend request"]
-        let data = ["senderName": "John Smith"]
+        let docRef = db.collection("users").document(ride.mail)
+        docRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                to = document.get("deviceToken") as! String // The device token of the recipient's device
+            }
+        }
+        
+        let senderName = User.sharedInstance.getFullName()
+        let notification = ["title": "Hitchhike Request from \(senderName)!", "body": "Go and check your ride's requests!"]
+        let data = ["senderName": senderName]
 
         let headers = ["Content-Type": "application/json", "Authorization": "key=\(serverKey)"]
         let payload: [String: Any] = ["to": to, "notification": notification, "data": data]
@@ -97,7 +107,9 @@ class RidesAfterSearchHelper {
         let session = URLSession.shared
         let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
           if (error != nil) {
+            print(error!)
           } else {
+            print(response!)
           }
         })
 

@@ -77,7 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // Print full message.
     }
     
-    /*
+    
     // [START receive_message]
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) async
@@ -99,8 +99,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // [END receive_message]
-    */
     
+    /*
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
       // Extract the custom data payload from the notification
       let senderName = userInfo["senderName"] as? String
@@ -111,11 +111,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       self.window?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 
-    
+    */
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
+    
 
+    
     /*
     // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
     // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
@@ -134,12 +137,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let db = Firestore.firestore()
         // Convert the device token to a string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
+        
+        print("set the user shared instance's device token")
+        User.sharedInstance.setDeviceTokenString(deviceTokenString: deviceTokenString)
       
         // Get the current user's ID
         if let userId = Auth.auth().currentUser?.uid {
             // Update the user's document in the Firestore database with the device token
             // COMMENT OUT THE FOLLOWING LINE
-            //db.collection("users").document(userId).updateData(["deviceToken": deviceTokenString])
+            print("There is a current user and registered for notif with device token: \(deviceTokenString)")
+            db.collection("users").document(userId).updateData(["deviceToken": deviceTokenString])
         }
     }
 
