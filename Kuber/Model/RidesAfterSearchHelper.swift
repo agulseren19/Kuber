@@ -78,21 +78,28 @@ class RidesAfterSearchHelper {
     }
     
     func sendNotificationWithFirebase(ride: Ride){
-        let serverKey = "b2b8861350556ea01c65d69595ff001c6a43a047"
+        var mutex = 0
+        let serverKey = "AAAA4UHXh0E:APA91bFI7jYXFrSSK4xBOlDXOUSfM_u_T-AMMOpVF1ReXETPWT6bFJvFquQidpxxLct6iGYuqVSSqEgn2ECt6MSlxpFOyBmGcJTnQLnpPdJabqxtHJq-nTWizoBBo66YLp_Mw312LE1V"
         let fcmUrl = "https://fcm.googleapis.com/fcm/send"
         
         let db = Firestore.firestore()
         
-        var to = ""
+        var to = "80C5EACCEAF8EB363A5265B5C905939FE0B61AD80A2110B5CAAFBB7E9F2F7B6C29E9570F9EC153BA1244EF70732AABC9A4E7EC68AA74C1F02DA0CA8D3398F88470D1E6D8FC2CB86260FEA9AD4A5323E6"
 
+        /*
         let docRef = db.collection("users").document(ride.mail)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
+                print("to inside if before assign:\(to)")
                 to = document.get("deviceToken") as! String // The device token of the recipient's device
+                print("to inside if after assign:\(to)")
+                mutex = mutex + 1;
             }
         }
-        
+        */
+        print("to: \(to)")
         let senderName = User.sharedInstance.getFullName()
+        print("sendername: \(senderName)")
         let notification = ["title": "Hitchhike Request from \(senderName)!", "body": "Go and check your ride's requests!"]
         let data = ["senderName": senderName]
 
@@ -109,6 +116,7 @@ class RidesAfterSearchHelper {
           if (error != nil) {
             print(error!)
           } else {
+              print("responsee: ")
             print(response!)
           }
         })

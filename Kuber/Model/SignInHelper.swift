@@ -55,7 +55,7 @@ class SignInHelper {
                 user.setMyHitchesArray(myHitchesArray: document.data()!["myHitches"]! as! [String])
                 user.setProfilePictureUrl(profilePictureUrl: document.get("profileImageUrl") as! String)
                 
-                db.collection("users").document(userEmail).updateData(["deviceToken": User.sharedInstance.getDeviceTokenString()])
+                db.collection("users").document(userEmail).updateData(["deviceToken": user.getDeviceTokenString()])
                 // set the silentRide and noSmoking
                 self.delegate?.signInTheUser()
             } else {

@@ -146,7 +146,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // Update the user's document in the Firestore database with the device token
             // COMMENT OUT THE FOLLOWING LINE
             print("There is a current user and registered for notif with device token: \(deviceTokenString)")
-            db.collection("users").document(userId).updateData(["deviceToken": deviceTokenString])
+            //80C5EACCEAF8EB363A5265B5C905939FE0B61AD80A2110B5CAAFBB7E9F2F7B6C29E9570F9EC153BA1244EF70732AABC9A4E7EC68AA74C1F02DA0CA8D3398F88470D1E6D8FC2CB86260FEA9AD4A5323E6
+            print("auth current user: \(userId)")
+            //nOeEHgd3nUVQwZYZcE0wrVmXjdo2
+            //db.collection("users").document(userId).updateData(["deviceToken": deviceTokenString])
         }
     }
 
