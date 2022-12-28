@@ -84,7 +84,7 @@ class RidesAfterSearchHelper {
         
         let db = Firestore.firestore()
         
-        var to = "80C5EACCEAF8EB363A5265B5C905939FE0B61AD80A2110B5CAAFBB7E9F2F7B6C29E9570F9EC153BA1244EF70732AABC9A4E7EC68AA74C1F02DA0CA8D3398F88470D1E6D8FC2CB86260FEA9AD4A5323E6"
+        var to = ""
 
         /*
         let docRef = db.collection("users").document(ride.mail)
@@ -116,12 +116,11 @@ class RidesAfterSearchHelper {
           if (error != nil) {
             print(error!)
           } else {
-              print("responsee: ")
             print(response!)
           }
         })
 
         dataTask.resume()
-
     }
+    
 }

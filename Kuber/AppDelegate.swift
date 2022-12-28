@@ -24,7 +24,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         FirebaseApp.configure()
         
-        
         Messaging.messaging().delegate = self
         
         UNUserNotificationCenter.current().delegate = self
@@ -65,6 +64,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
  
     func application(_ application: UIApplication,
                      didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
+        
       // If you are receiving a notification message while your app is in the background,
       // this callback will not be fired till the user taps on the notification launching the application.
       // TODO: Handle data of notification
@@ -88,6 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       // With swizzling disabled you must let Messaging know about the message, for Analytics
       // Messaging.messaging().appDidReceiveMessage(userInfo)
       // Print message ID.
+          
       if let messageID = userInfo[gcmMessageIDKey] {
         print("Message ID: \(messageID)")
       }
@@ -139,16 +140,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         
         print("set the user shared instance's device token")
-        User.sharedInstance.setDeviceTokenString(deviceTokenString: deviceTokenString)
+        print(deviceTokenString)
+        //User.sharedInstance.setDeviceTokenString(deviceTokenString: deviceTokenString)
       
         // Get the current user's ID
         if let userId = Auth.auth().currentUser?.uid {
             // Update the user's document in the Firestore database with the device token
             // COMMENT OUT THE FOLLOWING LINE
             print("There is a current user and registered for notif with device token: \(deviceTokenString)")
-            //80C5EACCEAF8EB363A5265B5C905939FE0B61AD80A2110B5CAAFBB7E9F2F7B6C29E9570F9EC153BA1244EF70732AABC9A4E7EC68AA74C1F02DA0CA8D3398F88470D1E6D8FC2CB86260FEA9AD4A5323E6
             print("auth current user: \(userId)")
-            //nOeEHgd3nUVQwZYZcE0wrVmXjdo2
             //db.collection("users").document(userId).updateData(["deviceToken": deviceTokenString])
         }
     }
@@ -182,6 +182,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
                               didReceive response: UNNotificationResponse) async {
     let userInfo = response.notification.request.content.userInfo
 
+      print("Happens when pressed on the notification")
     // [START_EXCLUDE]
     // Print message ID.
     if let messageID = userInfo[gcmMessageIDKey] {
@@ -197,7 +198,11 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
   // [START refresh_token]
   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-
+      if let fcmToken = fcmToken{
+          print("fcmToken: \(fcmToken)")
+          User.sharedInstance.setDeviceTokenString(deviceTokenString: fcmToken)
+      }
+      
     let dataDict: [String: String] = ["token": fcmToken ?? ""]
     NotificationCenter.default.post(
       name: Notification.Name("FCMToken"),
