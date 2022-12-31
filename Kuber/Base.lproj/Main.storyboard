@@ -288,15 +288,12 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signUp" translatesAutoresizingMaskIntoConstraints="NO" id="DxW-8a-ann">
-                                <rect key="frame" x="85" y="94" width="210" height="179"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" priority="750" constant="179" id="0Rz-xO-r2m"/>
-                                </constraints>
+                                <rect key="frame" x="90" y="94" width="210" height="179"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pon-78-pyw">
                                 <rect key="frame" x="54" y="433" width="282" height="35"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="Pon-78-pyw" secondAttribute="height" multiplier="282:35" id="ENz-Jq-5GO"/>
+                                    <constraint firstAttribute="height" constant="35" id="DSU-lj-OTy"/>
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Send">
@@ -318,27 +315,27 @@
                         <constraints>
                             <constraint firstItem="Pon-78-pyw" firstAttribute="centerX" secondItem="eqv-sw-aUA" secondAttribute="centerX" id="1HU-RW-sLE"/>
                             <constraint firstItem="eqv-sw-aUA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="6sn-6W-Bf9" secondAttribute="trailing" constant="40" id="79P-UQ-4sI"/>
-                            <constraint firstItem="eqv-sw-aUA" firstAttribute="trailing" secondItem="DxW-8a-ann" secondAttribute="trailing" constant="95" id="79s-SL-w9Q"/>
                             <constraint firstItem="Ad6-DH-1Il" firstAttribute="top" secondItem="tpR-80-JCa" secondAttribute="bottom" constant="8" symbolic="YES" id="7ub-CZ-cNk"/>
                             <constraint firstItem="6sn-6W-Bf9" firstAttribute="leading" secondItem="eqv-sw-aUA" secondAttribute="leading" constant="30" id="9mZ-pM-2fq"/>
                             <constraint firstItem="dbd-2f-wRb" firstAttribute="leading" secondItem="eqv-sw-aUA" secondAttribute="leading" constant="30" id="CXv-3R-t4G"/>
+                            <constraint firstItem="6sn-6W-Bf9" firstAttribute="top" secondItem="eqv-sw-aUA" secondAttribute="top" constant="190" id="DNO-dX-b4w"/>
                             <constraint firstItem="eqv-sw-aUA" firstAttribute="trailing" secondItem="cJX-2h-5AD" secondAttribute="trailing" constant="40" id="Gvj-Ok-WjZ"/>
                             <constraint firstItem="dbd-2f-wRb" firstAttribute="width" secondItem="dbd-2f-wRb" secondAttribute="height" multiplier="1:1" id="JES-2h-G2N"/>
                             <constraint firstItem="Pon-78-pyw" firstAttribute="top" secondItem="cJX-2h-5AD" secondAttribute="bottom" constant="21" id="Qif-Uv-gIg"/>
                             <constraint firstItem="6sn-6W-Bf9" firstAttribute="top" secondItem="DxW-8a-ann" secondAttribute="bottom" constant="8" id="Rc7-cI-Ihl"/>
                             <constraint firstItem="cJX-2h-5AD" firstAttribute="centerY" secondItem="dbd-2f-wRb" secondAttribute="centerY" id="Sam-9V-wl5"/>
-                            <constraint firstItem="Pon-78-pyw" firstAttribute="centerY" secondItem="eqv-sw-aUA" secondAttribute="centerY" id="Wwh-yn-dmy"/>
                             <constraint firstItem="Pon-78-pyw" firstAttribute="width" secondItem="gEh-oi-lEd" secondAttribute="width" multiplier="0.723077" id="Y1c-2V-3SQ"/>
                             <constraint firstItem="dbd-2f-wRb" firstAttribute="height" secondItem="cJX-2h-5AD" secondAttribute="height" multiplier="0.944444" id="aKk-J3-WiQ"/>
                             <constraint firstItem="tpR-80-JCa" firstAttribute="top" secondItem="6sn-6W-Bf9" secondAttribute="bottom" constant="8" id="bSD-X7-Xrk"/>
+                            <constraint firstItem="DxW-8a-ann" firstAttribute="centerX" secondItem="eqv-sw-aUA" secondAttribute="centerX" id="cTz-ds-ubA"/>
                             <constraint firstItem="DxW-8a-ann" firstAttribute="width" secondItem="DxW-8a-ann" secondAttribute="height" multiplier="210:179" id="eAc-li-pXd"/>
                             <constraint firstItem="cJX-2h-5AD" firstAttribute="leading" secondItem="dbd-2f-wRb" secondAttribute="trailing" constant="8" symbolic="YES" id="fPI-eJ-eCk"/>
-                            <constraint firstItem="DxW-8a-ann" firstAttribute="leading" secondItem="eqv-sw-aUA" secondAttribute="leading" constant="85" id="h4E-Jl-rpi"/>
                             <constraint firstItem="cJX-2h-5AD" firstAttribute="top" secondItem="Ad6-DH-1Il" secondAttribute="bottom" constant="11" id="jtW-ZN-cjE"/>
                             <constraint firstItem="DxW-8a-ann" firstAttribute="top" secondItem="eqv-sw-aUA" secondAttribute="top" constant="3" id="q80-kl-9jZ"/>
                             <constraint firstItem="Ad6-DH-1Il" firstAttribute="leading" secondItem="eqv-sw-aUA" secondAttribute="leading" constant="30" id="qhV-wg-R7P"/>
                             <constraint firstItem="eqv-sw-aUA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tpR-80-JCa" secondAttribute="trailing" constant="40" id="tam-ZY-qlk"/>
                             <constraint firstItem="tpR-80-JCa" firstAttribute="leading" secondItem="6sn-6W-Bf9" secondAttribute="leading" id="u3l-bu-Yy8"/>
+                            <constraint firstItem="eqv-sw-aUA" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Pon-78-pyw" secondAttribute="bottom" constant="342" id="xRe-Ln-5Rr"/>
                             <constraint firstItem="eqv-sw-aUA" firstAttribute="trailing" secondItem="Ad6-DH-1Il" secondAttribute="trailing" constant="40" id="xo0-gg-pxb"/>
                         </constraints>
                     </view>
