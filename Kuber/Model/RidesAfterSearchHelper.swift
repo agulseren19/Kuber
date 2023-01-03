@@ -77,50 +77,56 @@ class RidesAfterSearchHelper {
         
     }
     
-    func sendNotificationWithFirebase(ride: Ride){
-        var mutex = 0
-        let serverKey = "AAAA4UHXh0E:APA91bFI7jYXFrSSK4xBOlDXOUSfM_u_T-AMMOpVF1ReXETPWT6bFJvFquQidpxxLct6iGYuqVSSqEgn2ECt6MSlxpFOyBmGcJTnQLnpPdJabqxtHJq-nTWizoBBo66YLp_Mw312LE1V"
-        let fcmUrl = "https://fcm.googleapis.com/fcm/send"
+    func getOthersideTokenValueFromFirestore(ride: Ride, completion: @escaping (String) -> Void) {
         
         let db = Firestore.firestore()
         
-        var to = "fyGcmG7i6kiTo0D3IeMlkt:APA91bGR-2Xa7MajgCItMeOGG_Y0PlxLioWrdTTnnqoIMghX8sdnYLC5OGjcY7z72DIsE8I_rC91l8604Zyha1WXJtHm927gVUwVRuCIBNWz-TECgl3d-6pNCHlh4yJ3IOyzFg_kdSWR"
-
-        /*
         let docRef = db.collection("users").document(ride.mail)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                print("to inside if before assign:\(to)")
-                to = document.get("deviceToken") as! String // The device token of the recipient's device
-                print("to inside if after assign:\(to)")
-                mutex = mutex + 1;
+                
+                let token = document.get("deviceToken") as! String // The device token of the recipient's device
+                
+                completion(token)
             }
         }
-        */
         
-        let senderName = User.sharedInstance.getFullName()
+    }
+    
+    func sendNotificationWithFirebase(ride: Ride){
+        getOthersideTokenValueFromFirestore(ride: ride) { token in
+            let serverKey = "AAAA4UHXh0E:APA91bFI7jYXFrSSK4xBOlDXOUSfM_u_T-AMMOpVF1ReXETPWT6bFJvFquQidpxxLct6iGYuqVSSqEgn2ECt6MSlxpFOyBmGcJTnQLnpPdJabqxtHJq-nTWizoBBo66YLp_Mw312LE1V"
+            let fcmUrl = "https://fcm.googleapis.com/fcm/send"
+            
+            print("token from completion: \(token)")
+            let to = token
+            let senderName = User.sharedInstance.getFullName()
+            
+            let notification = ["title": "Hitchhike Request from \(senderName)!", "body": "Tap on your ride to see the request!"]
+            let data = ["senderName": senderName]
+
+            let headers = ["Content-Type": "application/json", "Authorization": "key=\(serverKey)"]
+            let payload: [String: Any] = ["to": to, "notification": notification, "data": data]
+
+            let request = NSMutableURLRequest(url: NSURL(string: fcmUrl)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+            request.httpMethod = "POST"
+            request.allHTTPHeaderFields = headers
+            request.httpBody = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
+
+            let session = URLSession.shared
+            let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
+              if (error != nil) {
+                print(error!)
+              } else {
+                print(response!)
+              }
+            })
+
+            dataTask.resume()
+          
+          
+        }
         
-        let notification = ["title": "Hitchhike Request from \(senderName)!", "body": "Tap on your ride to see the request!"]
-        let data = ["senderName": senderName]
-
-        let headers = ["Content-Type": "application/json", "Authorization": "key=\(serverKey)"]
-        let payload: [String: Any] = ["to": to, "notification": notification, "data": data]
-
-        let request = NSMutableURLRequest(url: NSURL(string: fcmUrl)! as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-        request.httpMethod = "POST"
-        request.allHTTPHeaderFields = headers
-        request.httpBody = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted)
-
-        let session = URLSession.shared
-        let dataTask = session.dataTask(with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
-          if (error != nil) {
-            print(error!)
-          } else {
-            print(response!)
-          }
-        })
-
-        dataTask.resume()
     }
     
 }
