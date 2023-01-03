@@ -50,7 +50,35 @@ class RidesDataSource{
                     
                     self.ridesArray.append(newRide)
                     self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
-                    self.ridesArray = self.ridesArray.filter{ $0.date >  Date() }
+                    
+                    
+                    
+                    self.ridesArray = self.ridesArray.filter{(ride) -> Bool in
+                        let date1 = ride.date // for day, month, year, we look at ride.date
+                        let date2 = ride.time // for hour, minute, second, we look at ride.time
+                        
+                        // Therefore, we need to extract the components from the two dates
+                        let date1Components = Calendar.current.dateComponents([.day, .month, .year], from: date1)
+                        let date2Components = Calendar.current.dateComponents([.hour, .minute, .second], from: date2)
+                        
+                        // Create the date value that the user has selected for the ride
+                        // by combining the components from the two dates
+                        if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
+                            
+                            return realDateOfRide >= Date()
+                        }else {
+                            // not a valid date
+                            return false
+                        }
+
+                    }
+                    
+                    
+                    
+                    
+                    
+                    
+                    self.ridesArray = self.ridesArray.sorted{ $0.date <  $1.date }
                     
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
