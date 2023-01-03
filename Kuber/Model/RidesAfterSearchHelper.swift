@@ -84,7 +84,7 @@ class RidesAfterSearchHelper {
         
         let db = Firestore.firestore()
         
-        var to = ""
+        var to = "fyGcmG7i6kiTo0D3IeMlkt:APA91bGR-2Xa7MajgCItMeOGG_Y0PlxLioWrdTTnnqoIMghX8sdnYLC5OGjcY7z72DIsE8I_rC91l8604Zyha1WXJtHm927gVUwVRuCIBNWz-TECgl3d-6pNCHlh4yJ3IOyzFg_kdSWR"
 
         /*
         let docRef = db.collection("users").document(ride.mail)
@@ -97,10 +97,10 @@ class RidesAfterSearchHelper {
             }
         }
         */
-        print("to: \(to)")
+        
         let senderName = User.sharedInstance.getFullName()
-        print("sendername: \(senderName)")
-        let notification = ["title": "Hitchhike Request from \(senderName)!", "body": "Go and check your ride's requests!"]
+        
+        let notification = ["title": "Hitchhike Request from \(senderName)!", "body": "Tap on your ride to see the request!"]
         let data = ["senderName": senderName]
 
         let headers = ["Content-Type": "application/json", "Authorization": "key=\(serverKey)"]
@@ -121,44 +121,6 @@ class RidesAfterSearchHelper {
         })
 
         dataTask.resume()
-    }
-    
-    // V2
-    
-    func sendNotificationTo(ride: Ride){
-        let userToken = ""
-        print("usertoekn: \(userToken)")
-        let senderName = User.sharedInstance.getFullName()
-        print("sendername2: \(senderName)")
-        
-        
-        let notifPayload: [String: Any] = ["to": userToken,"notification": ["title":"You got a new meassage.","body":"This message is sent for you","badge":1,"sound":"default"]]
-        self.sendPushNotification(payloadDict: notifPayload)
-    }
-    
-    func sendPushNotification(payloadDict: [String: Any]) {
-       let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
-        let serverKey = "AAAA4UHXh0E:APA91bFI7jYXFrSSK4xBOlDXOUSfM_u_T-AMMOpVF1ReXETPWT6bFJvFquQidpxxLct6iGYuqVSSqEgn2ECt6MSlxpFOyBmGcJTnQLnpPdJabqxtHJq-nTWizoBBo66YLp_Mw312LE1V"
-       var request = URLRequest(url: url)
-       request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-       // get your **server key** from your Firebase project console under **Cloud Messaging** tab
-       request.setValue("key=\(serverKey)", forHTTPHeaderField: "Authorization")
-       request.httpMethod = "POST"
-       request.httpBody = try? JSONSerialization.data(withJSONObject: payloadDict, options: [])
-       let task = URLSession.shared.dataTask(with: request) { data, response, error in
-          guard let data = data, error == nil else {
-            print(error ?? "")
-            return
-          }
-          if let httpStatus = response as? HTTPURLResponse, httpStatus.statusCode != 200 {
-            print("statusCode should be 200, but is \(httpStatus.statusCode)")
-            print(response ?? "")
-          }
-          print("Notfication sent successfully.")
-          let responseString = String(data: data, encoding: .utf8)
-          print(responseString ?? "")
-       }
-       task.resume()
     }
     
 }

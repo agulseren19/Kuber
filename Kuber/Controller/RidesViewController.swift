@@ -123,7 +123,7 @@ extension RidesViewController: UITableViewDataSource{
                 cell.sendHitchButton.isEnabled = false
                 ridesAfterSearchHelper.saveHitchToDatabase(ride: ride.ride)
                 
-                //ridesAfterSearchHelper.sendNotificationWithFirebase(ride: ride.ride)
+                ridesAfterSearchHelper.sendNotificationWithFirebase(ride: ride.ride)
                 
             }
         }else {
