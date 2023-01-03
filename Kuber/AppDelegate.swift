@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        print("DidFinishLaunchingStartedd")
         FirebaseApp.configure()
         
         Messaging.messaging().delegate = self
@@ -135,6 +136,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        print("DidRegisterRNwithDeviceTokenStartedd")
         let db = Firestore.firestore()
         // Convert the device token to a string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
@@ -198,6 +200,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 extension AppDelegate: MessagingDelegate {
   // [START refresh_token]
   func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+      print("DidReceiveRegTokenStartedd")
       if let fcmToken = fcmToken{
           print("fcmToken: \(fcmToken)")
           User.sharedInstance.setDeviceTokenString(deviceTokenString: fcmToken)
