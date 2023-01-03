@@ -40,11 +40,13 @@ class SecondSignUpViewController: UIViewController {
     
     
     @IBAction func signUpButtonClicked(_ sender: UIButton) {
-        let fullName = fullNameInputField.text!
-        let phoneNumber = phoneNumberInputField.text!
-        let major = majorInputField.currentTitle!
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
-        secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: noSmokingFlag, silentRideFlag: silentRideFlag, userEmail: userEmail)
+        if let fullName = fullNameInputField.text
+            ,let phoneNumber = phoneNumberInputField.text,
+            let major = majorInputField.currentTitle{
+            secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: noSmokingFlag, silentRideFlag: silentRideFlag, userEmail: userEmail)
+
+        }
         
         /*
          let db = Firestore.firestore()
@@ -57,12 +59,16 @@ class SecondSignUpViewController: UIViewController {
          print("Document does not exist")
          }
          }*/
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
-        for aViewController in viewControllers {
-            if aViewController is LogInViewController {
-                self.navigationController!.popToViewController(aViewController, animated: true)
+        if let navigationControllerUnwrapped = self.navigationController
+           {
+            let viewControllers: [UIViewController] = navigationControllerUnwrapped.viewControllers
+            for aViewController in viewControllers {
+                if aViewController is LogInViewController {
+                    navigationControllerUnwrapped.popToViewController(aViewController, animated: true)
+                }
             }
         }
+ 
         //self.navigationController?.popToRootViewController(animated: true)
     }
     

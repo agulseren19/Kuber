@@ -87,19 +87,17 @@ class EditProfileViewController: UIViewController {
     
     
     @IBAction func saveTheChangesButtonTapped(_ sender: UIButton) {
-        let fullName = fullNameInputField.text!
-        let phoneNumber = phoneNumberInputField.text!
-        let major = majorInputField.currentTitle!
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
-        
-        // Save the changes in Firebase with a helper
-        secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag, userEmail: self.userEmail)
-        
-        // Also save the changes in the User class
-        secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag)
-        
-        
-        
+        if let fullName = fullNameInputField.text,
+        let phoneNumber = phoneNumberInputField.text,
+           let major = majorInputField.currentTitle{
+            // Save the changes in Firebase with a helper
+            secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag, userEmail: self.userEmail)
+            
+            // Also save the changes in the User class
+            secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag)
+            
+        }
         //Finally,
         self.navigationController?.popToRootViewController(animated: true)
     }

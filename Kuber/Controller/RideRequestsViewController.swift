@@ -86,11 +86,15 @@ extension RideRequestsViewController: UITableViewDataSource{
             
             cell.acceptARequestButton = {[unowned self] in
                 rideRequestHelper.acceptTheRideRequest(ride: ride)
-                rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
+                if let rideUnwrapped = self.ride{
+                    rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                }
             }
             cell.declineARequestButton = {[unowned self] in
                 rideRequestHelper.declineTheRideRequest(ride: ride)
-                rideRequestDatasource.getListOfRideRequest(ride: self.ride!)
+                if let rideUnwrapped = self.ride{
+                    rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                }
             }
             cell.phoneButtonClicked = {[unowned self] in
                 rideRequestHelper.callNumber(phoneNumber: ride.hitchhikerPhoneNumber)

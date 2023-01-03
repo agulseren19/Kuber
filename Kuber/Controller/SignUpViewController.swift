@@ -37,13 +37,15 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func continueButtonIsClicked(_ sender: Any) {
-        let email = emailField.text!
-        let password = passwordField.text!
-        signUpHelper.createAndSaveUser(email:email,password:password,profileImageUrl: self.profileImageUrl)
-        guard let imageData = profileImage.pngData() else {
-            return
+        if let email = emailField.text,
+           let password = passwordField.text{
+            signUpHelper.createAndSaveUser(email:email,password:password,profileImageUrl: self.profileImageUrl)
+            guard let imageData = profileImage.pngData() else {
+                return
+            }
+            signUpHelper.setImageUrl(email: email, imageData: imageData)
         }
-        signUpHelper.setImageUrl(email: email, imageData: imageData)
+
     }
     
     
@@ -93,9 +95,11 @@ extension SignUpViewController: SignUpDelegate {
     func signUpTheUser() {
         // if the user's email and password is validated
         // the user will be signed up and navigated to next screen
-        let secondSignUpViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondSignUpViewController") as! SecondSignUpViewController
-        secondSignUpViewController.userEmail=self.emailField.text!
-        self.navigationController?.pushViewController(secondSignUpViewController, animated:true)
+        if let secondSignUpViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondSignUpViewController") as? SecondSignUpViewController,
+           let emailTextUnwrapped = self.emailField.text{
+            secondSignUpViewController.userEmail = emailTextUnwrapped
+            self.navigationController?.pushViewController(secondSignUpViewController, animated:true)
+        }
         errorText.text = ""
         passwordField.text = ""
         emailField.text = ""

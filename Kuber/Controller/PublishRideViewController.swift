@@ -65,17 +65,19 @@ class PublishRideViewController: UIViewController {
     */
 
     @IBAction func publishButtonClicked(_ sender: UIButton) {
-        let from = fromLocation.currentTitle!
-        let to = toLocation.currentTitle!
-        let fromNeighbourhood = fromNeighbourhoodLocation.currentTitle!
-        let toNeighbourhood = toNeighbourhoodLocation.currentTitle!
 
         let date = datePicker.date
         let time = timePicker.date
         let feeNum=Int(feeSlider.value)
         let fee = "\(feeNum)"
         let numberOfSeats=numberOfSeatsField.selectedSegmentIndex+1
-        publishRideHelper.saveRide(from: from, fromNeighbourhood: fromNeighbourhood, to: to,toNeighbourhood: toNeighbourhood, date: date, time: time, fee: fee, numberOfSeats: numberOfSeats)
+        if let from = fromLocation.currentTitle,
+        let to = toLocation.currentTitle,
+        let fromNeighbourhood = fromNeighbourhoodLocation.currentTitle,
+           let toNeighbourhood = toNeighbourhoodLocation.currentTitle{
+            publishRideHelper.saveRide(from: from, fromNeighbourhood: fromNeighbourhood, to: to,toNeighbourhood: toNeighbourhood, date: date, time: time, fee: fee, numberOfSeats: numberOfSeats)
+
+        }
     
     
 }

@@ -29,8 +29,9 @@ class RideRequestDataSource {
         let docRef = db.collection("rides").document(ride.rideId)
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
-                let rideRequests = document.get("hitchRequests") as! [String]
-                self.getHitchInfo(hitches: rideRequests)
+                if let rideRequests = document.get("hitchRequests") as? [String] {
+                    self.getHitchInfo(hitches: rideRequests)
+                }
             } else {
             }
         }
@@ -50,13 +51,15 @@ class RideRequestDataSource {
             let docRef2 = db.collection("hitches").document(hitchId)
             docRef2.getDocument { (document, error) in
                 if let document = document, document.exists {
+                    if let dateUnwrapped = (document.get("date") as? Timestamp)?.dateValue(),
+                    let rideCellUnwrapped = self.rideCell{
                     var newHitch = Hitch (
                         hitchId: hitchId,
-                        date: (document.get("date") as! Timestamp).dateValue(),
-                        hitchhikerMail: document.get("hitchhikerMail") as! String,
-                        rideId: document.get("rideId") as! String,
-                        status: document.get("status") as! Int,
-                        ride: self.rideCell!
+                        date: dateUnwrapped,
+                        hitchhikerMail: document.get("hitchhikerMail") as? String ?? "",
+                        rideId: document.get("rideId") as? String ?? "",
+                        status: document.get("status") as? Int ?? 2,
+                        ride: rideCellUnwrapped
                     )
                     self.hitchArray.append(newHitch)
                     mutex = mutex + 1
@@ -64,7 +67,7 @@ class RideRequestDataSource {
                         self.getHitcherInfo()
                     }
                     
-                } else {
+                }  } else {
                 }
             }
         }
@@ -85,11 +88,11 @@ class RideRequestDataSource {
                         rideId: hitch.rideId,
                         status: hitch.status,
                         ride: hitch.ride,
-                        hitchhikerName: document.get("fullName") as! String,
-                        hitchhikerMajor: document.get("major") as! String,
-                        hitchhikerGradeLevel: document.get("classLevel") as! String,
-                        hitchhikerPhoneNumber: document.get("phoneNumber") as! String,
-                        profileImageUrl: document.get("profileImageUrl") as! String,
+                        hitchhikerName: document.get("fullName") as? String ?? "",
+                        hitchhikerMajor: document.get("major") as? String ?? "",
+                        hitchhikerGradeLevel: document.get("classLevel") as? String ?? "",
+                        hitchhikerPhoneNumber: document.get("phoneNumber") as? String ?? "",
+                        profileImageUrl: document.get("profileImageUrl") as? String ?? "",
                         profileImageData: Data()
                     )
                     self.rideRequestArray.append(newRideRequest)

@@ -198,14 +198,14 @@ struct KuberDataSource {
         return districtArray.first { $0.name == name }?.neighbourhood
     }
     func getNumberOfNeighbourhood(with name: String) -> Int{
-        return districtArray.first { $0.name == name }!.neighbourhood.count
+        return districtArray.first { $0.name == name }?.neighbourhood.count ?? 0
     }
     func getNeighbourhood(with name: String , for index: Int) -> String? {
         let neighbourhoodArray = getListOfNeighbourhoods(with: name)
-        guard index < neighbourhoodArray!.count else {
+        guard index < neighbourhoodArray?.count ?? 0 else {
             return nil
         }
         
-        return neighbourhoodArray![index]
+        return neighbourhoodArray?[index]
     }
 }

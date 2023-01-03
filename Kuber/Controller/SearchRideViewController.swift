@@ -166,18 +166,22 @@ class SearchRideViewController: UIViewController {
      // Get the new view controller using segue.destination.
      // Pass the selected object to the new view controller.
          if let ridesViewController = segue.destination as? RidesViewController{
-             let from = fromLocation.currentTitle!
-             let fromNeighbourhood=fromNeighbourhoodLocation.currentTitle!
-             let to = toLocation.currentTitle!
-             let toNeighbourhood=toNeighbourhoodLocation.currentTitle!
-             let date = datePicker.date
-             let time = timePicker.date
-             let all = showAllSwitch.isOn
+             if let from = fromLocation.currentTitle {
+                 ridesViewController.from = from
+             }
+             if let fromNeighbourhood=fromNeighbourhoodLocation.currentTitle{
+                 ridesViewController.fromNeighbourhood = fromNeighbourhood
+             }
+             if let to = toLocation.currentTitle {
+                 ridesViewController.to = to
+             }
+             if let toNeighbourhood=toNeighbourhoodLocation.currentTitle {
+                 ridesViewController.toNeighbourhood = toNeighbourhood
+             }
+            let date = datePicker.date
+            let time = timePicker.date
+            let all = showAllSwitch.isOn
              
-             ridesViewController.from = from
-             ridesViewController.fromNeighbourhood = fromNeighbourhood
-             ridesViewController.to = to
-             ridesViewController.toNeighbourhood = toNeighbourhood
              ridesViewController.date = date
              ridesViewController.time = time
              ridesViewController.all = all
