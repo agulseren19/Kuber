@@ -98,7 +98,6 @@ class RidesAfterSearchHelper {
             let serverKey = "AAAA4UHXh0E:APA91bFI7jYXFrSSK4xBOlDXOUSfM_u_T-AMMOpVF1ReXETPWT6bFJvFquQidpxxLct6iGYuqVSSqEgn2ECt6MSlxpFOyBmGcJTnQLnpPdJabqxtHJq-nTWizoBBo66YLp_Mw312LE1V"
             let fcmUrl = "https://fcm.googleapis.com/fcm/send"
             
-            print("token from completion: \(token)")
             let to = token
             let senderName = User.sharedInstance.getFullName()
             
@@ -123,8 +122,7 @@ class RidesAfterSearchHelper {
             })
 
             dataTask.resume()
-          
-          
+
         }
         
     }

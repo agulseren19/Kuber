@@ -100,25 +100,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     // [END receive_message]
     
-    /*
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-      // Extract the custom data payload from the notification
-      let senderName = userInfo["senderName"] as? String
-      
-      // Display the push notification
-      let alert = UIAlertController(title: "Friend Request", message: "You have received a friend request from \(senderName!)", preferredStyle: .alert)
-      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-      self.window?.rootViewController?.present(alert, animated: true, completion: nil)
-    }
-
-    */
     func application(_ application: UIApplication,
                      didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Unable to register for remote notifications: \(error.localizedDescription)")
     }
-    
 
-    
     
     // This function is added here only for debugging purposes, and can be removed if swizzling is enabled.
     // If swizzling is disabled then this function must be implemented so that the APNs token can be paired to
