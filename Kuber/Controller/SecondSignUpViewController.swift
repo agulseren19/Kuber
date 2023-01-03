@@ -19,6 +19,9 @@ class SecondSignUpViewController: UIViewController {
     @IBOutlet weak var checkboxSilentRide: UIButton!
     
     @IBOutlet weak var gradeSegmentedControl: UISegmentedControl!
+    
+    @IBOutlet weak var errorText: UILabel!
+    
     var noSmokingFlag=false
     var silentRideFlag=false
     let secondSignUpHelper = SecondSignUpHelper()
@@ -44,14 +47,28 @@ class SecondSignUpViewController: UIViewController {
         if let fullName = fullNameInputField.text
             ,let phoneNumber = phoneNumberInputField.text,
             let major = majorInputField.currentTitle{
-            secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: noSmokingFlag, silentRideFlag: silentRideFlag, userEmail: userEmail)
-
+            if fullName == "" || phoneNumber == ""{
+                errorText.text = "Please enter all necessary information"
+                errorText.isHidden = false
+                errorText.textColor = UIColor.red
+                errorText.adjustsFontSizeToFitWidth = true
+            }
+            else{
+                secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: noSmokingFlag, silentRideFlag: silentRideFlag, userEmail: userEmail)
+                if let navigationControllerUnwrapped = self.navigationController
+                   {
+                    let viewControllers: [UIViewController] = navigationControllerUnwrapped.viewControllers
+                    for aViewController in viewControllers {
+                        if aViewController is LogInViewController {
+                            navigationControllerUnwrapped.popToViewController(aViewController, animated: true)
+                        }
+                    }
+                }
+            }
         }
-        
         /*
          let db = Firestore.firestore()
          let docRef = db.collection("users").document(user.getEmail())
-         
          docRef.getDocument { (document, error) in
          if let document = document, document.exists {
          print(document.get("password")!)
@@ -59,16 +76,6 @@ class SecondSignUpViewController: UIViewController {
          print("Document does not exist")
          }
          }*/
-        if let navigationControllerUnwrapped = self.navigationController
-           {
-            let viewControllers: [UIViewController] = navigationControllerUnwrapped.viewControllers
-            for aViewController in viewControllers {
-                if aViewController is LogInViewController {
-                    navigationControllerUnwrapped.popToViewController(aViewController, animated: true)
-                }
-            }
-        }
- 
         //self.navigationController?.popToRootViewController(animated: true)
     }
     
@@ -134,6 +141,7 @@ extension SecondSignUpViewController: SecondSignUpDelegate {
         phoneNumberInputField.text = ""
         majorInputField.setTitle("", for: .normal)
     }
+
 }
 
 extension SecondSignUpViewController: UITextFieldDelegate{
@@ -144,5 +152,6 @@ extension SecondSignUpViewController: UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+
 }
 

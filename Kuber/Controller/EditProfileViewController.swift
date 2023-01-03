@@ -16,6 +16,7 @@ class EditProfileViewController: UIViewController {
     @IBOutlet weak var checkBoxNoSmoking: UIButton!
     @IBOutlet weak var majorInputField: UIButton!
     
+    @IBOutlet weak var errorText: UILabel!
     @IBOutlet weak var uploadImageButton: UIButton!
     @IBOutlet weak var profilePictureImageView: UIImageView!
     private var profileImage: UIImage = UIImage(named: "defaultProfile")!
@@ -91,15 +92,24 @@ class EditProfileViewController: UIViewController {
         if let fullName = fullNameInputField.text,
         let phoneNumber = phoneNumberInputField.text,
            let major = majorInputField.currentTitle{
-            // Save the changes in Firebase with a helper
-            secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag, userEmail: self.userEmail)
-            
-            // Also save the changes in the User class
-            secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag)
+            if fullName == "" || phoneNumber == ""{
+                errorText.text = "Please enter all necessary information"
+                errorText.isHidden = false
+                errorText.textColor = UIColor.red
+                errorText.adjustsFontSizeToFitWidth = true
+            }
+            else{
+                // Save the changes in Firebase with a helper
+                secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag, userEmail: self.userEmail)
+                
+                // Also save the changes in the User class
+                secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag)
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+
             
         }
         //Finally,
-        self.navigationController?.popToRootViewController(animated: true)
     }
     
     func setPopUpButton(){
@@ -200,6 +210,7 @@ extension EditProfileViewController: ProfilePictureDelegate {
         self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
         self.profilePictureImageView.clipsToBounds = true
     }
+
 }
 
 extension EditProfileViewController: UIImagePickerControllerDelegate{

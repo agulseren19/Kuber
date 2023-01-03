@@ -13,6 +13,7 @@ class PublishRideViewController: UIViewController {
 
     @IBOutlet weak var fromLocation: UIButton!
     
+    @IBOutlet weak var errorText: UILabel!
     
     @IBOutlet weak var fromNeighbourhoodLocation: UIButton!
     
@@ -65,18 +66,24 @@ class PublishRideViewController: UIViewController {
     */
 
     @IBAction func publishButtonClicked(_ sender: UIButton) {
-
+        
         let date = datePicker.date
         let time = timePicker.date
         let feeNum=Int(feeSlider.value)
         let fee = "\(feeNum)"
         let numberOfSeats=numberOfSeatsField.selectedSegmentIndex+1
         if let from = fromLocation.currentTitle,
-        let to = toLocation.currentTitle,
-        let fromNeighbourhood = fromNeighbourhoodLocation.currentTitle,
+           let to = toLocation.currentTitle,
+           let fromNeighbourhood = fromNeighbourhoodLocation.currentTitle,
            let toNeighbourhood = toNeighbourhoodLocation.currentTitle{
-            publishRideHelper.saveRide(from: from, fromNeighbourhood: fromNeighbourhood, to: to,toNeighbourhood: toNeighbourhood, date: date, time: time, fee: fee, numberOfSeats: numberOfSeats)
-
+            if from == "From (District)" || to == "To (District)" || fromNeighbourhood == "From (Neighbourhood)" || toNeighbourhood == "To (Neighbourhood)" {
+                errorText.text = "Please enter all necessary information"
+                errorText.isHidden = false
+                errorText.textColor = UIColor.red
+                errorText.adjustsFontSizeToFitWidth = true
+            }else{
+                publishRideHelper.saveRide(from: from, fromNeighbourhood: fromNeighbourhood, to: to,toNeighbourhood: toNeighbourhood, date: date, time: time, fee: fee, numberOfSeats: numberOfSeats)
+            }
         }
     
     
