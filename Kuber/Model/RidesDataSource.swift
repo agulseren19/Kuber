@@ -304,7 +304,7 @@ class RidesDataSource{
                        riderNoSmokingPreference = riderNoSmoke
                    }
                    if let riderSilent = document.get("chattinessFlag") as? Bool {
-                       riderSilentRidePreference = riderSilentRide
+                       riderSilentRidePreference = riderSilent
                    }
                    if let classLev = document.get("classLevel") as? String {
                        riderClassLevel = classLev
@@ -356,8 +356,8 @@ class RidesDataSource{
                    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Asik%2CVeysel%2CAtasehir%7CIstanbul%2CTurkiye&origins=Darussafaka%2CSariyer%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    var resp = ""
                    var result = 0.0
-                   URLSession.shared.dataTask(with: NSURL(string: finalUrl)? as URL) { data, response, error in
-                       resp = String( data:data?, encoding:String.Encoding(rawValue: NSUTF8StringEncoding) )?
+                   URLSession.shared.dataTask(with: NSURL(string: finalUrl)! as URL) { data, response, error in
+                       resp = String( data:data!, encoding:String.Encoding(rawValue: NSUTF8StringEncoding) )!
                        var flag = 0
                        var index = 0
                        var distance = ""
@@ -450,8 +450,9 @@ class RidesDataSource{
                             }
                                               
                        var classDifference = abs(userClassLevelInt-riderClassLevelInt)
-                       
-                       ridePoint = ridePoint - Double(numberFloatValue?)
+                       if let numberFloatValue=numberFloatValue{
+                           ridePoint = ridePoint - Double(numberFloatValue)
+                       }
                        ridePoint = ridePoint - Double(classDifference)
                        ridePoint = ridePoint - (Double(ride.fee)/5)
                        /*let rideTime = ride.time
@@ -472,8 +473,9 @@ class RidesDataSource{
 
                        
                        var rideTime = ride.time
-                       
-                       ridePoint = ridePoint - Double(distanceBetweenDestinations?)
+                       if let distanceBetweenDestinations=distanceBetweenDestinations{
+                           ridePoint = ridePoint - Double(distanceBetweenDestinations)
+                       }
                        var timeDifferenceHour = rideTimeHour - hitcherHourSelection
                        var timeDifferenceMinute = rideTimeMinute - hitcherMinuteSelection
                        var timeDifferenceInMinutes = abs(60*timeDifferenceHour+timeDifferenceMinute)
