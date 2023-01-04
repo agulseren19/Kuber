@@ -358,7 +358,7 @@ class RidesDataSource{
                        riderToNeighbourhood = "Koç Üniversitesi"
                    } else if (riderToNeighbourhood == "Batı Kampüs"){
                        riderToTown = "Sarıyer"
-                       riderToNeighbourhood = "Koç Üniversitesi Batı Kampüsü"
+                       riderToNeighbourhood = "Yediveren Sokak"
                    }
                    if(toNeighbourhood == "Ana Kampüs"){
                        hitchhikerToTown = "Sarıyer"
@@ -517,9 +517,21 @@ class RidesDataSource{
                        /*sortedByValueDictionary = sortedByValueDictionary.filter{ $0 != $1  }
                        print(sortedByValueDictionary)*/
                        counter = counter + 1
+                       
                        if(counter == self.ridesArray.count){
                            for (rideKey , ridePoint2 ) in sortedByValueDictionary {
-                               if((sortedArrayCounter < 5)&&(!sortedRidesArray.contains(rideKey))&&(rideKey.fromLocation == hitchhikerFrom))/*&&ridersMatch*/{
+                               var rideFromTownComparisonString = rideKey.fromLocation
+                               var hitchhikerFromComparisonString = hitchhikerFrom
+                               if (rideFromTownComparisonString == "Koç Üniversitesi" || rideFromTownComparisonString == "Koç Üniversitesi Kampüsleri"){
+                                   rideFromTownComparisonString = "Sarıyer"
+                               }
+                               if(hitchhikerFromComparisonString == "Koç Üniversitesi" || hitchhikerFromComparisonString == "Koç Üniversitesi Kampüsleri"){
+                                   hitchhikerFromComparisonString = "Sarıyer"
+                               }
+                               print(rideFromTownComparisonString)
+                               print(hitchhikerFromComparisonString)
+                               print(hitchhikerFromComparisonString == rideFromTownComparisonString)
+                               if((sortedArrayCounter < 5)&&(!sortedRidesArray.contains(rideKey))&&(rideFromTownComparisonString == hitchhikerFromComparisonString))/*&&ridersMatch*/{
                                    
                                    sortedRidesArray.append(rideKey)
                                    sortedArrayCounter = sortedArrayCounter + 1
