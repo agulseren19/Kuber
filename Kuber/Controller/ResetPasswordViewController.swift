@@ -44,12 +44,15 @@ class ResetPasswordViewController: UIViewController {
 extension ResetPasswordViewController: ResetPasswordDelegate {
     func sentNavigateBack() {
         //self.navigationController?.popToRootViewController(animated: true)
-        let viewControllers: [UIViewController] = self.navigationController!.viewControllers
-        for aViewController in viewControllers {
-            if aViewController is LogInViewController {
-                self.navigationController!.popToViewController(aViewController, animated: true)
+        if let navigationControllerUnwrapped = self.navigationController{
+            let viewControllers: [UIViewController] = navigationControllerUnwrapped.viewControllers
+            for aViewController in viewControllers {
+                if aViewController is LogInViewController {
+                    navigationControllerUnwrapped.popToViewController(aViewController, animated: true)
+                }
             }
         }
+
         emailLabel.text = ""
     }
     

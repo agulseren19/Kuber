@@ -30,35 +30,41 @@ class RidesDataSource{
         db.collection("rides").getDocuments() { (querySnapshot, err) in
             if let err = err {
             } else {
-                self.rideCount = querySnapshot!.count
-                
-                for document in querySnapshot!.documents {
-                    
-                    var newRide = Ride (
-                        rideId: document.documentID,
-                        fromLocation: document.get("from") as! String,
-                        fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
-                        toLocation: document.get("to") as! String,
-                        toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
-                        date: (document.get("date") as! Timestamp).dateValue(),
-                        time: (document.get("time") as! Timestamp).dateValue(),
-                        seatAvailable: document.get("numberOfSeats") as! Int,
-                        fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String,
-                        hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
-                    )
-                    
-                    self.ridesArray.append(newRide)
-                    self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
-                    self.ridesArray = self.ridesArray.filter{ $0.date >  Date() }
-                    
-                    mutex = mutex + 1
-                    if (mutex == self.rideCount){
-                        DispatchQueue.main.async {
-                            self.getRiderInfo()
-                        }
-                    }
+                if let snapshotCount = querySnapshot?.count{
+                    self.rideCount = snapshotCount
                 }
+                if let snapshotDocument = querySnapshot?.documents {
+                    
+                    for document in snapshotDocument {
+                        if let datee = (document.get("date") as? Timestamp)?.dateValue(),
+                           let timee = (document.get("time") as? Timestamp)?.dateValue()
+                        {
+                            
+                            var newRide = Ride (
+                                rideId: document.documentID,
+                                fromLocation: document.get("from") as? String ?? "",
+                                fromNeighbourhoodLocation: document.get("fromNeighbourhood") as? String ?? "",
+                                toLocation: document.get("to") as? String ?? "",
+                                toNeighbourhoodLocation: document.get("toNeighbourhood") as? String ?? "",
+                                date: datee,
+                                time: timee,
+                                seatAvailable: document.get("numberOfSeats") as? Int ?? 1,
+                                fee: document.get("fee") as? Int ?? 0,
+                                mail: document.get("mail") as? String ?? "",
+                                hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
+                            )
+                            
+                            self.ridesArray.append(newRide)
+                            self.ridesArray = self.ridesArray.filter{ $0.mail != User.sharedInstance.getEmail() }
+                            self.ridesArray = self.ridesArray.filter{ $0.date >  Date() }
+                            
+                            mutex = mutex + 1
+                            if (mutex == self.rideCount){
+                                DispatchQueue.main.async {
+                                    self.getRiderInfo()
+                                }
+                            }
+                        } }}
             }
         }
     }
@@ -72,23 +78,28 @@ class RidesDataSource{
         db.collection("rides").getDocuments() { (querySnapshot, err) in
             if let err = err {
             } else {
-                self.rideCount = querySnapshot!.count
-                
-                for document in querySnapshot!.documents {
                     
-                    var newRide = Ride (
-                        rideId: document.documentID,
-                        fromLocation: document.get("from") as! String,
-                        fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
-                        toLocation: document.get("to") as! String,
-                        toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
-                        date: (document.get("date") as! Timestamp).dateValue(),
-                        time: (document.get("time") as! Timestamp).dateValue(),
-                        seatAvailable: document.get("numberOfSeats") as! Int,
-                        fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String,
-                        hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
-                    )
+                     if let snapshotCount = querySnapshot?.count{
+                         self.rideCount = snapshotCount
+                     }
+                     if let snapshotDocument = querySnapshot?.documents {
+             
+                     for document in snapshotDocument {
+                         
+                         var newRide = Ride (
+                             rideId: document.documentID,
+                             fromLocation: document.get("from") as? String ?? "",
+                             fromNeighbourhoodLocation: document.get("fromNeighbourhood") as? String ?? "",
+                             toLocation: document.get("to") as? String ?? "",
+                             toNeighbourhoodLocation: document.get("toNeighbourhood") as? String ?? "",
+                             date: (document.get("date") as? Timestamp)?.dateValue() ??  Date(),
+                             time: (document.get("time") as? Timestamp)?.dateValue() ??  Date(),
+                             seatAvailable: document.get("numberOfSeats") as? Int ?? 1,
+                             fee: document.get("fee") as? Int ?? 0,
+                             mail: document.get("mail") as? String ?? "",
+                             hitched: User.sharedInstance.getMyHitchesToRideIdArray().contains(document.documentID)
+                         )
+                     
                     
                     self.ridesArray.append(newRide)
                     
@@ -100,7 +111,7 @@ class RidesDataSource{
                             //self.getRiderInfo()
                         }
                     }
-                }
+                     }   }
             }
         }
         
@@ -203,9 +214,9 @@ class RidesDataSource{
                 if let document = document, document.exists {
                     var newRideSearch = RideSearch(
                         ride: ride,
-                        riderFullName: document.get("fullName") as! String,
-                        riderMajor: document.get("major") as! String,
-                        profileImageUrl: document.get("profileImageUrl") as! String,
+                        riderFullName: document.get("fullName") as? String ?? "",
+                        riderMajor: document.get("major") as? String ?? "",
+                        profileImageUrl: document.get("profileImageUrl") as? String ?? "",
                         profileImageData: Data()
                     )
                     self.rideSearchArray[i] = newRideSearch
@@ -288,10 +299,20 @@ class RidesDataSource{
             var riderMajor = ""
            docRef.getDocument { (document, error) in
                if let document = document, document.exists {
-                   riderNoSmokingPreference = document.get("smokingFlag")! as! Bool
-                   riderSilentRidePreference = document.get("chattinessFlag")! as! Bool
-                   riderClassLevel = document.get("classLevel")! as! String
-                   riderMajor = document.get("classLevel")! as! String
+          
+                   if let riderNoSmoke = document.get("smokingFlag") as? Bool {
+                       riderNoSmokingPreference = riderNoSmoke
+                   }
+                   if let riderSilent = document.get("chattinessFlag") as? Bool {
+                       riderSilentRidePreference = riderSilent
+                   }
+                   if let classLev = document.get("classLevel") as? String {
+                       riderClassLevel = classLev
+                   }
+                   if let rideMajor = document.get("major") as? String {
+                       riderMajor = rideMajor
+                   }
+
                    if (riderNoSmokingPreference == User.sharedInstance.getNoSmokingPreference()){
                             riderSmokeMatch = true
                     }
@@ -304,11 +325,7 @@ class RidesDataSource{
                    
                    var hitchhikerToTown = to//ilçe
                    var hitchhikerToNeighbourhood = toNeighbourhood //Mahalle
-                   
-                 
-                   
-                   
-                   
+   
                    var riderToTown = ride.toLocation//ilçe
                    var riderToNeighbourhood = ride.toNeighbourhoodLocation //Mahalle
                    if(riderToNeighbourhood == "Ana Kampüs"){
@@ -433,8 +450,9 @@ class RidesDataSource{
                             }
                                               
                        var classDifference = abs(userClassLevelInt-riderClassLevelInt)
-                       
-                       ridePoint = ridePoint - Double(numberFloatValue!)
+                       if let numberFloatValue=numberFloatValue{
+                           ridePoint = ridePoint - Double(numberFloatValue)
+                       }
                        ridePoint = ridePoint - Double(classDifference)
                        ridePoint = ridePoint - (Double(ride.fee)/5)
                        /*let rideTime = ride.time
@@ -455,8 +473,9 @@ class RidesDataSource{
 
                        
                        var rideTime = ride.time
-                       
-                       ridePoint = ridePoint - Double(distanceBetweenDestinations!)
+                       if let distanceBetweenDestinations=distanceBetweenDestinations{
+                           ridePoint = ridePoint - Double(distanceBetweenDestinations)
+                       }
                        var timeDifferenceHour = rideTimeHour - hitcherHourSelection
                        var timeDifferenceMinute = rideTimeMinute - hitcherMinuteSelection
                        var timeDifferenceInMinutes = abs(60*timeDifferenceHour+timeDifferenceMinute)
@@ -514,7 +533,8 @@ class RidesDataSource{
             parsedAddress = parsedAddress.replacingOccurrences(of: "ö", with: "o")
             parsedAddress = parsedAddress.replacingOccurrences(of: "Ç", with: "C")
             parsedAddress = parsedAddress.replacingOccurrences(of: "ç", with: "c")
-            
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Â", with: "A")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "â", with: "a")
             return parsedAddress
         }
 }
