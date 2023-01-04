@@ -46,9 +46,15 @@ class SecondSignUpViewController: UIViewController {
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
         if let fullName = fullNameInputField.text
             ,let phoneNumber = phoneNumberInputField.text,
-            let major = majorInputField.currentTitle{
+           let major = majorInputField.currentTitle{
             if fullName == "" || phoneNumber == ""{
                 errorText.text = "Please enter all necessary information"
+                errorText.isHidden = false
+                errorText.textColor = UIColor.red
+                errorText.adjustsFontSizeToFitWidth = true
+            }
+            else if phoneNumber.count != 13 || !phoneNumber.starts(with: "+90"){
+                errorText.text = "Please enter phone number in correct format"
                 errorText.isHidden = false
                 errorText.textColor = UIColor.red
                 errorText.adjustsFontSizeToFitWidth = true

@@ -98,6 +98,12 @@ class EditProfileViewController: UIViewController {
                 errorText.textColor = UIColor.red
                 errorText.adjustsFontSizeToFitWidth = true
             }
+            else if phoneNumber.count != 13 || !phoneNumber.starts(with: "+90"){
+                errorText.text = "Please enter phone number in correct format"
+                errorText.isHidden = false
+                errorText.textColor = UIColor.red
+                errorText.adjustsFontSizeToFitWidth = true
+            }
             else{
                 // Save the changes in Firebase with a helper
                 secondSignUpHelper.editUserData(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag, userEmail: self.userEmail)
