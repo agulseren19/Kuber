@@ -138,7 +138,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     // Print full message.
 
     // Change this to your preferred presentation option
-    return [[.alert, .sound]]
+    return [[.banner, .sound]]
   }
 
   func userNotificationCenter(_ center: UNUserNotificationCenter,
