@@ -528,9 +528,7 @@ class RidesDataSource{
                                if(hitchhikerFromComparisonString == "Koç Üniversitesi" || hitchhikerFromComparisonString == "Koç Üniversitesi Kampüsleri"){
                                    hitchhikerFromComparisonString = "Sarıyer"
                                }
-                               print(rideFromTownComparisonString)
-                               print(hitchhikerFromComparisonString)
-                               print(hitchhikerFromComparisonString == rideFromTownComparisonString)
+                              
                                if((sortedArrayCounter < 5)&&(!sortedRidesArray.contains(rideKey))&&(rideFromTownComparisonString == hitchhikerFromComparisonString))/*&&ridersMatch*/{
                                    
                                    sortedRidesArray.append(rideKey)
