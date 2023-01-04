@@ -2720,7 +2720,7 @@
             </objects>
             <point key="canvasLocation" x="5677" y="2566"/>
         </scene>
-        <!--Ride Requests View Controller-->
+        <!--Hitch Requests-->
         <scene sceneID="juI-eV-699">
             <objects>
                 <viewController id="0M3-Pw-EOJ" customClass="RideRequestsViewController" customModule="Kuber" customModuleProvider="target" sceneMemberID="viewController">
@@ -2883,7 +2883,7 @@
                             <constraint firstItem="cRe-ti-zoZ" firstAttribute="centerY" secondItem="WiX-PH-cKF" secondAttribute="centerY" id="zua-v3-seb"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Aah-g3-euR"/>
+                    <navigationItem key="navigationItem" title="Hitch Requests" id="Aah-g3-euR"/>
                     <connections>
                         <outlet property="activityIndicatorView" destination="cRe-ti-zoZ" id="bIx-i4-9dP"/>
                         <outlet property="rideRequestTableView" destination="Sjl-HO-Rrv" id="Wf2-Sh-3I3"/>
@@ -3032,6 +3032,7 @@
                         <color key="tintColor" red="0.59999999999999998" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <textAttributes key="titleTextAttributes">
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                            <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
                         </textAttributes>
                     </navigationBar>
                     <connections>
