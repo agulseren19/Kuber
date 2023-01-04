@@ -37,7 +37,8 @@ class RidesViewController: UIViewController {
         if(all){
                 ridesDatasource.getListOfRidesWithShowAll()
         } else {
-            ridesDatasource.getListOfRidesWithoutShowAll(to: to, toNeighbourhood: toNeighbourhood, date: date , time: time )
+            
+            ridesDatasource.getListOfRidesWithoutShowAll(to: to, toNeighbourhood: toNeighbourhood, from: from, date: date , time: time )
             }
         
         updateTheTableViewDesign()
