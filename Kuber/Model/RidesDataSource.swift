@@ -367,7 +367,6 @@ class RidesDataSource{
                    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Asik%2CVeysel%2CAtasehir%7CIstanbul%2CTurkiye&origins=Darussafaka%2CSariyer%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    var resp = ""
                    var result = 0.0
-                   print(finalUrl)
                    URLSession.shared.dataTask(with: NSURL(string: finalUrl)! as URL) { data, response, error in
                        resp = String( data:data!, encoding:String.Encoding(rawValue: NSUTF8StringEncoding) )!
                        var flag = 0
