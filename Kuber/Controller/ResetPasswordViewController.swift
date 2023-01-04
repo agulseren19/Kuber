@@ -8,16 +8,16 @@
 import UIKit
 
 class ResetPasswordViewController: UIViewController {
-
+    
     @IBOutlet weak var errorLabel: UILabel!
     
     @IBOutlet weak var emailLabel: UITextField!
     let resetPasswordHelper = ResetPasswordHelper()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         resetPasswordHelper.delegate = self
-
+        
         // Do any additional setup after loading the view.
     }
     
@@ -27,19 +27,19 @@ class ResetPasswordViewController: UIViewController {
             return
         }
         resetPasswordHelper.checkAndSend(userEmail: userEmail)
-
+        
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 extension ResetPasswordViewController: ResetPasswordDelegate {
     func sentNavigateBack() {
@@ -52,7 +52,7 @@ extension ResetPasswordViewController: ResetPasswordDelegate {
                 }
             }
         }
-
+        
         emailLabel.text = ""
     }
     
@@ -61,5 +61,14 @@ extension ResetPasswordViewController: ResetPasswordDelegate {
         errorLabel.isHidden = false
         errorLabel.textColor = UIColor.red
         errorLabel.adjustsFontSizeToFitWidth = true
+    }
+}
+extension ResetPasswordViewController: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return textField.resignFirstResponder()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
 }

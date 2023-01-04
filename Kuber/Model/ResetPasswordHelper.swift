@@ -13,7 +13,7 @@ import FirebaseStorage
 
 class ResetPasswordHelper{
     var delegate: ResetPasswordDelegate?
-
+    
     func checkAndSend (userEmail: String) {
         Auth.auth().sendPasswordReset(withEmail: userEmail) { error in
             if let error = error {
@@ -26,7 +26,7 @@ class ResetPasswordHelper{
             }
         }
     }
-
-
+    
+    
 }
 

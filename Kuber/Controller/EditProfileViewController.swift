@@ -8,7 +8,7 @@
 import UIKit
 
 class EditProfileViewController: UIViewController {
-
+    
     @IBOutlet weak var fullNameInputField: UITextField!
     @IBOutlet weak var phoneNumberInputField: UITextField!
     @IBOutlet weak var gradeSegmentedControl: UISegmentedControl!
@@ -90,7 +90,7 @@ class EditProfileViewController: UIViewController {
     @IBAction func saveTheChangesButtonTapped(_ sender: UIButton) {
         let segmentIndex = gradeSegmentedControl.selectedSegmentIndex
         if let fullName = fullNameInputField.text,
-        let phoneNumber = phoneNumberInputField.text,
+           let phoneNumber = phoneNumberInputField.text,
            let major = majorInputField.currentTitle{
             if fullName == "" || phoneNumber == ""{
                 errorText.text = "Please enter all necessary information"
@@ -112,7 +112,7 @@ class EditProfileViewController: UIViewController {
                 secondSignUpHelper.setUserInfo(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: self.noSmokingFlag, silentRideFlag: self.silentRideFlag)
                 self.navigationController?.popToRootViewController(animated: true)
             }
-
+            
             
         }
         //Finally,
@@ -122,29 +122,29 @@ class EditProfileViewController: UIViewController {
         let optionClosure = {(action: UIAction) in
             print(action.title)}
         let defaultMenu = UIMenu(children: [
-                UIAction(title: "International Relations", state: .on, handler: optionClosure),
-                UIAction(title: "Economics", handler: optionClosure),
-                UIAction(title: "Business Administration", handler: optionClosure),
-                UIAction(title: "Chemical and Biological Engineering", handler: optionClosure),
-                UIAction(title: "Computer Engineering", handler: optionClosure),
-                UIAction(title: "Electrical and Electronics Engineering", handler: optionClosure),
-                UIAction(title: "Industrial Engineering", handler: optionClosure),
-                UIAction(title: "Mechanical Engineering", handler: optionClosure),
-                UIAction(title: "Chemistry", handler: optionClosure),
-                UIAction(title: "Physics", handler: optionClosure),
-                UIAction(title: "Mathematics", handler: optionClosure),
-                UIAction(title: "Molecular Biology and Genetics", handler: optionClosure),
-                UIAction(title: "Archaeology and History of Art", handler: optionClosure),
-                UIAction(title: "Comparative Literature", handler: optionClosure),
-                UIAction(title: "History", handler: optionClosure),
-                UIAction(title: "Psychology", handler: optionClosure),
-                UIAction(title: "Philosophy", handler: optionClosure),
-                UIAction(title: "Sociology", handler: optionClosure),
-                UIAction(title: "Media and Visual Arts", handler: optionClosure),
-                UIAction(title: "Law", handler: optionClosure),
-                UIAction(title: "Medicine", handler: optionClosure),
-                UIAction(title: "Nursing", handler: optionClosure),
-            ])
+            UIAction(title: "International Relations", state: .on, handler: optionClosure),
+            UIAction(title: "Economics", handler: optionClosure),
+            UIAction(title: "Business Administration", handler: optionClosure),
+            UIAction(title: "Chemical and Biological Engineering", handler: optionClosure),
+            UIAction(title: "Computer Engineering", handler: optionClosure),
+            UIAction(title: "Electrical and Electronics Engineering", handler: optionClosure),
+            UIAction(title: "Industrial Engineering", handler: optionClosure),
+            UIAction(title: "Mechanical Engineering", handler: optionClosure),
+            UIAction(title: "Chemistry", handler: optionClosure),
+            UIAction(title: "Physics", handler: optionClosure),
+            UIAction(title: "Mathematics", handler: optionClosure),
+            UIAction(title: "Molecular Biology and Genetics", handler: optionClosure),
+            UIAction(title: "Archaeology and History of Art", handler: optionClosure),
+            UIAction(title: "Comparative Literature", handler: optionClosure),
+            UIAction(title: "History", handler: optionClosure),
+            UIAction(title: "Psychology", handler: optionClosure),
+            UIAction(title: "Philosophy", handler: optionClosure),
+            UIAction(title: "Sociology", handler: optionClosure),
+            UIAction(title: "Media and Visual Arts", handler: optionClosure),
+            UIAction(title: "Law", handler: optionClosure),
+            UIAction(title: "Medicine", handler: optionClosure),
+            UIAction(title: "Nursing", handler: optionClosure),
+        ])
         
         self.majorInputField.menu = defaultMenu
         self.majorInputField.showsMenuAsPrimaryAction=true
@@ -153,15 +153,15 @@ class EditProfileViewController: UIViewController {
     }
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension EditProfileViewController: SecondSignUpDelegate{
@@ -173,7 +173,7 @@ extension EditProfileViewController: SecondSignUpDelegate{
         if let majorMenu = self.majorInputField.menu{
             self.majorInputField.menu =  secondSignUpHelper.setCurrentMajorAsChosen(actionTitle: major, menu: majorMenu)
         }
-            
+        
         
         self.gradeSegmentedControl.selectedSegmentIndex = segmentIndex
         
@@ -216,7 +216,7 @@ extension EditProfileViewController: ProfilePictureDelegate {
         self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
         self.profilePictureImageView.clipsToBounds = true
     }
-
+    
 }
 
 extension EditProfileViewController: UIImagePickerControllerDelegate{
@@ -244,11 +244,11 @@ extension EditProfileViewController: UIImagePickerControllerDelegate{
         profilePictureHelper.setImageUrl(email: User.sharedInstance.getEmail(), imageData: imageData)
         
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
 }
 
 extension EditProfileViewController: UINavigationControllerDelegate{

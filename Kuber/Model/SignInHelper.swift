@@ -18,31 +18,31 @@ class SignInHelper {
         var responseText: String = ""
         
         Auth.auth().signIn(withEmail: userEmail, password: userPassword) { (authResult, error) in
-          if let authResult = authResult {
-            let user = authResult.user
-            if user.isEmailVerified {
-                // user can sign in
-                self.createTheUser(userEmail: userEmail) //FLAG
-            } else {
-              // user's email is not verified
-                self.delegate?.giveSignInError(errorDescription: "Cant Sign in user. Verification needed")
+            if let authResult = authResult {
+                let user = authResult.user
+                if user.isEmailVerified {
+                    // user can sign in
+                    self.createTheUser(userEmail: userEmail) //FLAG
+                } else {
+                    // user's email is not verified
+                    self.delegate?.giveSignInError(errorDescription: "Cant Sign in user. Verification needed")
+                }
             }
-          }
-          if let error = error {
-              responseText = error.localizedDescription
-              self.delegate?.giveSignInError(errorDescription: responseText)
-          }
+            if let error = error {
+                responseText = error.localizedDescription
+                self.delegate?.giveSignInError(errorDescription: responseText)
+            }
         }
-         
+        
     }
     
     func createTheUser (userEmail: String) {
         
         var user = User.sharedInstance
         
-         let db = Firestore.firestore()
-         let docRef = db.collection("users").document(userEmail)
-
+        let db = Firestore.firestore()
+        let docRef = db.collection("users").document(userEmail)
+        
         docRef.getDocument { (document, error) in
             if let document = document, document.exists {
                 user.setEmail(email: userEmail)
@@ -54,7 +54,7 @@ class SignInHelper {
                 }
                 if let noSmokingPreference = document.get("smokingFlag") as? Bool{
                     user.setNoSmokingPreference(noSmokingPreference: noSmokingPreference)
-
+                    
                 }
                 if let classLevel = document.get("classLevel") as? String{
                     user.setClassLevel(classLevel: classLevel)
@@ -64,7 +64,7 @@ class SignInHelper {
                 }
                 if let ridesArray = document.data()?["publishedRides"] as? [String]{
                     user.setRidesArray(ridesArray: ridesArray)
-
+                    
                 }
                 if let myHitchesArray = document.data()?["myHitches"] as? [String]{
                     user.setMyHitchesArray(myHitchesArray: myHitchesArray)

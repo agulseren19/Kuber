@@ -9,8 +9,8 @@ import UIKit
 import Foundation
 
 class PublishRideViewController: UIViewController {
-
-
+    
+    
     @IBOutlet weak var fromLocation: UIButton!
     
     @IBOutlet weak var errorText: UILabel!
@@ -32,7 +32,7 @@ class PublishRideViewController: UIViewController {
     
     @IBOutlet weak var numberOfSeatsField: UISegmentedControl!
     private let kuberDataSource=KuberDataSource()
-
+    
     let publishRideHelper = PublishRideHelper()
     
     override func viewDidLoad() {
@@ -47,24 +47,24 @@ class PublishRideViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            fromLocation.setTitle("From (District)", for: .normal)
-            fromNeighbourhoodLocation.setTitle("From (Neighbourhood)", for: .normal)
-            toLocation.setTitle("To (District)", for: .normal)
-            toNeighbourhoodLocation.setTitle("To (Neighbourhood)", for: .normal)
-
+        fromLocation.setTitle("From (District)", for: .normal)
+        fromNeighbourhoodLocation.setTitle("From (Neighbourhood)", for: .normal)
+        toLocation.setTitle("To (District)", for: .normal)
+        toNeighbourhoodLocation.setTitle("To (Neighbourhood)", for: .normal)
+        
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
     @IBAction func publishButtonClicked(_ sender: UIButton) {
         
         let date = datePicker.date
@@ -85,9 +85,9 @@ class PublishRideViewController: UIViewController {
                 publishRideHelper.saveRide(from: from, fromNeighbourhood: fromNeighbourhood, to: to,toNeighbourhood: toNeighbourhood, date: date, time: time, fee: fee, numberOfSeats: numberOfSeats)
             }
         }
-    
-    
-}
+        
+        
+    }
     
     @IBAction func feeSliderChanged(_ sender: UISlider) {
         let fee=Int(feeSlider.value)
@@ -100,7 +100,7 @@ class PublishRideViewController: UIViewController {
         let optionClosure = {(action: UIAction) in
             self.fromLocation.setTitle(action.title, for: .normal)
             self.setFromNeighbourhoodLocationPopUpButton(title: action.title)
-
+            
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: arraySize)
         for i in 0...iteration{
@@ -124,7 +124,7 @@ class PublishRideViewController: UIViewController {
         let optionClosure = {(action: UIAction) in
             self.toLocation.setTitle(action.title, for: .normal)
             self.setToNeighbourhoodLocationPopUpButton(title: action.title)
-
+            
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: arraySize)
         for i in 0...iteration{
@@ -185,30 +185,30 @@ class PublishRideViewController: UIViewController {
     func setDefaultFromNeighbourhoodLocationPopUpButton(){
         let optionClosure = {(action: UIAction) in
             print(action.title)}
-            self.fromNeighbourhoodLocation.menu=UIMenu(children: [
-                UIAction(title: "From (Neighbourhood)", state: .on, handler: optionClosure),
-            ])
-            
-            self.fromNeighbourhoodLocation.showsMenuAsPrimaryAction=true
-            self.fromNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
+        self.fromNeighbourhoodLocation.menu=UIMenu(children: [
+            UIAction(title: "From (Neighbourhood)", state: .on, handler: optionClosure),
+        ])
+        
+        self.fromNeighbourhoodLocation.showsMenuAsPrimaryAction=true
+        self.fromNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
         
     }
     func setDefaultToNeighbourhoodLocationPopUpButton(){
         let optionClosure = {(action: UIAction) in
             print(action.title)}
-            self.toNeighbourhoodLocation.menu=UIMenu(children: [
-                UIAction(title: "To (Neighbourhood)", state: .on, handler: optionClosure),
-            ])
-            
-            self.toNeighbourhoodLocation.showsMenuAsPrimaryAction=true
-            self.toNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
+        self.toNeighbourhoodLocation.menu=UIMenu(children: [
+            UIAction(title: "To (Neighbourhood)", state: .on, handler: optionClosure),
+        ])
+        
+        self.toNeighbourhoodLocation.showsMenuAsPrimaryAction=true
+        self.toNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
         
     }
 }
 extension PublishRideViewController: PublishRideDelegate {
     func publishedToDatabase(){
         self.navigationController?.popToRootViewController(animated: true)
-
+        
         
     }
 }

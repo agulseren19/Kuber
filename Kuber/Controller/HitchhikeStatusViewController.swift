@@ -8,12 +8,12 @@
 import UIKit
 
 class HitchhikeStatusViewController: UIViewController {
-
+    
     @IBOutlet weak var warningLabel: UILabel!
     
     @IBOutlet weak var searchButton: UIButton!
     private var hitchhikeDatasource = MyHitchesDataSource()
-
+    
     @IBOutlet weak var hitchListTableView: UITableView!
     
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -40,17 +40,17 @@ class HitchhikeStatusViewController: UIViewController {
         hitchListTableView.separatorStyle = .none
         hitchListTableView.showsVerticalScrollIndicator = false
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    overhitch func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     overhitch func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension HitchhikeStatusViewController: UITableViewDataSource{
@@ -72,7 +72,7 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             dateFormatter.dateFormat = "dd/MM/YY"
             let timeFormatter = DateFormatter()
             timeFormatter.dateFormat = "HH:mm"
- 
+            
             cell.fromLocationLabel.text = hitch.hitch.ride.fromNeighbourhoodLocation+", "+hitch.hitch.ride.fromLocation
             cell.toLocationLabel.text = hitch.hitch.ride.toNeighbourhoodLocation+", "+hitch.hitch.ride.toLocation
             cell.dateLabel.text = dateFormatter.string(from: hitch.hitch.ride.date)
@@ -101,7 +101,7 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             else if hitch.hitch.status == 2 {
                 cell.statusButton.tintColor=UIColor.orange
                 cell.statusButton.setTitle("Pending", for: .normal)
-
+                
             }
         }else {
             cell.fromLocationLabel.text = "N/A"

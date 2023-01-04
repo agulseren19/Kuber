@@ -9,7 +9,7 @@ import UIKit
 
 
 class SignUpViewController: UIViewController {
-
+    
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var uploadImageButton: UIButton!
@@ -23,17 +23,17 @@ class SignUpViewController: UIViewController {
     
     @IBOutlet weak var errorText: UILabel!
     let signUpHelper = SignUpHelper()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       // passwordField.isSecureTextEntry=true
+        // passwordField.isSecureTextEntry=true
         signUpHelper.delegate = self
         //emailField.delegate = self
         //passwordField.delegate = self
-
+        
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-              NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     @IBAction func continueButtonIsClicked(_ sender: Any) {
@@ -45,7 +45,7 @@ class SignUpViewController: UIViewController {
             }
             signUpHelper.setImageUrl(email: email, imageData: imageData)
         }
-
+        
     }
     
     
@@ -61,35 +61,35 @@ class SignUpViewController: UIViewController {
         
         guard let  profileImageView = profileImageView , let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
         else {
-           // if keyboard size is not available for some reason, dont do anything
-           return
+            // if keyboard size is not available for some reason, dont do anything
+            return
         }
-      
-      // move the root view up by the distance of keyboard height
-      self.view.frame.origin.y = 100 - keyboardSize.height
+        
+        // move the root view up by the distance of keyboard height
+        self.view.frame.origin.y = 100 - keyboardSize.height
         profileImageView.isHidden=true
         uploadImageButton.isHidden=true
-
+        
     }
     @objc func keyboardWillHide(notification: NSNotification) {
-      // move back the root view origin to zero
-      self.view.frame.origin.y = 0
+        // move back the root view origin to zero
+        self.view.frame.origin.y = 0
         profileImageView.isHidden=false
         uploadImageButton.isHidden=false
-
+        
     }
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-        if let secondSignUpViewController = segue.destination as? SecondSignUpViewController{
-            secondSignUpViewController.userEmail = emailField.text!
-        }
-    }
-*/
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     if let secondSignUpViewController = segue.destination as? SecondSignUpViewController{
+     secondSignUpViewController.userEmail = emailField.text!
+     }
+     }
+     */
 }
 extension SignUpViewController: SignUpDelegate {
     func signUpTheUser() {
@@ -141,11 +141,11 @@ extension SignUpViewController: UIImagePickerControllerDelegate{
         
         
     }
-
+    
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController){
         picker.dismiss(animated: true, completion: nil)
     }
-
+    
 }
 
 extension SignUpViewController: UINavigationControllerDelegate{

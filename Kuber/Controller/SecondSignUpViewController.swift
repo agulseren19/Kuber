@@ -62,7 +62,7 @@ class SecondSignUpViewController: UIViewController {
             else{
                 secondSignUpHelper.signUp(fullName: fullName, phoneNumber: phoneNumber, major: major, segmentIndex: segmentIndex, noSmokingFlag: noSmokingFlag, silentRideFlag: silentRideFlag, userEmail: userEmail)
                 if let navigationControllerUnwrapped = self.navigationController
-                   {
+                {
                     let viewControllers: [UIViewController] = navigationControllerUnwrapped.viewControllers
                     for aViewController in viewControllers {
                         if aViewController is LogInViewController {
@@ -109,33 +109,33 @@ class SecondSignUpViewController: UIViewController {
     func setPopUpButton(){
         let optionClosure = {(action: UIAction) in
             print(action.title)}
-            self.majorInputField.menu=UIMenu(children: [
-                UIAction(title: "International Relations", state: .on, handler: optionClosure),
-                UIAction(title: "Economics", handler: optionClosure),
-                UIAction(title: "Business Administration", handler: optionClosure),
-                UIAction(title: "Chemical and Biological Engineering", handler: optionClosure),
-                UIAction(title: "Computer Engineering", handler: optionClosure),
-                UIAction(title: "Electrical and Electronics Engineering", handler: optionClosure),
-                UIAction(title: "Industrial Engineering", handler: optionClosure),
-                UIAction(title: "Mechanical Engineering", handler: optionClosure),
-                UIAction(title: "Chemistry", handler: optionClosure),
-                UIAction(title: "Physics", handler: optionClosure),
-                UIAction(title: "Mathematics", handler: optionClosure),
-                UIAction(title: "Molecular Biology and Genetics", handler: optionClosure),
-                UIAction(title: "Archaeology and History of Art", handler: optionClosure),
-                UIAction(title: "Comparative Literature", handler: optionClosure),
-                UIAction(title: "History", handler: optionClosure),
-                UIAction(title: "Psychology", handler: optionClosure),
-                UIAction(title: "Philosophy", handler: optionClosure),
-                UIAction(title: "Sociology", handler: optionClosure),
-                UIAction(title: "Media and Visual Arts", handler: optionClosure),
-                UIAction(title: "Law", handler: optionClosure),
-                UIAction(title: "Medicine", handler: optionClosure),
-                UIAction(title: "Nursing", handler: optionClosure),
-            ])
-            
-            self.majorInputField.showsMenuAsPrimaryAction=true
-            self.majorInputField.changesSelectionAsPrimaryAction=true
+        self.majorInputField.menu=UIMenu(children: [
+            UIAction(title: "International Relations", state: .on, handler: optionClosure),
+            UIAction(title: "Economics", handler: optionClosure),
+            UIAction(title: "Business Administration", handler: optionClosure),
+            UIAction(title: "Chemical and Biological Engineering", handler: optionClosure),
+            UIAction(title: "Computer Engineering", handler: optionClosure),
+            UIAction(title: "Electrical and Electronics Engineering", handler: optionClosure),
+            UIAction(title: "Industrial Engineering", handler: optionClosure),
+            UIAction(title: "Mechanical Engineering", handler: optionClosure),
+            UIAction(title: "Chemistry", handler: optionClosure),
+            UIAction(title: "Physics", handler: optionClosure),
+            UIAction(title: "Mathematics", handler: optionClosure),
+            UIAction(title: "Molecular Biology and Genetics", handler: optionClosure),
+            UIAction(title: "Archaeology and History of Art", handler: optionClosure),
+            UIAction(title: "Comparative Literature", handler: optionClosure),
+            UIAction(title: "History", handler: optionClosure),
+            UIAction(title: "Psychology", handler: optionClosure),
+            UIAction(title: "Philosophy", handler: optionClosure),
+            UIAction(title: "Sociology", handler: optionClosure),
+            UIAction(title: "Media and Visual Arts", handler: optionClosure),
+            UIAction(title: "Law", handler: optionClosure),
+            UIAction(title: "Medicine", handler: optionClosure),
+            UIAction(title: "Nursing", handler: optionClosure),
+        ])
+        
+        self.majorInputField.showsMenuAsPrimaryAction=true
+        self.majorInputField.changesSelectionAsPrimaryAction=true
         
     }
     
@@ -147,7 +147,7 @@ extension SecondSignUpViewController: SecondSignUpDelegate {
         phoneNumberInputField.text = ""
         majorInputField.setTitle("", for: .normal)
     }
-
+    
 }
 
 extension SecondSignUpViewController: UITextFieldDelegate{
@@ -158,6 +158,6 @@ extension SecondSignUpViewController: UITextFieldDelegate{
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
 }
 

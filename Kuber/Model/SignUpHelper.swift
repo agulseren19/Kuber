@@ -22,7 +22,7 @@ class SignUpHelper{
         
         storage.child("images/_\(email)_.png").putData(imageData, metadata: nil, completion: { _, error in
             guard error == nil else {
-            
+                
                 print(error)
                 return
             }
@@ -50,59 +50,59 @@ class SignUpHelper{
     }
     
     func createAndSaveUser(email:String,password:String,profileImageUrl:String){
-       
-   
-                Auth.auth().createUser(withEmail: email,
-                                       password: password) { user, error in
-                    if error != nil {
-                        self.delegate?.giveSignUpError(errorDescription: "You have already signed up or this email is incorrect.")
+        
+        
+        Auth.auth().createUser(withEmail: email,
+                               password: password) { user, error in
+            if error != nil {
+                self.delegate?.giveSignUpError(errorDescription: "You have already signed up or this email is incorrect.")
+            }
+            else {
+                if let range=email.range(of:"@"){
+                    let domain=email[range.upperBound...]
+                    //if user cannot sign up because of not using ku mail
+                    if domain != "ku.edu.tr"{
+                        self.delegate?.giveSignUpError(errorDescription: "Sign up with your KU email.")
                     }
-                    else {
-                        if let range=email.range(of:"@"){
-                            let domain=email[range.upperBound...]
-                            //if user cannot sign up because of not using ku mail
-                            if domain != "ku.edu.tr"{
-                                self.delegate?.giveSignUpError(errorDescription: "Sign up with your KU email.")
-                            }
-                            //if user can sign up
-                            else{
-            
-                                Auth.auth().currentUser?.sendEmailVerification { (error) in
-                                    let db = Firestore.firestore()
-                                   // var ref: DocumentReference? = nil
-
+                    //if user can sign up
+                    else{
+                        
+                        Auth.auth().currentUser?.sendEmailVerification { (error) in
+                            let db = Firestore.firestore()
+                            // var ref: DocumentReference? = nil
+                            
                             db.collection("users").document(email).setData([
-
+                                
                                 "email": email,
                                 "profileImageUrl": profileImageUrl
-
+                                
                             ]) { err in
-
+                                
                                 if let err = err {
-
-                                    print("Error writing document: \(err)")
-
-                                } else {
-
                                     
-
+                                    print("Error writing document: \(err)")
+                                    
+                                } else {
+                                    
+                                    
+                                    
                                 }
                             }
                             self.delegate?.signUpTheUser()
-                            }
                         }
-                        }
-                        
                     }
-
                 }
-
+                
+            }
+            
         }
-         
-
+        
     }
-
-
     
+    
+}
+
+
+
 
 

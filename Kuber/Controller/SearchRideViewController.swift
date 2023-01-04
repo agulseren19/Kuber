@@ -31,15 +31,15 @@ class SearchRideViewController: UIViewController {
         setToLocationPopUpButton()
         setDefaultFromNeighbourhoodLocationPopUpButton()
         setDefaultToNeighbourhoodLocationPopUpButton()
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
-            fromLocation.setTitle("From (District)", for: .normal)
-            fromNeighbourhoodLocation.setTitle("From (Neighbourhood)", for: .normal)
-            toLocation.setTitle("To (District)", for: .normal)
-            toNeighbourhoodLocation.setTitle("To (Neighbourhood)", for: .normal)
-
+        fromLocation.setTitle("From (District)", for: .normal)
+        fromNeighbourhoodLocation.setTitle("From (Neighbourhood)", for: .normal)
+        toLocation.setTitle("To (District)", for: .normal)
+        toNeighbourhoodLocation.setTitle("To (Neighbourhood)", for: .normal)
+        
     }
     
     
@@ -52,7 +52,7 @@ class SearchRideViewController: UIViewController {
         let optionClosure = {(action: UIAction) in
             self.fromLocation.setTitle(action.title, for: .normal)
             self.setFromNeighbourhoodLocationPopUpButton(title: action.title)
-
+            
         }
         var children = Array<UIAction>(repeating: UIAction(title:"",handler: optionClosure), count: number)
         for i in 0...number-1{
@@ -138,56 +138,56 @@ class SearchRideViewController: UIViewController {
     func setDefaultFromNeighbourhoodLocationPopUpButton(){
         let optionClosure = {(action: UIAction) in
             print(action.title)}
-            self.fromNeighbourhoodLocation.menu=UIMenu(children: [
-                UIAction(title: "From (Neighbourhood)", state: .on, handler: optionClosure),
-            ])
-            
-            self.fromNeighbourhoodLocation.showsMenuAsPrimaryAction=true
-            self.fromNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
+        self.fromNeighbourhoodLocation.menu=UIMenu(children: [
+            UIAction(title: "From (Neighbourhood)", state: .on, handler: optionClosure),
+        ])
+        
+        self.fromNeighbourhoodLocation.showsMenuAsPrimaryAction=true
+        self.fromNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
         
     }
     func setDefaultToNeighbourhoodLocationPopUpButton(){
         let optionClosure = {(action: UIAction) in
             print(action.title)}
-            self.toNeighbourhoodLocation.menu=UIMenu(children: [
-                UIAction(title: "To (Neighbourhood)", state: .on, handler: optionClosure),
-            ])
-            
-            self.toNeighbourhoodLocation.showsMenuAsPrimaryAction=true
-            self.toNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
+        self.toNeighbourhoodLocation.menu=UIMenu(children: [
+            UIAction(title: "To (Neighbourhood)", state: .on, handler: optionClosure),
+        ])
+        
+        self.toNeighbourhoodLocation.showsMenuAsPrimaryAction=true
+        self.toNeighbourhoodLocation.changesSelectionAsPrimaryAction=true
         
     }
     
     
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-         if let ridesViewController = segue.destination as? RidesViewController{
-             if let from = fromLocation.currentTitle {
-                 ridesViewController.from = from
-             }
-             if let fromNeighbourhood=fromNeighbourhoodLocation.currentTitle{
-                 ridesViewController.fromNeighbourhood = fromNeighbourhood
-             }
-             if let to = toLocation.currentTitle {
-                 ridesViewController.to = to
-             }
-             if let toNeighbourhood=toNeighbourhoodLocation.currentTitle {
-                 ridesViewController.toNeighbourhood = toNeighbourhood
-             }
+    // MARK: - Navigation
+    
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+        if let ridesViewController = segue.destination as? RidesViewController{
+            if let from = fromLocation.currentTitle {
+                ridesViewController.from = from
+            }
+            if let fromNeighbourhood=fromNeighbourhoodLocation.currentTitle{
+                ridesViewController.fromNeighbourhood = fromNeighbourhood
+            }
+            if let to = toLocation.currentTitle {
+                ridesViewController.to = to
+            }
+            if let toNeighbourhood=toNeighbourhoodLocation.currentTitle {
+                ridesViewController.toNeighbourhood = toNeighbourhood
+            }
             let date = datePicker.date
             let time = timePicker.date
             let all = showAllSwitch.isOn
-             
-             ridesViewController.date = date
-             ridesViewController.time = time
-             ridesViewController.all = all
-         }
-     }
-     
+            
+            ridesViewController.date = date
+            ridesViewController.time = time
+            ridesViewController.all = all
+        }
+    }
+    
 }
 
 

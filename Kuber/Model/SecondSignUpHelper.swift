@@ -15,7 +15,7 @@ class SecondSignUpHelper{
     var delegate: SecondSignUpDelegate?
     
     var user = User.sharedInstance
-
+    
     init() {
     }
     
@@ -38,30 +38,30 @@ class SecondSignUpHelper{
         }
         let db = Firestore.firestore()
         db.collection("users").document(userEmail).updateData([
-                    "smokingFlag": noSmokingFlag,
-                    "fullName": fullName,
-                    "phoneNumber": phoneNumber,
-                    "major": major,
-                    "classLevel": classLevel,
-                    "chattinessFlag": silentRideFlag,
-                    "publishedRides": [],
-                    "myHitches": []
-
-
-                ]) { err in
-
-                    if let err = err {
-
-                        print("Error writing document: \(err)")
-
-                    } else {
-
-                        self.delegate?.makeFieldsEmpty()
-                    }
-
-                }
+            "smokingFlag": noSmokingFlag,
+            "fullName": fullName,
+            "phoneNumber": phoneNumber,
+            "major": major,
+            "classLevel": classLevel,
+            "chattinessFlag": silentRideFlag,
+            "publishedRides": [],
+            "myHitches": []
+            
+            
+        ]) { err in
+            
+            if let err = err {
+                
+                print("Error writing document: \(err)")
+                
+            } else {
+                
+                self.delegate?.makeFieldsEmpty()
+            }
+            
+        }
         
-
+        
     }
     
     func editUserData(fullName: String, phoneNumber: String, major:String, segmentIndex:Int, noSmokingFlag: Bool, silentRideFlag: Bool, userEmail: String) {
@@ -83,27 +83,27 @@ class SecondSignUpHelper{
         }
         let db = Firestore.firestore()
         db.collection("users").document(userEmail).updateData([
-                    "smokingFlag": noSmokingFlag,
-                    "fullName": fullName,
-                    "phoneNumber": phoneNumber,
-                    "major": major,
-                    "classLevel": classLevel,
-                    "chattinessFlag": silentRideFlag
-
-                ]) { err in
-
-                    if let err = err {
-
-                        print("Error writing document: \(err)")
-
-                    } else {
-
-                        self.delegate?.makeFieldsEmpty()
-                    }
-
-                }
+            "smokingFlag": noSmokingFlag,
+            "fullName": fullName,
+            "phoneNumber": phoneNumber,
+            "major": major,
+            "classLevel": classLevel,
+            "chattinessFlag": silentRideFlag
+            
+        ]) { err in
+            
+            if let err = err {
+                
+                print("Error writing document: \(err)")
+                
+            } else {
+                
+                self.delegate?.makeFieldsEmpty()
+            }
+            
+        }
         
-
+        
     }
     
     func setUserInfo(fullName: String, phoneNumber: String, major: String, segmentIndex: Int, noSmokingFlag: Bool, silentRideFlag: Bool){

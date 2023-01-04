@@ -17,7 +17,7 @@ class RidesViewController: UIViewController {
     var time: Date = Date()
     var all: Bool = false
     
-
+    
     private var ridesDatasource = RidesDataSource()
     private let ridesAfterSearchHelper = RidesAfterSearchHelper()
     @IBOutlet weak var ridesAfterSearchTableView: UITableView!
@@ -35,11 +35,11 @@ class RidesViewController: UIViewController {
         ridesDatasource.delegate = self
         ridesAfterSearchHelper.delegate = self
         if(all){
-                ridesDatasource.getListOfRidesWithShowAll()
+            ridesDatasource.getListOfRidesWithShowAll()
         } else {
             
             ridesDatasource.getListOfRidesWithoutShowAll(to: to, toNeighbourhood: toNeighbourhood, from: from, date: date , time: time )
-            }
+        }
         
         updateTheTableViewDesign()
     }
@@ -54,17 +54,17 @@ class RidesViewController: UIViewController {
         ridesAfterSearchTableView.separatorStyle = .none
         ridesAfterSearchTableView.showsVerticalScrollIndicator = false
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension RidesViewController: UITableViewDataSource{
@@ -142,9 +142,9 @@ extension RidesViewController: UITableViewDataSource{
         
         return cell
     }
-   
-        
-
+    
+    
+    
     
 }
 

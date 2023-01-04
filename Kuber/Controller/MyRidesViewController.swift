@@ -8,7 +8,7 @@
 import UIKit
 
 class MyRidesViewController: UIViewController {
-
+    
     @IBOutlet weak var warningLabel: UILabel!
     
     @IBOutlet weak var myRidesTableView: UITableView!
@@ -23,29 +23,29 @@ class MyRidesViewController: UIViewController {
         myRidesDatasource.delegate = self
         updateTheTableViewDesign()
         // Do any additional setup after loading the view.
-
+        
     }
     
     func updateTheTableViewDesign() {
         myRidesTableView.separatorStyle = .none
         myRidesTableView.showsVerticalScrollIndicator = false
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         warningLabel.isHidden = true
         myRidesDatasource.getListOfMyRides()
         /*    let appearance = UITabBarAppearance()
-            appearance.configureWithOpaqueBackground()
-            appearance.backgroundColor = UIColor(red: 0.75, green: 0.04, blue: 0.15, alpha: 1.00)
-            appearance.selectionIndicatorTintColor=UIColor.red
-            self.tabBarController?.tabBar.standardAppearance = appearance;
-            self.tabBarController?.tabBar.scrollEdgeAppearance = self.tabBarController?.tabBar.standardAppearance
-        */
+         appearance.configureWithOpaqueBackground()
+         appearance.backgroundColor = UIColor(red: 0.75, green: 0.04, blue: 0.15, alpha: 1.00)
+         appearance.selectionIndicatorTintColor=UIColor.red
+         self.tabBarController?.tabBar.standardAppearance = appearance;
+         self.tabBarController?.tabBar.scrollEdgeAppearance = self.tabBarController?.tabBar.standardAppearance
+         */
     }
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
@@ -60,7 +60,7 @@ class MyRidesViewController: UIViewController {
         }
     }
     
-
+    
 }
 
 extension MyRidesViewController: UITableViewDataSource, UITableViewDelegate {
@@ -112,7 +112,7 @@ extension MyRidesViewController: MyRidesDataDelegate {
     }
     
     func myRidesListLoaded(){
-            self.myRidesTableView.reloadData()
-         
+        self.myRidesTableView.reloadData()
+        
     }
 }

@@ -8,7 +8,7 @@
 import UIKit
 
 class HistoryOfHitchhikesViewController: UIViewController {
-
+    
     @IBOutlet weak var historyOfHitchhikesTableView: UITableView!
     
     @IBOutlet weak var warningLabel: UILabel!
@@ -17,7 +17,7 @@ class HistoryOfHitchhikesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         hitchhikeDatasource.delegate = self
         updateTheTableViewDesign()
@@ -34,17 +34,17 @@ class HistoryOfHitchhikesViewController: UIViewController {
         hitchhikeDatasource.getListOfHitches(areCurrentHitches: false)
         
     }
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension HistoryOfHitchhikesViewController: UITableViewDataSource {
@@ -87,7 +87,7 @@ extension HistoryOfHitchhikesViewController: UITableViewDataSource {
             else if hitch.hitch.status == 2 {
                 cell.statusButton.tintColor=UIColor.orange
                 cell.statusButton.setTitle("Pending", for: .normal)
-
+                
             }
         }else {
             cell.fromLocationLabel.text = "N/A"

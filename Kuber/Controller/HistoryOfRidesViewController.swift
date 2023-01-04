@@ -8,7 +8,7 @@
 import UIKit
 
 class HistoryOfRidesViewController: UIViewController {
-
+    
     @IBOutlet weak var historyOfRidesTableView: UITableView!
     
     @IBOutlet weak var warningLabel: UILabel!
@@ -17,7 +17,7 @@ class HistoryOfRidesViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         myRidesDatasource.delegate = self
         updateTheTableViewDesign()
@@ -34,17 +34,17 @@ class HistoryOfRidesViewController: UIViewController {
         historyOfRidesTableView.showsVerticalScrollIndicator = false
     }
     
-
+    
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destination.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 extension HistoryOfRidesViewController: UITableViewDataSource, UITableViewDelegate {
