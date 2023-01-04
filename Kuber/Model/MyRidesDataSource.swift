@@ -39,24 +39,29 @@ class MyRidesDataSource {
             let docRef2 = db.collection("rides").document(rideId)
             docRef2.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    var newRide = Ride (
-                        rideId: rideId,
-                        fromLocation: document.get("from") as! String,
-                        fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
-                        toLocation: document.get("to") as! String,
-                        toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
-                        date: (document.get("date") as! Timestamp).dateValue(),
-                        time: (document.get("time") as! Timestamp).dateValue(),
-                        seatAvailable: document.get("numberOfSeats") as! Int,
-                        fee: document.get("fee") as! Int,
-                        mail: document.get("mail") as! String,
-                        hitched: false
-                    )
+                    if let dateUnwrapped = (document.get("date") as? Timestamp)?.dateValue(),
+                       let timeUnwrapped = (document.get("time") as? Timestamp)?.dateValue()
+                    {
+                        var newRide = Ride (
+                            rideId: rideId,
+                            fromLocation: document.get("from") as? String ?? "",
+                            fromNeighbourhoodLocation: document.get("fromNeighbourhood") as? String ?? "",
+                            toLocation: document.get("to") as? String ?? "",
+                            toNeighbourhoodLocation: document.get("toNeighbourhood") as? String ?? "",
+                            date: dateUnwrapped,
+                            time: timeUnwrapped,
+                            seatAvailable: document.get("numberOfSeats") as? Int ?? 1,
+                            fee: document.get("fee") as? Int ?? 0,
+                            mail: document.get("mail") as? String ?? "",
+                            hitched: false
+                        )
+                    
+                    
                     
                     self.myRidesArray.append(newRide)
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getRideArrayCount()){
-
+                        
                         self.myRidesArray = self.myRidesArray.filter{(ride) -> Bool in
                             let date1 = ride.date // for day, month, year, we look at ride.date
                             let date2 = ride.time // for hour, minute, second, we look at ride.time
@@ -73,8 +78,8 @@ class MyRidesDataSource {
                             }else {
                                 // not a valid date
                                 return false
-                            }               
-
+                            }
+                            
                         }
                         self.myRidesArray = self.myRidesArray.sorted(by: { $0.date < $1.date })
                         DispatchQueue.main.async {
@@ -86,7 +91,7 @@ class MyRidesDataSource {
                         }
                     }
                     
-                } else {
+                } }else {
                 }
                 
             }
@@ -155,4 +160,5 @@ class MyRidesDataSource {
         }
         return myRidesArray[index]
     }
+    
 }

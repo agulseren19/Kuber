@@ -40,12 +40,14 @@ class MyHitchesDataSource{
             let docRef2 = db.collection("hitches").document(hitchId)
             docRef2.getDocument { (document, error) in
                 if let document = document, document.exists {
+                    if let dateUnwrapped = (document.get("date") as? Timestamp)?.dateValue()
+                    {
                     var newHitch = Hitch (
                         hitchId: hitchId,
-                        date: (document.get("date") as! Timestamp).dateValue(),
-                        hitchhikerMail: document.get("hitchhikerMail") as! String,
-                        rideId: document.get("rideId") as! String,
-                        status: document.get("status") as! Int,
+                        date: dateUnwrapped,
+                        hitchhikerMail: document.get("hitchhikerMail") as? String ?? "",
+                        rideId: document.get("rideId") as? String ?? "",
+                        status: document.get("status") as? Int ?? 2,
                         ride: Ride(rideId: "", fromLocation: "",  fromNeighbourhoodLocation: "",toLocation: "",toNeighbourhoodLocation: "", date: Date(),time: Date(), seatAvailable: 0, fee: 0, mail: "", hitched: false)
                     )
                     self.myHitchesArray.append(newHitch)
@@ -58,7 +60,7 @@ class MyHitchesDataSource{
                 } else {
                 }
                 
-            }
+                }  }
             
         }
        
@@ -78,17 +80,20 @@ class MyHitchesDataSource{
                 let docRef2 = db.collection("rides").document(rideId)
                 docRef2.getDocument { (document, error) in
                     if let document = document, document.exists {
+                        if let dateUnwrapped = (document.get("date") as? Timestamp)?.dateValue(),
+                           let timeUnwrapped = (document.get("time") as? Timestamp)?.dateValue()
+                        {
                         var ride = Ride (
                             rideId: rideId,
-                            fromLocation: document.get("from") as! String,
-                            fromNeighbourhoodLocation: document.get("fromNeighbourhood") as! String,
-                            toLocation: document.get("to") as! String,
-                            toNeighbourhoodLocation: document.get("toNeighbourhood") as! String,
-                            date: (document.get("date") as! Timestamp).dateValue(),
-                            time: (document.get("time") as! Timestamp).dateValue(),
-                            seatAvailable: document.get("numberOfSeats") as! Int,
-                            fee: document.get("fee") as! Int,
-                            mail: document.get("mail") as! String,
+                            fromLocation: document.get("from") as? String ?? "",
+                            fromNeighbourhoodLocation: document.get("fromNeighbourhood") as? String ?? "",
+                            toLocation: document.get("to") as? String ?? "",
+                            toNeighbourhoodLocation: document.get("toNeighbourhood") as? String ?? "",
+                            date: dateUnwrapped,
+                            time: timeUnwrapped,
+                            seatAvailable: document.get("numberOfSeats") as? Int ?? 1,
+                            fee: document.get("fee") as? Int ?? 0,
+                            mail: document.get("mail") as? String ?? "",
                             hitched: false
                         )
                         self.myHitchesArray[i].ride = ride
@@ -96,7 +101,7 @@ class MyHitchesDataSource{
                         if (mutex == self.myHitchesArray.count){
                             self.getRiderInfo(areCurrentHitches: areCurrentHitches)
                         }
-                    }
+                    }}
                 }
             }
         }
@@ -114,9 +119,9 @@ class MyHitchesDataSource{
                 if let document = document, document.exists {
                     var newMyHitch = MyHitch(
                         hitch: hitch,
-                        riderFullName: document.get("fullName") as! String,
-                        riderMajor: document.get("major") as! String,
-                        riderProfileImageUrl: document.get("profileImageUrl") as! String,
+                        riderFullName: document.get("fullName") as? String ?? "",
+                        riderMajor: document.get("major") as? String ?? "",
+                        riderProfileImageUrl: document.get("profileImageUrl") as? String ?? "",
                         riderProfileImageData: Data()
                     )
                     self.myFinalHitchesArray.append(newMyHitch)
@@ -182,7 +187,10 @@ class MyHitchesDataSource{
             let docRef2 = db.collection("hitches").document(hitches)
             docRef2.getDocument { (document, error) in
                 if let document = document, document.exists {
-                    let rideId = document.get("rideId") as! String
+                    var rideId=""
+                    if let rideIdUnwrapped = document.get("rideId") as? String{
+                        rideId=rideIdUnwrapped
+                    }
                     self.rideIdsUserHitched.append(rideId)
                     mutex = mutex + 1
                     if(mutex == User.sharedInstance.getMyHitchesArray().count){

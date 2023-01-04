@@ -62,11 +62,11 @@ class LogInViewController: UIViewController {
     */
 
     @IBAction func signInButtonClicked(_ sender: Any) {
-        let userEmail = emailField.text!
-        let userPassword = passwordField.text!
-       
-        signInHelper.checkAndSignIn(userEmail: userEmail, userPassword: userPassword)
-    }
+        if let userEmail = emailField.text,
+           let userPassword = passwordField.text{
+            signInHelper.checkAndSignIn(userEmail: userEmail, userPassword: userPassword)
+        }
+           }
     @objc func keyboardWillShow(notification: NSNotification) {
         
         guard let  hitchImage=hitchImage , let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue
@@ -96,9 +96,9 @@ extension LogInViewController: SignInDelegate {
         // if the user's email and password is validated
         // the user will be signed in and navigated to home screen
         
-        var tabBar: UITabBarController = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as! UITabBarController
-        self.navigationController?.pushViewController(tabBar, animated: true)
-        
+        if  let tabBar: UITabBarController = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as? UITabBarController{
+            self.navigationController?.pushViewController(tabBar, animated: true)
+        }
         errorText.text = ""
         passwordField.text = ""
         emailField.text = ""

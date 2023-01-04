@@ -18,10 +18,6 @@ struct KuberDataSource {
                 neighbourhood: ["Ana Kampüs", "Batı Kampüs"]
             ),
             District(
-                name: "Adalar",
-                neighbourhood: ["Burgazada", "Heybeliada", "Kınalıada", "Maden", "Nizam"]
-            ),
-            District(
                 name: "Arnavutköy",
                 neighbourhood: ["Anadolu", "İmrahor", "İslambey", "Arnavutköy Merkez", "Yavuz Selim", "Atatürk", "Bahşayış", "Boğazköy Atatürk", "Boğazköy İstiklal", "Boğazköy Merkez", "Bolluca", "Deliklikaya", "Dursunköy", "Durusu Cami", "Durusu Zafer", "Hastane", "İstasyon", "Sazlıbosna", "Nakkaş", "Karlıbayır", "Haraççı", "Hicret", "Mavigöl", "Nenehatun", "Ömerli", "Taşoluk", "Taşoluk Adnan Menderes", "Taşoluk Çilingir", "Taşoluk Fatih", "Taşoluk M. Fevzi Çakmak", "Taşoluk Mehmet Akif Ersoy", "Yeşilbayır"]
             ),
@@ -198,14 +194,14 @@ struct KuberDataSource {
         return districtArray.first { $0.name == name }?.neighbourhood
     }
     func getNumberOfNeighbourhood(with name: String) -> Int{
-        return districtArray.first { $0.name == name }!.neighbourhood.count
+        return districtArray.first { $0.name == name }?.neighbourhood.count ?? 0
     }
     func getNeighbourhood(with name: String , for index: Int) -> String? {
         let neighbourhoodArray = getListOfNeighbourhoods(with: name)
-        guard index < neighbourhoodArray!.count else {
+        guard index < neighbourhoodArray?.count ?? 0 else {
             return nil
         }
         
-        return neighbourhoodArray![index]
+        return neighbourhoodArray?[index]
     }
 }
