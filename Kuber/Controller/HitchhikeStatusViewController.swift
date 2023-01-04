@@ -29,6 +29,7 @@ class HitchhikeStatusViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         activityIndicatorView.isHidden = false
         warningLabel.isHidden = true
         hitchListTableView.isHidden = true

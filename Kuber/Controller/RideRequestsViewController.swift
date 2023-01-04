@@ -22,7 +22,6 @@ class RideRequestsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicatorView.isHidden = false
-        self.title = "Hitch Requests"
         updateTheTableViewDesign()
         rideRequestDatasource.delegate = self
         rideRequestHelper.delegate = self
