@@ -14,7 +14,7 @@ struct KuberDataSource {
     init() {
         districtArray = [
             District(
-                name: "Koç Üniversitesi Kampüsleri",
+                name: "Koç Üniversitesi",
                 neighbourhood: ["Ana Kampüs", "Batı Kampüs"]
             ),
             District(
