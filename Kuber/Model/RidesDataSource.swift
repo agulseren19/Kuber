@@ -65,7 +65,7 @@ class RidesDataSource{
                         // by combining the components from the two dates
                         if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
                             
-                            return realDateOfRide >= Date()
+                            return Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .day) == .orderedSame || Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .day) == .orderedAscending
                         }else {
                             // not a valid date
                             return false
@@ -367,6 +367,7 @@ class RidesDataSource{
                    let url = "https://maps.googleapis.com/maps/api/distancematrix/json?departure_time=now&destinations=Asik%2CVeysel%2CAtasehir%7CIstanbul%2CTurkiye&origins=Darussafaka%2CSariyer%7CIstanbul%2CTurkiye&key=AIzaSyCLXimH0q_oPpTDAJClzfM2RdJlZs-ZV34"
                    var resp = ""
                    var result = 0.0
+                   print(finalUrl)
                    URLSession.shared.dataTask(with: NSURL(string: finalUrl)! as URL) { data, response, error in
                        resp = String( data:data!, encoding:String.Encoding(rawValue: NSUTF8StringEncoding) )!
                        var flag = 0
@@ -542,7 +543,8 @@ class RidesDataSource{
             parsedAddress = parsedAddress.replacingOccurrences(of: "ö", with: "o")
             parsedAddress = parsedAddress.replacingOccurrences(of: "Ç", with: "C")
             parsedAddress = parsedAddress.replacingOccurrences(of: "ç", with: "c")
-            
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Â", with: "A")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "â", with: "a")
             return parsedAddress
         }
 }
