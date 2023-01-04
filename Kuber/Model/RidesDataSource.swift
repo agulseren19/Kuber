@@ -533,7 +533,8 @@ class RidesDataSource{
             parsedAddress = parsedAddress.replacingOccurrences(of: "ö", with: "o")
             parsedAddress = parsedAddress.replacingOccurrences(of: "Ç", with: "C")
             parsedAddress = parsedAddress.replacingOccurrences(of: "ç", with: "c")
-            
+            parsedAddress = parsedAddress.replacingOccurrences(of: "Â", with: "A")
+            parsedAddress = parsedAddress.replacingOccurrences(of: "â", with: "a")
             return parsedAddress
         }
 }

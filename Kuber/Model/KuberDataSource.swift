@@ -18,10 +18,6 @@ struct KuberDataSource {
                 neighbourhood: ["Ana Kampüs", "Batı Kampüs"]
             ),
             District(
-                name: "Adalar",
-                neighbourhood: ["Burgazada", "Heybeliada", "Kınalıada", "Maden", "Nizam"]
-            ),
-            District(
                 name: "Arnavutköy",
                 neighbourhood: ["Anadolu", "İmrahor", "İslambey", "Arnavutköy Merkez", "Yavuz Selim", "Atatürk", "Bahşayış", "Boğazköy Atatürk", "Boğazköy İstiklal", "Boğazköy Merkez", "Bolluca", "Deliklikaya", "Dursunköy", "Durusu Cami", "Durusu Zafer", "Hastane", "İstasyon", "Sazlıbosna", "Nakkaş", "Karlıbayır", "Haraççı", "Hicret", "Mavigöl", "Nenehatun", "Ömerli", "Taşoluk", "Taşoluk Adnan Menderes", "Taşoluk Çilingir", "Taşoluk Fatih", "Taşoluk M. Fevzi Çakmak", "Taşoluk Mehmet Akif Ersoy", "Yeşilbayır"]
             ),
