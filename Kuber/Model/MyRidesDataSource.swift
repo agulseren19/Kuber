@@ -9,11 +9,7 @@ import Foundation
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-import FirebaseCore
-import FirebaseCore
-import GoogleSignIn
-import FirebaseCore
-import FirebaseFirestore
+
 
 class MyRidesDataSource {
     
@@ -73,7 +69,8 @@ class MyRidesDataSource {
                             // Create the date value that the user has selected for the ride
                             // by combining the components from the two dates
                             if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
-                                
+                                print("realDateOfRide: \(realDateOfRide)")
+                                print("Date(): \(Date())")
                                 return realDateOfRide >= Date()
                             }else {
                                 // not a valid date
@@ -129,7 +126,27 @@ class MyRidesDataSource {
                     self.myRidesArray.append(newRide)
                     mutex = mutex + 1
                     if (mutex == User.sharedInstance.getRideArrayCount()){
-                        self.myRidesArray = self.myRidesArray.filter{ $0.date < Date() }
+                        
+                        
+                        self.myRidesArray = self.myRidesArray.filter{ (ride) -> Bool in
+                            let date1 = ride.date // for day, month, year, we look at ride.date
+                            let date2 = ride.time // for hour, minute, second, we look at ride.time
+                            
+                            // Therefore, we need to extract the components from the two dates
+                            let date1Components = Calendar.current.dateComponents([.day, .month, .year], from: date1)
+                            let date2Components = Calendar.current.dateComponents([.hour, .minute, .second], from: date2)
+                            
+                            // Create the date value that the user has selected for the ride
+                            // by combining the components from the two dates
+                            if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
+                                print("realDateOfRide: \(realDateOfRide)")
+                                print("Date(): \(Date())")
+                                return realDateOfRide < Date()
+                            }else {
+                                // not a valid date
+                                return false
+                            }
+                        }
                         self.myRidesArray = self.myRidesArray.sorted(by: { $0.date < $1.date })
                         if (self.myRidesArray.count == 0){
                             DispatchQueue.main.async {

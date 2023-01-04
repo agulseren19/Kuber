@@ -6,16 +6,9 @@
 //
 
 import UIKit
-import UIKit
-import UIKit
 import FirebaseCore
 import FirebaseFirestore
 import FirebaseAuth
-import FirebaseCore
-import FirebaseCore
-import GoogleSignIn
-import FirebaseCore
-import FirebaseFirestore
 
 class LogInViewController: UIViewController {
 
