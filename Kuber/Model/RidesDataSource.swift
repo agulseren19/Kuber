@@ -67,8 +67,8 @@ class RidesDataSource{
                                 // Create the date value that the user has selected for the ride
                                 // by combining the components from the two dates
                                 if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
-
-                                    return Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .day) == .orderedSame || Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .day) == .orderedAscending
+                                  
+                                    return Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .minute) == .orderedSame || Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .minute) == .orderedAscending
                                 }else {
                                     // not a valid date
                                     return false
@@ -94,7 +94,8 @@ class RidesDataSource{
     }
     
     
-    func getListOfRidesWithoutShowAll(to: String, toNeighbourhood: String, date: Date, time: Date ) {
+    func getListOfRidesWithoutShowAll(to: String, toNeighbourhood: String, from: String, date: Date, time: Date ) {
+        
         var mutex = 0
         self.ridesArray.removeAll()
         let db = Firestore.firestore()
@@ -130,7 +131,7 @@ class RidesDataSource{
                     mutex = mutex + 1
                     if (mutex == self.rideCount){
                         DispatchQueue.main.async {
-                            self.sortTheRideArray( to: to , toNeighbourhood: toNeighbourhood , date: date , time: time  )
+                            self.sortTheRideArray( to: to , toNeighbourhood: toNeighbourhood ,hitchhikerFrom: from, date: date , time: time  )
                             //self.delegate?.ridesListLoaded()
                             //self.getRiderInfo()
                         }
@@ -303,7 +304,7 @@ class RidesDataSource{
     }
     
     
-    func sortTheRideArray( to: String, toNeighbourhood: String, date: Date, time: Date  ){
+    func sortTheRideArray( to: String, toNeighbourhood: String, hitchhikerFrom: String, date: Date, time: Date  ){
         var ridePointDictionary = [Ride: Double]()
         var sortedRidesArray: [Ride] = []
         var sortedArrayCounter = 0
@@ -518,11 +519,30 @@ class RidesDataSource{
                        counter = counter + 1
                        if(counter == self.ridesArray.count){
                            for (rideKey , ridePoint2 ) in sortedByValueDictionary {
-                               if((sortedArrayCounter < 5)&&(!sortedRidesArray.contains(rideKey))/*&&ridersMatch*/){
+                               if((sortedArrayCounter < 5)&&(!sortedRidesArray.contains(rideKey))&&(rideKey.fromLocation == hitchhikerFrom))/*&&ridersMatch*/{
                                    
                                    sortedRidesArray.append(rideKey)
                                    sortedArrayCounter = sortedArrayCounter + 1
                                }
+                           }
+                           sortedRidesArray = sortedRidesArray.filter{(ride) -> Bool in
+                               let date1 = ride.date // for day, month, year, we look at ride.date
+                               let date2 = ride.time // for hour, minute, second, we look at ride.time
+                               
+                               // Therefore, we need to extract the components from the two dates
+                               let date1Components = Calendar.current.dateComponents([.day, .month, .year], from: date1)
+                               let date2Components = Calendar.current.dateComponents([.hour, .minute, .second], from: date2)
+
+                               // Create the date value that the user has selected for the ride
+                               // by combining the components from the two dates
+                               if let realDateOfRide = Calendar.current.date(from: DateComponents(year: date1Components.year, month: date1Components.month, day: date1Components.day, hour: date2Components.hour, minute: date2Components.minute, second: date2Components.second)){
+                                 
+                                   return Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .minute) == .orderedSame || Calendar.current.compare(Date.now, to: realDateOfRide, toGranularity: .minute) == .orderedAscending
+                               }else {
+                                   // not a valid date
+                                   return false
+                               }
+
                            }
                            self.ridesArray = sortedRidesArray
                            //self.delegate?.ridesListLoaded()
