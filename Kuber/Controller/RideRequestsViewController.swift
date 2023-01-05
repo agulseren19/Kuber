@@ -86,18 +86,33 @@ extension RideRequestsViewController: UITableViewDataSource{
             cell.acceptARequestButton = {[unowned self] in
                 rideRequestHelper.acceptTheRideRequest(ride: ride)
                 if let rideUnwrapped = self.ride{
-                    rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                    print("here1")
+                    cell.acceptButton.isEnabled = false
+                    cell.declineButton.isEnabled = false
+                    cell.phoneLabel.isEnabled = true
+                    cell.acceptButton.isHidden = true
+                    cell.declineButton.isHidden = true
+                    cell.phoneLabel.isHidden = false
+                    cell.phoneLabel.setTitle(ride.hitchhikerPhoneNumber, for: .normal)
+                    //rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
                 }
             }
             cell.declineARequestButton = {[unowned self] in
                 rideRequestHelper.declineTheRideRequest(ride: ride)
                 if let rideUnwrapped = self.ride{
-                    rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                    print("here2")
+                    cell.acceptButton.isEnabled = false
+                    cell.declineButton.isEnabled = false
+                    cell.acceptButton.setTitleColor(.darkGray, for: .disabled)
+                    cell.declineButton.setTitleColor(.darkGray, for: .disabled)
+                    //rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
                 }
             }
             cell.phoneButtonClicked = {[unowned self] in
                 rideRequestHelper.callNumber(phoneNumber: ride.hitchhikerPhoneNumber)
             }
+            print(ride.status)
+            print(indexPath.row)
             if  ride.status == 0 {
                 cell.acceptButton.isEnabled = false
                 cell.declineButton.isEnabled = false
