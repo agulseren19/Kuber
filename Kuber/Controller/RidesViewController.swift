@@ -103,7 +103,7 @@ extension RidesViewController: UITableViewDataSource{
             cell.timeLabel.text = timeFormatter.string(from: rideTime)
             cell.fullNameLabel.text = ride.riderFullName
             cell.majorLabel.text = ride.riderMajor
-            cell.moneyLabel.text = "\(ride.ride.fee)"
+            cell.moneyLabel.text = "\(ride.ride.fee) TL"
             
             
             cell.profilePictureImageView.image = UIImage(data: ride.profileImageData)

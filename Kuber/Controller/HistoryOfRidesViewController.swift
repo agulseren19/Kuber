@@ -72,7 +72,7 @@ extension HistoryOfRidesViewController: UITableViewDataSource, UITableViewDelega
             cell.toLocationLabel.text = ride.toNeighbourhoodLocation+", "+ride.toLocation
             cell.availableSeatLabel.text = "\(ride.seatAvailable)"
             cell.dateLabel.text = dateFormatter.string(from: ride.date)
-            cell.feeLabel.text = "\(ride.fee)"
+            cell.feeLabel.text = "\(ride.fee) TL"
             let rideTime = ride.time
             cell.timeLabel.text = timeFormatter.string(from: rideTime)
         } else {
