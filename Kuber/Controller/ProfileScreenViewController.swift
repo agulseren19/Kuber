@@ -28,6 +28,7 @@ class ProfileScreenViewController: UIViewController {
     @IBAction func historyOfHitchhikessButton(_ sender: Any) {
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileHelper.delegate = self
@@ -49,10 +50,19 @@ class ProfileScreenViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        profileHelper.signOutTheUser()
+    }
     
 }
 
 extension ProfileScreenViewController: ProfileDelegate{
+    func signOut() {
+        if let signIn: UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "SignInNavigation") as? UINavigationController{
+            view?.window?.rootViewController = signIn
+        }
+    }
+    
     func makeProfileUIReady(user: User) {
         fullNameLabel.text = "\(user.fullName)"
         majorLabel.text = "\(user.major)"

@@ -15,4 +15,12 @@ class ProfileHelper{
         delegate?.makeProfileUIReady(user: user)
         
     }
+    
+    func signOutTheUser(){
+        let userDefault = UserDefaults.standard
+        userDefault.setValue("", forKey: "userEmail")
+        userDefault.setValue("", forKey: "userPassword")
+        self.delegate?.signOut()
+    }
+    
 }
