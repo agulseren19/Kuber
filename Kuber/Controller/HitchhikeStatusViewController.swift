@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HitchhikeStatusViewController: UIViewController {
     
@@ -82,7 +83,9 @@ extension HitchhikeStatusViewController: UITableViewDataSource{
             cell.majorLabel.text = hitch.riderMajor
             cell.fullNameLabel.text = hitch.riderFullName
             
-            cell.profilePictureImageView.image = UIImage(data: hitch.riderProfileImageData)
+            //cell.profilePictureImageView.image = UIImage(data: hitch.riderProfileImageData)
+            cell.profilePictureImageView.kf.indicatorType = .activity
+            cell.profilePictureImageView.kf.setImage(with: URL(string: hitch.riderProfileImageUrl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
             cell.profilePictureImageView.layer.borderWidth = 1.0
             cell.profilePictureImageView.layer.masksToBounds = false
             cell.profilePictureImageView.layer.borderColor = UIColor.white.cgColor

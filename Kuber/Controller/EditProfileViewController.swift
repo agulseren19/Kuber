@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EditProfileViewController: UIViewController {
     
@@ -50,7 +51,14 @@ class EditProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         // Put the current user's info to the screen
-        profilePictureHelper.getImageDataFromFireStorage(urlString: User.sharedInstance.profilePictureUrl)
+        self.profilePictureImageView.kf.indicatorType = .activity
+        self.profilePictureImageView.kf.setImage(with: URL(string: User.sharedInstance.profilePictureUrl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+        self.profilePictureImageView.layer.borderWidth = 1.0
+        self.profilePictureImageView.layer.masksToBounds = false
+        self.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
+        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
+        self.profilePictureImageView.clipsToBounds = true
+        
         secondSignUpHelper.setFieldsOfInputsAsCurrentProfile()
     }
     
@@ -209,12 +217,7 @@ extension EditProfileViewController: UITextFieldDelegate{
 
 extension EditProfileViewController: ProfilePictureDelegate {
     func profileImageLoaded() {
-        profilePictureImageView.image = UIImage(data: profilePictureHelper.imageData)
-        self.profilePictureImageView.layer.borderWidth = 1.0
-        self.profilePictureImageView.layer.masksToBounds = false
-        self.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
-        self.profilePictureImageView.layer.cornerRadius = self.profilePictureImageView.frame.height / 2
-        self.profilePictureImageView.clipsToBounds = true
+        
     }
     
 }
