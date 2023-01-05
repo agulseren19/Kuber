@@ -248,7 +248,7 @@ class RidesDataSource{
                     mutex = mutex + 1
                     if (mutex == self.ridesArray.count){
                         DispatchQueue.main.async {
-                            self.getImageDataFromFireStorage()
+                            self.delegate?.ridesListLoaded()
                         }
                     }
                     
@@ -260,37 +260,7 @@ class RidesDataSource{
         }
     }
     
-    func getImageDataFromFireStorage(){
-       
-        var mutex = 0
-        for i in 0..<self.rideSearchArray.count {
-            if var ride = self.rideSearchArray[i] {
-                var profileUrl = ride.profileImageUrl
-                
-                
-                guard let url = URL(string: profileUrl) else {
-                    return
-                }
-                let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
-                    if let data = data {
-                        if error == nil {
-                            ride.profileImageData = data
-                            self.rideSearchArray[i] = ride
-                            mutex = mutex + 1
-                            if (mutex == self.rideSearchArray.count ){
-                                DispatchQueue.main.async {
-                                    self.delegate?.ridesListLoaded()
-                                }
-                            }
-                        }
-                    }else{
-                        return
-                    }
-                })
-                task.resume()
-            }
-        }
-    }
+    
     
     func getNumberOfRides() -> Int {
         return rideSearchArray.count

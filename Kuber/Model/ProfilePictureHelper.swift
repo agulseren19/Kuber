@@ -46,25 +46,7 @@ class ProfilePictureHelper {
         })
     }
     
-    func getImageDataFromFireStorage(urlString: String){
-        guard let url = URL(string: urlString) else {
-            return
-        }
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
-            if let data = data {
-                print(error)
-                if error == nil {
-                    self.imageData = data
-                    DispatchQueue.main.async {
-                        self.delegate?.profileImageLoaded()
-                    }
-                }
-            }else{
-                return
-            }
-        })
-        task.resume()
-    }
+    
     
 }
 

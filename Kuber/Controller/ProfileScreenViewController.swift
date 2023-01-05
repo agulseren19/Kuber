@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class ProfileScreenViewController: UIViewController {
     
@@ -28,6 +29,7 @@ class ProfileScreenViewController: UIViewController {
     @IBAction func historyOfHitchhikessButton(_ sender: Any) {
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         profileHelper.delegate = self
@@ -37,7 +39,13 @@ class ProfileScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         profileHelper.checkUserAndSetUI()
-        profilePictureHelper.getImageDataFromFireStorage(urlString: User.sharedInstance.profilePictureUrl)
+        self.profileImageView.kf.indicatorType = .activity
+        self.profileImageView.kf.setImage(with: URL(string: User.sharedInstance.profilePictureUrl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
+        self.profileImageView.layer.borderWidth = 1.0
+        self.profileImageView.layer.masksToBounds = false
+        self.profileImageView.layer.borderColor = UIColor.white.cgColor
+        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
+        self.profileImageView.clipsToBounds = true
     }
     
     /*
@@ -49,10 +57,19 @@ class ProfileScreenViewController: UIViewController {
      // Pass the selected object to the new view controller.
      }
      */
+    @IBAction func signOutButtonTapped(_ sender: Any) {
+        profileHelper.signOutTheUser()
+    }
     
 }
 
 extension ProfileScreenViewController: ProfileDelegate{
+    func signOut() {
+        if let signIn: UINavigationController = self.storyboard?.instantiateViewController(withIdentifier: "SignInNavigation") as? UINavigationController{
+            view?.window?.rootViewController = signIn
+        }
+    }
+    
     func makeProfileUIReady(user: User) {
         fullNameLabel.text = "\(user.fullName)"
         majorLabel.text = "\(user.major)"
@@ -79,12 +96,9 @@ extension ProfileScreenViewController: ProfileDelegate{
     
 }
 extension ProfileScreenViewController: ProfilePictureDelegate {
-    func profileImageLoaded(){
-        profileImageView.image = UIImage(data: profilePictureHelper.imageData)
-        self.profileImageView.layer.borderWidth = 1.0
-        self.profileImageView.layer.masksToBounds = false
-        self.profileImageView.layer.borderColor = UIColor.white.cgColor
-        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.height / 2
-        self.profileImageView.clipsToBounds = true
+    func profileImageLoaded() {
+        
     }
+    
+    
 }

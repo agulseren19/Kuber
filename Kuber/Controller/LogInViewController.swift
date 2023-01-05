@@ -27,7 +27,7 @@ class LogInViewController: UIViewController {
         signInHelper.delegate = self
         emailField.delegate = self
         passwordField.delegate = self
-        self.tabBarController?.navigationItem.hidesBackButton = true
+        //self.tabBarController?.navigationItem.hidesBackButton = true
         // Do any additional setup after loading the view.
         NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(LogInViewController.keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -40,7 +40,7 @@ class LogInViewController: UIViewController {
     }
     
     override func viewWillDisappear(_ animated: Bool) {
-        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+        
     }
     
     
@@ -88,7 +88,7 @@ extension LogInViewController: SignInDelegate {
     func signInTheUser() {
         // if the user's email and password is validated
         // the user will be signed in and navigated to home screen
-        
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
         if  let tabBar: UITabBarController = self.storyboard?.instantiateViewController(withIdentifier: "Tabbar") as? UITabBarController{
             self.navigationController?.pushViewController(tabBar, animated: true)
         }

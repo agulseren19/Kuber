@@ -17,6 +17,7 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var passwordField: UITextField!
     
+    private var imageData: Data = Data()
     private var profileImage: UIImage = UIImage(named: "defaultProfile")!
     private var profileImageUrl: String = "https://firebasestorage.googleapis.com/v0/b/kuber-2f5b0.appspot.com/o/images%2F_defaultProfile_.png?alt=media&token=6f9e9fb4-02a9-49fb-960f-275bf07e7a5d"
     
@@ -39,11 +40,14 @@ class SignUpViewController: UIViewController {
     @IBAction func continueButtonIsClicked(_ sender: Any) {
         if let email = emailField.text,
            let password = passwordField.text{
+            
             signUpHelper.createAndSaveUser(email:email,password:password,profileImageUrl: self.profileImageUrl)
-            guard let imageData = profileImage.pngData() else {
+            
+            guard let imageDataPng = profileImage.pngData()else {
                 return
             }
-            signUpHelper.setImageUrl(email: email, imageData: imageData)
+            self.imageData = imageDataPng
+            
         }
         
     }
@@ -95,6 +99,9 @@ extension SignUpViewController: SignUpDelegate {
     func signUpTheUser() {
         // if the user's email and password is validated
         // the user will be signed up and navigated to next screen
+        if let email = emailField.text {
+            signUpHelper.setImageUrl(email: email, imageData: self.imageData)
+        }
         if let secondSignUpViewController = self.storyboard?.instantiateViewController(withIdentifier: "SecondSignUpViewController") as? SecondSignUpViewController,
            let emailTextUnwrapped = self.emailField.text{
             secondSignUpViewController.userEmail = emailTextUnwrapped

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RidesViewController: UIViewController {
     
@@ -106,7 +107,9 @@ extension RidesViewController: UITableViewDataSource{
             cell.moneyLabel.text = "\(ride.ride.fee) TL"
             
             
-            cell.profilePictureImageView.image = UIImage(data: ride.profileImageData)
+            //cell.profilePictureImageView.image = UIImage(data: ride.profileImageData)
+            cell.profilePictureImageView.kf.indicatorType = .activity
+            cell.profilePictureImageView.kf.setImage(with: URL(string: ride.profileImageUrl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
             cell.profilePictureImageView.layer.borderWidth = 1.0
             cell.profilePictureImageView.layer.masksToBounds = false
             cell.profilePictureImageView.layer.borderColor = UIColor.white.cgColor

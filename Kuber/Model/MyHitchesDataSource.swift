@@ -164,7 +164,7 @@ class MyHitchesDataSource{
                                 if (self.myFinalHitchesArray.count == 0){
                                     self.delegate?.noDataInMyHitches()
                                 }else{
-                                    self.getImageDataFromFireStorage()
+                                    self.delegate?.hitchListLoaded()
                                 }
                             }
                         }
@@ -202,35 +202,7 @@ class MyHitchesDataSource{
         
     }
     
-    func getImageDataFromFireStorage(){
-       
-        var mutex = 0
-        for i in 0..<self.myFinalHitchesArray.count {
-            var hitch = self.myFinalHitchesArray[i]
-            var profileUrl = hitch.riderProfileImageUrl
-                
-                guard let url = URL(string: profileUrl) else {
-                    return
-                }
-                let task = URLSession.shared.dataTask(with: url, completionHandler: { data, _, error in
-                    if let data = data {
-                        if error == nil {
-                            hitch.riderProfileImageData = data
-                            self.myFinalHitchesArray[i] = hitch
-                            mutex = mutex + 1
-                            if (mutex == self.myFinalHitchesArray.count ){
-                                DispatchQueue.main.async {
-                                    self.delegate?.hitchListLoaded()
-                                }
-                            }
-                        }
-                    }else{
-                        return
-                    }
-                })
-                task.resume()
-            }
-    }
+    
     
     func getNumberOfHitches() -> Int {
         return self.myFinalHitchesArray.count

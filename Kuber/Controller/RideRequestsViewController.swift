@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class RideRequestsViewController: UIViewController {
     
@@ -76,7 +77,9 @@ extension RideRequestsViewController: UITableViewDataSource{
             cell.majorLabel.text = ride.hitchhikerMajor
             cell.gradeLevelLabel.text = ride.hitchhikerGradeLevel
             
-            cell.profilePictureImageView.image = UIImage(data: ride.profileImageData)
+            //cell.profilePictureImageView.image = UIImage(data: ride.profileImageData)
+            cell.profilePictureImageView.kf.indicatorType = .activity
+            cell.profilePictureImageView.kf.setImage(with: URL(string: ride.profileImageUrl), placeholder: nil, options: [.transition(.fade(0.7))], progressBlock: nil)
             cell.profilePictureImageView.layer.borderWidth = 1.0
             cell.profilePictureImageView.layer.masksToBounds = false
             cell.profilePictureImageView.layer.borderColor = UIColor.white.cgColor
@@ -86,18 +89,33 @@ extension RideRequestsViewController: UITableViewDataSource{
             cell.acceptARequestButton = {[unowned self] in
                 rideRequestHelper.acceptTheRideRequest(ride: ride)
                 if let rideUnwrapped = self.ride{
-                    rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                    print("here1")
+                    cell.acceptButton.isEnabled = false
+                    cell.declineButton.isEnabled = false
+                    cell.phoneLabel.isEnabled = true
+                    cell.acceptButton.isHidden = true
+                    cell.declineButton.isHidden = true
+                    cell.phoneLabel.isHidden = false
+                    cell.phoneLabel.setTitle(ride.hitchhikerPhoneNumber, for: .normal)
+                    //rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
                 }
             }
             cell.declineARequestButton = {[unowned self] in
                 rideRequestHelper.declineTheRideRequest(ride: ride)
                 if let rideUnwrapped = self.ride{
-                    rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                    print("here2")
+                    cell.acceptButton.isEnabled = false
+                    cell.declineButton.isEnabled = false
+                    cell.acceptButton.setTitleColor(.darkGray, for: .disabled)
+                    cell.declineButton.setTitleColor(.darkGray, for: .disabled)
+                    //rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
                 }
             }
             cell.phoneButtonClicked = {[unowned self] in
                 rideRequestHelper.callNumber(phoneNumber: ride.hitchhikerPhoneNumber)
             }
+            print(ride.status)
+            print(indexPath.row)
             if  ride.status == 0 {
                 cell.acceptButton.isEnabled = false
                 cell.declineButton.isEnabled = false
