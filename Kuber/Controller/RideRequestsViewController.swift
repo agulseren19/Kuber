@@ -98,6 +98,7 @@ extension RideRequestsViewController: UITableViewDataSource{
                     cell.phoneLabel.isHidden = false
                     cell.phoneLabel.setTitle(ride.hitchhikerPhoneNumber, for: .normal)
                     //rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                    rideRequestHelper.sendNotificationWithFirebase(rideRequest: ride, isRequestAccepted: true)
                 }
             }
             cell.declineARequestButton = {[unowned self] in
@@ -109,6 +110,7 @@ extension RideRequestsViewController: UITableViewDataSource{
                     cell.acceptButton.setTitleColor(.darkGray, for: .disabled)
                     cell.declineButton.setTitleColor(.darkGray, for: .disabled)
                     //rideRequestDatasource.getListOfRideRequest(ride: rideUnwrapped)
+                    rideRequestHelper.sendNotificationWithFirebase(rideRequest: ride, isRequestAccepted: false)
                 }
             }
             cell.phoneButtonClicked = {[unowned self] in
