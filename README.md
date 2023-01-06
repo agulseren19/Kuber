@@ -16,8 +16,6 @@ target 'Kuber' do
 
   pod 'FirebaseAuth'
   
-  pod 'GoogleSignIn'
-  
   pod 'FirebaseMessaging'
   
   pod 'Kingfisher', '~> 7.0'
