@@ -19,6 +19,8 @@ target 'Kuber' do
   pod 'GoogleSignIn'
   
   pod 'FirebaseMessaging'
+  
+  pod 'Kingfisher', '~> 7.0'
 
   target 'KuberTests' do
     inherit! :search_paths
