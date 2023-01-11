@@ -118,10 +118,6 @@ extension RidesViewController: UITableViewDataSource{
             
             
             cell.hitchARideBtn = {[unowned self] in
-                let alert = UIAlertController(title: "Hitch request sended! ", message: "Hitched!", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(okAction)
-                present(alert, animated: true, completion: nil)
                 cell.sendHitchButton.setTitle("Sent", for: .normal)
                 cell.sendHitchButton.setTitleColor(.darkGray, for: .normal)
                 cell.sendHitchButton.isEnabled = false
