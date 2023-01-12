@@ -159,7 +159,7 @@ class MyHitchesDataSource{
                                 
                             }
                             
-                            self.myFinalHitchesArray = self.myFinalHitchesArray.sorted(by: { $0.hitch.date < $1.hitch.date })
+                            self.myFinalHitchesArray = self.myFinalHitchesArray.sorted(by: { $0.hitch.date > $1.hitch.date })
                             DispatchQueue.main.async {
                                 if (self.myFinalHitchesArray.count == 0){
                                     self.delegate?.noDataInMyHitches()
