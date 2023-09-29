@@ -1,4 +1,7 @@
 # Kuber
+# Pitch Video
+  Watch our pitch video to learn more about our app: https://drive.google.com/file/d/1vXmAKEhZ3c7rUegcWGnHrY_77KAqruwo/view?usp=share_link
+  
 # To Run
 * sudo gem install cocoapods
 * cd Kuber (project's directory)
